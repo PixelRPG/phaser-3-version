@@ -39,11 +39,8 @@ let player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 // const showDebug = false;
 
 function preload(this: Phaser.Scene) {
-  this.load.image(
-    "tiles",
-    "../assets/tilesets/tuxmon-sample-32px-extruded.png"
-  );
-  this.load.tilemapTiledJSON("map", "../assets/tilemaps/tuxemon-town.json");
+  this.load.image("tiles", "./assets/tilesets/tuxmon-sample-32px-extruded.png");
+  this.load.tilemapTiledJSON("map", "./assets/tilemaps/tuxemon-town.json");
 
   // An atlas is a way to pack multiple images together into one texture. I'm using it to load all
   // the player animations (walking left, walking right, etc.) in one image. For more info see:
@@ -52,8 +49,8 @@ function preload(this: Phaser.Scene) {
   //  https://labs.phaser.io/view.html?src=src/animation/single%20sprite%20sheet.js
   this.load.atlas(
     "atlas",
-    "../assets/atlas/atlas.png",
-    "../assets/atlas/atlas.json"
+    "./assets/atlas/atlas.png",
+    "./assets/atlas/atlas.json"
   );
 }
 
@@ -64,8 +61,10 @@ function create(this: Phaser.Scene) {
   // Phaser's cache (i.e. the name you used in preload)
   const tileset = map.addTilesetImage("tuxmon-sample-32px-extruded", "tiles");
 
+  console.debug("tileset", tileset);
+
   // Parameters: layer name (or index) from Tiled, tileset, x, y
-  /*const belowLayer =*/ map.createLayer("Below Player", tileset, 0, 0);
+  const belowLayer = map.createLayer("Below Player", tileset, 0, 0);
   const worldLayer = map.createLayer("World", tileset, 0, 0);
   const aboveLayer = map.createLayer("Above Player", tileset, 0, 0);
 
@@ -75,6 +74,8 @@ function create(this: Phaser.Scene) {
   // want the "Above Player" layer to sit on top of the player, so we explicitly give it a depth.
   // Higher depths will sit on top of lower depth objects.
   aboveLayer.setDepth(10);
+
+  belowLayer.setDepth(-10);
 
   // Object layers in Tiled let you embed extra info into a map - like a spawn point or custom
   // collision shapes. In the tmx file, there's an object layer with a point named "Spawn Point"
