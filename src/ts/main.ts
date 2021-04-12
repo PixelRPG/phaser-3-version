@@ -91,8 +91,8 @@ function create(this: Phaser.Scene) {
   }
   player = this.physics.add
     .sprite(spawnPoint.x, spawnPoint.y, "atlas", "misa-front")
-    .setSize(30, 40)
-    .setOffset(0, 24);
+    .setSize(30, 30)
+    .setOffset(0, 34);
 
   // Watch the player and worldLayer for collisions, for the duration of the scene:
   this.physics.add.collider(player, worldLayer);
