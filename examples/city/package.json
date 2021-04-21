@@ -4,8 +4,11 @@
   "description": "",
   "main": "src/index.html",
   "scripts": {
-    "build": "webpack --progress --color --env production",
-    "build:dev": "npm run lint && webpack --progress --color --env development",
+    "build": "yarn run build:atlas && yarn run build:wp",
+    "build:dev": "yarn run build:atlas && yarn run build:wp:dev",
+    "build:wp": "webpack --progress --color --env production",
+    "build:wp:dev": "webpack --progress --color --env development",
+    "build:atlas": "free-tex-packer-cli --project ./src/assets/atlas/tuxemon-misa.ftpp",
     "start": "webpack-serve",
     "clear": "rm -rf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix && tsc --noEmit",
@@ -55,6 +58,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@javelin/ecs": "^0.22.0",
     "@ribajs/bs5": "next",
     "@ribajs/core": "next",
     "@ribajs/events": "next",
@@ -62,6 +66,7 @@
     "@ribajs/iconset": "next",
     "@ribajs/utils": "next",
     "bootstrap": "next",
+    "free-tex-packer-cli": "^0.2.8",
     "phaser": "^3.54.0"
   }
 }

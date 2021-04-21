@@ -1,11 +1,5 @@
 import "./types/globals";
 
-declare global {
-  interface Window {
-    ActiveXObject: any;
-  }
-}
-
 import "phaser";
 
 /**
@@ -45,13 +39,13 @@ function preload(this: Phaser.Scene) {
 
   // An atlas is a way to pack multiple images together into one texture. I'm using it to load all
   // the player animations (walking left, walking right, etc.) in one image. For more info see:
-  //  https://labs.phaser.io/view.html?src=src/animation/texture%20atlas%20animation.js
+  //  https://labs.phaser.io/view.html?src=src\animation\create%20animation%20from%20texture%20atlas.js
   // If you don't use an atlas, you can do the same thing with a spritesheet, see:
-  //  https://labs.phaser.io/view.html?src=src/animation/single%20sprite%20sheet.js
+  //  https://labs.phaser.io/edit.html?src=src\animation\create%20animation%20from%20sprite%20sheet.js
   this.load.atlas(
-    "atlas",
-    "./assets/atlas/atlas.png",
-    "./assets/atlas/atlas.json"
+    "tuxemon-misa",
+    "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
+    "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
   );
 }
 
@@ -61,8 +55,6 @@ function create(this: Phaser.Scene) {
   // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
   // Phaser's cache (i.e. the name you used in preload)
   const tileset = map.addTilesetImage("tuxmon-sample-32px-extruded", "tiles");
-
-  console.debug("tileset", tileset);
 
   // Parameters: layer name (or index) from Tiled, tileset, x, y
   const belowLayer = map.createLayer("Below Player", tileset, 0, 0);
@@ -91,9 +83,10 @@ function create(this: Phaser.Scene) {
     throw new Error("spawnPoint must have coordinates!");
   }
   player = this.physics.add
-    .sprite(spawnPoint.x, spawnPoint.y, "atlas", "misa-front")
-    .setSize(30, 30)
-    .setOffset(0, 34);
+    .sprite(spawnPoint.x, spawnPoint.y, "tuxemon-misa", "misa-front")
+    .setScale(2, 2)
+    .setSize(15, 12)
+    .setOffset(0, 20);
 
   // Watch the player and worldLayer for collisions, for the duration of the scene:
   this.physics.add.collider(player, worldLayer);
@@ -103,7 +96,7 @@ function create(this: Phaser.Scene) {
   const anims = this.anims;
   anims.create({
     key: "misa-left-walk",
-    frames: anims.generateFrameNames("atlas", {
+    frames: anims.generateFrameNames("tuxemon-misa", {
       prefix: "misa-left-walk.",
       start: 0,
       end: 3,
@@ -114,7 +107,7 @@ function create(this: Phaser.Scene) {
   });
   anims.create({
     key: "misa-right-walk",
-    frames: anims.generateFrameNames("atlas", {
+    frames: anims.generateFrameNames("tuxemon-misa", {
       prefix: "misa-right-walk.",
       start: 0,
       end: 3,
@@ -125,7 +118,7 @@ function create(this: Phaser.Scene) {
   });
   anims.create({
     key: "misa-front-walk",
-    frames: anims.generateFrameNames("atlas", {
+    frames: anims.generateFrameNames("tuxemon-misa", {
       prefix: "misa-front-walk.",
       start: 0,
       end: 3,
@@ -136,7 +129,7 @@ function create(this: Phaser.Scene) {
   });
   anims.create({
     key: "misa-back-walk",
-    frames: anims.generateFrameNames("atlas", {
+    frames: anims.generateFrameNames("tuxemon-misa", {
       prefix: "misa-back-walk.",
       start: 0,
       end: 3,
@@ -215,9 +208,11 @@ function update(/*time: number, delta: number*/) {
     player.anims.stop();
 
     // If we were moving, pick and idle frame to use
-    if (prevVelocity.x < 0) player.setTexture("atlas", "misa-left");
-    else if (prevVelocity.x > 0) player.setTexture("atlas", "misa-right");
-    else if (prevVelocity.y < 0) player.setTexture("atlas", "misa-back");
-    else if (prevVelocity.y > 0) player.setTexture("atlas", "misa-front");
+    if (prevVelocity.x < 0) player.setTexture("tuxemon-misa", "misa-left");
+    else if (prevVelocity.x > 0)
+      player.setTexture("tuxemon-misa", "misa-right");
+    else if (prevVelocity.y < 0) player.setTexture("tuxemon-misa", "misa-back");
+    else if (prevVelocity.y > 0)
+      player.setTexture("tuxemon-misa", "misa-front");
   }
 }
