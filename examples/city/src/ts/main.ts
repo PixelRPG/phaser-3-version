@@ -9,11 +9,12 @@ declare global {
 import "phaser";
 
 /**
- * Author: Michael Hadley, mikewesthad.com
- * Asset Credits:
- *  - Tuxemon, https://github.com/Tuxemon/Tuxemon
+ * Credits:
+ *  - Code:
+ *    - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
+ *  - Asset:
+ *    - Tuxemon, https://github.com/Tuxemon/Tuxemon
  */
-
 const config = {
   type: Phaser.AUTO,
   width: 800,

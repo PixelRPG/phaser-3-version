@@ -3292,6 +3292,57 @@ __metadata:
   languageName: node
   linkType: soft
 
+"@rpg-phaser/city@workspace:examples/city":
+  version: 0.0.0-use.local
+  resolution: "@rpg-phaser/city@workspace:examples/city"
+  dependencies:
+    "@babel/cli": ^7.13.16
+    "@babel/core": ^7.13.16
+    "@babel/plugin-proposal-class-properties": ^7.13.0
+    "@babel/plugin-proposal-export-default-from": ^7.12.13
+    "@babel/plugin-proposal-object-rest-spread": ^7.13.8
+    "@babel/plugin-proposal-optional-chaining": ^7.13.12
+    "@babel/plugin-syntax-export-default-from": ^7.12.13
+    "@babel/plugin-transform-runtime": ^7.13.15
+    "@babel/preset-env": ^7.13.15
+    "@babel/preset-typescript": ^7.13.0
+    "@babel/runtime": ^7.13.17
+    "@babel/runtime-corejs3": ^7.13.17
+    "@ribajs/babel-config": next
+    "@ribajs/bs5": next
+    "@ribajs/core": next
+    "@ribajs/events": next
+    "@ribajs/extras": next
+    "@ribajs/iconset": next
+    "@ribajs/tsconfig": next
+    "@ribajs/types": next
+    "@ribajs/utils": next
+    "@ribajs/webpack-config": next
+    "@ribajs/webpack-serve": next
+    "@types/jest": ^26.0.22
+    babel-loader: ^8.2.2
+    babel-plugin-array-includes: ^2.0.3
+    bootstrap: next
+    core-js: ^3.10.2
+    css-loader: ^5.2.4
+    file-loader: ^6.2.0
+    html-loader: ^2.1.2
+    mini-css-extract-plugin: ^1.5.0
+    phaser: ^3.54.0
+    postcss-loader: ^5.2.0
+    postcss-modules: ^4.0.0
+    postcss-preset-env: ^6.7.0
+    prettier: 2.2.1
+    pug-loader: ^2.4.0
+    sass-loader: ^11.0.1
+    terser-webpack-plugin: ^5.1.1
+    typescript: ^4.2.4
+    webpack: ^5.35.0
+    webpack-cli: ^4.6.0
+    webpack-dev-server: ^3.11.2
+  languageName: unknown
+  linkType: soft
+
 "@shopify/theme-lint@npm:^3.1.0":
   version: 3.1.0
   resolution: "@shopify/theme-lint@npm:3.1.0"
@@ -5629,15 +5680,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babelify@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "babelify@npm:10.0.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 5c3c7e7e076f3017f11422004f0e7d929283a6f4eb1949e894caf8c1b36c9f7a7b290877554a93cc949888a22503b4f6dcc72f35fd40c5a3f5d7920d597fa88a
-  languageName: node
-  linkType: hard
-
 "bach@npm:^1.0.0":
   version: 1.2.0
   resolution: "bach@npm:1.2.0"
@@ -6334,25 +6376,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:>=2.0.0 <4.0.0, chokidar@npm:^3.4.0, chokidar@npm:^3.4.2":
-  version: 3.4.3
-  resolution: "chokidar@npm:3.4.3"
-  dependencies:
-    anymatch: ~3.1.1
-    braces: ~3.0.2
-    fsevents: ~2.1.2
-    glob-parent: ~5.1.0
-    is-binary-path: ~2.1.0
-    is-glob: ~4.0.1
-    normalize-path: ~3.0.0
-    readdirp: ~3.5.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  checksum: b5a566b31267b1a71c2e7544fbf8c21f597883515d9bfc0356719be6c3b34ee51b0329f3ee5f5d98060ce2930be68f8c33b53f8b3659dc101fd51be265831deb
-  languageName: node
-  linkType: hard
-
 "chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.3.1, chokidar@npm:^3.5.1":
   version: 3.5.1
   resolution: "chokidar@npm:3.5.1"
@@ -6392,6 +6415,25 @@ __metadata:
     fsevents:
       optional: true
   checksum: 0758dcc7c6c7ace5924cf3c68088210932d391ab41026376b0adb8e07013ac87232e029f13468dfc9ca4dd59adae62a2b7eaedebb6c4e4f0ba92cbf3ac9e3721
+  languageName: node
+  linkType: hard
+
+"chokidar@npm:^3.4.0, chokidar@npm:^3.4.2":
+  version: 3.4.3
+  resolution: "chokidar@npm:3.4.3"
+  dependencies:
+    anymatch: ~3.1.1
+    braces: ~3.0.2
+    fsevents: ~2.1.2
+    glob-parent: ~5.1.0
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.5.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: b5a566b31267b1a71c2e7544fbf8c21f597883515d9bfc0356719be6c3b34ee51b0329f3ee5f5d98060ce2930be68f8c33b53f8b3659dc101fd51be265831deb
   languageName: node
   linkType: hard
 
@@ -7325,17 +7367,6 @@ __metadata:
     es5-ext: ^0.10.50
     type: ^1.0.1
   checksum: cf9b770965fa4876f7aff46784e4f1a1ee71cc5df7e05c9c36bee52a74340b312b6f7ab224c8bfcc83f4b18c6f6a24e7b50bcd449ba4464c1df69874941324ae
-  languageName: node
-  linkType: hard
-
-"dart-sass@npm:^1.25.0":
-  version: 1.25.0
-  resolution: "dart-sass@npm:1.25.0"
-  dependencies:
-    chokidar: ">=2.0.0 <4.0.0"
-  bin:
-    dart-sass: sass.js
-  checksum: b1c6370afaae72e275698051a165ba55f5057865abb58aab54ab1731aea6dc44e80e609c856784a2860143c6c38b1668360d1fb9d440b66b482bebbb57db5f77
   languageName: node
   linkType: hard
 
@@ -15489,15 +15520,9 @@ resolve@^1.14.2:
     "@babel/runtime": ^7.13.17
     "@babel/runtime-corejs3": ^7.13.17
     "@ribajs/babel-config": next
-    "@ribajs/bs5": next
-    "@ribajs/core": next
     "@ribajs/eslint-config": next
-    "@ribajs/events": next
-    "@ribajs/extras": next
-    "@ribajs/iconset": next
     "@ribajs/tsconfig": next
     "@ribajs/types": next
-    "@ribajs/utils": next
     "@ribajs/webpack-config": next
     "@ribajs/webpack-serve": next
     "@types/jest": ^26.0.22
@@ -15506,33 +15531,21 @@ resolve@^1.14.2:
     "@yarnpkg/pnpify": ^3.0.0-rc.3
     babel-loader: ^8.2.2
     babel-plugin-array-includes: ^2.0.3
-    babelify: ^10.0.0
-    bootstrap: next
     core-js: ^3.10.2
     css-loader: ^5.2.4
-    dart-sass: ^1.25.0
     eslint: ^7.24.0
     eslint-config-prettier: ^8.2.0
     eslint-plugin-prettier: ^3.4.0
     file-loader: ^6.2.0
     html-loader: ^2.1.2
-    inspectpack: ^4.7.1
     jest: ^26.6.3
     jest-extended: ^0.11.5
     mini-css-extract-plugin: ^1.5.0
-    phaser: ^3.54.0
     postcss-loader: ^5.2.0
     postcss-modules: ^4.0.0
     postcss-preset-env: ^6.7.0
     prettier: 2.2.1
-    pug-loader: ^2.4.0
-    sass-loader: ^11.0.1
-    terser-webpack-plugin: ^5.1.1
-    ts-jest: ^26.5.5
     typescript: ^4.2.4
-    webpack: ^5.35.0
-    webpack-cli: ^4.6.0
-    webpack-dev-server: ^3.11.2
   languageName: unknown
   linkType: soft
 
