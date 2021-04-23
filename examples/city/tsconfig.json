@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "types": [],
-    "lib": ["ES2015", "ESNext", "DOM", "scripthost"]
+    "lib": ["ESNext", "DOM", "scripthost"]
   },
   "exclude": ["node_modules", "**/*.d.ts"]
 }

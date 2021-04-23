@@ -17,6 +17,8 @@
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "license": "MIT",
   "workspaces": [
+    "packages/javelin",
+    "packages/javelin/packages/*",
     "examples/*"
   ],
   "devDependencies": {
@@ -44,7 +46,7 @@
     "@yarnpkg/pnpify": "^3.0.0-rc.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-array-includes": "^2.0.3",
-    "core-js": "^3.10.2",
+    "core-js": "^3.11.0",
     "css-loader": "^5.2.4",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",

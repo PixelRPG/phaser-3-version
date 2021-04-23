@@ -1,39 +1,15 @@
 import "./types/globals";
+import { gameWorld } from "./worlds/game.world";
 
 import "phaser";
 
-/**
- * Credits:
- *  - Code:
- *    - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
- *  - Asset:
- *    - Tuxemon, https://github.com/Tuxemon/Tuxemon
- */
-const config = {
-  type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  parent: "game-container",
-  pixelArt: true,
-  physics: {
-    default: "arcade",
-    arcade: {
-      gravity: { y: 0 },
-    },
-  },
-  scene: {
-    preload: preload,
-    create: create,
-    update: update,
-  },
-};
-
-/*const game = */ new Phaser.Game(config);
 let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 let player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 // const showDebug = false;
 
-function preload(this: Phaser.Scene) {
+const preload: Phaser.Types.Scenes.ScenePreloadCallback = function (
+  this: Phaser.Scene
+) {
   this.load.image("tiles", "./assets/tilesets/tuxmon-sample-32px-extruded.png");
   this.load.tilemapTiledJSON("map", "./assets/tilemaps/tuxemon-town.json");
 
@@ -47,9 +23,11 @@ function preload(this: Phaser.Scene) {
     "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
     "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
   );
-}
+};
 
-function create(this: Phaser.Scene) {
+const create: Phaser.Types.Scenes.SceneCreateCallback = function (
+  this: Phaser.Scene
+) {
   const map = this.make.tilemap({ key: "map" });
 
   // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
@@ -169,9 +147,11 @@ function create(this: Phaser.Scene) {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
     });
   });
-}
+};
 
-function update(/*time: number, delta: number*/) {
+const update = function (time: number, delta: number) {
+  gameWorld.tick(delta);
+
   const speed = 175;
   const prevVelocity = player.body.velocity.clone();
 
@@ -215,4 +195,32 @@ function update(/*time: number, delta: number*/) {
     else if (prevVelocity.y > 0)
       player.setTexture("tuxemon-misa", "misa-front");
   }
-}
+};
+
+/**
+ * Credits:
+ *  - Code:
+ *    - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
+ *  - Asset:
+ *    - Tuxemon, https://github.com/Tuxemon/Tuxemon
+ */
+const config: Phaser.Types.Core.GameConfig = {
+  type: Phaser.AUTO,
+  width: 800,
+  height: 600,
+  parent: "game-container",
+  pixelArt: true,
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { y: 0 },
+    },
+  },
+  scene: <Phaser.Types.Scenes.CreateSceneFromObjectConfig>{
+    preload: preload,
+    create: create,
+    update: update,
+  },
+};
+
+/*const game = */ new Phaser.Game(config);

@@ -226,6 +226,266 @@
         "signature": "ec1110875e7c6ae262be2eafc7cf353d9460565c00b4cb6465b40e7aee2c0a7d",
         "affectsGlobalScope": false
       },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts": {
+        "version": "e3363eb0deeaf2a6541e2bc419b4f0418a73a5744203dfd85ab4831bf19718a9",
+        "signature": "e3363eb0deeaf2a6541e2bc419b4f0418a73a5744203dfd85ab4831bf19718a9",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts": {
+        "version": "33e165f3218ec75b9027556d45775cddd8dbfe8ba7a3e8b3553b5a7a1df4c8fe",
+        "signature": "33e165f3218ec75b9027556d45775cddd8dbfe8ba7a3e8b3553b5a7a1df4c8fe",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts": {
+        "version": "1c82fefaf40ba14747edc16abdbb1ae99ef81dadea8b1f913dc1f5bad1b0b0ff",
+        "signature": "1c82fefaf40ba14747edc16abdbb1ae99ef81dadea8b1f913dc1f5bad1b0b0ff",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts": {
+        "version": "424f5f1ec01b251cb355cec27e041750fde29e075f76620c1321acc8227a6032",
+        "signature": "424f5f1ec01b251cb355cec27e041750fde29e075f76620c1321acc8227a6032",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/type.d.ts": {
+        "version": "4b3b268beb36aac81b311911dbbad8c670a91c0512ca223c667c39ce1b1700b5",
+        "signature": "4b3b268beb36aac81b311911dbbad8c670a91c0512ca223c667c39ce1b1700b5",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/array.d.ts": {
+        "version": "b61f148f385901c400a13674c3d24f5b5b2a96dba44c5be3902c2f451e9906ee",
+        "signature": "b61f148f385901c400a13674c3d24f5b5b2a96dba44c5be3902c2f451e9906ee",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.d.ts": {
+        "version": "1706fb2160aae75746a7810fcbabd2fe2b4a292596ae70bf16fbabae710085b1",
+        "signature": "1706fb2160aae75746a7810fcbabd2fe2b4a292596ae70bf16fbabae710085b1",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts": {
+        "version": "bcbfb65ecc3eeaeab326616b8aa7b8996ec1040693a39cb819bd25e9c9cda896",
+        "signature": "bcbfb65ecc3eeaeab326616b8aa7b8996ec1040693a39cb819bd25e9c9cda896",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts": {
+        "version": "37634e16034a44998aaaf4ca68bfadb10472cf9af7ea1f7917df860788040cbe",
+        "signature": "37634e16034a44998aaaf4ca68bfadb10472cf9af7ea1f7917df860788040cbe",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts": {
+        "version": "b2f27c5752c83631bdb00ddca1ae50c423d93b8b06fbe57afac2f82f0b3da1a7",
+        "signature": "b2f27c5752c83631bdb00ddca1ae50c423d93b8b06fbe57afac2f82f0b3da1a7",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts": {
+        "version": "7508680fdecf3dcf98f02fbbdabaf013b9483ed0c65fd1b8a0522f5f1c0ed93e",
+        "signature": "7508680fdecf3dcf98f02fbbdabaf013b9483ed0c65fd1b8a0522f5f1c0ed93e",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts": {
+        "version": "04548da0f5b83e600fd81766ebdaf7bde35f4b4d6b26f1c11326bb318c3975de",
+        "signature": "04548da0f5b83e600fd81766ebdaf7bde35f4b4d6b26f1c11326bb318c3975de",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.d.ts": {
+        "version": "acb68cae7a640d0abf68b10e5e2b8f20a7975f00e7235fc33dd11630dfb86954",
+        "signature": "acb68cae7a640d0abf68b10e5e2b8f20a7975f00e7235fc33dd11630dfb86954",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts": {
+        "version": "7383819181d9161817698f3f52ae84302edf0a817e98a478d4cf0b20898c434a",
+        "signature": "7383819181d9161817698f3f52ae84302edf0a817e98a478d4cf0b20898c434a",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts": {
+        "version": "b8241a25d6cd55e03923677d03ccbe1d5480f7d697037e9ed0bbe9811c066538",
+        "signature": "b8241a25d6cd55e03923677d03ccbe1d5480f7d697037e9ed0bbe9811c066538",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts": {
+        "version": "f1cf75ceda7c9f36c128cdae336b500ce4998a9b5d863a9578d00942cd30e23a",
+        "signature": "f1cf75ceda7c9f36c128cdae336b500ce4998a9b5d863a9578d00942cd30e23a",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts": {
+        "version": "d4847e1302cacf3672beab8de2ff74570b072dd50bb0bd58c7ba9a568e115496",
+        "signature": "d4847e1302cacf3672beab8de2ff74570b072dd50bb0bd58c7ba9a568e115496",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts": {
+        "version": "f9432a250ec0e51f3f73f728c595840782ad5ca0e4d59ab37c2af8dcac3615b9",
+        "signature": "f9432a250ec0e51f3f73f728c595840782ad5ca0e4d59ab37c2af8dcac3615b9",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts": {
+        "version": "42ebf69bb7aad47811c3ed1b04e8c5dbfd5f4ab001b4d7cf5cbc70607948db1c",
+        "signature": "42ebf69bb7aad47811c3ed1b04e8c5dbfd5f4ab001b4d7cf5cbc70607948db1c",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts": {
+        "version": "ab742cfb9bf9e8179b34652f2ac51f9d85e6757681059bd93bcf4163e064c2c2",
+        "signature": "ab742cfb9bf9e8179b34652f2ac51f9d85e6757681059bd93bcf4163e064c2c2",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts": {
+        "version": "522ab29d9f43a9953ccdd1bdf36c41dec986ec108660478ace3b4ef8f9aed3e0",
+        "signature": "522ab29d9f43a9953ccdd1bdf36c41dec986ec108660478ace3b4ef8f9aed3e0",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts": {
+        "version": "b84213bf58992e4dc1659f5b7c03f5c65f06aca4d78d4c2112ab8b196b6d4f2d",
+        "signature": "b84213bf58992e4dc1659f5b7c03f5c65f06aca4d78d4c2112ab8b196b6d4f2d",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.d.ts": {
+        "version": "78b9b131b898b658c70923fb0623c745f8331382bf78d89a448c131afa3ba9fc",
+        "signature": "78b9b131b898b658c70923fb0623c745f8331382bf78d89a448c131afa3ba9fc",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts": {
+        "version": "125e572a77ba96f1b57478f658a71f964f60b687e331ab4b7374166c9aa5f797",
+        "signature": "125e572a77ba96f1b57478f658a71f964f60b687e331ab4b7374166c9aa5f797",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts": {
+        "version": "83effac7564a8483ca4fdc853f97873fe5df2e35cc5a29ed49395ea882cb6946",
+        "signature": "83effac7564a8483ca4fdc853f97873fe5df2e35cc5a29ed49395ea882cb6946",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts": {
+        "version": "cf10edc34eff7d9a3bdc2a84978ce0b54bc8b0a1694537ba191b7ebdc437daf0",
+        "signature": "cf10edc34eff7d9a3bdc2a84978ce0b54bc8b0a1694537ba191b7ebdc437daf0",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts": {
+        "version": "1e700527c6b8b27951152b693c21817b7e2902793f7e8b0bea8af623a23ad60e",
+        "signature": "1e700527c6b8b27951152b693c21817b7e2902793f7e8b0bea8af623a23ad60e",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts": {
+        "version": "c3010ac627c0b6e12186d871136bfe4e38a7be74920840617d8d2d59319360cb",
+        "signature": "c3010ac627c0b6e12186d871136bfe4e38a7be74920840617d8d2d59319360cb",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts": {
+        "version": "d4c96ee2ea9de47c588dd4aa4de81efde0f6eba3d08d3601dc7efd7b2a17d173",
+        "signature": "d4c96ee2ea9de47c588dd4aa4de81efde0f6eba3d08d3601dc7efd7b2a17d173",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts": {
+        "version": "d5975509e7e66492f453997511ab3d97d4be6699aa1084db06800cac552120ef",
+        "signature": "d5975509e7e66492f453997511ab3d97d4be6699aa1084db06800cac552120ef",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts": {
+        "version": "3076a05a7c8f414dd0f534e3af6ca1dad23359365903824bc90edc7888ff1414",
+        "signature": "3076a05a7c8f414dd0f534e3af6ca1dad23359365903824bc90edc7888ff1414",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts": {
+        "version": "85bc0cc74730c521aa094fe8a0e316dee30d3f2898b1743a3e9a4bea9609b219",
+        "signature": "85bc0cc74730c521aa094fe8a0e316dee30d3f2898b1743a3e9a4bea9609b219",
+        "affectsGlobalScope": false
+      },
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts": {
+        "version": "12ba853b1556480e6f14accebf69e627943e368a8c79b6dbf97941845db65d3a",
+        "signature": "12ba853b1556480e6f14accebf69e627943e368a8c79b6dbf97941845db65d3a",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/types/world-game-data.ts": {
+        "version": "6c9d19cf8d6a7b205f7ea77848136f4576e22214ac0af3e5de1437730f19e1da",
+        "signature": "450429d4f3e7f4d6ad6657d534dac3e5778f37c7999f593655b14d7a85995ff2",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/types/index.ts": {
+        "version": "b62cad46f8b4b40f3b928c6fb4f3b2c5700d5ee4bcba6d5f8cc065b7d0d8fd2a",
+        "signature": "b62cad46f8b4b40f3b928c6fb4f3b2c5700d5ee4bcba6d5f8cc065b7d0d8fd2a",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/services/entry.service.ts": {
+        "version": "93795fe9147f474e45f1550f2f4d3d81251410680c8b14fbdb0f1160858ba023",
+        "signature": "b3ef8903b1a00e20dc4d78454bf7929b144ada3ae50d8485b303fce9cc975682",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/services/index.ts": {
+        "version": "ae69a1546766f1e798a752180fdc2c874d7630b90f56a5f22d4b62c10ebb5960",
+        "signature": "ae69a1546766f1e798a752180fdc2c874d7630b90f56a5f22d4b62c10ebb5960",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/constants/enums.ts": {
+        "version": "8f4e586945b9c47e5606fb5cf439897fecb46fd93bb28975f53760580010d88b",
+        "signature": "e81701ce7bfc743ea625f7727d559942614f35beb22873df8a01a022521d2f1a",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/constants/index.ts": {
+        "version": "464c9d440d428e9cfb338c7367485ae02b13ccff54262a2a234d971381fe851f",
+        "signature": "464c9d440d428e9cfb338c7367485ae02b13ccff54262a2a234d971381fe851f",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/components/atlas.component.ts": {
+        "version": "4d744f9a2f82996d1b884bbe3ffb97328d529aa885b44edbb107f3ba55f18810",
+        "signature": "e26281a5f0f9f56683196682cb6001362fa15e7012d8872940788e418497f267",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/components/image.component.ts": {
+        "version": "d5bdd6c1bea1c6fd59fef7e9485e3391b17aef7a6700dfde8d2d23db098fc60a",
+        "signature": "554f56d602e44808d78cb01fc1823bcc4835c560e8bf5c2c5906a976f90a312c",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/components/tilemap.component.ts": {
+        "version": "d53467f04e92a5fa223363d0cbde4fceacef500cc470d34a695acc6d954c0bdc",
+        "signature": "b6a3d2728b887993581e58da48d1b8cf80a2a7b3d1a570124688687ac9f1020a",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/components/index.ts": {
+        "version": "3c4df2b48423bb8a171acb8c08be0b68de81aa14a4f41564bec4e21d50787ae6",
+        "signature": "3c4df2b48423bb8a171acb8c08be0b68de81aa14a4f41564bec4e21d50787ae6",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/entries/player.entry.ts": {
+        "version": "065cb1839957f1f1bdf9a5a9a4292dc2582808da1ebbbfedbf883bca65517465",
+        "signature": "0ba77659ab7004c86e26b96a4682ceecec8fb11cf2843d1757d851207ea214b5",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/entries/index.ts": {
+        "version": "e194715839b5564bcaf9b2c589d8e21e61f022e92bea8b6bfc6937a1c128859c",
+        "signature": "e194715839b5564bcaf9b2c589d8e21e61f022e92bea8b6bfc6937a1c128859c",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/assets.system.ts": {
+        "version": "6803656bc97530d7ee2e39171adaff510f5ed0a4bbccaa1e812ca628282e148d",
+        "signature": "d82869516676ce1cddb287c684c32ccedb1a549f4545b45205fc0f013ac33e4c",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/movement.system.ts": {
+        "version": "b339bd380e8443ab2a52ba3b04547f178706145a4d041d5bc522813877d93a1b",
+        "signature": "63e755108302e73673f67b709bf94627195b64334c005e720cae8833f86adc58",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/pickups.system.ts": {
+        "version": "4711d26790c0b7668acf394c9b9c0224275e3b58e6c3ed0d11154bbed08404bc",
+        "signature": "248067884ebb1e8554575f4b87d3e59ff261bebd593e769c3845f7ab0b82ae25",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/render-map.system.ts": {
+        "version": "e4a139238dc4245a33639fae3dc9dd0ab1ab8ef46b0e09db0e34f86bf54b3a04",
+        "signature": "2eab3d46bbee4793521b886116b914556675ec89e288dccdcd447822cfad5931",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/render-ui.system.ts": {
+        "version": "15ed91f4dad5e923a66dc7bf18ead8f0e3d12a01fff484343a925b4863d7f30e",
+        "signature": "b59899ea41541bdf19babd666efa9d97451a3d6954a3c8024244016e5cc508e0",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/systems/index.ts": {
+        "version": "9ecfc27d177ba5a3d92a8e638c520a42cae3d2d2a2931f8fa65b921a2ee209cf",
+        "signature": "9ecfc27d177ba5a3d92a8e638c520a42cae3d2d2a2931f8fa65b921a2ee209cf",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/worlds/game.world.ts": {
+        "version": "ecdd12ab9809049cc28258c79d2a31cd7fb1b6dc4190a44aa18e81d612499a9e",
+        "signature": "90361d2143359a12454aff16fe7f32bf291fee25a1966c2ef28c62e27dec3dbe",
+        "affectsGlobalScope": false
+      },
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts": {
         "version": "9374865c5c6274676e16385594e5e06fcbb8f649052c80adfe2a0fbcf728f59f",
         "signature": "9374865c5c6274676e16385594e5e06fcbb8f649052c80adfe2a0fbcf728f59f",
@@ -237,8 +497,13 @@
         "affectsGlobalScope": true
       },
       "../src/ts/main.ts": {
-        "version": "31a091e6861c82a5a33246ab5d82f9e8dec13ee41230a5a9ca8ff07a2362ac1b",
+        "version": "21381211ffc8310455c6ddf9309f8b1a9781b783bdc609c8f58a442ef20dfdcf",
         "signature": "29c5b9d42588a6cc25d8da8203b9d6bf9d2ee3556d92f39641f4786a45c7cdce",
+        "affectsGlobalScope": false
+      },
+      "../src/ts/worlds/index.ts": {
+        "version": "cb4db601775065426ac16de2605e31b3e646748b0d7c40ca9096d256b30be847",
+        "signature": "cb4db601775065426ac16de2605e31b3e646748b0d7c40ca9096d256b30be847",
         "affectsGlobalScope": false
       }
     },
@@ -273,22 +538,401 @@
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/type.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/array.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts"
+      ],
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts"
       ],
+      "../src/ts/components/atlas.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts",
+        "../src/ts/constants/index.ts"
+      ],
+      "../src/ts/components/image.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts",
+        "../src/ts/constants/index.ts"
+      ],
+      "../src/ts/components/index.ts": [
+        "../src/ts/components/atlas.component.ts",
+        "../src/ts/components/image.component.ts",
+        "../src/ts/components/tilemap.component.ts"
+      ],
+      "../src/ts/components/tilemap.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts",
+        "../src/ts/constants/index.ts"
+      ],
+      "../src/ts/constants/index.ts": [
+        "../src/ts/constants/enums.ts"
+      ],
+      "../src/ts/entries/index.ts": [
+        "../src/ts/entries/player.entry.ts"
+      ],
+      "../src/ts/entries/player.entry.ts": [
+        "../src/ts/components/index.ts"
+      ],
       "../src/ts/main.ts": [
-        "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts"
+        "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts",
+        "../src/ts/worlds/game.world.ts"
+      ],
+      "../src/ts/services/entry.service.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/services/index.ts": [
+        "../src/ts/services/entry.service.ts"
+      ],
+      "../src/ts/systems/assets.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/index.ts": [
+        "../src/ts/systems/assets.system.ts",
+        "../src/ts/systems/movement.system.ts",
+        "../src/ts/systems/pickups.system.ts",
+        "../src/ts/systems/render-map.system.ts",
+        "../src/ts/systems/render-ui.system.ts"
+      ],
+      "../src/ts/systems/movement.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/pickups.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/render-map.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/render-ui.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/types/index.ts": [
+        "../src/ts/types/world-game-data.ts"
+      ],
+      "../src/ts/worlds/game.world.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts",
+        "../src/ts/entries/index.ts",
+        "../src/ts/services/index.ts",
+        "../src/ts/systems/index.ts",
+        "../src/ts/types/index.ts"
       ]
     },
     "exportedModulesMap": {
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/type.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/array.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts",
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts"
+      ],
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts"
+      ],
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts"
       ],
+      "../src/ts/components/atlas.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/components/image.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/components/index.ts": [
+        "../src/ts/components/atlas.component.ts",
+        "../src/ts/components/image.component.ts",
+        "../src/ts/components/tilemap.component.ts"
+      ],
+      "../src/ts/components/tilemap.component.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/constants/index.ts": [
+        "../src/ts/constants/enums.ts"
+      ],
+      "../src/ts/entries/index.ts": [
+        "../src/ts/entries/player.entry.ts"
+      ],
+      "../src/ts/entries/player.entry.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
       "../src/ts/main.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts"
+      ],
+      "../src/ts/services/entry.service.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/services/index.ts": [
+        "../src/ts/services/entry.service.ts"
+      ],
+      "../src/ts/systems/assets.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/index.ts": [
+        "../src/ts/systems/assets.system.ts",
+        "../src/ts/systems/movement.system.ts",
+        "../src/ts/systems/pickups.system.ts",
+        "../src/ts/systems/render-map.system.ts",
+        "../src/ts/systems/render-ui.system.ts"
+      ],
+      "../src/ts/systems/movement.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/pickups.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/render-map.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/systems/render-ui.system.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/ts/types/index.ts": [
+        "../src/ts/types/world-game-data.ts"
+      ],
+      "../src/ts/worlds/game.world.ts": [
+        "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/archetype.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/component.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effect.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/entity.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/query.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/signal.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/storage.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/symbols.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/topic.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/type.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/array.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/util/index.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world.d.ts",
+      "../../../.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-880c4c053b.zip/node_modules/@javelin/ecs/dist/cjs/world_op.d.ts",
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts",
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.dom.d.ts",
@@ -335,8 +979,40 @@
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.esnext.string.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.esnext.weakref.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.scripthost.d.ts",
+      "../src/ts/components/atlas.component.ts",
+      "../src/ts/components/image.component.ts",
+      "../src/ts/components/index.ts",
+      "../src/ts/components/tilemap.component.ts",
+      "../src/ts/constants/enums.ts",
+      "../src/ts/constants/index.ts",
+      "../src/ts/entries/index.ts",
+      "../src/ts/entries/player.entry.ts",
       "../src/ts/main.ts",
-      "../src/ts/types/globals.ts"
+      "../src/ts/services/entry.service.ts",
+      "../src/ts/services/index.ts",
+      "../src/ts/systems/assets.system.ts",
+      "../src/ts/systems/index.ts",
+      "../src/ts/systems/movement.system.ts",
+      "../src/ts/systems/pickups.system.ts",
+      "../src/ts/systems/render-map.system.ts",
+      "../src/ts/systems/render-ui.system.ts",
+      "../src/ts/types/globals.ts",
+      "../src/ts/types/index.ts",
+      "../src/ts/types/world-game-data.ts",
+      "../src/ts/worlds/game.world.ts",
+      [
+        "../src/ts/worlds/index.ts",
+        [
+          {
+            "file": "../src/ts/worlds/index.ts",
+            "start": 14,
+            "length": 14,
+            "messageText": "Cannot find module './main.world' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ]
     ]
   },
   "version": "4.2.4"
