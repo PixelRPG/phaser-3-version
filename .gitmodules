@@ -1,0 +1,3 @@
+[submodule "packages/javelin"]
+	path = packages/javelin
+	url = git@github.com:RetroRPG/javelin.git
