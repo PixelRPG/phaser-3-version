@@ -1,5 +1,5 @@
 import "./types/globals";
-import { gameWorld } from "./worlds/game.world";
+import { gameWorld } from "./worlds";
 
 import "phaser";
 

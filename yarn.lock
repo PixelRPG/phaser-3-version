@@ -1810,6 +1810,9 @@ __metadata:
 "@javelin/hrtime-loop@0.22.0, @javelin/hrtime-loop@workspace:packages/javelin/packages/hrtime-loop":
   version: 0.0.0-use.local
   resolution: "@javelin/hrtime-loop@workspace:packages/javelin/packages/hrtime-loop"
+  dependencies:
+    "@types/node": ^14.14.41
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
 
@@ -1818,6 +1821,7 @@ __metadata:
   resolution: "@javelin/net@workspace:packages/javelin/packages/net"
   dependencies:
     "@javelin/ecs": 0.22.0
+    typescript: ^4.2.4
   peerDependencies:
     "@javelin/ecs": ">=0.0.1"
   languageName: unknown
@@ -1828,6 +1832,10 @@ __metadata:
   resolution: "@javelin/pack@workspace:packages/javelin/packages/pack"
   dependencies:
     "@msgpack/msgpack": ^2.4.1
+    "@rollup/plugin-node-resolve": ^11.2.1
+    rollup: ^2.45.2
+    rollup-plugin-terser: ^7.0.2
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
 
@@ -4655,23 +4663,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:^8.4.0":
-  version: 8.4.0
-  resolution: "@rollup/plugin-node-resolve@npm:8.4.0"
-  dependencies:
-    "@rollup/pluginutils": ^3.1.0
-    "@types/resolve": 1.17.1
-    builtin-modules: ^3.1.0
-    deep-freeze: ^0.0.1
-    deepmerge: ^4.2.2
-    is-module: ^1.0.0
-    resolve: ^1.17.0
-  peerDependencies:
-    rollup: ^1.20.0||^2.0.0
-  checksum: 1c3da8d000f9958d9dd4d52035cca43a985266cb8af42ac1e678179ffd755818a4b18fd23e51b8d7daf49cfac7fd04ca361c11e7db7791b95f2a4010c419a401
-  languageName: node
-  linkType: hard
-
 "@rollup/pluginutils@npm:^3.1.0":
   version: 3.1.0
   resolution: "@rollup/pluginutils@npm:3.1.0"
@@ -4689,20 +4680,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rpg-phaser/city@workspace:examples/city"
   dependencies:
-    "@babel/cli": ^7.13.16
-    "@babel/core": ^7.13.16
-    "@babel/plugin-proposal-class-properties": ^7.13.0
-    "@babel/plugin-proposal-export-default-from": ^7.12.13
-    "@babel/plugin-proposal-object-rest-spread": ^7.13.8
-    "@babel/plugin-proposal-optional-chaining": ^7.13.12
-    "@babel/plugin-syntax-export-default-from": ^7.12.13
-    "@babel/plugin-transform-runtime": ^7.13.15
-    "@babel/preset-env": ^7.13.15
-    "@babel/preset-typescript": ^7.13.0
-    "@babel/runtime": ^7.13.17
-    "@babel/runtime-corejs3": ^7.13.17
     "@javelin/ecs": ^0.22.0
-    "@ribajs/babel-config": next
     "@ribajs/bs5": next
     "@ribajs/core": next
     "@ribajs/eslint-config": next
@@ -4712,35 +4690,33 @@ __metadata:
     "@ribajs/tsconfig": next
     "@ribajs/types": next
     "@ribajs/utils": next
-    "@ribajs/webpack-config": next
-    "@ribajs/webpack-serve": next
+    "@rpg-phaser/esbuild": "workspace:packages/esbuild"
     "@types/jest": ^26.0.22
     "@typescript-eslint/eslint-plugin": ^4.22.0
     "@typescript-eslint/parser": ^4.22.0
-    babel-loader: ^8.2.2
-    babel-plugin-array-includes: ^2.0.3
     bootstrap: next
-    core-js: ^3.11.0
-    css-loader: ^5.2.4
+    esbuild: ^0.11.15
     eslint: ^7.24.0
     eslint-config-prettier: ^8.2.0
     eslint-plugin-prettier: ^3.4.0
-    file-loader: ^6.2.0
     free-tex-packer-cli: ^0.2.8
-    html-loader: ^2.1.2
-    mini-css-extract-plugin: ^1.5.0
     phaser: ^3.54.0
-    postcss-loader: ^5.2.0
-    postcss-modules: ^4.0.0
-    postcss-preset-env: ^6.7.0
     prettier: 2.2.1
-    pug-loader: ^2.4.0
-    sass-loader: ^11.0.1
-    terser-webpack-plugin: ^5.1.1
     typescript: ^4.2.4
-    webpack: ^5.35.0
-    webpack-cli: ^4.6.0
-    webpack-dev-server: ^3.11.2
+  languageName: unknown
+  linkType: soft
+
+"@rpg-phaser/esbuild@workspace:packages/esbuild":
+  version: 0.0.0-use.local
+  resolution: "@rpg-phaser/esbuild@workspace:packages/esbuild"
+  dependencies:
+    "@tsconfig/node14": ^1.0.0
+    "@types/node": ^14.14.41
+    "@yarnpkg/esbuild-plugin-pnp": ^1.0.0-rc.2
+    esbuild: ^0.11.15
+    typescript: ^4.2.4
+  bin:
+    esbuilder: ./bin/run
   languageName: unknown
   linkType: soft
 
@@ -6287,6 +6263,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarnpkg/esbuild-plugin-pnp@npm:^1.0.0-rc.2":
+  version: 1.0.0-rc.2
+  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:1.0.0-rc.2"
+  dependencies:
+    tslib: ^1.13.0
+  peerDependencies:
+    esbuild: ^0.8.36
+  bin:
+    esbuild-plugin-pnp: ./lib/cli.js
+  checksum: bfa55937465b0a4ecae1af2639fdddcf63a614e0a68e10401348fd290c86a630396978c2ab3afccfb1bf90e23b7b45cf11947c0348830d57464f4976c4b30bec
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/fslib@npm:^2.1.0, @yarnpkg/fslib@npm:^2.4.0":
   version: 2.4.0
   resolution: "@yarnpkg/fslib@npm:2.4.0"
@@ -7509,6 +7498,13 @@ __metadata:
     mixin-deep: ^1.2.0
     pascalcase: ^0.1.1
   checksum: 84e30392fd028df388b209cfb800e1ab4156b3cc499bd46f96ce6271fd17f10302ba6b87d4a56c6946cc77b6571502d45d73c7948a63a84f9ffd421f81232dd5
+  languageName: node
+  linkType: hard
+
+"basic-auth@npm:^1.0.3":
+  version: 1.1.0
+  resolution: "basic-auth@npm:1.1.0"
+  checksum: dd75a3730b0e7199c6067a63598cbe39470bc9fcacd67c21c3e442d65124909001f0d37c0751fed51f06191d598663b3b2c766d42f3e70313e72e3881ab98f7d
   languageName: node
   linkType: hard
 
@@ -8785,7 +8781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colors@npm:^1.1.2":
+"colors@npm:^1.1.2, colors@npm:^1.4.0":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
   checksum: a0f266ac041a9774d92cc9624a984707678d2eeec125d54e8d8231075ce36c24c5352fb5d0f90c6ee420d0f63e354417cec716386ad341309334aad18e32b933
@@ -9290,6 +9286,13 @@ __metadata:
   version: 1.0.2
   resolution: "core-util-is@npm:1.0.2"
   checksum: 089015ee3c462dfceba70faa1df83b42a7bb35db26dae6af283247b06fe3216c65fccd9f00eebcaf98300dc31e981d56aae9f90b624f8f6ff1153e235ff88b65
+  languageName: node
+  linkType: hard
+
+"corser@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "corser@npm:2.0.1"
+  checksum: 5af366b3eacfe1e6a0475e65afd30527a39d0b44c62a8889be0e9204399c22f0462acbec5db04e2ad4ed506b05273668a65688c6e6ebfbcc507a4097592698c2
   languageName: node
   linkType: hard
 
@@ -9828,13 +9831,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deep-freeze@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "deep-freeze@npm:0.0.1"
-  checksum: c43ab54de95c60197f2a303aa60da76aa9f13f8a656d39f924daec63707712be1f75b9f5853bf2d5ec62fc72c840ba73ccefe32bdf3398472751de290b71a15c
-  languageName: node
-  linkType: hard
-
 "deep-is@npm:^0.1.3, deep-is@npm:~0.1.3":
   version: 0.1.3
   resolution: "deep-is@npm:0.1.3"
@@ -10350,6 +10346,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ecstatic@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "ecstatic@npm:3.3.2"
+  dependencies:
+    he: ^1.1.1
+    mime: ^1.6.0
+    minimist: ^1.1.0
+    url-join: ^2.0.5
+  bin:
+    ecstatic: ./lib/ecstatic.js
+  checksum: a6185a71daa21e8bdbaca3117e9eda90edc40d85c34eb1c0af3209a162cd8385624f15e46940f1dcfe96bad01fc82fa0df09caa51d7a052637eb22dd11c1426f
+  languageName: node
+  linkType: hard
+
 "ee-first@npm:1.1.1":
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
@@ -10752,6 +10762,15 @@ __metadata:
     es6-iterator: ^2.0.3
     es6-symbol: ^3.1.1
   checksum: 8dfd50b2919e16cf246ea9d5f9271eef466924248bc98a48a718cc149d0f67b708628c8e4bd32fa945a813c7780f94270f21ac16fff33c854a348db7e19f084d
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.11.15":
+  version: 0.11.15
+  resolution: "esbuild@npm:0.11.15"
+  bin:
+    esbuild: bin/esbuild
+  checksum: 107341ba22dbd5977a24c57416c3fb77edc96e2913fbbe6f84e4fea8705c729ab2c7da8549fbf5c2818c7b0dd7642edbdd6884b4adb6678e5d99ed7b289a3e7c
   languageName: node
   linkType: hard
 
@@ -12806,7 +12825,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"he@npm:^1.2.0":
+"he@npm:^1.1.1, he@npm:^1.2.0":
   version: 1.2.0
   resolution: "he@npm:1.2.0"
   bin:
@@ -13064,7 +13083,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"http-proxy@npm:^1.17.0, http-proxy@npm:^1.18.1":
+"http-proxy@npm:^1.17.0, http-proxy@npm:^1.18.0, http-proxy@npm:^1.18.1":
   version: 1.18.1
   resolution: "http-proxy@npm:1.18.1"
   dependencies:
@@ -13072,6 +13091,27 @@ fsevents@~2.3.1:
     follow-redirects: ^1.0.0
     requires-port: ^1.0.0
   checksum: fc2062718d77868eff0d2707652d7e0d302a0f85d90f317daa410df5c41fbe009589c80bc73cc72a44368bb37d071c8f52aaa5b3ce82a08f3524a79ddf178b9b
+  languageName: node
+  linkType: hard
+
+"http-server@npm:^0.12.3":
+  version: 0.12.3
+  resolution: "http-server@npm:0.12.3"
+  dependencies:
+    basic-auth: ^1.0.3
+    colors: ^1.4.0
+    corser: ^2.0.1
+    ecstatic: ^3.3.2
+    http-proxy: ^1.18.0
+    minimist: ^1.2.5
+    opener: ^1.5.1
+    portfinder: ^1.0.25
+    secure-compare: 3.0.1
+    union: ~0.5.0
+  bin:
+    hs: bin/http-server
+    http-server: bin/http-server
+  checksum: cbb1f5b9261f7018372f1356bcd2c8a67c8e8aaed9d0c47adcf28e7cb31f866a339285bc5a544bb85ece5ea12807ce9b86c6e465afea2a2195888672d4dd25f9
   languageName: node
   linkType: hard
 
@@ -14135,12 +14175,10 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "javelin@workspace:packages/javelin"
   dependencies:
-    "@rollup/plugin-node-resolve": ^8.4.0
     "@types/jest": ^26.0.20
+    "@types/node": ^14.14.41
     jest: ^26.6.3
     lerna: ^4.0.0
-    rollup: ^2.23.1
-    rollup-plugin-terser: ^6.1.0
     ts-jest: ^26.5.2
     typescript: ^4.1.5
   languageName: unknown
@@ -14652,7 +14690,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"jest-worker@npm:^26.0.0, jest-worker@npm:^26.2.1, jest-worker@npm:^26.6.2":
+"jest-worker@npm:^26.2.1, jest-worker@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-worker@npm:26.6.2"
   dependencies:
@@ -15837,7 +15875,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"mime@npm:1.6.0, mime@npm:^1.3.4":
+"mime@npm:1.6.0, mime@npm:^1.3.4, mime@npm:^1.6.0":
   version: 1.6.0
   resolution: "mime@npm:1.6.0"
   bin:
@@ -15953,7 +15991,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.1.1, minimist@npm:^1.1.3, minimist@npm:^1.2.0, minimist@npm:^1.2.5":
+"minimist@npm:^1.1.0, minimist@npm:^1.1.1, minimist@npm:^1.1.3, minimist@npm:^1.2.0, minimist@npm:^1.2.5":
   version: 1.2.5
   resolution: "minimist@npm:1.2.5"
   checksum: b77b8590147a4e217ff34266236bc39de23b52e6e33054076991ff674c7397a1380a7bde11111916f16f003a94aaa7e4f3d92595a32189644ff607fabc65a5b6
@@ -17009,6 +17047,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"opener@npm:^1.5.1":
+  version: 1.5.2
+  resolution: "opener@npm:1.5.2"
+  bin:
+    opener: bin/opener-bin.js
+  checksum: 855420de4ffbfed1a25f000e7d146c4194aa678cc113d428572de67f9491f6721183ffdeb705af3b08404e29f7ec451b88da9ae19347a515872803dfabef471c
+  languageName: node
+  linkType: hard
+
 "openurl@npm:1.1.1":
   version: 1.1.1
   resolution: "openurl@npm:1.1.1"
@@ -17936,7 +17983,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"portfinder@npm:^1.0.26":
+"portfinder@npm:^1.0.25, portfinder@npm:^1.0.26":
   version: 1.0.28
   resolution: "portfinder@npm:1.0.28"
   dependencies:
@@ -18972,7 +19019,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.9.4":
+"qs@npm:^6.4.0, qs@npm:^6.9.4":
   version: 6.10.1
   resolution: "qs@npm:6.10.1"
   dependencies:
@@ -19756,7 +19803,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resolve@^1.14.2, resolve@^1.17.0, resolve@^1.19.0, resolve@^1.20.0":
+"resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0":
   version: 1.20.0
   resolution: "resolve@npm:1.20.0"
   dependencies:
@@ -19776,7 +19823,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>":
+"resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>":
   version: 1.20.0
   resolution: "resolve@patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"
   dependencies:
@@ -19909,20 +19956,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rollup-plugin-terser@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "rollup-plugin-terser@npm:6.1.0"
-  dependencies:
-    "@babel/code-frame": ^7.8.3
-    jest-worker: ^26.0.0
-    serialize-javascript: ^3.0.0
-    terser: ^4.7.0
-  peerDependencies:
-    rollup: ^2.0.0
-  checksum: fd34a331f6c9644ddd166cc1239d11e0b4283cbb7163224f31af400c0f09fdaccd503f9fc3528f868e96fcea002de9e543608a337fed554dbfe87205c9331c67
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-terser@npm:^7.0.2":
   version: 7.0.2
   resolution: "rollup-plugin-terser@npm:7.0.2"
@@ -19937,7 +19970,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.23.1, rollup@npm:^2.45.2":
+"rollup@npm:^2.45.2":
   version: 2.45.2
   resolution: "rollup@npm:2.45.2"
   dependencies:
@@ -19986,6 +20019,7 @@ fsevents@~2.3.1:
     eslint-plugin-prettier: ^3.4.0
     file-loader: ^6.2.0
     html-loader: ^2.1.2
+    http-server: ^0.12.3
     jest: ^26.6.3
     jest-extended: ^0.11.5
     mini-css-extract-plugin: ^1.5.0
@@ -20194,6 +20228,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"secure-compare@npm:3.0.1":
+  version: 3.0.1
+  resolution: "secure-compare@npm:3.0.1"
+  checksum: 6444a93f74532ca0628698461fbad281efcb826268f31dcc492823eef4be9c6d9254000e296189f7173db8774f3527e13d0e757020d2c3c683ba64f899c3600e
+  languageName: node
+  linkType: hard
+
 "select-hose@npm:^2.0.0":
   version: 2.0.0
   resolution: "select-hose@npm:2.0.0"
@@ -20321,15 +20362,6 @@ fsevents@~2.3.1:
   version: 1.9.1
   resolution: "serialize-javascript@npm:1.9.1"
   checksum: 84293fb87b0884a0ad7b5a4497cf197e3013d928c5b5162a9e199b91ff5ee28b5eba02e636a69a1c3ae22ad5d512775b17ba0950f16181939f510841eb37b5e3
-  languageName: node
-  linkType: hard
-
-"serialize-javascript@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "serialize-javascript@npm:3.1.0"
-  dependencies:
-    randombytes: ^2.1.0
-  checksum: e3036658c26b4aa0c74b89c91dc702f1b98c34ffc108e7944e2e227f910896367e98374a1a8c9923385ddfccd1759bfbd133d7857f4e315070594bb8761740e7
   languageName: node
   linkType: hard
 
@@ -21674,7 +21706,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"terser@npm:^4.0.0, terser@npm:^4.1.2, terser@npm:^4.6.3, terser@npm:^4.7.0":
+"terser@npm:^4.0.0, terser@npm:^4.1.2, terser@npm:^4.6.3":
   version: 4.8.0
   resolution: "terser@npm:4.8.0"
   dependencies:
@@ -22400,6 +22432,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"union@npm:~0.5.0":
+  version: 0.5.0
+  resolution: "union@npm:0.5.0"
+  dependencies:
+    qs: ^6.4.0
+  checksum: 38d86c00ee687fe2a6a8a823293550dee10a09eb11217cf8a75c8b2a256c67be8d6281a3874c3ca7c1e83c6741726fea5f1483b1435b2a56c837511975730e36
+  languageName: node
+  linkType: hard
+
 "uniq@npm:^1.0.1":
   version: 1.0.1
   resolution: "uniq@npm:1.0.1"
@@ -22514,6 +22555,13 @@ fsevents@~2.3.1:
   version: 0.1.0
   resolution: "urix@npm:0.1.0"
   checksum: 6bdfca4e7fb7d035537068a47a04ace1bacfa32e6b1aaf54c5a0340c83125a186d59109a19b9a3a1c1f986d3eb718b82faf9ad03d53cb99cf868068580b15b3b
+  languageName: node
+  linkType: hard
+
+"url-join@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "url-join@npm:2.0.5"
+  checksum: 142e04d81bd5c2c71d6f499d20d97360e64c0654f691ed098514539508eb23ab2805ef33408b2718359e50ff35d5a841f607dc6d7d5e55b8bfc5906c6f7ddcb6
   languageName: node
   linkType: hard
 
@@ -23165,7 +23213,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.34.0, webpack@npm:^5.35.0":
+"webpack@npm:^5.34.0":
   version: 5.35.0
   resolution: "webpack@npm:5.35.0"
   dependencies:

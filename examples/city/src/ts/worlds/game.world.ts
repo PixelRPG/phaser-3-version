@@ -11,7 +11,11 @@ import {
 } from "../systems";
 
 const gameWorld = createWorld<WorldGameData>({
-  systems: [() => console.log("Tick!")],
+  systems: [
+    () => {
+      /*console.log("Tick!")*/
+    },
+  ],
 });
 
 gameWorld.addSystem(assetsSystem);

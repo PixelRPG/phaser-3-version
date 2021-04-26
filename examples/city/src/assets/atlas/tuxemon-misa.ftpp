@@ -2,10 +2,10 @@
   "meta": {
     "version": "0.6.6"
   },
-  "savePath": "/home/jumplink/Projekte/rpg-phaser/examples/city/src/assets/atlas/tuxemon-misa",
+  "savePath": "/home/jumplink/Projekte/rpg-phaser/examples/city/dist/assets/atlas/tuxemon-misa",
   "images": [],
   "folders": [
-    "/home/jumplink/Projekte/rpg-phaser/examples/city/src/assets/atlas/tuxemon-misa/raw"
+    "/home/jumplink/Projekte/rpg-phaser/examples/city/src/assets/atlas/tuxemon-misa"
   ],
   "packOptions": {
     "textureName": "tuxemon-misa",

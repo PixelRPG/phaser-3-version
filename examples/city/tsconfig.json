@@ -4,6 +4,5 @@
     "outDir": "dist",
     "types": [],
     "lib": ["ESNext", "DOM", "scripthost"]
-  },
-  "exclude": ["node_modules", "**/*.d.ts"]
+  }
 }

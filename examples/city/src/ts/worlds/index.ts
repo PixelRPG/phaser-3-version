@@ -1,1 +1,1 @@
-export * from "./main.world";
+export * from "./game.world";
