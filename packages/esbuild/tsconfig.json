@@ -3,6 +3,7 @@
     "files": ["./src/config.ts", "./src/esbuild.ts"],
     "include": ["./typings"],
     "compilerOptions": {
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "esModuleInterop": true,
     }
 }

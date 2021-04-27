@@ -4700,6 +4700,7 @@ __metadata:
     eslint-config-prettier: ^8.2.0
     eslint-plugin-prettier: ^3.4.0
     free-tex-packer-cli: ^0.2.8
+    http-server: ^0.12.3
     phaser: ^3.54.0
     prettier: 2.2.1
     typescript: ^4.2.4
@@ -4712,9 +4713,11 @@ __metadata:
   dependencies:
     "@tsconfig/node14": ^1.0.0
     "@types/node": ^14.14.41
+    "@types/yargs": ^16.0.1
     "@yarnpkg/esbuild-plugin-pnp": ^1.0.0-rc.2
     esbuild: ^0.11.15
     typescript: ^4.2.4
+    yargs: ^16.2.0
   bin:
     esbuilder: ./bin/run
   languageName: unknown
@@ -5669,6 +5672,15 @@ __metadata:
   dependencies:
     "@types/yargs-parser": "*"
   checksum: b67cf9e8f25865a6d6e72196fe7f47c6f328d2b7a54ed9fa0e60f9693abb332fec1a826f90310804f231bca28a2f71367956b3be2fdba2d4bf316f0394d84f4d
+  languageName: node
+  linkType: hard
+
+"@types/yargs@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "@types/yargs@npm:16.0.1"
+  dependencies:
+    "@types/yargs-parser": "*"
+  checksum: 7b141b6a9efe2da5af054b022f2fbfa3a34d664f1db384babc567b20e9935ac18924c8075780ea22f5e0da4f5714f24dc27b05b6475cd060031648f154183a45
   languageName: node
   linkType: hard
 
@@ -20019,7 +20031,6 @@ fsevents@~2.3.1:
     eslint-plugin-prettier: ^3.4.0
     file-loader: ^6.2.0
     html-loader: ^2.1.2
-    http-server: ^0.12.3
     jest: ^26.6.3
     jest-extended: ^0.11.5
     mini-css-extract-plugin: ^1.5.0

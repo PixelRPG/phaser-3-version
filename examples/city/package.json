@@ -7,8 +7,10 @@
     "build": "yarn run build:atlas && yarn run build:esbuild",
     "build:esbuild": "esbuilder",
     "build:atlas": "free-tex-packer-cli --project ./src/assets/atlas/tuxemon-misa.ftpp",
-    "serve": "http-server dist",
-    "start": "yarn run build && yarn run serve",
+    "serve:dev": "esbuilder --serve --dev",
+    "serve": "esbuilder --serve",
+    "start:dev": "yarn run serve:dev",
+    "start": "yarn run serve",
     "clear": "rm -rf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix && tsc --noEmit",
     "test": "jest"
@@ -30,6 +32,7 @@
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "free-tex-packer-cli": "^0.2.8",
     "prettier": "2.2.1",
     "typescript": "^4.2.4"
   },
@@ -42,7 +45,6 @@
     "@ribajs/iconset": "next",
     "@ribajs/utils": "next",
     "bootstrap": "next",
-    "free-tex-packer-cli": "^0.2.8",
     "phaser": "^3.54.0"
   }
 }
