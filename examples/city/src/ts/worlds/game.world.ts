@@ -1,54 +1,84 @@
 import { createWorld } from "@javelin/ecs";
 import { WorldGameData } from "../types";
-// import { EntryService } from "../services";
 import {
   AssetAtlasComponent,
-  AssetTilemapComponent,
-  PositionComponent,
+  AssetMapComponent,
+  AssetTilesetComponent,
+  TilesetComponent,
   PlayerComponent,
-  BodyComponent,
+  PositionComponent,
+  SpriteComponent,
+  MapLayerComponent,
 } from "../components";
 import {
-  assetsSystem,
+  phaserSystem,
   movementSystem,
   pickupsSystem,
   renderMapSystem,
   renderUiSystem,
 } from "../systems";
-// import { PlayerEntry } from "../entries";
+import { mapObjectTopic } from "../topics";
 
 const gameWorld = createWorld<WorldGameData>({
+  topics: [mapObjectTopic],
   systems: [
-    () => {
-      /*console.log("Tick!")*/
-    },
+    phaserSystem,
+    movementSystem,
+    pickupsSystem,
+    renderMapSystem,
+    renderUiSystem,
   ],
 });
 
-// const tilesetImageComponent = gameWorld.component(AssetTilesetsComponent, [
-//   {
-//     key: "tiles",
-//     url: "./assets/tilesets/tuxmon-sample-32px-extruded.png",
-//     name: "tuxmon-sample-32px-extruded",
-//   },
-// ]);
+const assetMapComponent = gameWorld.component(AssetMapComponent, {
+  key: "map",
+  url: "./assets/tilemaps/tuxemon-town.json",
+});
+const assetMapEntry = gameWorld.spawn(assetMapComponent);
 
-const assetTilemapComponent = gameWorld.component(
-  AssetTilemapComponent,
-  {
-    key: "map",
-    url: "./assets/tilemaps/tuxemon-town.json",
-  },
-  [
-    {
-      key: "tiles",
-      url: "./assets/tilesets/tuxmon-sample-32px-extruded.png",
-      name: "tuxmon-sample-32px-extruded",
-    },
-  ]
-);
+const assetTilesetComponent = gameWorld.component(AssetTilesetComponent, {
+  key: "tiles",
+  url: "./assets/tilesets/tuxmon-sample-32px-extruded.png",
+});
+gameWorld.spawn(assetTilesetComponent);
 
-const mapEntry = gameWorld.spawn(assetTilemapComponent);
+const tilesetComponent = gameWorld.component(TilesetComponent, {
+  key: "tiles",
+  name: "tuxmon-sample-32px-extruded",
+  assetMapEntry: assetMapEntry,
+});
+const tilesetEntry = gameWorld.spawn(tilesetComponent);
+
+const mapLayerComponent1 = gameWorld.component(MapLayerComponent, {
+  name: "Below Player",
+  x: 0,
+  y: 0,
+  depth: -10,
+  assetMapEntry,
+  tilesetEntry,
+});
+gameWorld.spawn(mapLayerComponent1);
+
+const mapLayerComponent2 = gameWorld.component(MapLayerComponent, {
+  name: "World",
+  x: 0,
+  y: 0,
+  depth: 0,
+  collides: true,
+  assetMapEntry,
+  tilesetEntry,
+});
+gameWorld.spawn(mapLayerComponent2);
+
+const mapLayerComponent3 = gameWorld.component(MapLayerComponent, {
+  name: "Above Player",
+  x: 0,
+  y: 0,
+  depth: 10,
+  assetMapEntry,
+  tilesetEntry,
+});
+gameWorld.spawn(mapLayerComponent3);
 
 const playerAssetAtlasComponent = gameWorld.component(
   AssetAtlasComponent,
@@ -56,25 +86,24 @@ const playerAssetAtlasComponent = gameWorld.component(
   "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
   "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
 );
-const playerBodyComponent = gameWorld.component(
-  BodyComponent,
-  { x: 2, y: 2 },
-  { height: 15, width: 12 },
-  { x: 0, y: 20 }
-);
+const playerSpriteComponent = gameWorld.component(SpriteComponent, {
+  key: "tuxemon-misa",
+  frame: "misa-front",
+  scale: { x: 2, y: 2 },
+  size: { height: 15, width: 12 },
+  offset: { x: 0, y: 20 },
+});
+
+const playerPositionComponent = gameWorld.component(PositionComponent);
+
 const playerComponent = gameWorld.component(PlayerComponent);
 
 const playerEntry = gameWorld.spawn(
   playerAssetAtlasComponent,
-  playerBodyComponent,
+  playerSpriteComponent,
+  playerPositionComponent,
   playerComponent
 );
-
-gameWorld.addSystem(assetsSystem);
-gameWorld.addSystem(movementSystem);
-gameWorld.addSystem(pickupsSystem);
-gameWorld.addSystem(renderMapSystem);
-gameWorld.addSystem(renderUiSystem);
 
 // const player = gameWorld.spawn(
 //   ...EntryService.create(gameWorld, [PlayerEntry])

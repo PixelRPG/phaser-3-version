@@ -11,12 +11,12 @@ class Scene extends Phaser.Scene {
   // constructor() {}
 
   init() {
-    gameWorld.tick({
-      time: 0,
-      delta: 0,
-      scenes: [this],
-      step: PhaserSceneMethod.init,
-    });
+    // gameWorld.tick({
+    //   time: 0,
+    //   delta: 0,
+    //   scenes: [this],
+    //   step: PhaserSceneMethod.init,
+    // });
   }
 
   preload() {
@@ -83,7 +83,7 @@ class Scene extends Phaser.Scene {
       .setOffset(0, 20);
 
     // Watch the player and worldLayer for collisions, for the duration of the scene:
-    this.physics.add.collider(player, worldLayer);
+    // this.physics.add.collider(player, worldLayer);
 
     // Create the player's walking animations from the texture atlas. These are stored in the global
     // animation manager so any sprite can access them.
@@ -135,7 +135,7 @@ class Scene extends Phaser.Scene {
 
     const camera = this.cameras.main;
     camera.startFollow(player);
-    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -157,11 +157,11 @@ class Scene extends Phaser.Scene {
 
       // Create worldLayer collision graphic above the player, but below the help text
       const graphics = this.add.graphics().setAlpha(0.75).setDepth(20);
-      worldLayer.renderDebug(graphics, {
-        tileColor: null, // Color of non-colliding tiles
-        collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-        faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
-      });
+      // worldLayer.renderDebug(graphics, {
+      //   tileColor: null, // Color of non-colliding tiles
+      //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+      //   faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
+      // });
     });
   }
 

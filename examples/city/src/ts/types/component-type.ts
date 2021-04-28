@@ -1,10 +1,12 @@
 export enum ComponentType {
   AssetAtlas,
   AssetImage,
-  AssetTilemap,
+  AssetMap,
   AssetTileset,
+  Tileset,
   Body,
   Position,
   Player,
-  TilemapLayer,
+  MapLayer,
+  Sprite,
 }

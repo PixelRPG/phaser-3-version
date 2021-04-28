@@ -1,7 +1,8 @@
-export interface AssetTileset {
+import { ComponentProps } from "@javelin/ecs";
+
+export interface AssetTileset extends ComponentProps {
+  /** The key used for asset preloading */
   key: string;
+  /** The asset url */
   url: string;
-  name: string;
-  xhrSettings?: Phaser.Types.Loader.XHRSettingsObject;
-  // phaserTileset?: Phaser.Tilemaps.Tileset;
 }
