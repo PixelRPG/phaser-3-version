@@ -10,6 +10,7 @@ import {
   SpriteComponent,
   MapLayerComponent,
   AnimationComponent,
+  CameraComponent,
 } from "../components";
 import {
   phaserSystem,
@@ -170,8 +171,14 @@ const playerEntry = gameWorld.spawn(
   playerComponent
 );
 
-// const player = gameWorld.spawn(
-//   ...EntryService.create(gameWorld, [PlayerEntry])
-// );
+const cameraComponent = gameWorld.component(CameraComponent, {
+  followEntry: playerEntry,
+  isMain: false,
+});
+gameWorld.spawn(cameraComponent);
+
+// const camera = this.cameras.add();
+// camera.startFollow(player);
+// camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 export { gameWorld };

@@ -3,6 +3,7 @@ export * from "./asset-atlas.component";
 export * from "./asset-image.component";
 export * from "./asset-map.component";
 export * from "./asset-tileset.component";
+export * from "./camera.component";
 export * from "./map-layer.component";
 export * from "./sprite.component";
 export * from "./player.component";

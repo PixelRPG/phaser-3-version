@@ -1,5 +1,12 @@
 import { Component } from "@javelin/ecs";
-import { AssetMap, Tileset, MapLayer, Sprite, Animation } from "../types";
+import {
+  AssetMap,
+  Tileset,
+  MapLayer,
+  Sprite,
+  Animation,
+  Camera,
+} from "../types";
 
 export class PhaserService {
   protected static instance: PhaserService;
@@ -12,6 +19,7 @@ export class PhaserService {
     Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
   >();
   protected _animations = new Map<number, Phaser.Animations.Animation>();
+  protected _cameras = new Map<number, Phaser.Cameras.Scene2D.Camera>();
 
   protected constructor() {
     /** protected */
@@ -206,5 +214,52 @@ export class PhaserService {
 
   public getAllAnimations() {
     return this._animations;
+  }
+
+  public createCamera(
+    cameraManager: Phaser.Cameras.Scene2D.CameraManager,
+    cameraEntry: number,
+    cameraComponent: Component<Camera>
+  ) {
+    const camera = cameraManager.add(
+      cameraComponent.x,
+      cameraComponent.y,
+      cameraComponent.width,
+      cameraComponent.height,
+      cameraComponent.isMain,
+      cameraComponent.name
+    );
+    if (typeof cameraComponent.followEntry === "number") {
+      const sprite = this.tryGetSprite(cameraComponent.followEntry);
+      if (sprite) {
+        camera.startFollow(sprite);
+        // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+      } else {
+        console.debug(`followEntry ${cameraComponent.followEntry} not found`);
+      }
+    }
+
+    if (!camera) {
+      throw new Error(`Can't add ${cameraEntry} camera!`);
+    }
+
+    this._cameras.set(cameraEntry, camera);
+    return camera;
+  }
+
+  public tryGetCamera(cameraEntry: number) {
+    return this._cameras.get(cameraEntry);
+  }
+
+  public getCamera(cameraEntry: number) {
+    const camera = this.tryGetCamera(cameraEntry);
+    if (!camera) {
+      throw new Error(`No camera for cameraEntry ${cameraEntry} found!`);
+    }
+    return camera;
+  }
+
+  public getAllCameras() {
+    return this._cameras;
   }
 }

@@ -1,6 +1,7 @@
 export * from "./animation";
 export * from "./asset-map";
 export * from "./asset-tileset";
+export * from "./camera";
 export * from "./component-type";
 export * from "./phaser-scene-method";
 export * from "./position";

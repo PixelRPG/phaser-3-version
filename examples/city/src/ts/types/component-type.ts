@@ -10,4 +10,5 @@ export enum ComponentType {
   MapLayer,
   Sprite,
   Animation,
+  Camera,
 }
