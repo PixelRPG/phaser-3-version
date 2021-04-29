@@ -9,4 +9,5 @@ export enum ComponentType {
   Player,
   MapLayer,
   Sprite,
+  Animation,
 }

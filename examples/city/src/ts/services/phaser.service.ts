@@ -1,5 +1,5 @@
 import { Component } from "@javelin/ecs";
-import { AssetMap, Tileset, MapLayer, Sprite } from "../types";
+import { AssetMap, Tileset, MapLayer, Sprite, Animation } from "../types";
 
 export class PhaserService {
   protected static instance: PhaserService;
@@ -11,6 +11,7 @@ export class PhaserService {
     number,
     Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
   >();
+  protected _animations = new Map<number, Phaser.Animations.Animation>();
 
   protected constructor() {
     /** protected */
@@ -159,5 +160,51 @@ export class PhaserService {
 
   public getAllSprites() {
     return this._sprites;
+  }
+
+  public createAnimation(
+    animationManager: Phaser.Animations.AnimationManager,
+    animationEntry: number,
+    animationComponent: Component<Animation>
+  ) {
+    const animation = animationManager.create({
+      key: animationComponent.key,
+      frames: animationManager.generateFrameNames(
+        animationComponent.frames.atlasKey,
+        {
+          prefix: animationComponent.frames.prefix,
+          start: animationComponent.frames.start,
+          end: animationComponent.frames.end,
+          zeroPad: animationComponent.frames.zeroPad,
+        }
+      ),
+      frameRate: animationComponent.frameRate,
+      repeat: animationComponent.repeat,
+    });
+
+    if (!animation) {
+      throw new Error(`Can't create ${animationComponent.key} animation!`);
+    }
+
+    this._animations.set(animationEntry, animation);
+    return animation;
+  }
+
+  public tryGetAnimation(animationEntry: number) {
+    return this._animations.get(animationEntry);
+  }
+
+  public getAnimation(animationEntry: number) {
+    const animation = this.tryGetAnimation(animationEntry);
+    if (!animation) {
+      throw new Error(
+        `No animation for animationEntry ${animationEntry} found!`
+      );
+    }
+    return animation;
+  }
+
+  public getAllAnimations() {
+    return this._animations;
   }
 }

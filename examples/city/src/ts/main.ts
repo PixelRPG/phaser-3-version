@@ -87,51 +87,52 @@ class Scene extends Phaser.Scene {
 
     // Create the player's walking animations from the texture atlas. These are stored in the global
     // animation manager so any sprite can access them.
-    const anims = this.anims;
-    anims.create({
-      key: "misa-left-walk",
-      frames: anims.generateFrameNames("tuxemon-misa", {
-        prefix: "misa-left-walk.",
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    anims.create({
-      key: "misa-right-walk",
-      frames: anims.generateFrameNames("tuxemon-misa", {
-        prefix: "misa-right-walk.",
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    anims.create({
-      key: "misa-front-walk",
-      frames: anims.generateFrameNames("tuxemon-misa", {
-        prefix: "misa-front-walk.",
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    anims.create({
-      key: "misa-back-walk",
-      frames: anims.generateFrameNames("tuxemon-misa", {
-        prefix: "misa-back-walk.",
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    // const anims = this.anims;
+
+    // anims.create({
+    //   key: "misa-left-walk",
+    //   frames: anims.generateFrameNames("tuxemon-misa", {
+    //     prefix: "misa-left-walk.",
+    //     start: 0,
+    //     end: 3,
+    //     zeroPad: 3,
+    //   }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
+    // anims.create({
+    //   key: "misa-right-walk",
+    //   frames: anims.generateFrameNames("tuxemon-misa", {
+    //     prefix: "misa-right-walk.",
+    //     start: 0,
+    //     end: 3,
+    //     zeroPad: 3,
+    //   }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
+    // anims.create({
+    //   key: "misa-front-walk",
+    //   frames: anims.generateFrameNames("tuxemon-misa", {
+    //     prefix: "misa-front-walk.",
+    //     start: 0,
+    //     end: 3,
+    //     zeroPad: 3,
+    //   }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
+    // anims.create({
+    //   key: "misa-back-walk",
+    //   frames: anims.generateFrameNames("tuxemon-misa", {
+    //     prefix: "misa-back-walk.",
+    //     start: 0,
+    //     end: 3,
+    //     zeroPad: 3,
+    //   }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
 
     const camera = this.cameras.main;
     camera.startFollow(player);

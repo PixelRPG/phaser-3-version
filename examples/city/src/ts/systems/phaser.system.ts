@@ -2,6 +2,7 @@ import { System } from "@javelin/ecs";
 import { WorldGameData } from "../types";
 
 import {
+  phaserAnimationEffect,
   phaserAssetPreloadEffect,
   phaserAssetMapEffect,
   phaserTilesetEffect,
@@ -19,5 +20,6 @@ export const phaserSystem: System<WorldGameData> = (world) => {
   phaserTilesetEffect();
   phaserMapLayerEffect();
   phaserMapObjectEffect();
+  phaserAnimationEffect();
   phaserSpriteEffect();
 };

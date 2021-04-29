@@ -1,3 +1,4 @@
+export * from "./animation";
 export * from "./asset-map";
 export * from "./asset-tileset";
 export * from "./component-type";

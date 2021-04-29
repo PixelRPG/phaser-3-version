@@ -1,3 +1,4 @@
+export * from "./animation.component";
 export * from "./asset-atlas.component";
 export * from "./asset-image.component";
 export * from "./asset-map.component";

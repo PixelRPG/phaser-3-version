@@ -9,6 +9,7 @@ import {
   PositionComponent,
   SpriteComponent,
   MapLayerComponent,
+  AnimationComponent,
 } from "../components";
 import {
   phaserSystem,
@@ -29,6 +30,8 @@ const gameWorld = createWorld<WorldGameData>({
     renderUiSystem,
   ],
 });
+
+// MAP
 
 const assetMapComponent = gameWorld.component(AssetMapComponent, {
   key: "map",
@@ -79,6 +82,68 @@ const mapLayerComponent3 = gameWorld.component(MapLayerComponent, {
   tilesetEntry,
 });
 gameWorld.spawn(mapLayerComponent3);
+
+// ANIMATIONS
+
+// Create the player's walking animations from the texture atlas. These are stored in the global
+// animation manager so any sprite can access them.
+const animationLeftWalk = gameWorld.component(AnimationComponent, {
+  key: "misa-left-walk",
+  frames: {
+    atlasKey: "tuxemon-misa",
+    prefix: "misa-left-walk.",
+    start: 0,
+    end: 3,
+    zeroPad: 3,
+  },
+  frameRate: 10,
+  repeat: -1,
+});
+gameWorld.spawn(animationLeftWalk);
+
+const animationRightWalk = gameWorld.component(AnimationComponent, {
+  key: "misa-right-walk",
+  frames: {
+    atlasKey: "tuxemon-misa",
+    prefix: "misa-right-walk.",
+    start: 0,
+    end: 3,
+    zeroPad: 3,
+  },
+  frameRate: 10,
+  repeat: -1,
+});
+gameWorld.spawn(animationRightWalk);
+
+const animationFrontWalk = gameWorld.component(AnimationComponent, {
+  key: "misa-front-walk",
+  frames: {
+    atlasKey: "tuxemon-misa",
+    prefix: "misa-front-walk.",
+    start: 0,
+    end: 3,
+    zeroPad: 3,
+  },
+  frameRate: 10,
+  repeat: -1,
+});
+gameWorld.spawn(animationFrontWalk);
+
+const animationBackWalk = gameWorld.component(AnimationComponent, {
+  key: "misa-back-walk",
+  frames: {
+    atlasKey: "tuxemon-misa",
+    prefix: "misa-back-walk.",
+    start: 0,
+    end: 3,
+    zeroPad: 3,
+  },
+  frameRate: 10,
+  repeat: -1,
+});
+gameWorld.spawn(animationBackWalk);
+
+// PLAYER
 
 const playerAssetAtlasComponent = gameWorld.component(
   AssetAtlasComponent,

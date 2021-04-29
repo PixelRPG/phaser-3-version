@@ -1,3 +1,4 @@
+export * from "./phaser-animation.effect";
 export * from "./phaser-asset-map.effect";
 export * from "./phaser-asset-preload.effect";
 export * from "./phaser-map-layer.effect";
