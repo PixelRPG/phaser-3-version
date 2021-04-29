@@ -11,6 +11,7 @@ import {
   MapLayerComponent,
   AnimationComponent,
   CameraComponent,
+  VelocityComponent,
 } from "../components";
 import {
   phaserSystem,
@@ -162,18 +163,23 @@ const playerSpriteComponent = gameWorld.component(SpriteComponent, {
 
 const playerPositionComponent = gameWorld.component(PositionComponent);
 
+const playerVelocityComponent = gameWorld.component(VelocityComponent, {
+  speed: 175,
+});
+
 const playerComponent = gameWorld.component(PlayerComponent);
 
 const playerEntry = gameWorld.spawn(
   playerAssetAtlasComponent,
   playerSpriteComponent,
   playerPositionComponent,
+  playerVelocityComponent,
   playerComponent
 );
 
 const cameraComponent = gameWorld.component(CameraComponent, {
   followEntry: playerEntry,
-  isMain: false,
+  isMain: true,
 });
 gameWorld.spawn(cameraComponent);
 

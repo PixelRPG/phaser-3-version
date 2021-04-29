@@ -10,4 +10,5 @@ export * from "./coordinates-2d";
 export * from "./map-layer";
 export * from "./sprite";
 export * from "./tileset";
+export * from "./velocity";
 export * from "./world-game-data";

@@ -11,4 +11,5 @@ export enum ComponentType {
   Sprite,
   Animation,
   Camera,
+  Velocity,
 }

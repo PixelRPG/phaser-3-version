@@ -44,7 +44,7 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
           position.y = spawnPoint.y;
 
           console.debug("Set Spawn Point", position);
-          onPositionChanged(entities[i], position);
+          onSetSpawnPoint(entities[i], position);
         }
       }
     };
@@ -62,13 +62,10 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
       }
     };
 
-    const onPositionChanged = (
-      entity: number,
-      position: Component<Position>
-    ) => {
+    const onSetSpawnPoint = (entity: number, position: Component<Position>) => {
       const sprite = phaserService.getSprite(entity);
       sprite.setPosition(position.x, position.y);
-      console.debug("Position changed", position);
+      console.debug("onSetSpawnPoint", position);
     };
 
     return () => {

@@ -10,6 +10,7 @@ import {
   phaserMapObjectEffect,
   phaserSpriteEffect,
   phaserCameraEffect,
+  phaserInputEffect,
 } from "../effects";
 
 /**
@@ -24,4 +25,5 @@ export const phaserSystem: System<WorldGameData> = (world) => {
   phaserAnimationEffect();
   phaserSpriteEffect();
   phaserCameraEffect();
+  phaserInputEffect();
 };

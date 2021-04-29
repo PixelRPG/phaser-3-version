@@ -9,3 +9,4 @@ export * from "./sprite.component";
 export * from "./player.component";
 export * from "./position.component";
 export * from "./tileset.component";
+export * from "./velocity.component";

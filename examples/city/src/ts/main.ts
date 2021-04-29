@@ -134,11 +134,11 @@ class Scene extends Phaser.Scene {
     //   repeat: -1,
     // });
 
-    const camera = this.cameras.main;
-    camera.startFollow(player);
+    // const camera = this.cameras.main;
+    // camera.startFollow(player);
     // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    cursors = this.input.keyboard.createCursorKeys();
+    // cursors = this.input.keyboard.createCursorKeys();
 
     // Help text that has a "fixed" position on the screen
     this.add
@@ -174,50 +174,50 @@ class Scene extends Phaser.Scene {
       step: PhaserSceneMethod.update,
     });
 
-    const speed = 175;
-    const prevVelocity = player.body.velocity.clone();
+    // const speed = 175;
+    // const prevVelocity = player.body.velocity.clone();
 
-    // Stop any previous movement from the last frame
-    player.body.setVelocity(0);
+    // // Stop any previous movement from the last frame
+    // player.body.setVelocity(0);
 
-    // Horizontal movement
-    if (cursors.left.isDown) {
-      player.body.setVelocityX(-speed);
-    } else if (cursors.right.isDown) {
-      player.body.setVelocityX(speed);
-    }
+    // // Horizontal movement
+    // if (cursors.left.isDown) {
+    //   player.body.setVelocityX(-speed);
+    // } else if (cursors.right.isDown) {
+    //   player.body.setVelocityX(speed);
+    // }
 
-    // Vertical movement
-    if (cursors.up.isDown) {
-      player.body.setVelocityY(-speed);
-    } else if (cursors.down.isDown) {
-      player.body.setVelocityY(speed);
-    }
+    // // Vertical movement
+    // if (cursors.up.isDown) {
+    //   player.body.setVelocityY(-speed);
+    // } else if (cursors.down.isDown) {
+    //   player.body.setVelocityY(speed);
+    // }
 
-    // Normalize and scale the velocity so that player can't move faster along a diagonal
-    player.body.velocity.normalize().scale(speed);
+    // // Normalize and scale the velocity so that player can't move faster along a diagonal
+    // player.body.velocity.normalize().scale(speed);
 
-    // Update the animation last and give left/right animations precedence over up/down animations
-    if (cursors.left.isDown) {
-      player.anims.play("misa-left-walk", true);
-    } else if (cursors.right.isDown) {
-      player.anims.play("misa-right-walk", true);
-    } else if (cursors.up.isDown) {
-      player.anims.play("misa-back-walk", true);
-    } else if (cursors.down.isDown) {
-      player.anims.play("misa-front-walk", true);
-    } else {
-      player.anims.stop();
+    // // Update the animation last and give left/right animations precedence over up/down animations
+    // if (cursors.left.isDown) {
+    //   player.anims.play("misa-left-walk", true);
+    // } else if (cursors.right.isDown) {
+    //   player.anims.play("misa-right-walk", true);
+    // } else if (cursors.up.isDown) {
+    //   player.anims.play("misa-back-walk", true);
+    // } else if (cursors.down.isDown) {
+    //   player.anims.play("misa-front-walk", true);
+    // } else {
+    //   player.anims.stop();
 
-      // If we were moving, pick and idle frame to use
-      if (prevVelocity.x < 0) player.setTexture("tuxemon-misa", "misa-left");
-      else if (prevVelocity.x > 0)
-        player.setTexture("tuxemon-misa", "misa-right");
-      else if (prevVelocity.y < 0)
-        player.setTexture("tuxemon-misa", "misa-back");
-      else if (prevVelocity.y > 0)
-        player.setTexture("tuxemon-misa", "misa-front");
-    }
+    //   // If we were moving, pick and idle frame to use
+    //   if (prevVelocity.x < 0) player.setTexture("tuxemon-misa", "misa-left");
+    //   else if (prevVelocity.x > 0)
+    //     player.setTexture("tuxemon-misa", "misa-right");
+    //   else if (prevVelocity.y < 0)
+    //     player.setTexture("tuxemon-misa", "misa-back");
+    //   else if (prevVelocity.y > 0)
+    //     player.setTexture("tuxemon-misa", "misa-front");
+    // }
   }
 }
 

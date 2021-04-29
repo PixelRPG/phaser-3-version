@@ -221,23 +221,41 @@ export class PhaserService {
     cameraEntry: number,
     cameraComponent: Component<Camera>
   ) {
-    const camera = cameraManager.add(
-      cameraComponent.x,
-      cameraComponent.y,
-      cameraComponent.width,
-      cameraComponent.height,
-      cameraComponent.isMain,
-      cameraComponent.name
-    );
-    if (typeof cameraComponent.followEntry === "number") {
-      const sprite = this.tryGetSprite(cameraComponent.followEntry);
-      if (sprite) {
-        camera.startFollow(sprite);
-        // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-      } else {
-        console.debug(`followEntry ${cameraComponent.followEntry} not found`);
+    let camera: Phaser.Cameras.Scene2D.Camera;
+    // Workaround
+    if (cameraComponent.isMain) {
+      camera = cameraManager.main;
+      if (cameraComponent.x) {
+        camera.setPosition(cameraComponent.x, cameraComponent.y);
       }
+      if (cameraComponent.width) {
+        camera.setSize(cameraComponent.width, cameraComponent.height);
+      }
+      if (cameraComponent.name) {
+        camera.setName(cameraComponent.name);
+      }
+    } else {
+      camera = cameraManager.add(
+        cameraComponent.x,
+        cameraComponent.y,
+        cameraComponent.width,
+        cameraComponent.height,
+        cameraComponent.isMain,
+        cameraComponent.name
+      );
     }
+
+    // if (typeof cameraComponent.followEntry === "number") {
+    //   const sprite = this.tryGetSprite(cameraComponent.followEntry);
+    //   if (!sprite) {
+    //     console.debug(`followEntry ${cameraComponent.followEntry} not found`);
+    //     return;
+    //   }
+    //   camera.startFollow(sprite);
+    //   // TODO
+    //   const map = Array.from(this.getAllMaps(), ([name, value]) => value)[0];
+    //   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // }
 
     if (!camera) {
       throw new Error(`Can't add ${cameraEntry} camera!`);

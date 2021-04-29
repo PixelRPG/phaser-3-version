@@ -38,6 +38,27 @@ export const phaserCameraEffect = createEffect<
       preloaded = true;
     }
 
+    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+      for (const [entities, [cameras]] of query(CameraComponent)) {
+        for (let i = 0; i < entities.length; i++) {
+          // console.debug(
+          //   "afterPreload CameraComponent",
+          //   entities[i],
+          //   cameras[i]
+          // );
+          const sprite = phaserService.getSprite(cameras[i].followEntry);
+          const camera = phaserService.getCamera(entities[i]);
+          // TODO
+          const map = Array.from(
+            phaserService.getAllMaps(),
+            ([, value]) => value
+          )[0];
+          camera.startFollow(sprite);
+          camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        }
+      }
+    }
+
     return state;
   };
 }, effectOptions);
