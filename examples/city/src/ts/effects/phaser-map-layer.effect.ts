@@ -14,9 +14,9 @@ export const phaserMapLayerEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserMapLayerEffectState = {};
   const phaserService = PhaserService.getInstance();
-  let preloaded = false;
+  const preloaded = false;
 
-  const afterPreload = () => {
+  const onCreate = () => {
     for (const [entities, [mapLayers]] of query(MapLayerComponent)) {
       for (let i = 0; i < entities.length; i++) {
         console.debug(
@@ -30,12 +30,8 @@ export const phaserMapLayerEffect = createEffect<
   };
 
   return () => {
-    if (
-      world.state.currentTickData.step === PhaserSceneMethod.update &&
-      !preloaded
-    ) {
-      afterPreload();
-      preloaded = true;
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onCreate();
     }
 
     return state;

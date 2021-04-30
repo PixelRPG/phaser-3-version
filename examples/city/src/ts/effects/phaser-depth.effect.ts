@@ -16,7 +16,7 @@ export const phaserDepthEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
       for (const [entities, [depths]] of query(DepthComponent)) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject: any = phaserService.tryGetGameObject(entities[i]);

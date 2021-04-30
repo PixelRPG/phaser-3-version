@@ -14,28 +14,19 @@ export const phaserTilesetEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
-  let preloaded = false;
-
-  const afterPreload = () => {
-    for (const [entities, [tilesets]] of query(TilesetComponent)) {
-      for (let i = 0; i < entities.length; i++) {
-        console.debug(
-          "afterPreload TilesetComponent",
-          entities[i],
-          tilesets[i]
-        );
-        phaserService.createTileset(entities[i], tilesets[i]);
-      }
-    }
-  };
 
   return () => {
-    if (
-      world.state.currentTickData.step === PhaserSceneMethod.update &&
-      !preloaded
-    ) {
-      afterPreload();
-      preloaded = true;
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      for (const [entities, [tilesets]] of query(TilesetComponent)) {
+        for (let i = 0; i < entities.length; i++) {
+          console.debug(
+            "afterPreload TilesetComponent",
+            entities[i],
+            tilesets[i]
+          );
+          phaserService.createTileset(entities[i], tilesets[i]);
+        }
+      }
     }
 
     return state;

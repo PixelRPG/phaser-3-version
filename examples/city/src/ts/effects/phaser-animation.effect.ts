@@ -14,16 +14,11 @@ export const phaserAnimationEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserAnimationEffectState = {};
   const phaserService = PhaserService.getInstance();
-  let preloaded = false;
 
-  const afterPreload = () => {
+  const onCreate = () => {
     for (const [entities, [animations]] of query(AnimationComponent)) {
       for (let i = 0; i < entities.length; i++) {
-        console.debug(
-          "afterPreload createAnimation",
-          entities[i],
-          animations[i]
-        );
+        console.debug("onCreate createAnimation", entities[i], animations[i]);
         phaserService.createAnimation(
           world.state.currentTickData.scenes[0].anims,
           entities[i],
@@ -34,12 +29,8 @@ export const phaserAnimationEffect = createEffect<
   };
 
   return () => {
-    if (
-      world.state.currentTickData.step === PhaserSceneMethod.update &&
-      !preloaded
-    ) {
-      afterPreload();
-      preloaded = true;
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onCreate();
     }
 
     return state;

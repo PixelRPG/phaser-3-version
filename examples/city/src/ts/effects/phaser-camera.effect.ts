@@ -14,9 +14,8 @@ export const phaserCameraEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserCameraEffectState = {};
   const phaserService = PhaserService.getInstance();
-  let preloaded = false;
 
-  const afterPreload = () => {
+  const onCreate = () => {
     for (const [entities, [cameras]] of query(CameraComponent)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createCamera(
@@ -29,12 +28,8 @@ export const phaserCameraEffect = createEffect<
   };
 
   return () => {
-    if (
-      world.state.currentTickData.step === PhaserSceneMethod.update &&
-      !preloaded
-    ) {
-      afterPreload();
-      preloaded = true;
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onCreate();
     }
 
     if (world.state.currentTickData.step === PhaserSceneMethod.update) {

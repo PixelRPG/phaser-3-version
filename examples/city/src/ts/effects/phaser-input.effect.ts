@@ -3,7 +3,6 @@ import {
   VelocityComponent,
   SpriteComponent,
   PlayerComponent,
-  PositionComponent,
 } from "../components";
 import { WorldGameData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
@@ -35,30 +34,22 @@ export const phaserInputEffect = createEffect<
           const prevVelocity = sprite.body.velocity.clone();
 
           // Stop any previous movement from the last frame
-          // sprite.body.setVelocity(0);
           velocitys[i].x = 0;
           velocitys[i].y = 0;
 
           // Horizontal movement
           if (cursors.left.isDown) {
-            // sprite.body.setVelocityX(-speed);
             velocitys[i].x = -speed;
           } else if (cursors.right.isDown) {
-            // sprite.body.setVelocityX(speed);
             velocitys[i].x = speed;
           }
 
           // Vertical movement
           if (cursors.up.isDown) {
-            sprite.body.setVelocityY(-speed);
             velocitys[i].y = -speed;
           } else if (cursors.down.isDown) {
-            // sprite.body.setVelocityY(speed);
             velocitys[i].y = speed;
           }
-
-          // Normalize and scale the velocity so that player can't move faster along a diagonal
-          // sprite.body.velocity.normalize().scale(speed);
 
           // Update the animation last and give left/right animations precedence over up/down animations
           if (cursors.left.isDown) {

@@ -1,17 +1,6 @@
-import {
-  createEffect,
-  query,
-  EffectOptions,
-  World,
-  onAttach,
-} from "@javelin/ecs";
-import {
-  AssetMapComponent,
-  PositionComponent,
-  PlayerComponent,
-  MapLayerComponent,
-} from "../components";
-import { WorldGameData, PhaserSceneMethod, MapLayer } from "../types";
+import { createEffect, query, EffectOptions, World } from "@javelin/ecs";
+import { AssetMapComponent } from "../components";
+import { WorldGameData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -34,10 +23,9 @@ export const phaserAssetMapEffect = createEffect<
     layers: new Map<number, Phaser.Tilemaps.TilemapLayer>(),
   };
 
-  let preloaded = false;
   const phaserService = PhaserService.getInstance();
 
-  const afterPreload = () => {
+  const onCreate = () => {
     for (const [entities, [assetMaps]] of query(AssetMapComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const scene = world.state.currentTickData.scenes[0];
@@ -52,12 +40,8 @@ export const phaserAssetMapEffect = createEffect<
   };
 
   return () => {
-    if (
-      world.state.currentTickData.step === PhaserSceneMethod.update &&
-      !preloaded
-    ) {
-      afterPreload();
-      preloaded = true;
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onCreate();
     }
 
     return state;

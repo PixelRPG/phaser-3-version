@@ -16,7 +16,6 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
   (world: World<WorldGameData>) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
-    let preloaded = false;
 
     const setSpawnPoint = (spawnPoint: Phaser.Types.Tilemaps.TiledObject) => {
       // Create a sprite with physics enabled via the physics system. The image used for the sprite has
@@ -39,37 +38,25 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
           position.y = spawnPoint.y;
 
           console.debug("Set Spawn Point", position);
-          onSetSpawnPoint(entities[i], position);
+          const sprite = phaserService.getSprite(entities[i]);
+          // TODO move to position effect
+          sprite.setPosition(position.x, position.y);
         }
       }
-    };
-
-    const afterPreload = () => {
-      for (const [entities, [sprites]] of query(SpriteComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          console.debug("Create Sprite");
-          phaserService.createSprite(
-            world.state.currentTickData.scenes[0].physics,
-            entities[i],
-            sprites[i]
-          );
-        }
-      }
-    };
-
-    const onSetSpawnPoint = (entity: number, position: Component<Position>) => {
-      const sprite = phaserService.getSprite(entity);
-      sprite.setPosition(position.x, position.y);
-      console.debug("onSetSpawnPoint", position);
     };
 
     return () => {
-      if (
-        world.state.currentTickData.step === PhaserSceneMethod.update &&
-        !preloaded
-      ) {
-        afterPreload();
-        preloaded = true;
+      if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+        for (const [entities, [sprites]] of query(SpriteComponent)) {
+          for (let i = 0; i < entities.length; i++) {
+            console.debug("Create Sprite");
+            phaserService.createSprite(
+              world.state.currentTickData.scenes[0].physics,
+              entities[i],
+              sprites[i]
+            );
+          }
+        }
       }
 
       for (const mapObject of mapObjectTopic) {
