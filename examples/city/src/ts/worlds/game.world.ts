@@ -12,6 +12,9 @@ import {
   AnimationComponent,
   CameraComponent,
   VelocityComponent,
+  DepthComponent,
+  TextComponent,
+  ScrollfactorComponent,
 } from "../components";
 import {
   phaserSystem,
@@ -54,7 +57,7 @@ const tilesetComponent = gameWorld.component(TilesetComponent, {
 });
 const tilesetEntry = gameWorld.spawn(tilesetComponent);
 
-const mapLayerComponent1 = gameWorld.component(MapLayerComponent, {
+const mapLayer1Component = gameWorld.component(MapLayerComponent, {
   name: "Below Player",
   x: 0,
   y: 0,
@@ -62,9 +65,10 @@ const mapLayerComponent1 = gameWorld.component(MapLayerComponent, {
   assetMapEntry,
   tilesetEntry,
 });
-gameWorld.spawn(mapLayerComponent1);
+const mapLayer1DepthComponent = gameWorld.component(DepthComponent, -10);
+gameWorld.spawn(mapLayer1Component, mapLayer1DepthComponent);
 
-const mapLayerComponent2 = gameWorld.component(MapLayerComponent, {
+const mapLayer2Component = gameWorld.component(MapLayerComponent, {
   name: "World",
   x: 0,
   y: 0,
@@ -73,9 +77,10 @@ const mapLayerComponent2 = gameWorld.component(MapLayerComponent, {
   assetMapEntry,
   tilesetEntry,
 });
-gameWorld.spawn(mapLayerComponent2);
+const mapLayer2DepthComponent = gameWorld.component(DepthComponent, 0);
+gameWorld.spawn(mapLayer2Component, mapLayer2DepthComponent);
 
-const mapLayerComponent3 = gameWorld.component(MapLayerComponent, {
+const mapLayer3Component = gameWorld.component(MapLayerComponent, {
   name: "Above Player",
   x: 0,
   y: 0,
@@ -83,7 +88,8 @@ const mapLayerComponent3 = gameWorld.component(MapLayerComponent, {
   assetMapEntry,
   tilesetEntry,
 });
-gameWorld.spawn(mapLayerComponent3);
+const mapLayer3DepthComponent = gameWorld.component(DepthComponent, 10);
+gameWorld.spawn(mapLayer3Component, mapLayer3DepthComponent);
 
 // ANIMATIONS
 
@@ -165,6 +171,8 @@ const playerPositionComponent = gameWorld.component(PositionComponent);
 
 const playerVelocityComponent = gameWorld.component(VelocityComponent, {
   speed: 175,
+  x: 0,
+  y: 0,
 });
 
 const playerComponent = gameWorld.component(PlayerComponent);
@@ -177,14 +185,47 @@ const playerEntry = gameWorld.spawn(
   playerComponent
 );
 
+// CAMERA
+
 const cameraComponent = gameWorld.component(CameraComponent, {
   followEntry: playerEntry,
   isMain: true,
 });
 gameWorld.spawn(cameraComponent);
 
-// const camera = this.cameras.add();
-// camera.startFollow(player);
-// camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+// TEXT
+
+// Help text that has a "fixed" position on the screen
+const textComponent = gameWorld.component(TextComponent, {
+  text: 'Arrow keys to move\nPress "D" to show hitboxes',
+  style: {
+    font: "18px monospace",
+    color: "#000000",
+    padding: { x: 20, y: 10 },
+    backgroundColor: "#ffffff",
+  },
+});
+const textPositionComponent = gameWorld.component(PositionComponent, 16, 16);
+const scrollfactorComponent = gameWorld.component(ScrollfactorComponent, {
+  x: 0,
+  y: 0,
+});
+const textDepthComponent = gameWorld.component(DepthComponent, 30);
+gameWorld.spawn(
+  textComponent,
+  textPositionComponent,
+  scrollfactorComponent,
+  textDepthComponent
+);
+
+// this.add
+//   .text(16, 16, 'Arrow keys to move\nPress "D" to show hitboxes', {
+//     font: "18px monospace",
+//     color: "#000000",
+//     padding: { x: 20, y: 10 },
+//     backgroundColor: "#ffffff",
+//   })
+//   .setScrollFactor(0)
+//   .setDepth(30);
 
 export { gameWorld };

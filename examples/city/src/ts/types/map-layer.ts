@@ -6,7 +6,6 @@ export interface MapLayer extends ComponentProps {
   collides?: boolean;
   x: number;
   y: number;
-  depth: number;
   assetMapEntry: number;
   tilesetEntry: number;
 }

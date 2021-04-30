@@ -11,12 +11,17 @@ import {
   phaserSpriteEffect,
   phaserCameraEffect,
   phaserInputEffect,
+  phaserTextEffect,
+  phaserPositionEffect,
+  phaserScrollfactorEffect,
+  phaserDepthEffect,
+  phaserVelocityEffect,
 } from "../effects";
 
 /**
  * Preload game assets
  */
-export const phaserSystem: System<WorldGameData> = (world) => {
+export const phaserSystem: System<WorldGameData> = (/*world*/) => {
   phaserAssetPreloadEffect();
   phaserAssetMapEffect();
   phaserTilesetEffect();
@@ -26,4 +31,9 @@ export const phaserSystem: System<WorldGameData> = (world) => {
   phaserSpriteEffect();
   phaserCameraEffect();
   phaserInputEffect();
+  phaserTextEffect();
+  phaserVelocityEffect();
+  phaserPositionEffect();
+  phaserScrollfactorEffect();
+  phaserDepthEffect();
 };

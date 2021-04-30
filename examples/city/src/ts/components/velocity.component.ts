@@ -7,9 +7,13 @@ import { ComponentType, Velocity } from "../types";
 export const VelocityComponent = createComponentType({
   type: ComponentType.Velocity,
   schema: {
-    speed: number,
+    speed: { type: number, defaultValue: 0 },
+    x: { type: number, defaultValue: 0 },
+    y: { type: number, defaultValue: 0 },
   },
   initialize(velocity, data: Velocity) {
     velocity.speed = data.speed;
+    velocity.x = data.x;
+    velocity.y = data.y;
   },
 });

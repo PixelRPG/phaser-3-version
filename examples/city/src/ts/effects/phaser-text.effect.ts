@@ -1,30 +1,30 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
-import { TilesetComponent } from "../components";
+import { TextComponent } from "../components";
 import { WorldGameData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PhaserTilesetEffectState {}
+interface PhaserTextEffectState {}
 
-export const phaserTilesetEffect = createEffect<
-  PhaserTilesetEffectState,
+export const phaserTextEffect = createEffect<
+  PhaserTextEffectState,
   WorldGameData[]
 >((world: World<WorldGameData>) => {
-  const state: PhaserTilesetEffectState = {};
+  const state: PhaserTextEffectState = {};
   const phaserService = PhaserService.getInstance();
   let preloaded = false;
 
   const afterPreload = () => {
-    for (const [entities, [tilesets]] of query(TilesetComponent)) {
+    for (const [entities, [texts]] of query(TextComponent)) {
       for (let i = 0; i < entities.length; i++) {
-        console.debug(
-          "afterPreload TilesetComponent",
+        console.debug("afterPreload TextComponent", entities[i], texts[i]);
+        phaserService.createText(
+          world.state.currentTickData.scenes[0],
           entities[i],
-          tilesets[i]
+          texts[i]
         );
-        phaserService.createTileset(entities[i], tilesets[i]);
       }
     }
   };

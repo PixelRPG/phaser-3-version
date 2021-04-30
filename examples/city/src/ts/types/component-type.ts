@@ -12,4 +12,7 @@ export enum ComponentType {
   Animation,
   Camera,
   Velocity,
+  Text,
+  Depth,
+  Scrollfactor,
 }

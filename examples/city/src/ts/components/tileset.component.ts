@@ -1,19 +1,19 @@
-import { createComponentType, boolean, string } from "@javelin/ecs";
-import { ComponentType, AssetTileset } from "../types";
+import { createComponentType, number, string } from "@javelin/ecs";
+import { ComponentType, Tileset } from "../types";
 
 /**
  * The tileset image used in tiledmaps
  */
-export const AssetTilesetComponent = createComponentType({
-  type: ComponentType.AssetTileset,
+export const TilesetComponent = createComponentType({
+  type: ComponentType.Tileset,
   schema: {
     key: string,
-    url: string,
-    loaded: { type: boolean, defaultValue: false },
+    name: string,
+    assetMapEntry: number,
   },
-  initialize(atlas, data: AssetTileset) {
+  initialize(atlas, data: Tileset) {
     atlas.key = data.key;
-    atlas.url = data.url;
-    atlas.loaded = false;
+    atlas.name = data.name;
+    atlas.assetMapEntry = data.assetMapEntry;
   },
 });

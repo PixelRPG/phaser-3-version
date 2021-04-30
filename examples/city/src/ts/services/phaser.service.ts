@@ -6,6 +6,7 @@ import {
   Sprite,
   Animation,
   Camera,
+  Text,
 } from "../types";
 
 export class PhaserService {
@@ -20,6 +21,7 @@ export class PhaserService {
   >();
   protected _animations = new Map<number, Phaser.Animations.Animation>();
   protected _cameras = new Map<number, Phaser.Cameras.Scene2D.Camera>();
+  protected _texts = new Map<number, Phaser.GameObjects.Text>();
 
   protected constructor() {
     /** protected */
@@ -31,6 +33,31 @@ export class PhaserService {
     }
     PhaserService.instance = new PhaserService();
     return PhaserService.instance;
+  }
+
+  tryGetGameObject(entry: number): Phaser.GameObjects.GameObject | undefined {
+    const sprite = this.tryGetSprite(entry);
+    if (sprite) {
+      return sprite;
+    }
+
+    const text = this.tryGetText(entry);
+    if (text) {
+      return text;
+    }
+
+    const layer = this.tryGetLayer(entry);
+    if (layer) {
+      return layer;
+    }
+  }
+
+  getGameObject(entry: number): Phaser.GameObjects.GameObject {
+    const gameObject = this.tryGetGameObject(entry);
+    if (!gameObject) {
+      throw new Error(`No GameObject for entry ${entry} found!`);
+    }
+    return gameObject;
   }
 
   public createMapLayer(
@@ -52,17 +79,20 @@ export class PhaserService {
       collides: mapLayerComponent.collides,
     });
 
-    // By default, everything gets depth sorted on the screen in the order we created things. Here, we
-    // want the "Above Player" layer to sit on top of the player, so we explicitly give it a depth.
-    // Higher depths will sit on top of lower depth objects.
-    phaserLayer.setDepth(mapLayerComponent.depth);
-
     this._layers.set(mapLayerEntry, phaserLayer);
     return phaserLayer;
   }
 
-  public getLayer(layerEntry: number) {
+  public tryGetLayer(layerEntry: number) {
     return this._layers.get(layerEntry);
+  }
+
+  public getLayer(layerEntry: number) {
+    const layer = this.tryGetLayer(layerEntry);
+    if (!layer) {
+      throw new Error(`No Layer for entry ${layerEntry} found!`);
+    }
+    return layer;
   }
 
   public getAllLayers() {
@@ -245,18 +275,6 @@ export class PhaserService {
       );
     }
 
-    // if (typeof cameraComponent.followEntry === "number") {
-    //   const sprite = this.tryGetSprite(cameraComponent.followEntry);
-    //   if (!sprite) {
-    //     console.debug(`followEntry ${cameraComponent.followEntry} not found`);
-    //     return;
-    //   }
-    //   camera.startFollow(sprite);
-    //   // TODO
-    //   const map = Array.from(this.getAllMaps(), ([name, value]) => value)[0];
-    //   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    // }
-
     if (!camera) {
       throw new Error(`Can't add ${cameraEntry} camera!`);
     }
@@ -279,5 +297,36 @@ export class PhaserService {
 
   public getAllCameras() {
     return this._cameras;
+  }
+
+  public createText(
+    scene: Phaser.Scene,
+    textEntry: number,
+    textComponent: Component<Text>
+  ) {
+    const text = scene.add.text(0, 0, textComponent.text, textComponent.style);
+
+    if (!text) {
+      throw new Error(`Can't add ${textEntry} text!`);
+    }
+
+    this._texts.set(textEntry, text);
+    return text;
+  }
+
+  public tryGetText(textEntry: number) {
+    return this._texts.get(textEntry);
+  }
+
+  public getText(textEntry: number) {
+    const text = this.tryGetText(textEntry);
+    if (!text) {
+      throw new Error(`No text for entry ${textEntry} found!`);
+    }
+    return text;
+  }
+
+  public getAllTexts() {
+    return this._texts;
   }
 }

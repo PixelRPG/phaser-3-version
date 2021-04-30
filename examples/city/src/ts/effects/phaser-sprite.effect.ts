@@ -5,12 +5,7 @@ import {
   query,
   Component,
 } from "@javelin/ecs";
-import {
-  SpriteComponent,
-  AssetAtlasComponent,
-  PlayerComponent,
-  PositionComponent,
-} from "../components";
+import { SpriteComponent, PositionComponent } from "../components";
 import { WorldGameData, PhaserSceneMethod, Position } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
@@ -33,7 +28,7 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
         throw new Error("A spawn point must have coordinates!");
       }
 
-      for (const [entities, [sprites, positions]] of query(
+      for (const [entities, [, positions]] of query(
         SpriteComponent,
         PositionComponent
       )) {
