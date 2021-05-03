@@ -30,6 +30,7 @@ class Scene extends Phaser.Scene {
   }
 
   create() {
+    console.debug("create");
     gameWorld.tick({
       time: 0,
       delta: 0,

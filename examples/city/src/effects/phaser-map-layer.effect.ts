@@ -14,7 +14,6 @@ export const phaserMapLayerEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserMapLayerEffectState = {};
   const phaserService = PhaserService.getInstance();
-  const preloaded = false;
 
   const onCreate = () => {
     for (const [entities, [mapLayers]] of query(MapLayerComponent)) {

@@ -1,12 +1,6 @@
-import {
-  createEffect,
-  EffectOptions,
-  World,
-  query,
-  Component,
-} from "@javelin/ecs";
+import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { SpriteComponent, PositionComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod, Position } from "../types";
+import { WorldGameData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
 
@@ -58,16 +52,20 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
       }
     };
 
-    return () => {
-      if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-        onCreate();
-      }
-
+    const eachTick = () => {
       for (const mapObject of mapObjectTopic) {
         if (mapObject.name === "Spawn Point") {
           setSpawnPoint(mapObject);
         }
       }
+    };
+
+    return () => {
+      if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+        onCreate();
+      }
+
+      eachTick();
 
       return state;
     };

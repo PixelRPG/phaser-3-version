@@ -15,18 +15,22 @@ export const phaserTextEffect = createEffect<
   const state: PhaserTextEffectState = {};
   const phaserService = PhaserService.getInstance();
 
+  const onCreate = () => {
+    for (const [entities, [texts]] of query(TextComponent)) {
+      for (let i = 0; i < entities.length; i++) {
+        console.debug("afterPreload TextComponent", entities[i], texts[i]);
+        phaserService.createText(
+          world.state.currentTickData.scenes[0],
+          entities[i],
+          texts[i]
+        );
+      }
+    }
+  };
+
   return () => {
     if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-      for (const [entities, [texts]] of query(TextComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          console.debug("afterPreload TextComponent", entities[i], texts[i]);
-          phaserService.createText(
-            world.state.currentTickData.scenes[0],
-            entities[i],
-            texts[i]
-          );
-        }
-      }
+      onCreate();
     }
 
     return state;

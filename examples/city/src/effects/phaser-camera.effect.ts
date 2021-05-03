@@ -27,27 +27,29 @@ export const phaserCameraEffect = createEffect<
     }
   };
 
+  const eachUpdate = () => {
+    for (const [entities, [cameras]] of query(CameraComponent)) {
+      for (let i = 0; i < entities.length; i++) {
+        const gameObject = phaserService.getGameObject(cameras[i].followEntry);
+        const camera = phaserService.getCamera(entities[i]);
+        // TODO
+        const map = Array.from(
+          phaserService.getAllMaps(),
+          ([, value]) => value
+        )[0];
+        camera.startFollow(gameObject);
+        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+      }
+    }
+  };
+
   return () => {
     if (world.state.currentTickData.step === PhaserSceneMethod.create) {
       onCreate();
     }
 
     if (world.state.currentTickData.step === PhaserSceneMethod.update) {
-      for (const [entities, [cameras]] of query(CameraComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          const gameObject = phaserService.getGameObject(
-            cameras[i].followEntry
-          );
-          const camera = phaserService.getCamera(entities[i]);
-          // TODO
-          const map = Array.from(
-            phaserService.getAllMaps(),
-            ([, value]) => value
-          )[0];
-          camera.startFollow(gameObject);
-          camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        }
-      }
+      eachUpdate();
     }
 
     return state;

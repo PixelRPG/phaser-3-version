@@ -20,7 +20,7 @@ export const phaserInputEffect = createEffect<
   const phaserService = PhaserService.getInstance();
   const cursors = world.state.currentTickData.scenes[0].input.keyboard.createCursorKeys();
 
-  const onUpdate = () => {
+  const eachUpdate = () => {
     for (const [entities, [velocitys]] of query(
       VelocityComponent,
       SpriteComponent,
@@ -78,7 +78,7 @@ export const phaserInputEffect = createEffect<
 
   return () => {
     if (world.state.currentTickData.step === PhaserSceneMethod.update) {
-      onUpdate();
+      eachUpdate();
     }
 
     return state;

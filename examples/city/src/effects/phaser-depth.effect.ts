@@ -15,20 +15,24 @@ export const phaserDepthEffect = createEffect<
   const state: PhaserDepthEffectState = {};
   const phaserService = PhaserService.getInstance();
 
-  return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-      for (const [entities, [depths]] of query(DepthComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          const gameObject: any = phaserService.tryGetGameObject(entities[i]);
-          if (!gameObject || typeof gameObject.setDepth !== "function") {
-            console.warn(
-              `The entry ${entities[i]} has no matching phaser object which can have a depth`
-            );
-          } else {
-            gameObject.setDepth(depths[i].depth);
-          }
+  const onCreate = () => {
+    for (const [entities, [depths]] of query(DepthComponent)) {
+      for (let i = 0; i < entities.length; i++) {
+        const gameObject: any = phaserService.tryGetGameObject(entities[i]);
+        if (!gameObject || typeof gameObject.setDepth !== "function") {
+          console.warn(
+            `The entry ${entities[i]} has no matching phaser object which can have a depth`
+          );
+        } else {
+          gameObject.setDepth(depths[i].depth);
         }
       }
+    }
+  };
+
+  return () => {
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onCreate();
     }
 
     return state;

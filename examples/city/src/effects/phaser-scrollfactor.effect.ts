@@ -15,20 +15,24 @@ export const phaserScrollfactorEffect = createEffect<
   const state: PhaserScrollfactorEffectState = {};
   const phaserService = PhaserService.getInstance();
 
-  return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-      for (const [entities, [depths]] of query(ScrollfactorComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          const gameObject: any = phaserService.tryGetGameObject(entities[i]);
-          if (!gameObject || typeof gameObject.setScrollFactor !== "function") {
-            console.warn(
-              `The entry ${entities[i]} has no matching phaser object which can have a scrollfactor`
-            );
-          } else {
-            gameObject.setScrollFactor(depths[i].x, depths[i].y);
-          }
+  const onUpdate = () => {
+    for (const [entities, [depths]] of query(ScrollfactorComponent)) {
+      for (let i = 0; i < entities.length; i++) {
+        const gameObject: any = phaserService.tryGetGameObject(entities[i]);
+        if (!gameObject || typeof gameObject.setScrollFactor !== "function") {
+          console.warn(
+            `The entry ${entities[i]} has no matching phaser object which can have a scrollfactor`
+          );
+        } else {
+          gameObject.setScrollFactor(depths[i].x, depths[i].y);
         }
       }
+    }
+  };
+
+  return () => {
+    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      onUpdate();
     }
 
     return state;

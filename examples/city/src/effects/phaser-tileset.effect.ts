@@ -15,18 +15,22 @@ export const phaserTilesetEffect = createEffect<
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
 
+  const onCreate = () => {
+    for (const [entities, [tilesets]] of query(TilesetComponent)) {
+      for (let i = 0; i < entities.length; i++) {
+        console.debug(
+          "afterPreload TilesetComponent",
+          entities[i],
+          tilesets[i]
+        );
+        phaserService.createTileset(entities[i], tilesets[i]);
+      }
+    }
+  };
+
   return () => {
     if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-      for (const [entities, [tilesets]] of query(TilesetComponent)) {
-        for (let i = 0; i < entities.length; i++) {
-          console.debug(
-            "afterPreload TilesetComponent",
-            entities[i],
-            tilesets[i]
-          );
-          phaserService.createTileset(entities[i], tilesets[i]);
-        }
-      }
+      onCreate();
     }
 
     return state;
