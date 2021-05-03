@@ -1,3 +1,6 @@
 [submodule "packages/javelin"]
 	path = packages/javelin
 	url = git@github.com:RetroRPG/javelin.git
+[submodule "packages/riba"]
+	path = packages/riba
+	url = https://github.com/ribajs/riba.git
