@@ -12,12 +12,12 @@ class Scene extends Phaser.Scene {
   // constructor() {}
 
   init() {
-    // gameWorld.tick({
-    //   time: 0,
-    //   delta: 0,
-    //   scenes: [this],
-    //   step: PhaserSceneMethod.init,
-    // });
+    gameWorld.tick({
+      time: 0,
+      delta: 0,
+      scenes: [this],
+      step: PhaserSceneMethod.init,
+    });
   }
 
   preload() {

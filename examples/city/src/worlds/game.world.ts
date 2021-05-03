@@ -17,24 +17,12 @@ import {
   ScrollfactorComponent,
   CollisionComponent,
 } from "../components";
-import {
-  phaserSystem,
-  movementSystem,
-  pickupsSystem,
-  renderMapSystem,
-  renderUiSystem,
-} from "../systems";
+import { phaserSystem } from "../systems";
 import { mapObjectTopic } from "../topics";
 
 const gameWorld = createWorld<WorldGameData>({
   topics: [mapObjectTopic],
-  systems: [
-    phaserSystem,
-    movementSystem,
-    pickupsSystem,
-    renderMapSystem,
-    renderUiSystem,
-  ],
+  systems: [phaserSystem],
 });
 
 // MAP
