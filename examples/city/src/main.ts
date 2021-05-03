@@ -44,7 +44,7 @@ class Scene extends Phaser.Scene {
       this.physics.world.createDebugGraphic();
 
       // Create worldLayer collision graphic above the player, but below the help text
-      const graphics = this.add.graphics().setAlpha(0.75).setDepth(20);
+      // const graphics = this.add.graphics().setAlpha(0.75).setDepth(20);
       // worldLayer.renderDebug(graphics, {
       //   tileColor: null, // Color of non-colliding tiles
       //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles

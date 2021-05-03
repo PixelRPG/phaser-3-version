@@ -1,10 +1,4 @@
-import {
-  createEffect,
-  EffectOptions,
-  World,
-  query,
-  Component,
-} from "@javelin/ecs";
+import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { TILE_COLLSION_LAYER } from "../constants";
 import {
   CollisionComponent,

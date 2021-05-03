@@ -17,7 +17,7 @@ export const phaserMapObjectEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [assetMaps]] of query(AssetMapComponent)) {
+    for (const [entities, []] of query(AssetMapComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const map = phaserService.getMap(entities[i]);
 

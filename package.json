@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.html",
   "scripts": {
+    "git:submodules": "git submodule update --init --recursive",
     "build": "yarn workspaces foreach run build",
     "build:dev": "yarn workspaces foreach run build:dev",
     "start": "yarn workspace @rpg-phaser/city run start",

@@ -221,9 +221,9 @@
         "signature": "1e61418f41d404e744b6536af9f8c6f6674dd4d54c12335cd0c4f7eded69cf3f",
         "affectsGlobalScope": true
       },
-      "../src/ts/types/globals.ts": {
-        "version": "ec1110875e7c6ae262be2eafc7cf353d9460565c00b4cb6465b40e7aee2c0a7d",
-        "signature": "ec1110875e7c6ae262be2eafc7cf353d9460565c00b4cb6465b40e7aee2c0a7d",
+      "../src/constants.ts": {
+        "version": "69338e68e870af939db348b7ab2b837b995fcaf5e397e7f9efc7da45d0055217",
+        "signature": "9ad5ac70978259e250f20eb1ad7830948c104d19cb0ab663109ad7ea449adc56",
         "affectsGlobalScope": false
       },
       "../../../packages/javelin/packages/ecs/dist/cjs/symbols.d.ts": {
@@ -391,82 +391,349 @@
         "signature": "12ba853b1556480e6f14accebf69e627943e368a8c79b6dbf97941845db65d3a",
         "affectsGlobalScope": false
       },
-      "../src/ts/types/world-game-data.ts": {
-        "version": "e11bbffee0e530f32b6cf10a44683d95d0a1271ea034fca72a313bce45b44870",
-        "signature": "b1aede4b9e265ac35a2f030ffff43775f2b88119b6a068de5af1bbb460372772",
+      "../src/types/animation.ts": {
+        "version": "e16e6cdecca4c69357b6f27a74088588e1807fd27393c345fbb3e85e8eed1aac",
+        "signature": "31a9e6bd526d5f310fb7b90de242f9ea263fd605cfecbb920754b525dc21c07a",
         "affectsGlobalScope": false
       },
-      "../src/ts/types/index.ts": {
-        "version": "b62cad46f8b4b40f3b928c6fb4f3b2c5700d5ee4bcba6d5f8cc065b7d0d8fd2a",
-        "signature": "b62cad46f8b4b40f3b928c6fb4f3b2c5700d5ee4bcba6d5f8cc065b7d0d8fd2a",
+      "../src/types/asset-map.ts": {
+        "version": "7c4926fc74b053eedb307a235805bfa3f040d26eeeca10601c91553697c97f71",
+        "signature": "1d2625f10b1ec090af96ec3da3f930f7060356df53dcf2f6f6df8de75dd1b739",
         "affectsGlobalScope": false
       },
-      "../src/ts/constants/enums.ts": {
-        "version": "8f4e586945b9c47e5606fb5cf439897fecb46fd93bb28975f53760580010d88b",
-        "signature": "e81701ce7bfc743ea625f7727d559942614f35beb22873df8a01a022521d2f1a",
+      "../src/types/asset-tileset.ts": {
+        "version": "cefbc0f110d82da415707c7dafdb6fb34b16302f839a755ed9e750128127c79a",
+        "signature": "5bfe096cbb12660fd302d0be8734b407e19f249ad9301d7c462fe06e4863ac0c",
         "affectsGlobalScope": false
       },
-      "../src/ts/constants/index.ts": {
-        "version": "464c9d440d428e9cfb338c7367485ae02b13ccff54262a2a234d971381fe851f",
-        "signature": "464c9d440d428e9cfb338c7367485ae02b13ccff54262a2a234d971381fe851f",
+      "../src/types/camera.ts": {
+        "version": "7f81f17d23d3e64a665b71e2b5f9d3b175ab562b2a42316f645a87853d5f950a",
+        "signature": "063e0e00418260f8971fdf82d43301744cbd1f9fe0d7b94ecf503c3fb7b1f0e8",
         "affectsGlobalScope": false
       },
-      "../src/ts/components/atlas.component.ts": {
-        "version": "d692d773a3a27a5a428273ed9adf7a48e8865fcfefe4047cee5566f14183c1e6",
-        "signature": "e50fb50846346abdb8e4d59377fb71bd221b4f0886660f6f8132a90f07a94fc0",
+      "../src/types/collision.ts": {
+        "version": "b744b35d9f6610a784d8e72eaba464e4737edd938df49cf75875ba936e1dbe67",
+        "signature": "2de4982b4df349b4c93c4de95eb57bf6a44de7ac1f7d825da00cfa60a74f7836",
         "affectsGlobalScope": false
       },
-      "../src/ts/components/image.component.ts": {
-        "version": "80a0aef02abdbc2aa8d431a903f7938093cd090f90277fb1d7fd76612ffce218",
-        "signature": "aa99edd21f331d61ac7be8dfa3f52362e11a1b04efb5bf9171e8eda6256c8452",
+      "../src/types/component-type.ts": {
+        "version": "37c74925573d9f445f1751c7d29679abd0def90119244f4004c0eb3f1de910c0",
+        "signature": "e48e7a75dbb2a8f68c088739e447f3308b17b6783ef6482be3094db22ffbec67",
         "affectsGlobalScope": false
       },
-      "../src/ts/components/tilemap.component.ts": {
-        "version": "9d286a33b8a74e42731454c08e0b5365564fd6937b1a95c44f80ca62e81369f5",
-        "signature": "33031a3585e326a201a575a3b2787d3ae82bdcfbb6d6b6daee194ec0ab9e4895",
+      "../src/types/phaser-scene-method.ts": {
+        "version": "117dbf28ac50a4d6d593f3b2b691e5095832babee309fe85ceae92492b891d34",
+        "signature": "878a2dd5297ea6f4ff9a5bd272f9c4f20ee7abce732923f0714886073a438003",
         "affectsGlobalScope": false
       },
-      "../src/ts/components/index.ts": {
-        "version": "3c4df2b48423bb8a171acb8c08be0b68de81aa14a4f41564bec4e21d50787ae6",
-        "signature": "3c4df2b48423bb8a171acb8c08be0b68de81aa14a4f41564bec4e21d50787ae6",
+      "../src/types/coordinates-2d.ts": {
+        "version": "78ee023d5d5d2b38ee602ed88a51a1921321e892c8c1dc5ba7b29938b823a406",
+        "signature": "14ace1694934d0789d44c7bdb4d75a7c29a3b2416840dfaba86407079b79fc12",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/assets.system.ts": {
-        "version": "d92f8019ef04e56ff88cd97b50d86d786a3eb905970fc4cdc8a4e6c66ebd9905",
-        "signature": "c794fe4498e8f492f8782ebb8c5b69f7d56cfc6f96eaac747bab5ee1862a0f75",
+      "../src/types/position.ts": {
+        "version": "c74aa8f23c56276f6c4d4a2ad201f98b283b96378ff490a4eae6bfbebcfe9862",
+        "signature": "22d78417a0f875ec90a70be18c3bc97c8c18dc980cdcd98fd9fd02c2b05fb565",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/movement.system.ts": {
-        "version": "49612008f4b8477d35446035fffd29a8d7627911adaafd70514299bec00bd06a",
-        "signature": "63e755108302e73673f67b709bf94627195b64334c005e720cae8833f86adc58",
+      "../src/types/scrollfactor.ts": {
+        "version": "f5f02390453bd5122e324dce95d785ebe95ac0327fe9f247b288913eaea67340",
+        "signature": "006cccb46ba3432c2986b308f21473b223791e1cbd6fe50a29d85e68e648af57",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/pickups.system.ts": {
-        "version": "21a52026513fa022372e0ee584ed18dcaa2fba452ada5be7e126de4c252e60d9",
-        "signature": "248067884ebb1e8554575f4b87d3e59ff261bebd593e769c3845f7ab0b82ae25",
+      "../src/types/size.ts": {
+        "version": "e6001426f5ca12f200dfa0c02ca4310b6bcd8370e7a65c1954feb478772fbe52",
+        "signature": "22b0aa6ab0611a31b81e6e5586e643c54d917bb29aec2bfe6d2552a8199af3cd",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/render-map.system.ts": {
-        "version": "0bf0f35e0518ba7cdf7f06aa2f30e93d424e7ab395d66c23c8a8be8c3cd9be3a",
-        "signature": "2eab3d46bbee4793521b886116b914556675ec89e288dccdcd447822cfad5931",
+      "../src/types/map-layer.ts": {
+        "version": "a5198c520991c20bc09ab47ec482fb98ef76341d35291cf1bfcc993422026b37",
+        "signature": "5e294aabd362e61382fbcd091fa2d91fc989422c944ba92abbdba50e51ee4a38",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/render-ui.system.ts": {
-        "version": "49908c077f281dd7fc2dc2becc43add07918a163b61fafc45a3df036637771ba",
-        "signature": "b59899ea41541bdf19babd666efa9d97451a3d6954a3c8024244016e5cc508e0",
+      "../src/types/sprite.ts": {
+        "version": "09fa545e858b143b9115ecc486b3af99b2ce95b3e89656f63cb41968163d4085",
+        "signature": "aeb134df7d9b64e577addb585a0c6ac7efcd8d4c3451664042f2f2b811aa7fe2",
         "affectsGlobalScope": false
       },
-      "../src/ts/systems/index.ts": {
-        "version": "9ecfc27d177ba5a3d92a8e638c520a42cae3d2d2a2931f8fa65b921a2ee209cf",
-        "signature": "9ecfc27d177ba5a3d92a8e638c520a42cae3d2d2a2931f8fa65b921a2ee209cf",
+      "../src/types/text.ts": {
+        "version": "e6fb53f762a3f33e61f0af10e8e15ca48241908bfede740fd77127d3ded13c2a",
+        "signature": "e4eeead43e5a9ee99ac6cdb522d5f588d9c2d54759236595866d199323a31ec2",
         "affectsGlobalScope": false
       },
-      "../src/ts/worlds/game.world.ts": {
-        "version": "3fc407564e32553d7ff2eb452e3d03f1ddc716a054103668d016c63300b207a1",
+      "../src/types/tileset.ts": {
+        "version": "d3e82111b5aca872dcdaa9d9e1af6e1a5022083712256914a1e72a43316ea5a8",
+        "signature": "7d7122b780301550088a3074e9c03911567d52d88338b6b1c2d0b2b665f92ce8",
+        "affectsGlobalScope": false
+      },
+      "../src/types/velocity.ts": {
+        "version": "d99cfc361e6c8b9b59430dd63ad3f65fa501ea18f39147c270d91592ce40c3d4",
+        "signature": "bd01ee5696bae9776abe537648e1764ed3c88dba74b2352d0118bdf9497ef441",
+        "affectsGlobalScope": false
+      },
+      "../src/types/world-game-data.ts": {
+        "version": "6b528ec182a46cef458161be9d3c341571649e09f7b34b9230f361e2a11175f3",
+        "signature": "9f679c9e2b3756b201d4492e9838ca3cfa9fafb79e2184260d3ff2d3871b714d",
+        "affectsGlobalScope": false
+      },
+      "../src/types/index.ts": {
+        "version": "96b2ac989403243704c70a0af0668d5e9791ed4a39796e7776926ebdd1a0dc1f",
+        "signature": "96b2ac989403243704c70a0af0668d5e9791ed4a39796e7776926ebdd1a0dc1f",
+        "affectsGlobalScope": false
+      },
+      "../src/components/animation.component.ts": {
+        "version": "ec66dba737297de063e5966999830a9ce839dc31aa2a8534c4dcf138bd811a2b",
+        "signature": "79b787df503ba5447f59bc74dc3121a19b0e1fe4e7458012ca5515269f0ef4ac",
+        "affectsGlobalScope": false
+      },
+      "../src/components/asset-atlas.component.ts": {
+        "version": "b4748fbfc2da15ae8e042ac8b61c69ec9f41389951c62e03096e7108e40a0b5f",
+        "signature": "95715fc58d559d6bae0388e2e36c82cd4d9db10c8dc97b42366f651188e06b25",
+        "affectsGlobalScope": false
+      },
+      "../src/components/schemata/create-nullable-object-type.ts": {
+        "version": "654602b54cb8188561ebd29966ebad62cdc4c6a663164cf242b560f58fb56707",
+        "signature": "e5177c46a22e05c2c11f5ab17500b1bf722317985152cb89a62a29116668eea7",
+        "affectsGlobalScope": false
+      },
+      "../src/components/schemata/create-object-type.ts": {
+        "version": "807814203a5ea212bee698ede487e9d6be361bb0bc0cd61661de2527c7efae52",
+        "signature": "586b864c62392f348efb825639e001a8750bec3b4b8b8f38bd4d86a5875e1597",
+        "affectsGlobalScope": false
+      },
+      "../src/components/schemata/tilemap.ts": {
+        "version": "209a5d3297552fac47dfb0cdaf8fc201dd3ec7f0c73eac8a4e9a183911e1357b",
+        "signature": "1ed43f5b379ce93372964c488675c8f8b404e1b43fc30e6dd75a4cc9f8f00a2c",
+        "affectsGlobalScope": false
+      },
+      "../src/components/schemata/index.ts": {
+        "version": "dfbdc9daf80422a06b1878ffe149e31bceca28c0e988cb1b4c2bafb2b0839da3",
+        "signature": "dfbdc9daf80422a06b1878ffe149e31bceca28c0e988cb1b4c2bafb2b0839da3",
+        "affectsGlobalScope": false
+      },
+      "../src/components/asset-image.component.ts": {
+        "version": "ae78cca12ac2b253fbe8711399457a9a6b31efb2703ca668a721088588bf9969",
+        "signature": "d554dc73e83857e8fe1553de6ed8fa193727c6e9f82757b09aca086029075a26",
+        "affectsGlobalScope": false
+      },
+      "../src/components/asset-map.component.ts": {
+        "version": "ed144f3acbb5df0222e6e624132de484ff592b7d2dab57abd7fd861af6336329",
+        "signature": "2bd5d36d98eea63aab90d0ab22d0db0ba69a47dda6194d622d9cbb0df9bbb733",
+        "affectsGlobalScope": false
+      },
+      "../src/components/asset-tileset.component.ts": {
+        "version": "967044c12a0698560469d19bcbf5fcbfce3f552c700ae940cc470e49aa340035",
+        "signature": "0e1d1c2cb1fe077415e56524653c5fa8117db344596dcbd16ecaa9de43fdb89c",
+        "affectsGlobalScope": false
+      },
+      "../src/components/camera.component.ts": {
+        "version": "735e41ce16744b86a081878a4f62064f245d870f0818a9cf1dfddafc8b6e5839",
+        "signature": "7fb369939f3dc4ee7b34a9b69404cf105ea54019273affdb06a095848b8d7ff7",
+        "affectsGlobalScope": false
+      },
+      "../src/components/position.component.ts": {
+        "version": "6a872e04c928bd68d13bc36f52bf133bf4b2b5bd09502af927c6e52ab0ae5cac",
+        "signature": "8a44f0e17e202cf017415f5dadb99306c876abc017f50061f147c92acde9639f",
+        "affectsGlobalScope": false
+      },
+      "../src/components/collision.component.ts": {
+        "version": "e91aee3b8639ac945a89bfd68cf91d951599dbd9c739e34df792fa6bbe8de8ab",
+        "signature": "74e69036aef71a3345d07dc34181c16468694fc918d237c2b8513724884e691c",
+        "affectsGlobalScope": false
+      },
+      "../src/components/depth.component.ts": {
+        "version": "683808440ae570b238516c4fc21f0195a0ef37bd3dc8930d9c5fa4c93c5c2299",
+        "signature": "d24a1da43c9b188e4d4ecac884c9ff89d78e923b9fff0e88db0f21fec5db4f8b",
+        "affectsGlobalScope": false
+      },
+      "../src/components/map-layer.component.ts": {
+        "version": "afb3983a83ac92e045313af07dd59952ccf87735c07c2b2b14515c131b13b3e9",
+        "signature": "81cb092b96c874a0d9455813925f7a882f7b513c8af3ceb51ee1132ac60198b6",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/types/deferred.ts": {
+        "version": "6e4e6dbccc7400f062eebc040d22d187f5785345d7f005008e16b79536ed379d",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/types/index.ts": {
+        "version": "7b863dd3d69b49d2f03dee348b0dfc231efce9faf6c1dfa220adbfd03f3c366e",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/color.ts": {
+        "version": "5ce6544c691d713593eb5f3b490449cc938e415bf2d4cdddd096b12af77469a2",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/control.ts": {
+        "version": "2204407b29dd4e1b0f056fd1fd4063038cfcdb130cc646c69699c4abe7590b93",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/type.ts": {
+        "version": "e4e3e845da2fc70333117d6bedbdddc8e81a8c7e33cfafa18304099e9d1d2d3d",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/dom.ts": {
+        "version": "1aded89fd5efd70f6dac1d817157c9b341bfe293f2760251a38765aa1b17d9a5",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/url.ts": {
+        "version": "c2409395b44c03e81878040bac9ead54beba1d73cabcfdb81946603f5b573807",
+        "affectsGlobalScope": false
+      },
+      "../../../../riba/packages/utils/src/index.ts": {
+        "version": "cb001b9a9d105ab0a71fe312577d36bc15aa0d45ebe42db38c83a43c24451542",
+        "affectsGlobalScope": false
+      },
+      "../src/components/scrollfactor.component.ts": {
+        "version": "2031e860bf15f8848cd8a64d8146d769ed3744a324eb7b1c16dc150fe1c4fd5e",
+        "signature": "59e67a49f8fb1575e1aa4f1ff747e52de779cde07d8a2ad14111db2992ac6eb8",
+        "affectsGlobalScope": false
+      },
+      "../src/components/sprite.component.ts": {
+        "version": "372b24ec3568a38ec5bdaf750c20cc668a481f854965c0cf65e0e4393c3eb2d8",
+        "signature": "c1e14c3d6cc99da66bc483a110bf5f06abfeeb63e66df7e3c1962f95768f078a",
+        "affectsGlobalScope": false
+      },
+      "../src/components/player.component.ts": {
+        "version": "2993df7ea05f809ee43a44e99841e074d3185a62e3c112b9b3f471c763a261bf",
+        "signature": "e4ec822a81510121c54dc1e3caeb7efb7d4be7963144e149e8c36e3764d46a4f",
+        "affectsGlobalScope": false
+      },
+      "../src/components/text.component.ts": {
+        "version": "367b451ac8c2592d5f7996160cc2432ced48ffe5bca170f9e2d1255138c38eb2",
+        "signature": "831fe8a99d8eb5b3eb57fae26bed41052dc81bc582b4cbd3c417be0510f57fa3",
+        "affectsGlobalScope": false
+      },
+      "../src/components/tileset.component.ts": {
+        "version": "7cafa3faa300a84079d727b6742b72d13b50185547d5726d799705020238d7c3",
+        "signature": "1d85a4f955de5079bc68b3322296db844c2eded85fc3daf298a3d3c19a4fed3e",
+        "affectsGlobalScope": false
+      },
+      "../src/components/velocity.component.ts": {
+        "version": "adb7309b54beb948bb40b2af8c3b7e98a5db4abb728b2317ab5aab12b9c06865",
+        "signature": "1055c909d482e2492e5fabafe8443892ebd885a72e5ff591536448e6313eeb49",
+        "affectsGlobalScope": false
+      },
+      "../src/components/index.ts": {
+        "version": "6d1e13db637bae6ced3b7aff54941cc92aa0be64559e135880704e5aa059e695",
+        "signature": "6d1e13db637bae6ced3b7aff54941cc92aa0be64559e135880704e5aa059e695",
+        "affectsGlobalScope": false
+      },
+      "../src/services/phaser.service.ts": {
+        "version": "9ade174489e67fb9a7b654944ce9caab53b73c6c1fa0762ece2fbf34400ee284",
+        "signature": "efbb4eb101449ffb4ad97722335ceeef711aba8221631a7e0379781d48c1e0c7",
+        "affectsGlobalScope": false
+      },
+      "../src/services/index.ts": {
+        "version": "353cdfe3d5eea290c8a53c3f5e378cb22078beac7ef05ccc2503cc04c1deaaae",
+        "signature": "353cdfe3d5eea290c8a53c3f5e378cb22078beac7ef05ccc2503cc04c1deaaae",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-animation.effect.ts": {
+        "version": "f9f8adad013eaf450961345bafc8443f986c62f4888fce783a070c18274dab96",
+        "signature": "aaed111528262f2cdabd31aa536028cd466f83a9dc304197df29fe78e76ac5fe",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-asset-map.effect.ts": {
+        "version": "4bf69bfb50603507164033ba2fe3e3d804af55b5afce5899d3bf9feb94c0034f",
+        "signature": "9295553388f8d4bed72836447d7d20a391e08813ed10f15d5c5c799b3bb80984",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-asset-preload.effect.ts": {
+        "version": "fcbea7198c008ad4e7d0ed93e5ef943b03d05fdd248724ec24aa00fcfc2ba2d4",
+        "signature": "568c2a6f871f2bc8c2f53f8d83522f0d010d57bc8ba4acd9154d1db1fd557580",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-camera.effect.ts": {
+        "version": "ebd8e832468165e4cdcdc62f9336f1bb1cace7f83483578f24bf47875b67ec72",
+        "signature": "dcf27801e2209aeacffd34e8da01303578522c89ad56f7029476c0f8402ed167",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-collision.effect.ts": {
+        "version": "a7262605100b77dc4a081c6cc2bd729ebf5a76e930e8436b06755125ec597088",
+        "signature": "49654d487691d2b66639c948482e73f780f9982442bee60968533ce8596a9594",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-depth.effect.ts": {
+        "version": "cc08179c5a611adde1d32c4c27d8009854b80cc13fd39b1aaa75e4e82dd6b666",
+        "signature": "684034b93561d8a736cbdfdac5dd130ec3b5b4bdd1332442e7d81c0d30a4a176",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-input.effect.ts": {
+        "version": "26391e7760e1844f54c1c0fd7535c3ff13aa2b34023093187f88da4415cb04b4",
+        "signature": "9156877e4f7c914951e2e1fa8c5f1145f13e6e4b5e37c156d430aa0d2354cc70",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-map-layer.effect.ts": {
+        "version": "fa37b2da5870cd359c8e93550a5c4d043c3e0fed01c8125c6199fe3826342113",
+        "signature": "0328141f6882dd8056a0f33f59b4f52861d3cc5198ec34f98f325c23d4b2ce9e",
+        "affectsGlobalScope": false
+      },
+      "../src/topics/map-object.topic.ts": {
+        "version": "6124eba7d2adc81aee0d103ea8fcc99438920006576eae51d2bee35c17dc0504",
+        "signature": "0aa85825b335d2cfa369f68bb56dcb464e98efd03725989bdbd8532cb06d77b0",
+        "affectsGlobalScope": false
+      },
+      "../src/topics/index.ts": {
+        "version": "dba1a3dc9651b0f26e2c6507f1890a798177a97da0da23a7aa236090560750e6",
+        "signature": "dba1a3dc9651b0f26e2c6507f1890a798177a97da0da23a7aa236090560750e6",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-map-object.effect.ts": {
+        "version": "3d7ecb4aa78826d1771fe72907cf53d0cbc624bffd8b747b978ebfd12e7bd38a",
+        "signature": "64d192be565c39252d0d267a414f6c0fbb932d4829027bd043c23fc853eea06d",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-position.effect.ts": {
+        "version": "18f80f9debfe07e22587f7ff49551da40d1fc27e61ff0f77e71bf344c7085b55",
+        "signature": "289ce171e71f51fd2c9202be73ed93867abffa335db5f7e362eb2ef50bf4ca49",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-scrollfactor.effect.ts": {
+        "version": "12387f75692f0ab54bf2a021d0098c7c7db18b4f0cc7a6212ced155615fbea98",
+        "signature": "b0cdfce313dbf06441fbacd9e436717be2a3779644c14a11789f4533f88e120e",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-sprite.effect.ts": {
+        "version": "0ad095b31209c1cba83ed8febb4c08eb1d6a16f3f26732b7a1684b996c61decb",
+        "signature": "65860ab0d79fae4b18a0ec192bcf2bc6c26b6698a6dfb535a32965893abe03be",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-text.effect.ts": {
+        "version": "cc9279deabbcf8c494fe291d6934f8e33ff1c4e0217595dbf8a76ef6a459b783",
+        "signature": "f0fcd3e613022f3ca77fb45c7604ffd5f8fdaca40ea24633f460dde057286b26",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-tileset.effect.ts": {
+        "version": "d601eac98a1cc48d601c975383afab34cb4fea802fa6d1398b898f86b252a957",
+        "signature": "272c2953d2bc2e88ed1e36dac4423f75f8dae947885c73a29afad1a05510f606",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/phaser-velocity.effect.ts": {
+        "version": "d672fe1bcbee0e1e5f2a163d2117be354a1779bb2bd294fbe50bc1c331aae058",
+        "signature": "c65aaa259872453e2d48869548aeddf742017b315eab83bcd681b46b53a03fff",
+        "affectsGlobalScope": false
+      },
+      "../src/effects/index.ts": {
+        "version": "d7c40346f6e1adfc3f6c799c54c0f1f3ef1dfd75d49517bea78e6da56b61e94a",
+        "signature": "d7c40346f6e1adfc3f6c799c54c0f1f3ef1dfd75d49517bea78e6da56b61e94a",
+        "affectsGlobalScope": false
+      },
+      "../src/systems/phaser.system.ts": {
+        "version": "f74829aa1d7a0d4cf42d97525c4a0b29b1ba70ef409d79268889684600180952",
+        "signature": "f67631300a8341bd5a582869fb98fe0d6f7ec87fbe9672d2e44538210afb00f5",
+        "affectsGlobalScope": false
+      },
+      "../src/systems/index.ts": {
+        "version": "8b746fca594d0d32f2f434f97391f60e767b59aa15259c12b4a6d495a4a7ab15",
+        "signature": "8b746fca594d0d32f2f434f97391f60e767b59aa15259c12b4a6d495a4a7ab15",
+        "affectsGlobalScope": false
+      },
+      "../src/worlds/game.world.ts": {
+        "version": "2d50fce2d0996b9b1920a10975a23c98a3967b2fa9fa7243feb54d94f30becda",
         "signature": "1a7827420a792278d8f482e66a0733245367a80d021cf84959ddbe61ba9ec16b",
         "affectsGlobalScope": false
       },
-      "../src/ts/worlds/index.ts": {
+      "../src/worlds/index.ts": {
         "version": "90f283139aaccad510e49fcfb8e507a6c4f9aa0cbd30df4b7ac3599fbb190d8e",
         "signature": "90f283139aaccad510e49fcfb8e507a6c4f9aa0cbd30df4b7ac3599fbb190d8e",
         "affectsGlobalScope": false
@@ -481,44 +748,9 @@
         "signature": "83ced93db9da215c1f6a32aa5eaffc9c46e1684ece46f554b8bbfa380539b6e2",
         "affectsGlobalScope": true
       },
-      "../src/ts/main.ts": {
-        "version": "66ab6eea5a29bac39ad410e3ed7e6ddfca63f8deb97a6db169c4a5e30676ae5e",
-        "signature": "29c5b9d42588a6cc25d8da8203b9d6bf9d2ee3556d92f39641f4786a45c7cdce",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/effects/assets.effect.ts": {
-        "version": "d53bb6795aa2513d8b61c4540d1b0aa7669669a46fbf7417d40f0a4a1c7eb5cc",
-        "signature": "2745186728d42ac56eb3d6d6a704bda5583f82ddc245107f86a9bc3658ccb443",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/effects/index.ts": {
-        "version": "b651dd2a426d877778337e166908eb1751b5a7f737809c85f10abd0b37768d3c",
-        "signature": "b651dd2a426d877778337e166908eb1751b5a7f737809c85f10abd0b37768d3c",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/entries/asset.entry.ts": {
-        "version": "0f19edc53f9efa737f9bea0aa8a9d8d32473433977b5e8715ebac0ca8ffb843b",
-        "signature": "a19fb5f1f2e66ec250a801a8601418fd0c82e24e4282b0553dc44f16bf97bd16",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/entries/player.entry.ts": {
-        "version": "065cb1839957f1f1bdf9a5a9a4292dc2582808da1ebbbfedbf883bca65517465",
-        "signature": "b3fbb53163e2acbaa3bf2666873ba936486b82e234bbc84640c8252a78534528",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/entries/index.ts": {
-        "version": "dfcd33b96cd9577ef03c8186f49fde211dbb142e0e6f1409ed35eab617707520",
-        "signature": "dfcd33b96cd9577ef03c8186f49fde211dbb142e0e6f1409ed35eab617707520",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/services/entry.service.ts": {
-        "version": "93795fe9147f474e45f1550f2f4d3d81251410680c8b14fbdb0f1160858ba023",
-        "signature": "b3ef8903b1a00e20dc4d78454bf7929b144ada3ae50d8485b303fce9cc975682",
-        "affectsGlobalScope": false
-      },
-      "../src/ts/services/index.ts": {
-        "version": "ae69a1546766f1e798a752180fdc2c874d7630b90f56a5f22d4b62c10ebb5960",
-        "signature": "ae69a1546766f1e798a752180fdc2c874d7630b90f56a5f22d4b62c10ebb5960",
+      "../src/main.ts": {
+        "version": "7d7765937d9550b885b9d23695747e7c021c5c3c48570372dfdb3087d4108b32",
+        "signature": "5051567ab8e4cd2dbd8fb13fc24f94b7259b4547de9bb5c84057029e29f5bfda",
         "affectsGlobalScope": false
       }
     },
@@ -550,92 +782,332 @@
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
+      "../../../../riba/packages/utils/src/control.ts": [
+        "../../../../riba/packages/utils/src/types/index.ts"
+      ],
+      "../../../../riba/packages/utils/src/dom.ts": [
+        "../../../../riba/packages/utils/src/type.ts"
+      ],
+      "../../../../riba/packages/utils/src/index.ts": [
+        "../../../../riba/packages/utils/src/color.ts",
+        "../../../../riba/packages/utils/src/control.ts",
+        "../../../../riba/packages/utils/src/dom.ts",
+        "../../../../riba/packages/utils/src/type.ts",
+        "../../../../riba/packages/utils/src/types/index.ts",
+        "../../../../riba/packages/utils/src/url.ts"
+      ],
+      "../../../../riba/packages/utils/src/types/index.ts": [
+        "../../../../riba/packages/utils/src/types/deferred.ts"
+      ],
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts"
       ],
-      "../src/ts/components/atlas.component.ts": [
+      "../src/components/animation.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/constants/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/components/image.component.ts": [
+      "../src/components/asset-atlas.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/constants/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/components/index.ts": [
-        "../src/ts/components/atlas.component.ts",
-        "../src/ts/components/image.component.ts",
-        "../src/ts/components/tilemap.component.ts"
-      ],
-      "../src/ts/components/tilemap.component.ts": [
+      "../src/components/asset-image.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/constants/index.ts"
+        "../src/components/schemata/index.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/constants/index.ts": [
-        "../src/ts/constants/enums.ts"
-      ],
-      "../src/ts/effects/assets.effect.ts": [
+      "../src/components/asset-map.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/components/index.ts",
-        "../src/ts/types/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/effects/index.ts": [
-        "../src/ts/effects/assets.effect.ts"
+      "../src/components/asset-tileset.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/entries/asset.entry.ts": [
-        "../src/ts/components/index.ts"
+      "../src/components/camera.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/entries/index.ts": [
-        "../src/ts/entries/asset.entry.ts",
-        "../src/ts/entries/player.entry.ts"
+      "../src/components/collision.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/entries/player.entry.ts": [
-        "../src/ts/components/index.ts"
+      "../src/components/depth.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/main.ts": [
+      "../src/components/index.ts": [
+        "../src/components/animation.component.ts",
+        "../src/components/asset-atlas.component.ts",
+        "../src/components/asset-image.component.ts",
+        "../src/components/asset-map.component.ts",
+        "../src/components/asset-tileset.component.ts",
+        "../src/components/camera.component.ts",
+        "../src/components/collision.component.ts",
+        "../src/components/depth.component.ts",
+        "../src/components/map-layer.component.ts",
+        "../src/components/player.component.ts",
+        "../src/components/position.component.ts",
+        "../src/components/scrollfactor.component.ts",
+        "../src/components/sprite.component.ts",
+        "../src/components/text.component.ts",
+        "../src/components/tileset.component.ts",
+        "../src/components/velocity.component.ts"
+      ],
+      "../src/components/map-layer.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/player.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/position.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/schemata/create-nullable-object-type.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/schemata/create-object-type.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/schemata/index.ts": [
+        "../src/components/schemata/create-nullable-object-type.ts",
+        "../src/components/schemata/create-object-type.ts",
+        "../src/components/schemata/tilemap.ts"
+      ],
+      "../src/components/schemata/tilemap.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/schemata/create-nullable-object-type.ts",
+        "../src/components/schemata/create-object-type.ts"
+      ],
+      "../src/components/scrollfactor.component.ts": [
+        "../../../../riba/packages/utils/src/index.ts",
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/sprite.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/text.component.ts": [
+        "../../../../riba/packages/utils/src/index.ts",
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/tileset.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/velocity.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/index.ts": [
+        "../src/effects/phaser-animation.effect.ts",
+        "../src/effects/phaser-asset-map.effect.ts",
+        "../src/effects/phaser-asset-preload.effect.ts",
+        "../src/effects/phaser-camera.effect.ts",
+        "../src/effects/phaser-collision.effect.ts",
+        "../src/effects/phaser-depth.effect.ts",
+        "../src/effects/phaser-input.effect.ts",
+        "../src/effects/phaser-map-layer.effect.ts",
+        "../src/effects/phaser-map-object.effect.ts",
+        "../src/effects/phaser-position.effect.ts",
+        "../src/effects/phaser-scrollfactor.effect.ts",
+        "../src/effects/phaser-sprite.effect.ts",
+        "../src/effects/phaser-text.effect.ts",
+        "../src/effects/phaser-tileset.effect.ts",
+        "../src/effects/phaser-velocity.effect.ts"
+      ],
+      "../src/effects/phaser-animation.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-asset-map.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-asset-preload.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-camera.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-collision.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/constants.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-depth.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-input.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-map-layer.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-map-object.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/topics/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-position.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-scrollfactor.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-sprite.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/topics/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-text.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-tileset.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-velocity.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/services/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/main.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts",
-        "../src/ts/worlds/index.ts"
+        "../src/types/index.ts",
+        "../src/worlds/index.ts"
       ],
-      "../src/ts/services/entry.service.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      "../src/services/index.ts": [
+        "../src/services/phaser.service.ts"
       ],
-      "../src/ts/services/index.ts": [
-        "../src/ts/services/entry.service.ts"
-      ],
-      "../src/ts/systems/assets.system.ts": [
+      "../src/services/phaser.service.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/components/index.ts",
-        "../src/ts/types/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/systems/index.ts": [
-        "../src/ts/systems/assets.system.ts",
-        "../src/ts/systems/movement.system.ts",
-        "../src/ts/systems/pickups.system.ts",
-        "../src/ts/systems/render-map.system.ts",
-        "../src/ts/systems/render-ui.system.ts"
+      "../src/systems/index.ts": [
+        "../src/systems/phaser.system.ts"
       ],
-      "../src/ts/systems/movement.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/pickups.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/render-map.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/render-ui.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/types/index.ts": [
-        "../src/ts/types/world-game-data.ts"
-      ],
-      "../src/ts/worlds/game.world.ts": [
+      "../src/systems/phaser.system.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/components/index.ts",
-        "../src/ts/systems/index.ts",
-        "../src/ts/types/index.ts"
+        "../src/effects/index.ts",
+        "../src/types/index.ts"
       ],
-      "../src/ts/worlds/index.ts": [
-        "../src/ts/worlds/game.world.ts"
+      "../src/topics/index.ts": [
+        "../src/topics/map-object.topic.ts"
+      ],
+      "../src/topics/map-object.topic.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/animation.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/asset-map.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/asset-tileset.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/camera.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/collision.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/index.ts": [
+        "../src/types/animation.ts",
+        "../src/types/asset-map.ts",
+        "../src/types/asset-tileset.ts",
+        "../src/types/camera.ts",
+        "../src/types/collision.ts",
+        "../src/types/component-type.ts",
+        "../src/types/coordinates-2d.ts",
+        "../src/types/map-layer.ts",
+        "../src/types/phaser-scene-method.ts",
+        "../src/types/position.ts",
+        "../src/types/scrollfactor.ts",
+        "../src/types/size.ts",
+        "../src/types/sprite.ts",
+        "../src/types/text.ts",
+        "../src/types/tileset.ts",
+        "../src/types/velocity.ts",
+        "../src/types/world-game-data.ts"
+      ],
+      "../src/types/map-layer.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/position.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/coordinates-2d.ts"
+      ],
+      "../src/types/scrollfactor.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/sprite.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/coordinates-2d.ts",
+        "../src/types/size.ts"
+      ],
+      "../src/types/text.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/tileset.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/velocity.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/world-game-data.ts": [
+        "../src/types/phaser-scene-method.ts"
+      ],
+      "../src/worlds/game.world.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/components/index.ts",
+        "../src/systems/index.ts",
+        "../src/topics/index.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/worlds/index.ts": [
+        "../src/worlds/game.world.ts"
       ],
       "../../../packages/javelin/packages/ecs/dist/cjs/archetype.d.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/component.d.ts",
@@ -754,81 +1226,263 @@
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts"
       ],
-      "../src/ts/components/atlas.component.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/components/image.component.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/components/index.ts": [
-        "../src/ts/components/atlas.component.ts",
-        "../src/ts/components/image.component.ts",
-        "../src/ts/components/tilemap.component.ts"
-      ],
-      "../src/ts/components/tilemap.component.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/constants/index.ts": [
-        "../src/ts/constants/enums.ts"
-      ],
-      "../src/ts/effects/assets.effect.ts": [
+      "../src/components/animation.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/types/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/effects/index.ts": [
-        "../src/ts/effects/assets.effect.ts"
-      ],
-      "../src/ts/entries/asset.entry.ts": [
+      "../src/components/asset-atlas.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
       ],
-      "../src/ts/entries/index.ts": [
-        "../src/ts/entries/asset.entry.ts",
-        "../src/ts/entries/player.entry.ts"
-      ],
-      "../src/ts/entries/player.entry.ts": [
+      "../src/components/asset-image.component.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
       ],
-      "../src/ts/main.ts": [
+      "../src/components/asset-map.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/asset-tileset.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/camera.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/collision.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/depth.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/index.ts": [
+        "../src/components/animation.component.ts",
+        "../src/components/asset-atlas.component.ts",
+        "../src/components/asset-image.component.ts",
+        "../src/components/asset-map.component.ts",
+        "../src/components/asset-tileset.component.ts",
+        "../src/components/camera.component.ts",
+        "../src/components/collision.component.ts",
+        "../src/components/depth.component.ts",
+        "../src/components/map-layer.component.ts",
+        "../src/components/player.component.ts",
+        "../src/components/position.component.ts",
+        "../src/components/scrollfactor.component.ts",
+        "../src/components/sprite.component.ts",
+        "../src/components/text.component.ts",
+        "../src/components/tileset.component.ts",
+        "../src/components/velocity.component.ts"
+      ],
+      "../src/components/map-layer.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/player.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/position.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/schemata/create-nullable-object-type.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/schemata/create-object-type.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/schemata/index.ts": [
+        "../src/components/schemata/create-nullable-object-type.ts",
+        "../src/components/schemata/create-object-type.ts",
+        "../src/components/schemata/tilemap.ts"
+      ],
+      "../src/components/schemata/tilemap.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/components/scrollfactor.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/sprite.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/text.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/tileset.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/components/velocity.component.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/index.ts": [
+        "../src/effects/phaser-animation.effect.ts",
+        "../src/effects/phaser-asset-map.effect.ts",
+        "../src/effects/phaser-asset-preload.effect.ts",
+        "../src/effects/phaser-camera.effect.ts",
+        "../src/effects/phaser-collision.effect.ts",
+        "../src/effects/phaser-depth.effect.ts",
+        "../src/effects/phaser-input.effect.ts",
+        "../src/effects/phaser-map-layer.effect.ts",
+        "../src/effects/phaser-map-object.effect.ts",
+        "../src/effects/phaser-position.effect.ts",
+        "../src/effects/phaser-scrollfactor.effect.ts",
+        "../src/effects/phaser-sprite.effect.ts",
+        "../src/effects/phaser-text.effect.ts",
+        "../src/effects/phaser-tileset.effect.ts",
+        "../src/effects/phaser-velocity.effect.ts"
+      ],
+      "../src/effects/phaser-animation.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-asset-map.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-asset-preload.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-camera.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-collision.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-depth.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-input.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-map-layer.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-map-object.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-position.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-scrollfactor.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-sprite.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-text.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-tileset.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/effects/phaser-velocity.effect.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/main.ts": [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts"
       ],
-      "../src/ts/services/entry.service.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      "../src/services/index.ts": [
+        "../src/services/phaser.service.ts"
       ],
-      "../src/ts/services/index.ts": [
-        "../src/ts/services/entry.service.ts"
-      ],
-      "../src/ts/systems/assets.system.ts": [
+      "../src/services/phaser.service.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/types/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/systems/index.ts": [
-        "../src/ts/systems/assets.system.ts",
-        "../src/ts/systems/movement.system.ts",
-        "../src/ts/systems/pickups.system.ts",
-        "../src/ts/systems/render-map.system.ts",
-        "../src/ts/systems/render-ui.system.ts"
+      "../src/systems/index.ts": [
+        "../src/systems/phaser.system.ts"
       ],
-      "../src/ts/systems/movement.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/pickups.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/render-map.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/systems/render-ui.system.ts": [
-        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
-      ],
-      "../src/ts/types/index.ts": [
-        "../src/ts/types/world-game-data.ts"
-      ],
-      "../src/ts/worlds/game.world.ts": [
+      "../src/systems/phaser.system.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
-        "../src/ts/types/index.ts"
+        "../src/types/index.ts"
       ],
-      "../src/ts/worlds/index.ts": [
-        "../src/ts/worlds/game.world.ts"
+      "../src/topics/index.ts": [
+        "../src/topics/map-object.topic.ts"
+      ],
+      "../src/topics/map-object.topic.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/animation.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/asset-map.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/asset-tileset.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/camera.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/collision.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/index.ts": [
+        "../src/types/animation.ts",
+        "../src/types/asset-map.ts",
+        "../src/types/asset-tileset.ts",
+        "../src/types/camera.ts",
+        "../src/types/collision.ts",
+        "../src/types/component-type.ts",
+        "../src/types/coordinates-2d.ts",
+        "../src/types/map-layer.ts",
+        "../src/types/phaser-scene-method.ts",
+        "../src/types/position.ts",
+        "../src/types/scrollfactor.ts",
+        "../src/types/size.ts",
+        "../src/types/sprite.ts",
+        "../src/types/text.ts",
+        "../src/types/tileset.ts",
+        "../src/types/velocity.ts",
+        "../src/types/world-game-data.ts"
+      ],
+      "../src/types/map-layer.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/position.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/coordinates-2d.ts"
+      ],
+      "../src/types/scrollfactor.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/sprite.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/coordinates-2d.ts",
+        "../src/types/size.ts"
+      ],
+      "../src/types/text.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/tileset.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/velocity.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts"
+      ],
+      "../src/types/world-game-data.ts": [
+        "../src/types/phaser-scene-method.ts"
+      ],
+      "../src/worlds/game.world.ts": [
+        "../../../packages/javelin/packages/ecs/dist/cjs/index.d.ts",
+        "../src/types/index.ts"
+      ],
+      "../src/worlds/index.ts": [
+        "../src/worlds/game.world.ts"
       ],
       "../../../packages/javelin/packages/ecs/dist/cjs/archetype.d.ts": [
         "../../../packages/javelin/packages/ecs/dist/cjs/component.d.ts",
@@ -944,6 +1598,14 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../../../../riba/packages/utils/src/color.ts",
+      "../../../../riba/packages/utils/src/control.ts",
+      "../../../../riba/packages/utils/src/dom.ts",
+      "../../../../riba/packages/utils/src/index.ts",
+      "../../../../riba/packages/utils/src/type.ts",
+      "../../../../riba/packages/utils/src/types/deferred.ts",
+      "../../../../riba/packages/utils/src/types/index.ts",
+      "../../../../riba/packages/utils/src/url.ts",
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts",
       "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/phaser.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.dom.d.ts",
@@ -990,106 +1652,71 @@
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.esnext.string.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.esnext.weakref.d.ts",
       "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.scripthost.d.ts",
-      "../src/ts/components/atlas.component.ts",
-      "../src/ts/components/image.component.ts",
-      "../src/ts/components/index.ts",
-      "../src/ts/components/tilemap.component.ts",
-      "../src/ts/constants/enums.ts",
-      "../src/ts/constants/index.ts",
-      [
-        "../src/ts/effects/assets.effect.ts",
-        [
-          {
-            "file": "../src/ts/effects/assets.effect.ts",
-            "start": 53,
-            "length": 5,
-            "messageText": "'World' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          },
-          {
-            "file": "../src/ts/effects/assets.effect.ts",
-            "start": 62,
-            "length": 4,
-            "messageText": "'json' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          },
-          {
-            "file": "../src/ts/effects/assets.effect.ts",
-            "start": 70,
-            "length": 3,
-            "messageText": "'ref' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
-      "../src/ts/effects/index.ts",
-      "../src/ts/entries/asset.entry.ts",
-      "../src/ts/entries/index.ts",
-      "../src/ts/entries/player.entry.ts",
-      "../src/ts/main.ts",
-      "../src/ts/services/entry.service.ts",
-      "../src/ts/services/index.ts",
-      [
-        "../src/ts/systems/assets.system.ts",
-        [
-          {
-            "file": "../src/ts/systems/assets.system.ts",
-            "start": 24,
-            "length": 5,
-            "messageText": "'World' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
-      "../src/ts/systems/index.ts",
-      "../src/ts/systems/movement.system.ts",
-      "../src/ts/systems/pickups.system.ts",
-      "../src/ts/systems/render-map.system.ts",
-      "../src/ts/systems/render-ui.system.ts",
-      "../src/ts/types/globals.ts",
-      "../src/ts/types/index.ts",
-      "../src/ts/types/world-game-data.ts",
-      [
-        "../src/ts/worlds/game.world.ts",
-        [
-          {
-            "file": "../src/ts/worlds/game.world.ts",
-            "start": 512,
-            "length": 21,
-            "messageText": "'tilesetImageComponent' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          },
-          {
-            "file": "../src/ts/worlds/game.world.ts",
-            "start": 650,
-            "length": 19,
-            "messageText": "'tilesetMapComponent' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          },
-          {
-            "file": "../src/ts/worlds/game.world.ts",
-            "start": 961,
-            "length": 11,
-            "messageText": "'playerEntry' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
-      "../src/ts/worlds/index.ts",
+      "../src/components/animation.component.ts",
+      "../src/components/asset-atlas.component.ts",
+      "../src/components/asset-image.component.ts",
+      "../src/components/asset-map.component.ts",
+      "../src/components/asset-tileset.component.ts",
+      "../src/components/camera.component.ts",
+      "../src/components/collision.component.ts",
+      "../src/components/depth.component.ts",
+      "../src/components/index.ts",
+      "../src/components/map-layer.component.ts",
+      "../src/components/player.component.ts",
+      "../src/components/position.component.ts",
+      "../src/components/schemata/create-nullable-object-type.ts",
+      "../src/components/schemata/create-object-type.ts",
+      "../src/components/schemata/index.ts",
+      "../src/components/schemata/tilemap.ts",
+      "../src/components/scrollfactor.component.ts",
+      "../src/components/sprite.component.ts",
+      "../src/components/text.component.ts",
+      "../src/components/tileset.component.ts",
+      "../src/components/velocity.component.ts",
+      "../src/constants.ts",
+      "../src/effects/index.ts",
+      "../src/effects/phaser-animation.effect.ts",
+      "../src/effects/phaser-asset-map.effect.ts",
+      "../src/effects/phaser-asset-preload.effect.ts",
+      "../src/effects/phaser-camera.effect.ts",
+      "../src/effects/phaser-collision.effect.ts",
+      "../src/effects/phaser-depth.effect.ts",
+      "../src/effects/phaser-input.effect.ts",
+      "../src/effects/phaser-map-layer.effect.ts",
+      "../src/effects/phaser-map-object.effect.ts",
+      "../src/effects/phaser-position.effect.ts",
+      "../src/effects/phaser-scrollfactor.effect.ts",
+      "../src/effects/phaser-sprite.effect.ts",
+      "../src/effects/phaser-text.effect.ts",
+      "../src/effects/phaser-tileset.effect.ts",
+      "../src/effects/phaser-velocity.effect.ts",
+      "../src/main.ts",
+      "../src/services/index.ts",
+      "../src/services/phaser.service.ts",
+      "../src/systems/index.ts",
+      "../src/systems/phaser.system.ts",
+      "../src/topics/index.ts",
+      "../src/topics/map-object.topic.ts",
+      "../src/types/animation.ts",
+      "../src/types/asset-map.ts",
+      "../src/types/asset-tileset.ts",
+      "../src/types/camera.ts",
+      "../src/types/collision.ts",
+      "../src/types/component-type.ts",
+      "../src/types/coordinates-2d.ts",
+      "../src/types/index.ts",
+      "../src/types/map-layer.ts",
+      "../src/types/phaser-scene-method.ts",
+      "../src/types/position.ts",
+      "../src/types/scrollfactor.ts",
+      "../src/types/size.ts",
+      "../src/types/sprite.ts",
+      "../src/types/text.ts",
+      "../src/types/tileset.ts",
+      "../src/types/velocity.ts",
+      "../src/types/world-game-data.ts",
+      "../src/worlds/game.world.ts",
+      "../src/worlds/index.ts",
       "../../../packages/javelin/packages/ecs/dist/cjs/archetype.d.ts",
       "../../../packages/javelin/packages/ecs/dist/cjs/component.d.ts",
       "../../../packages/javelin/packages/ecs/dist/cjs/effect.d.ts",
@@ -1126,6 +1753,38 @@
     ],
     "affectedFilesPendingEmit": [
       [
+        "../../../../riba/packages/utils/src/color.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/control.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/dom.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/index.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/type.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/types/deferred.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/types/index.ts",
+        1
+      ],
+      [
+        "../../../../riba/packages/utils/src/url.ts",
+        1
+      ],
+      [
         "../../../.yarn/cache/phaser-npm-3.54.0-13597f7262-ca05ce1e31.zip/node_modules/phaser/types/matter.d.ts",
         1
       ],
@@ -1159,6 +1818,186 @@
       ],
       [
         "../../../.yarn/cache/typescript-patch-70a7929abf-3be4431759.zip/node_modules/typescript/lib/lib.esnext.d.ts",
+        1
+      ],
+      [
+        "../src/components/animation.component.ts",
+        1
+      ],
+      [
+        "../src/components/asset-atlas.component.ts",
+        1
+      ],
+      [
+        "../src/components/asset-image.component.ts",
+        1
+      ],
+      [
+        "../src/components/asset-map.component.ts",
+        1
+      ],
+      [
+        "../src/components/asset-tileset.component.ts",
+        1
+      ],
+      [
+        "../src/components/camera.component.ts",
+        1
+      ],
+      [
+        "../src/components/collision.component.ts",
+        1
+      ],
+      [
+        "../src/components/depth.component.ts",
+        1
+      ],
+      [
+        "../src/components/index.ts",
+        1
+      ],
+      [
+        "../src/components/map-layer.component.ts",
+        1
+      ],
+      [
+        "../src/components/player.component.ts",
+        1
+      ],
+      [
+        "../src/components/position.component.ts",
+        1
+      ],
+      [
+        "../src/components/schemata/create-nullable-object-type.ts",
+        1
+      ],
+      [
+        "../src/components/schemata/create-object-type.ts",
+        1
+      ],
+      [
+        "../src/components/schemata/index.ts",
+        1
+      ],
+      [
+        "../src/components/schemata/tilemap.ts",
+        1
+      ],
+      [
+        "../src/components/scrollfactor.component.ts",
+        1
+      ],
+      [
+        "../src/components/sprite.component.ts",
+        1
+      ],
+      [
+        "../src/components/text.component.ts",
+        1
+      ],
+      [
+        "../src/components/tileset.component.ts",
+        1
+      ],
+      [
+        "../src/components/velocity.component.ts",
+        1
+      ],
+      [
+        "../src/constants.ts",
+        1
+      ],
+      [
+        "../src/effects/index.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-animation.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-asset-map.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-asset-preload.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-camera.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-collision.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-depth.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-input.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-map-layer.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-map-object.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-position.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-scrollfactor.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-sprite.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-text.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-tileset.effect.ts",
+        1
+      ],
+      [
+        "../src/effects/phaser-velocity.effect.ts",
+        1
+      ],
+      [
+        "../src/main.ts",
+        1
+      ],
+      [
+        "../src/services/index.ts",
+        1
+      ],
+      [
+        "../src/services/phaser.service.ts",
+        1
+      ],
+      [
+        "../src/systems/index.ts",
+        1
+      ],
+      [
+        "../src/systems/phaser.system.ts",
+        1
+      ],
+      [
+        "../src/topics/index.ts",
+        1
+      ],
+      [
+        "../src/topics/map-object.topic.ts",
         1
       ],
       [
@@ -1259,6 +2098,86 @@
       ],
       [
         "../src/ts/worlds/index.ts",
+        1
+      ],
+      [
+        "../src/types/animation.ts",
+        1
+      ],
+      [
+        "../src/types/asset-map.ts",
+        1
+      ],
+      [
+        "../src/types/asset-tileset.ts",
+        1
+      ],
+      [
+        "../src/types/camera.ts",
+        1
+      ],
+      [
+        "../src/types/collision.ts",
+        1
+      ],
+      [
+        "../src/types/component-type.ts",
+        1
+      ],
+      [
+        "../src/types/coordinates-2d.ts",
+        1
+      ],
+      [
+        "../src/types/index.ts",
+        1
+      ],
+      [
+        "../src/types/map-layer.ts",
+        1
+      ],
+      [
+        "../src/types/phaser-scene-method.ts",
+        1
+      ],
+      [
+        "../src/types/position.ts",
+        1
+      ],
+      [
+        "../src/types/scrollfactor.ts",
+        1
+      ],
+      [
+        "../src/types/size.ts",
+        1
+      ],
+      [
+        "../src/types/sprite.ts",
+        1
+      ],
+      [
+        "../src/types/text.ts",
+        1
+      ],
+      [
+        "../src/types/tileset.ts",
+        1
+      ],
+      [
+        "../src/types/velocity.ts",
+        1
+      ],
+      [
+        "../src/types/world-game-data.ts",
+        1
+      ],
+      [
+        "../src/worlds/game.world.ts",
+        1
+      ],
+      [
+        "../src/worlds/index.ts",
         1
       ],
       [
