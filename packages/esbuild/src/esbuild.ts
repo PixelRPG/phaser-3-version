@@ -4,7 +4,6 @@ import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import { getConfig } from "./config";
 import { Environment } from "./types";
-import { prototype } from "node:events";
 
 const argv = yargs(hideBin(process.argv))
   .option("dev", {

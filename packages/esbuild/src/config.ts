@@ -6,7 +6,7 @@ export const getConfig = (env: Environment) => {
   env.production = env.production || !env.development;
   return {
     plugins: [pnpPlugin()],
-    entryPoints: ["src/ts/main.ts"],
+    entryPoints: ["src/main.ts"],
     bundle: true,
     minify: env.production,
     outdir: "dist/assets/scripts",
