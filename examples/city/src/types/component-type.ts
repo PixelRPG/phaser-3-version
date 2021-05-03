@@ -8,6 +8,7 @@ export enum ComponentType {
   Position,
   Player,
   MapLayer,
+  Collision,
   Sprite,
   Animation,
   Camera,

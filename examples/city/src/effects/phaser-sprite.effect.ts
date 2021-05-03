@@ -45,18 +45,22 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
       }
     };
 
+    const onCreate = () => {
+      for (const [entities, [sprites]] of query(SpriteComponent)) {
+        for (let i = 0; i < entities.length; i++) {
+          console.debug("Create Sprite");
+          phaserService.createSprite(
+            world.state.currentTickData.scenes[0].physics,
+            entities[i],
+            sprites[i]
+          );
+        }
+      }
+    };
+
     return () => {
       if (world.state.currentTickData.step === PhaserSceneMethod.create) {
-        for (const [entities, [sprites]] of query(SpriteComponent)) {
-          for (let i = 0; i < entities.length; i++) {
-            console.debug("Create Sprite");
-            phaserService.createSprite(
-              world.state.currentTickData.scenes[0].physics,
-              entities[i],
-              sprites[i]
-            );
-          }
-        }
+        onCreate();
       }
 
       for (const mapObject of mapObjectTopic) {

@@ -15,6 +15,7 @@ import {
   DepthComponent,
   TextComponent,
   ScrollfactorComponent,
+  CollisionComponent,
 } from "../components";
 import {
   phaserSystem,
@@ -68,17 +69,23 @@ const mapLayer1Component = gameWorld.component(MapLayerComponent, {
 const mapLayer1DepthComponent = gameWorld.component(DepthComponent, -10);
 gameWorld.spawn(mapLayer1Component, mapLayer1DepthComponent);
 
-const mapLayer2Component = gameWorld.component(MapLayerComponent, {
+const mapLayerWorldComponent = gameWorld.component(MapLayerComponent, {
   name: "World",
   x: 0,
   y: 0,
   depth: 0,
-  collides: true,
   assetMapEntry,
   tilesetEntry,
+  collides: true,
+  collisionProperty: "collides",
 });
-const mapLayer2DepthComponent = gameWorld.component(DepthComponent, 0);
-gameWorld.spawn(mapLayer2Component, mapLayer2DepthComponent);
+const mapLayerWorldDepthComponent = gameWorld.component(DepthComponent, 0);
+const mapLayerWorldCollisionComponent = gameWorld.component(CollisionComponent);
+gameWorld.spawn(
+  mapLayerWorldComponent,
+  mapLayerWorldDepthComponent,
+  mapLayerWorldCollisionComponent
+);
 
 const mapLayer3Component = gameWorld.component(MapLayerComponent, {
   name: "Above Player",
@@ -175,6 +182,10 @@ const playerVelocityComponent = gameWorld.component(VelocityComponent, {
   y: 0,
 });
 
+const playerCollisionVelocityComponent = gameWorld.component(
+  CollisionComponent
+);
+
 const playerComponent = gameWorld.component(PlayerComponent);
 
 const playerEntry = gameWorld.spawn(
@@ -182,6 +193,7 @@ const playerEntry = gameWorld.spawn(
   playerSpriteComponent,
   playerPositionComponent,
   playerVelocityComponent,
+  playerCollisionVelocityComponent,
   playerComponent
 );
 

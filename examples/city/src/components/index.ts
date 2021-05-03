@@ -5,6 +5,7 @@ export * from "./asset-map.component";
 export * from "./asset-tileset.component";
 export * from "./camera.component";
 export * from "./position.component";
+export * from "./collision.component";
 export * from "./depth.component";
 export * from "./map-layer.component";
 export * from "./scrollfactor.component";

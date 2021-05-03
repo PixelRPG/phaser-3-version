@@ -15,32 +15,36 @@ export const phaserVelocityEffect = createEffect<
   const state: PhaserVelocityEffectState = {};
   const phaserService = PhaserService.getInstance();
 
-  return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
-      for (const [entities, [velocitys, positions]] of query(
-        VelocityComponent,
-        PositionComponent
-      )) {
-        for (let i = 0; i < entities.length; i++) {
-          const gameObject: any = phaserService.tryGetGameObject(entities[i]);
-          if (!gameObject || typeof gameObject.setVelocity !== "function") {
-            console.warn(
-              `The entry ${entities[i]} has no matching phaser object which can have a velocitys`
-            );
-          } else {
-            gameObject.setVelocity(velocitys[i].x, velocitys[i].y);
+  const onCreate = () => {
+    for (const [entities, [velocitys, positions]] of query(
+      VelocityComponent,
+      PositionComponent
+    )) {
+      for (let i = 0; i < entities.length; i++) {
+        const gameObject: any = phaserService.tryGetGameObject(entities[i]);
+        if (!gameObject || typeof gameObject.setVelocity !== "function") {
+          console.warn(
+            `The entry ${entities[i]} has no matching phaser object which can have a velocitys`
+          );
+        } else {
+          gameObject.setVelocity(velocitys[i].x, velocitys[i].y);
 
-            // Normalize and scale the velocity so that player can't move faster along a diagonal
-            gameObject.body.velocity.normalize().scale(velocitys[i].speed);
+          // Normalize and scale the velocity so that player can't move faster along a diagonal
+          gameObject.body.velocity.normalize().scale(velocitys[i].speed);
 
-            // Sync position
-            if (gameObject?.body?.position) {
-              positions[i].x = gameObject.body.position.x;
-              positions[i].y = gameObject.body.position.y;
-            }
+          // Sync position
+          if (gameObject?.body?.position) {
+            positions[i].x = gameObject.body.position.x;
+            positions[i].y = gameObject.body.position.y;
           }
         }
       }
+    }
+  };
+
+  return () => {
+    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+      onCreate();
     }
 
     return state;

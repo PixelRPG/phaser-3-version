@@ -3,6 +3,11 @@ import { gameWorld } from "./worlds";
 
 import "phaser";
 
+/**
+ * Credits:
+ *  - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
+ *  - Tuxemon, https://github.com/Tuxemon/Tuxemon
+ */
 class Scene extends Phaser.Scene {
   // constructor() {}
 
@@ -32,11 +37,6 @@ class Scene extends Phaser.Scene {
       step: PhaserSceneMethod.create,
     });
 
-    // worldLayer.setCollisionByProperty({ collides: true });
-
-    // Watch the player and worldLayer for collisions, for the duration of the scene:
-    // this.physics.add.collider(player, worldLayer);
-
     // Debug graphics
     this.input.keyboard.once("keydown-D", (/*event*/) => {
       // Turn on physics debugging to show player's hitbox
@@ -62,11 +62,6 @@ class Scene extends Phaser.Scene {
   }
 }
 
-/**
- * Credits:
- *  - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
- *  - Tuxemon, https://github.com/Tuxemon/Tuxemon
- */
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
