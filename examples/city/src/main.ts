@@ -1,5 +1,5 @@
 import { PhaserSceneMethod } from "./types";
-import { gameWorld } from "./worlds";
+import { GameWorld } from "./worlds";
 
 import "phaser";
 
@@ -9,10 +9,13 @@ import "phaser";
  *  - Tuxemon, https://github.com/Tuxemon/Tuxemon
  */
 class Scene extends Phaser.Scene {
+
+  world = new GameWorld();
+
   // constructor() {}
 
   init() {
-    gameWorld.tick({
+    this.world.world.tick({
       time: 0,
       delta: 0,
       scenes: [this],
@@ -21,7 +24,7 @@ class Scene extends Phaser.Scene {
   }
 
   preload() {
-    gameWorld.tick({
+    this.world.world.tick({
       time: 0,
       delta: 0,
       scenes: [this],
@@ -31,7 +34,7 @@ class Scene extends Phaser.Scene {
 
   create() {
     console.debug("create");
-    gameWorld.tick({
+    this.world.world.tick({
       time: 0,
       delta: 0,
       scenes: [this],
@@ -54,7 +57,7 @@ class Scene extends Phaser.Scene {
   }
 
   update(time: number, delta: number) {
-    gameWorld.tick({
+    this.world.world.tick({
       time,
       delta,
       scenes: [this],

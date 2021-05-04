@@ -1,11 +1,15 @@
-import { createComponentType } from "@javelin/ecs";
-import { ComponentType } from "../types";
+import { createComponentType,string } from "@javelin/ecs";
+import { ComponentType, Player } from "../types";
 
 /**
  *
  */
 export const PlayerComponent = createComponentType({
   type: ComponentType.Player,
-  schema: {},
-  // initialize(position) {},
+  schema: {
+    name: string,
+  },
+  initialize(player, data: Player) {
+    player.name = data.name;
+  },
 });
