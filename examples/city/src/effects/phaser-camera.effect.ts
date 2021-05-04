@@ -17,7 +17,7 @@ export const phaserCameraEffect = createEffect<
   const phaserScene = world.state.currentTickData.scenes[0];
   const phaserCameras = phaserScene.cameras;
 
-  const onCreate = () => {
+  const createSplitscreen = () => {
     // TODO
     const map = Array.from(phaserService.getAllMaps(), ([, value]) => value)[0];
 
@@ -89,6 +89,10 @@ export const phaserCameraEffect = createEffect<
         phaserService.createCamera(phaserCameras, cameraEntry, cameraComponent);
       }
     }
+  };
+
+  const onCreate = () => {
+    createSplitscreen();
   };
 
   const eachUpdate = () => {

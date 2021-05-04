@@ -5,6 +5,7 @@ export * from "./camera";
 export * from "./collision";
 export * from "./component-type";
 export * from "./phaser-scene-method";
+export * from "./player-input";
 export * from "./player";
 export * from "./position";
 export * from "./scrollfactor";
