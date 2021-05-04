@@ -252,15 +252,14 @@ export class PhaserService {
     cameraComponent: Component<Camera>
   ) {
     let camera: Phaser.Cameras.Scene2D.Camera;
+    
     // Workaround
     if (cameraComponent.isMain) {
       camera = cameraManager.main;
-      if (cameraComponent.x) {
-        camera.setPosition(cameraComponent.x, cameraComponent.y);
-      }
-      if (cameraComponent.width) {
-        camera.setSize(cameraComponent.width, cameraComponent.height);
-      }
+
+      if (typeof cameraComponent.x === 'number' && typeof cameraComponent.y === 'number' && typeof cameraComponent.width === 'number' && typeof cameraComponent.height === 'number')
+      camera.setBounds(cameraComponent.x, cameraComponent.y, cameraComponent.width, cameraComponent.height);
+
       if (cameraComponent.name) {
         camera.setName(cameraComponent.name);
       }
@@ -273,6 +272,11 @@ export class PhaserService {
         cameraComponent.isMain,
         cameraComponent.name
       );
+    }
+
+    if (cameraComponent.followEntry) {
+      const phaserGameObject = this.getGameObject(cameraComponent.followEntry);
+      camera.startFollow(phaserGameObject);
     }
 
     if (!camera) {

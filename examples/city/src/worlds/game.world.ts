@@ -10,7 +10,6 @@ import {
   SpriteComponent,
   MapLayerComponent,
   AnimationComponent,
-  CameraComponent,
   VelocityComponent,
   DepthComponent,
   TextComponent,
@@ -176,7 +175,7 @@ const playerCollisionVelocityComponent = gameWorld.component(
 
 const playerComponent = gameWorld.component(PlayerComponent);
 
-const playerEntry = gameWorld.spawn(
+gameWorld.spawn(
   playerAssetAtlasComponent,
   playerSpriteComponent,
   playerPositionComponent,
@@ -184,14 +183,6 @@ const playerEntry = gameWorld.spawn(
   playerCollisionVelocityComponent,
   playerComponent
 );
-
-// CAMERA
-
-const cameraComponent = gameWorld.component(CameraComponent, {
-  followEntry: playerEntry,
-  isMain: true,
-});
-gameWorld.spawn(cameraComponent);
 
 // TEXT
 

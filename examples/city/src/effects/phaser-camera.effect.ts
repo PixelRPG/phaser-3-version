@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
-import { CameraComponent } from "../components";
+import { CameraComponent, PlayerComponent } from "../components";
 import { WorldGameData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
@@ -14,33 +14,41 @@ export const phaserCameraEffect = createEffect<
 >((world: World<WorldGameData>) => {
   const state: PhaserCameraEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const phaserScene = world.state.currentTickData.scenes[0];
+  const phaserCameras = phaserScene.cameras;
 
   const onCreate = () => {
-    for (const [entities, [cameras]] of query(CameraComponent)) {
-      for (let i = 0; i < entities.length; i++) {
+    // TODO
+    const map = Array.from(
+      phaserService.getAllMaps(),
+      ([, value]) => value
+    )[0];
+
+    // Create a camera for each player
+    for (const [playerEntities, [players]] of query(PlayerComponent)) {
+      for (let i = 0; i < playerEntities.length; i++) {
+        const cameraComponent = world.component(CameraComponent, {
+          followEntry: playerEntities[i],
+          x: 0,
+          y: 0,
+          width: map.widthInPixels,
+          height: map.heightInPixels,
+          isMain: i === 0,
+        });
+
+        const cameraEntry = world.spawn(cameraComponent);
+
         phaserService.createCamera(
-          world.state.currentTickData.scenes[0].cameras,
-          entities[i],
-          cameras[i]
+          phaserCameras,
+          cameraEntry,
+          cameraComponent,
         );
       }
     }
   };
 
   const eachUpdate = () => {
-    for (const [entities, [cameras]] of query(CameraComponent)) {
-      for (let i = 0; i < entities.length; i++) {
-        const gameObject = phaserService.getGameObject(cameras[i].followEntry);
-        const camera = phaserService.getCamera(entities[i]);
-        // TODO
-        const map = Array.from(
-          phaserService.getAllMaps(),
-          ([, value]) => value
-        )[0];
-        camera.startFollow(gameObject);
-        camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-      }
-    }
+    //
   };
 
   return () => {
