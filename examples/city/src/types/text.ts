@@ -1,6 +1,8 @@
 import { ComponentProps } from "@javelin/ecs";
+import { Entry } from "./entry";
 
-export interface Scrollfactor extends ComponentProps {
-  x?: number;
-  y?: number;
+export interface Text extends ComponentProps {
+  text: string;
+  style?: Phaser.Types.GameObjects.Text.TextStyle;
+  playerEntry?: Entry;
 }

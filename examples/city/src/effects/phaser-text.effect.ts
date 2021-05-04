@@ -19,7 +19,9 @@ export const phaserTextEffect = createEffect<
     for (const [entities, [texts]] of query(TextComponent)) {
       for (let i = 0; i < entities.length; i++) {
         console.debug("afterPreload TextComponent", entities[i], texts[i]);
-        phaserService.createText(
+
+        const phaserText = phaserService.createText(
+          world,
           world.state.currentTickData.scenes[0],
           entities[i],
           texts[i]

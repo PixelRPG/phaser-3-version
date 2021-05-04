@@ -1,9 +1,6 @@
 import { ComponentProps } from "@javelin/ecs";
-import { Entry } from "./entry";
 
 export interface Camera extends ComponentProps {
-  /** Entry id (with a VelocityComponent) of the phaser gameObject (e.g. a SpriteComponent) which is to be followed by the camera */
-  followEntry?: Entry;
   /** The horizontal position of the Camera viewport. Default 0. */
   x?: number;
   /** The vertical position of the Camera viewport. Default 0. */

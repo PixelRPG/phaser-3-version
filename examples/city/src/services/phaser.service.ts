@@ -1,4 +1,5 @@
-import { Component } from "@javelin/ecs";
+import { Component, World } from "@javelin/ecs";
+import { CameraComponent, PlayerComponent } from "../components";
 import {
   AssetMap,
   Tileset,
@@ -7,6 +8,8 @@ import {
   Animation,
   Camera,
   Text,
+  Entry,
+  WorldGameData,
 } from "../types";
 
 export class PhaserService {
@@ -25,6 +28,10 @@ export class PhaserService {
 
   protected constructor() {
     /** protected */
+  }
+
+  protected mapToArray<T>(map: Map<number, T>) {
+    return Array.from(map, ([, value]) => value);
   }
 
   public static getInstance() {
@@ -154,7 +161,7 @@ export class PhaserService {
   }
 
   public getAllMaps() {
-    return this._maps;
+    return this.mapToArray<Phaser.Tilemaps.Tilemap>(this._maps);
   }
 
   public createSprite(
@@ -247,12 +254,13 @@ export class PhaserService {
   }
 
   public createCamera(
+    world: World<any>,
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
     cameraEntry: number,
     cameraComponent: Component<Camera>
   ) {
     let camera: Phaser.Cameras.Scene2D.Camera;
-    
+
     // Workaround
     if (cameraComponent.isMain) {
       camera = cameraManager.main;
@@ -280,11 +288,17 @@ export class PhaserService {
     }
 
     if (cameraComponent.bounds) {
-      camera.setBounds(cameraComponent.bounds.x, cameraComponent.bounds.y, cameraComponent.bounds.width, cameraComponent.bounds.height);
+      camera.setBounds(
+        cameraComponent.bounds.x,
+        cameraComponent.bounds.y,
+        cameraComponent.bounds.width,
+        cameraComponent.bounds.height
+      );
     }
 
-    if (cameraComponent.followEntry) {
-      const phaserGameObject = this.getGameObject(cameraComponent.followEntry);
+    // If the camera has a player component, follow the player
+    if (world.tryGet(cameraEntry, PlayerComponent)) {
+      const phaserGameObject = this.getGameObject(cameraEntry);
       camera.startFollow(phaserGameObject);
     }
 
@@ -309,22 +323,47 @@ export class PhaserService {
   }
 
   public getAllCameras() {
-    return this._cameras;
+    return this.mapToArray<Phaser.Cameras.Scene2D.Camera>(this._cameras);
   }
 
   public createText(
+    world: World<any>,
     scene: Phaser.Scene,
     textEntry: number,
     textComponent: Component<Text>
   ) {
-    const text = scene.add.text(0, 0, textComponent.text, textComponent.style);
+    const phaserText = scene.add.text(
+      0,
+      0,
+      textComponent.text,
+      textComponent.style
+    );
 
-    if (!text) {
+    /**
+     * Show text only on camera of player
+     * TODO move to camera or text effect?
+     */
+    if (textComponent.playerEntry) {
+      const showCamera = this.getCamera(textComponent.playerEntry);
+      if (!showCamera) {
+        console.warn("No camera for player found!");
+      } else {
+        const phaserCameras = this.getAllCameras();
+        for (let i = 0; i < phaserCameras.length; i++) {
+          const ignoreCamera = phaserCameras[i];
+          if (ignoreCamera.id !== showCamera.id) {
+            ignoreCamera.ignore(phaserText);
+          }
+        }
+      }
+    }
+
+    if (!phaserText) {
       throw new Error(`Can't add ${textEntry} text!`);
     }
 
-    this._texts.set(textEntry, text);
-    return text;
+    this._texts.set(textEntry, phaserText);
+    return phaserText;
   }
 
   public tryGetText(textEntry: number) {

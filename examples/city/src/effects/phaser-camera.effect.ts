@@ -17,9 +17,13 @@ export const phaserCameraEffect = createEffect<
   const phaserScene = world.state.currentTickData.scenes[0];
   const phaserCameras = phaserScene.cameras;
 
-  const createSplitscreen = () => {
-    // TODO
-    const map = Array.from(phaserService.getAllMaps(), ([, value]) => value)[0];
+  /**
+   * Attach camera to player
+   * - Creates split screens for multiple players
+   */
+  const attachCameraToPlayer = () => {
+    // TODO get active map
+    const map = phaserService.getAllMaps()[0];
 
     // Create a camera for each player
     for (const [playerEntities, [players]] of query(PlayerComponent)) {
@@ -74,7 +78,6 @@ export const phaserCameraEffect = createEffect<
         }
 
         const cameraComponent = world.component(CameraComponent, {
-          followEntry: playerEntities[i],
           isMain: i === 0,
           name: playerComponent.name,
           bounds,
@@ -84,15 +87,20 @@ export const phaserCameraEffect = createEffect<
           height: viewport.height,
         });
 
-        const cameraEntry = world.spawn(cameraComponent);
+        world.attach(playerEntities[i], cameraComponent);
 
-        phaserService.createCamera(phaserCameras, cameraEntry, cameraComponent);
+        phaserService.createCamera(
+          world,
+          phaserCameras,
+          playerEntities[i],
+          cameraComponent
+        );
       }
     }
   };
 
   const onCreate = () => {
-    createSplitscreen();
+    attachCameraToPlayer();
   };
 
   const eachUpdate = () => {

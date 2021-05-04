@@ -8,7 +8,6 @@ import { extend } from "@ribajs/utils";
 export const CameraComponent = createComponentType({
   type: ComponentType.Camera,
   schema: {
-    followEntry: number,
     x: { type: number, defaultValue: 0 },
     y: { type: number, defaultValue: 0 },
     width: number,

@@ -54,13 +54,53 @@ export class GameWorld {
 
     const playerComponent = this.world.component(PlayerComponent, playerData);
 
-    this.world.spawn(
+    const playerEntry = this.world.spawn(
       playerAssetAtlasComponent,
       playerSpriteComponent,
       playerPositionComponent,
       playerVelocityComponent,
       playerCollisionVelocityComponent,
       playerComponent
+    );
+
+    return {
+      playerEntry,
+      playerAssetAtlasComponent,
+      playerSpriteComponent,
+      playerPositionComponent,
+      playerVelocityComponent,
+      playerCollisionVelocityComponent,
+      playerComponent,
+    };
+  }
+
+  spawnPlayerText(playerEntry: number, text: string) {
+    // Help text that has a "fixed" position on the screen
+    const textComponent = this.world.component(TextComponent, {
+      text: text,
+      playerEntry: playerEntry,
+      style: {
+        font: "18px monospace",
+        color: "#000000",
+        padding: { x: 20, y: 10 },
+        backgroundColor: "#ffffff",
+      },
+    });
+    const textPositionComponent = this.world.component(
+      PositionComponent,
+      16,
+      16
+    );
+    const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
+      x: 0,
+      y: 0,
+    });
+    const textDepthComponent = this.world.component(DepthComponent, 30);
+    this.world.spawn(
+      textComponent,
+      textPositionComponent,
+      scrollfactorComponent,
+      textDepthComponent
     );
   }
 
@@ -189,38 +229,25 @@ export class GameWorld {
     this.world.spawn(animationBackWalk);
 
     // PLAYER
-    this.spawnPlayer({ name: "Player 1", playerNumber: 1 });
-    this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
+
+    const { playerEntry: p1Entry } = this.spawnPlayer({
+      name: "Player 1",
+      playerNumber: 1,
+    });
+    const {
+      playerEntry: p2Entry,
+      playerComponent: p2Component,
+    } = this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
     this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
     // this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
 
     // TEXT
 
-    // Help text that has a "fixed" position on the screen
-    const textComponent = this.world.component(TextComponent, {
-      text: 'Arrow keys to move\nPress "D" to show hitboxes',
-      style: {
-        font: "18px monospace",
-        color: "#000000",
-        padding: { x: 20, y: 10 },
-        backgroundColor: "#ffffff",
-      },
-    });
-    const textPositionComponent = this.world.component(
-      PositionComponent,
-      16,
-      16
+    this.spawnPlayerText(
+      p1Entry,
+      'Arrow keys to move\nPress "D" to show hitboxes'
     );
-    const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
-      x: 0,
-      y: 0,
-    });
-    const textDepthComponent = this.world.component(DepthComponent, 30);
-    this.world.spawn(
-      textComponent,
-      textPositionComponent,
-      scrollfactorComponent,
-      textDepthComponent
-    );
+
+    this.spawnPlayerText(p2Entry, p2Component.name);
   }
 }
