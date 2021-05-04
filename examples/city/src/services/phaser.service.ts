@@ -257,8 +257,13 @@ export class PhaserService {
     if (cameraComponent.isMain) {
       camera = cameraManager.main;
 
-      if (typeof cameraComponent.x === 'number' && typeof cameraComponent.y === 'number' && typeof cameraComponent.width === 'number' && typeof cameraComponent.height === 'number')
-      camera.setBounds(cameraComponent.x, cameraComponent.y, cameraComponent.width, cameraComponent.height);
+      if (cameraComponent.width) {
+        camera.setSize(cameraComponent.width, cameraComponent.height);
+      }
+
+      if (cameraComponent.x) {
+        camera.setPosition(cameraComponent.x, cameraComponent.y);
+      }
 
       if (cameraComponent.name) {
         camera.setName(cameraComponent.name);
@@ -272,6 +277,10 @@ export class PhaserService {
         cameraComponent.isMain,
         cameraComponent.name
       );
+    }
+
+    if (cameraComponent.bounds) {
+      camera.setBounds(cameraComponent.bounds.x, cameraComponent.bounds.y, cameraComponent.bounds.width, cameraComponent.bounds.height);
     }
 
     if (cameraComponent.followEntry) {

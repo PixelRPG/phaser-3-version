@@ -1,5 +1,6 @@
 import { createComponentType, number, boolean, string } from "@javelin/ecs";
 import { ComponentType, Camera } from "../types";
+import { extend } from "@ribajs/utils";
 
 /**
  *
@@ -16,26 +17,6 @@ export const CameraComponent = createComponentType({
     isMain: { type: boolean, defaultValue: false },
   },
   initialize(camera, data: Camera) {
-    if (data.followEntry) {
-      camera.followEntry = data.followEntry;
-    }
-    if (data.x) {
-      camera.x = data.x;
-    }
-    if (data.y) {
-      camera.y = data.y;
-    }
-    if (data.width) {
-      camera.width = data.width;
-    }
-    if (data.height) {
-      camera.height = data.height;
-    }
-    if (data.name) {
-      camera.name = data.name;
-    }
-    if (data.isMain) {
-      camera.isMain = data.isMain;
-    }
+    extend({ deep: true }, camera, data);
   },
 });

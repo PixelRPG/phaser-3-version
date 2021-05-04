@@ -9,7 +9,6 @@ import "phaser";
  *  - Tuxemon, https://github.com/Tuxemon/Tuxemon
  */
 class Scene extends Phaser.Scene {
-
   world = new GameWorld();
 
   // constructor() {}

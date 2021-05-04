@@ -20,7 +20,6 @@ import { phaserSystem } from "../systems";
 import { mapObjectTopic } from "../topics";
 
 export class GameWorld {
-
   world = createWorld<WorldGameData>({
     topics: [mapObjectTopic],
     systems: [phaserSystem],
@@ -109,7 +108,9 @@ export class GameWorld {
       collisionProperty: "collides",
     });
     const mapLayerWorldDepthComponent = this.world.component(DepthComponent, 0);
-    const mapLayerWorldCollisionComponent = this.world.component(CollisionComponent);
+    const mapLayerWorldCollisionComponent = this.world.component(
+      CollisionComponent
+    );
     this.world.spawn(
       mapLayerWorldComponent,
       mapLayerWorldDepthComponent,
@@ -188,7 +189,10 @@ export class GameWorld {
     this.world.spawn(animationBackWalk);
 
     // PLAYER
-    this.spawnPlayer({ name: 'Player 1'});
+    this.spawnPlayer({ name: "Player 1", playerNumber: 1 });
+    this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
+    this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
+    this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
 
     // TEXT
 
@@ -202,7 +206,11 @@ export class GameWorld {
         backgroundColor: "#ffffff",
       },
     });
-    const textPositionComponent = this.world.component(PositionComponent, 16, 16);
+    const textPositionComponent = this.world.component(
+      PositionComponent,
+      16,
+      16
+    );
     const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
       x: 0,
       y: 0,
