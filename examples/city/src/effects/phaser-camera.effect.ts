@@ -38,13 +38,17 @@ export const phaserCameraEffect = createEffect<
       };
       let width = phaserScene.game.renderer.width;
       let height = phaserScene.game.renderer.height;
+      let borderX = 0;
+      let borderY = 0;
 
       if (playerCount >= 2) {
         width = width / 2;
+        borderX = 2;
       }
 
       if (playerCount >= 3) {
         height = height / 2;
+        borderY = 2;
       }
 
       for (let i = 0; i < playerEntities.length; i++) {
@@ -52,26 +56,23 @@ export const phaserCameraEffect = createEffect<
         const viewport = {
           x: 0,
           y: 0,
-          width,
-          height,
+          width: width - borderX,
+          height: height - borderY,
         };
 
         switch (playerComponent.playerNumber) {
           case 2:
-            viewport.x = width - 1;
+            viewport.x = width + borderX;
             break;
           case 3:
-            viewport.y = height - 1;
+            viewport.y = height + borderY;
             break;
           case 4:
-            viewport.x = width - 1;
-            viewport.y = height - 1;
+            viewport.x = width + borderX;
+            viewport.y = height + borderY;
             break;
         }
 
-        // if (playerComponent.playerNumber !== 1) {
-        //   continue;
-        // }
         const cameraComponent = world.component(CameraComponent, {
           followEntry: playerEntities[i],
           isMain: i === 0,

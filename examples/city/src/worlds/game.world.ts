@@ -192,7 +192,7 @@ export class GameWorld {
     this.spawnPlayer({ name: "Player 1", playerNumber: 1 });
     this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
     this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
-    this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
+    // this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
 
     // TEXT
 
