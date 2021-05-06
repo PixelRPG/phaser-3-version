@@ -11,6 +11,7 @@ export * from "./position";
 export * from "./scrollfactor";
 export * from "./size";
 export * from "./coordinates-2d";
+export * from "./debug";
 export * from "./entry";
 export * from "./map-layer";
 export * from "./sprite";

@@ -101,7 +101,7 @@ export class PhaserService {
   }
 
   public getAllLayers() {
-    return this._layers;
+    return this.mapToArray<Phaser.Tilemaps.TilemapLayer>(this._layers);
   }
 
   public createTileset(

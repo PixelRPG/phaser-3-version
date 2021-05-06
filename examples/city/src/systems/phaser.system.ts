@@ -17,6 +17,7 @@ import {
   phaserDepthEffect,
   phaserVelocityEffect,
   phaserCollisionEffect,
+  phaserDebugEffect,
 } from "../effects";
 
 /**
@@ -38,4 +39,5 @@ export const phaserSystem: System<WorldGameData> = (/*world*/) => {
   phaserScrollfactorEffect();
   phaserDepthEffect();
   phaserCollisionEffect();
+  phaserDebugEffect();
 };

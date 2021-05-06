@@ -15,6 +15,7 @@ import {
   TextComponent,
   ScrollfactorComponent,
   CollisionComponent,
+  DebugComponent,
 } from "../components";
 import { phaserSystem } from "../systems";
 import { mapObjectTopic } from "../topics";
@@ -249,5 +250,8 @@ export class GameWorld {
     );
 
     this.spawnPlayerText(p2Entity, p2Component.name);
+
+    // Enable Debugging for this world
+    this.world.spawn(this.world.component(DebugComponent));
   }
 }

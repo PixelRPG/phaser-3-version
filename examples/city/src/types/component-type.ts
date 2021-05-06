@@ -16,4 +16,5 @@ export enum ComponentType {
   Text,
   Depth,
   Scrollfactor,
+  Debug,
 }

@@ -3681,6 +3681,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pixelrpg/city@workspace:examples/city":
+  version: 0.0.0-use.local
+  resolution: "@pixelrpg/city@workspace:examples/city"
+  dependencies:
+    "@javelin/ecs": ^0.22.0
+    "@ribajs/eslint-config": next
+    "@ribajs/events": next
+    "@ribajs/tsconfig": next
+    "@ribajs/types": next
+    "@ribajs/utils": next
+    "@rpg-phaser/esbuild": "workspace:*"
+    "@types/jest": ^26.0.23
+    "@typescript-eslint/eslint-plugin": ^4.22.1
+    "@typescript-eslint/parser": ^4.22.1
+    bootstrap: next
+    esbuild: ^0.11.18
+    eslint: ^7.25.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    free-tex-packer-cli: ^0.3.0
+    phaser: ^3.54.0
+    prettier: 2.2.1
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
 "@pixi/accessibility@npm:6.0.2":
   version: 6.0.2
   resolution: "@pixi/accessibility@npm:6.0.2"
@@ -7315,32 +7341,6 @@ __metadata:
   checksum: 45da6411e045d1b034242a8144f4a5e8c02ff1b68a2e0857807f5bb4b091c416f2015e075057f0f0dec200e7b35efe6ed4e301b43e365cedea09192f01a6839b
   languageName: node
   linkType: hard
-
-"@rpg-phaser/city@workspace:examples/city":
-  version: 0.0.0-use.local
-  resolution: "@rpg-phaser/city@workspace:examples/city"
-  dependencies:
-    "@javelin/ecs": ^0.22.0
-    "@ribajs/eslint-config": next
-    "@ribajs/events": next
-    "@ribajs/tsconfig": next
-    "@ribajs/types": next
-    "@ribajs/utils": next
-    "@rpg-phaser/esbuild": "workspace:*"
-    "@types/jest": ^26.0.23
-    "@typescript-eslint/eslint-plugin": ^4.22.1
-    "@typescript-eslint/parser": ^4.22.1
-    bootstrap: next
-    esbuild: ^0.11.18
-    eslint: ^7.25.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^3.4.0
-    free-tex-packer-cli: ^0.3.0
-    phaser: ^3.54.0
-    prettier: 2.2.1
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
 
 "@rpg-phaser/esbuild@workspace:*, @rpg-phaser/esbuild@workspace:packages/esbuild":
   version: 0.0.0-use.local
