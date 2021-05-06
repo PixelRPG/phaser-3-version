@@ -55,7 +55,7 @@ export const phaserInputEffect = createEffect<null, WorldGameData[]>(
         };
       }
       if (playerComponent.playerNumber === 4) {
-        console.warn("TODO Player 4 input");
+        // TODO
       }
       return null;
     };

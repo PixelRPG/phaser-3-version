@@ -1,5 +1,5 @@
 {
-  "name": "@rpg-phaser/esbuild",
+  "name": "@pixelrpg/esbuild",
   "main": "dist/config.js",
   "scripts": {
     "build": "tsc"

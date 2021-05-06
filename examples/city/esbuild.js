@@ -1,5 +1,5 @@
 const esbuild = require('esbuild');
-const { getConfig } = require('@rpg-phaser/esbuild');
+const { getConfig } = require('@pixelrpg/esbuild');
 
 const config = getConfig({ production: false });
 

@@ -21,10 +21,10 @@
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "license": "MIT",
   "devDependencies": {
+    "@pixelrpg/esbuild": "workspace:*",
     "@ribajs/eslint-config": "next",
     "@ribajs/tsconfig": "next",
     "@ribajs/types": "next",
-    "@rpg-phaser/esbuild": "workspace:*",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
