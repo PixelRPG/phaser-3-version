@@ -10,8 +10,8 @@ export const MapLayerComponent = createComponentType({
     name: string,
     x: number,
     y: number,
-    assetMapEntry: number,
-    tilesetEntry: number,
+    assetMapEntity: number,
+    tilesetEntity: number,
     collides: boolean,
     collisionProperty: string,
   },
@@ -19,7 +19,7 @@ export const MapLayerComponent = createComponentType({
     mapLayer.name = data.name;
     mapLayer.x = data.x || 0;
     mapLayer.y = data.y || 0;
-    mapLayer.assetMapEntry = data.assetMapEntry;
-    mapLayer.tilesetEntry = data.tilesetEntry;
+    mapLayer.assetMapEntity = data.assetMapEntity;
+    mapLayer.tilesetEntity = data.tilesetEntity;
   },
 });

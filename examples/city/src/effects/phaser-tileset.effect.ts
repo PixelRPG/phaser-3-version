@@ -18,11 +18,6 @@ export const phaserTilesetEffect = createEffect<
   const onCreate = () => {
     for (const [entities, [tilesets]] of query(TilesetComponent)) {
       for (let i = 0; i < entities.length; i++) {
-        console.debug(
-          "afterPreload TilesetComponent",
-          entities[i],
-          tilesets[i]
-        );
         phaserService.createTileset(entities[i], tilesets[i]);
       }
     }

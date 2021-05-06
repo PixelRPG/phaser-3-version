@@ -5,4 +5,5 @@ export type WorldGameData = {
   delta: number;
   scenes: Phaser.Scene[];
   step: PhaserSceneMethod;
+  phaserGameConfig: Phaser.Types.Core.GameConfig;
 };

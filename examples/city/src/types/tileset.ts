@@ -5,5 +5,5 @@ export interface Tileset extends ComponentProps {
   key: string;
   /** The name used in tiled */
   name: string;
-  assetMapEntry: number;
+  assetMapEntity: number;
 }

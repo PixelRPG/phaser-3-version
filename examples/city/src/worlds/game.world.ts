@@ -54,7 +54,7 @@ export class GameWorld {
 
     const playerComponent = this.world.component(PlayerComponent, playerData);
 
-    const playerEntry = this.world.spawn(
+    const playerEntity = this.world.spawn(
       playerAssetAtlasComponent,
       playerSpriteComponent,
       playerPositionComponent,
@@ -64,7 +64,7 @@ export class GameWorld {
     );
 
     return {
-      playerEntry,
+      playerEntity,
       playerAssetAtlasComponent,
       playerSpriteComponent,
       playerPositionComponent,
@@ -74,11 +74,11 @@ export class GameWorld {
     };
   }
 
-  spawnPlayerText(playerEntry: number, text: string) {
+  spawnPlayerText(playerEntity: number, text: string) {
     // Help text that has a "fixed" position on the screen
     const textComponent = this.world.component(TextComponent, {
       text: text,
-      playerEntry: playerEntry,
+      playerEntity: playerEntity,
       style: {
         font: "18px monospace",
         color: "#000000",
@@ -111,7 +111,7 @@ export class GameWorld {
       key: "map",
       url: "./assets/tilemaps/tuxemon-town.json",
     });
-    const assetMapEntry = this.world.spawn(assetMapComponent);
+    const assetMapEntity = this.world.spawn(assetMapComponent);
 
     const assetTilesetComponent = this.world.component(AssetTilesetComponent, {
       key: "tiles",
@@ -122,17 +122,17 @@ export class GameWorld {
     const tilesetComponent = this.world.component(TilesetComponent, {
       key: "tiles",
       name: "tuxmon-sample-32px-extruded",
-      assetMapEntry: assetMapEntry,
+      assetMapEntity: assetMapEntity,
     });
-    const tilesetEntry = this.world.spawn(tilesetComponent);
+    const tilesetEntity = this.world.spawn(tilesetComponent);
 
     const mapLayer1Component = this.world.component(MapLayerComponent, {
       name: "Below Player",
       x: 0,
       y: 0,
       depth: -10,
-      assetMapEntry,
-      tilesetEntry,
+      assetMapEntity,
+      tilesetEntity,
     });
     const mapLayer1DepthComponent = this.world.component(DepthComponent, -10);
     this.world.spawn(mapLayer1Component, mapLayer1DepthComponent);
@@ -142,8 +142,8 @@ export class GameWorld {
       x: 0,
       y: 0,
       depth: 0,
-      assetMapEntry,
-      tilesetEntry,
+      assetMapEntity,
+      tilesetEntity,
       collides: true,
       collisionProperty: "collides",
     });
@@ -162,8 +162,8 @@ export class GameWorld {
       x: 0,
       y: 0,
       depth: 10,
-      assetMapEntry,
-      tilesetEntry,
+      assetMapEntity,
+      tilesetEntity,
     });
     const mapLayer3DepthComponent = this.world.component(DepthComponent, 10);
     this.world.spawn(mapLayer3Component, mapLayer3DepthComponent);
@@ -230,24 +230,24 @@ export class GameWorld {
 
     // PLAYER
 
-    const { playerEntry: p1Entry } = this.spawnPlayer({
+    const { playerEntity: p1Entity } = this.spawnPlayer({
       name: "Player 1",
       playerNumber: 1,
     });
     const {
-      playerEntry: p2Entry,
+      playerEntity: p2Entity,
       playerComponent: p2Component,
     } = this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
     this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
-    // this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
+    this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
 
     // TEXT
 
     this.spawnPlayerText(
-      p1Entry,
+      p1Entity,
       'Arrow keys to move\nPress "D" to show hitboxes'
     );
 
-    this.spawnPlayerText(p2Entry, p2Component.name);
+    this.spawnPlayerText(p2Entity, p2Component.name);
   }
 }

@@ -9,7 +9,7 @@ export const TextComponent = createComponentType({
   type: ComponentType.Text,
   schema: {
     text: string,
-    playerEntry: number,
+    playerEntity: number,
     style: {
       fontFamily: string,
       fontSize: string,

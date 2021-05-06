@@ -31,7 +31,6 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
           position.x = spawnPoint.x;
           position.y = spawnPoint.y;
 
-          console.debug("Set Spawn Point", position);
           const sprite = phaserService.getSprite(entities[i]);
           // TODO move to position effect
           sprite.setPosition(position.x, position.y);
@@ -42,7 +41,6 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
     const onCreate = () => {
       for (const [entities, [sprites]] of query(SpriteComponent)) {
         for (let i = 0; i < entities.length; i++) {
-          console.debug("Create Sprite");
           phaserService.createSprite(
             world.state.currentTickData.scenes[0].physics,
             entities[i],

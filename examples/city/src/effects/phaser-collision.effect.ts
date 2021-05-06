@@ -27,7 +27,6 @@ export const phaserCollisionEffect = createEffect<any, WorldGameData[]>(
       for (const [entities] of query(MapLayerComponent, CollisionComponent)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserCollisionLayer = phaserService.getLayer(entities[i]);
-          console.debug("collision map layer entry: ", entities[i]);
           phaserCollisionLayer.setCollisionByProperty({
             [TILE_COLLSION_LAYER]: true,
           });
@@ -39,7 +38,6 @@ export const phaserCollisionEffect = createEffect<any, WorldGameData[]>(
       for (const [entities] of query(VelocityComponent, CollisionComponent)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserGameObject = phaserService.getGameObject(entities[i]);
-          console.debug("collision velocity entry: ", entities[i]);
           for (const phaserCollisionLayer of phaserCollisionLayers) {
             scene.physics.add.collider(phaserGameObject, phaserCollisionLayer);
           }

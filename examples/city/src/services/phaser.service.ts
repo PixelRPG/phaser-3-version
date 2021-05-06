@@ -1,5 +1,4 @@
 import { Component, World } from "@javelin/ecs";
-import { CameraComponent, PlayerComponent } from "../components";
 import {
   AssetMap,
   Tileset,
@@ -8,29 +7,28 @@ import {
   Animation,
   Camera,
   Text,
-  Entry,
-  WorldGameData,
+  Entity,
 } from "../types";
 
 export class PhaserService {
   protected static instance: PhaserService;
 
-  protected _tilesets = new Map<number, Phaser.Tilemaps.Tileset>();
-  protected _maps = new Map<number, Phaser.Tilemaps.Tilemap>();
-  protected _layers = new Map<number, Phaser.Tilemaps.TilemapLayer>();
+  protected _tilesets = new Map<Entity, Phaser.Tilemaps.Tileset>();
+  protected _maps = new Map<Entity, Phaser.Tilemaps.Tilemap>();
+  protected _layers = new Map<Entity, Phaser.Tilemaps.TilemapLayer>();
   protected _sprites = new Map<
-    number,
+    Entity,
     Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
   >();
-  protected _animations = new Map<number, Phaser.Animations.Animation>();
-  protected _cameras = new Map<number, Phaser.Cameras.Scene2D.Camera>();
-  protected _texts = new Map<number, Phaser.GameObjects.Text>();
+  protected _animations = new Map<Entity, Phaser.Animations.Animation>();
+  protected _cameras = new Map<Entity, Phaser.Cameras.Scene2D.Camera>();
+  protected _texts = new Map<Entity, Phaser.GameObjects.Text>();
 
   protected constructor() {
     /** protected */
   }
 
-  protected mapToArray<T>(map: Map<number, T>) {
+  protected mapToArray<T>(map: Map<Entity, T>) {
     return Array.from(map, ([, value]) => value);
   }
 
@@ -42,37 +40,37 @@ export class PhaserService {
     return PhaserService.instance;
   }
 
-  tryGetGameObject(entry: number): Phaser.GameObjects.GameObject | undefined {
-    const sprite = this.tryGetSprite(entry);
+  tryGetGameObject(entity: Entity): Phaser.GameObjects.GameObject | undefined {
+    const sprite = this.tryGetSprite(entity);
     if (sprite) {
       return sprite;
     }
 
-    const text = this.tryGetText(entry);
+    const text = this.tryGetText(entity);
     if (text) {
       return text;
     }
 
-    const layer = this.tryGetLayer(entry);
+    const layer = this.tryGetLayer(entity);
     if (layer) {
       return layer;
     }
   }
 
-  getGameObject(entry: number): Phaser.GameObjects.GameObject {
-    const gameObject = this.tryGetGameObject(entry);
+  getGameObject(entity: Entity): Phaser.GameObjects.GameObject {
+    const gameObject = this.tryGetGameObject(entity);
     if (!gameObject) {
-      throw new Error(`No GameObject for entry ${entry} found!`);
+      throw new Error(`No GameObject for entity ${entity} found!`);
     }
     return gameObject;
   }
 
   public createMapLayer(
-    mapLayerEntry: number,
+    mapLayerEntity: Entity,
     mapLayerComponent: Component<MapLayer>
   ) {
-    const map = this.getMap(mapLayerComponent.assetMapEntry);
-    const tileset = this.getTileset(mapLayerComponent.tilesetEntry);
+    const map = this.getMap(mapLayerComponent.assetMapEntity);
+    const tileset = this.getTileset(mapLayerComponent.tilesetEntity);
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
     const phaserLayer = map.createLayer(
@@ -86,18 +84,18 @@ export class PhaserService {
       collides: mapLayerComponent.collides,
     });
 
-    this._layers.set(mapLayerEntry, phaserLayer);
+    this._layers.set(mapLayerEntity, phaserLayer);
     return phaserLayer;
   }
 
-  public tryGetLayer(layerEntry: number) {
-    return this._layers.get(layerEntry);
+  public tryGetLayer(layerEntity: Entity) {
+    return this._layers.get(layerEntity);
   }
 
-  public getLayer(layerEntry: number) {
-    const layer = this.tryGetLayer(layerEntry);
+  public getLayer(layerEntity: Entity) {
+    const layer = this.tryGetLayer(layerEntity);
     if (!layer) {
-      throw new Error(`No Layer for entry ${layerEntry} found!`);
+      throw new Error(`No Layer for entity ${layerEntity} found!`);
     }
     return layer;
   }
@@ -107,27 +105,26 @@ export class PhaserService {
   }
 
   public createTileset(
-    tilesetEntry: number,
+    tilesetEntity: Entity,
     tilesetComponent: Component<Tileset>
   ) {
-    const map = this.getMap(tilesetComponent.assetMapEntry);
+    const map = this.getMap(tilesetComponent.assetMapEntity);
     const tileset = map.addTilesetImage(
       tilesetComponent.name,
       tilesetComponent.key
     );
-    console.debug("createTileset", tileset, tilesetEntry);
-    this._tilesets.set(tilesetEntry, tileset);
+    this._tilesets.set(tilesetEntity, tileset);
     return tileset;
   }
 
-  public tryGetTileset(tilesetEntry: number) {
-    return this._tilesets.get(tilesetEntry);
+  public tryGetTileset(tilesetEntity: Entity) {
+    return this._tilesets.get(tilesetEntity);
   }
 
-  public getTileset(tilesetEntry: number) {
-    const tileset = this.tryGetTileset(tilesetEntry);
+  public getTileset(tilesetEntity: Entity) {
+    const tileset = this.tryGetTileset(tilesetEntity);
     if (!tileset) {
-      throw new Error(`No tileset for tilesetEntry ${tilesetEntry} found!`);
+      throw new Error(`No tileset for tilesetEntity ${tilesetEntity} found!`);
     }
     return tileset;
   }
@@ -138,24 +135,24 @@ export class PhaserService {
 
   public createMap(
     scene: Phaser.Scene,
-    assetMapEntry: number,
+    assetMapEntity: Entity,
     assetMapComponent: Component<AssetMap>
   ) {
     const map = scene.make.tilemap({
       key: assetMapComponent.key,
     });
-    this._maps.set(assetMapEntry, map);
+    this._maps.set(assetMapEntity, map);
     return map;
   }
 
-  public tryGetMap(assetMapEntry: number) {
-    return this._maps.get(assetMapEntry);
+  public tryGetMap(assetMapEntity: Entity) {
+    return this._maps.get(assetMapEntity);
   }
 
-  public getMap(assetMapEntry: number) {
-    const map = this.tryGetMap(assetMapEntry);
+  public getMap(assetMapEntity: Entity) {
+    const map = this.tryGetMap(assetMapEntity);
     if (!map) {
-      throw new Error(`No map for assetMapEntry ${assetMapEntry} found!`);
+      throw new Error(`No map for assetMapEntity ${assetMapEntity} found!`);
     }
     return map;
   }
@@ -164,9 +161,14 @@ export class PhaserService {
     return this.mapToArray<Phaser.Tilemaps.Tilemap>(this._maps);
   }
 
+  public getActiveMap() {
+    // TODO
+    return this.getAllMaps()[0];
+  }
+
   public createSprite(
     physics: Phaser.Physics.Arcade.ArcadePhysics,
-    spriteEntry: number,
+    spriteEntity: Entity,
     spriteComponent: Component<Sprite>
   ) {
     const sprite = physics.add.sprite(
@@ -187,18 +189,18 @@ export class PhaserService {
     if (spriteComponent.offset) {
       sprite.setOffset(spriteComponent.offset.x, spriteComponent.offset.y);
     }
-    this._sprites.set(spriteEntry, sprite);
+    this._sprites.set(spriteEntity, sprite);
     return sprite;
   }
 
-  public tryGetSprite(spriteEntry: number) {
-    return this._sprites.get(spriteEntry);
+  public tryGetSprite(spriteEntity: Entity) {
+    return this._sprites.get(spriteEntity);
   }
 
-  public getSprite(spriteEntry: number) {
-    const sprite = this.tryGetSprite(spriteEntry);
+  public getSprite(spriteEntity: Entity) {
+    const sprite = this.tryGetSprite(spriteEntity);
     if (!sprite) {
-      throw new Error(`No sprite for spriteEntry ${spriteEntry} found!`);
+      throw new Error(`No sprite for spriteEntity ${spriteEntity} found!`);
     }
     return sprite;
   }
@@ -209,7 +211,7 @@ export class PhaserService {
 
   public createAnimation(
     animationManager: Phaser.Animations.AnimationManager,
-    animationEntry: number,
+    animationEntity: Entity,
     animationComponent: Component<Animation>
   ) {
     const animation = animationManager.create({
@@ -231,19 +233,19 @@ export class PhaserService {
       throw new Error(`Can't create ${animationComponent.key} animation!`);
     }
 
-    this._animations.set(animationEntry, animation);
+    this._animations.set(animationEntity, animation);
     return animation;
   }
 
-  public tryGetAnimation(animationEntry: number) {
-    return this._animations.get(animationEntry);
+  public tryGetAnimation(animationEntity: Entity) {
+    return this._animations.get(animationEntity);
   }
 
-  public getAnimation(animationEntry: number) {
-    const animation = this.tryGetAnimation(animationEntry);
+  public getAnimation(animationEntity: Entity) {
+    const animation = this.tryGetAnimation(animationEntity);
     if (!animation) {
       throw new Error(
-        `No animation for animationEntry ${animationEntry} found!`
+        `No animation for animationEntity ${animationEntity} found!`
       );
     }
     return animation;
@@ -254,30 +256,16 @@ export class PhaserService {
   }
 
   public createCamera(
-    world: World<any>,
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
-    cameraEntry: number,
+    cameraEntity: Entity,
     cameraComponent: Component<Camera>
   ) {
-    let camera: Phaser.Cameras.Scene2D.Camera;
+    let phaserCamera: Phaser.Cameras.Scene2D.Camera;
 
-    // Workaround
     if (cameraComponent.isMain) {
-      camera = cameraManager.main;
-
-      if (cameraComponent.width) {
-        camera.setSize(cameraComponent.width, cameraComponent.height);
-      }
-
-      if (cameraComponent.x) {
-        camera.setPosition(cameraComponent.x, cameraComponent.y);
-      }
-
-      if (cameraComponent.name) {
-        camera.setName(cameraComponent.name);
-      }
+      phaserCamera = cameraManager.main;
     } else {
-      camera = cameraManager.add(
+      phaserCamera = cameraManager.add(
         cameraComponent.x,
         cameraComponent.y,
         cameraComponent.width,
@@ -287,8 +275,40 @@ export class PhaserService {
       );
     }
 
+    if (!phaserCamera) {
+      throw new Error(`Can't add ${cameraEntity} camera!`);
+    }
+
+    this.updateCamera(cameraEntity, cameraComponent, phaserCamera);
+
+    this._cameras.set(cameraEntity, phaserCamera);
+
+    return phaserCamera;
+  }
+
+  public updateCamera(
+    cameraEntity: Entity,
+    cameraComponent: Component<Camera>,
+    phaserCamera?: Phaser.Cameras.Scene2D.Camera
+  ) {
+    if (!phaserCamera) {
+      phaserCamera = this.getCamera(cameraEntity);
+    }
+
+    if (typeof cameraComponent.width === "number") {
+      phaserCamera.setSize(cameraComponent.width, cameraComponent.height);
+    }
+
+    if (typeof cameraComponent.x === "number") {
+      phaserCamera.setPosition(cameraComponent.x, cameraComponent.y);
+    }
+
+    if (typeof cameraComponent.name === "string") {
+      phaserCamera.setName(cameraComponent.name);
+    }
+
     if (cameraComponent.bounds) {
-      camera.setBounds(
+      phaserCamera.setBounds(
         cameraComponent.bounds.x,
         cameraComponent.bounds.y,
         cameraComponent.bounds.width,
@@ -296,28 +316,17 @@ export class PhaserService {
       );
     }
 
-    // If the camera has a player component, follow the player
-    if (world.tryGet(cameraEntry, PlayerComponent)) {
-      const phaserGameObject = this.getGameObject(cameraEntry);
-      camera.startFollow(phaserGameObject);
-    }
-
-    if (!camera) {
-      throw new Error(`Can't add ${cameraEntry} camera!`);
-    }
-
-    this._cameras.set(cameraEntry, camera);
-    return camera;
+    return phaserCamera;
   }
 
-  public tryGetCamera(cameraEntry: number) {
-    return this._cameras.get(cameraEntry);
+  public tryGetCamera(cameraEntity: Entity) {
+    return this._cameras.get(cameraEntity);
   }
 
-  public getCamera(cameraEntry: number) {
-    const camera = this.tryGetCamera(cameraEntry);
+  public getCamera(cameraEntity: Entity) {
+    const camera = this.tryGetCamera(cameraEntity);
     if (!camera) {
-      throw new Error(`No camera for cameraEntry ${cameraEntry} found!`);
+      throw new Error(`No camera for cameraEntity ${cameraEntity} found!`);
     }
     return camera;
   }
@@ -329,7 +338,7 @@ export class PhaserService {
   public createText(
     world: World<any>,
     scene: Phaser.Scene,
-    textEntry: number,
+    textEntity: Entity,
     textComponent: Component<Text>
   ) {
     const phaserText = scene.add.text(
@@ -343,8 +352,8 @@ export class PhaserService {
      * Show text only on camera of player
      * TODO move to camera or text effect?
      */
-    if (textComponent.playerEntry) {
-      const showCamera = this.getCamera(textComponent.playerEntry);
+    if (textComponent.playerEntity) {
+      const showCamera = this.getCamera(textComponent.playerEntity);
       if (!showCamera) {
         console.warn("No camera for player found!");
       } else {
@@ -359,21 +368,21 @@ export class PhaserService {
     }
 
     if (!phaserText) {
-      throw new Error(`Can't add ${textEntry} text!`);
+      throw new Error(`Can't add ${textEntity} text!`);
     }
 
-    this._texts.set(textEntry, phaserText);
+    this._texts.set(textEntity, phaserText);
     return phaserText;
   }
 
-  public tryGetText(textEntry: number) {
-    return this._texts.get(textEntry);
+  public tryGetText(textEntity: Entity) {
+    return this._texts.get(textEntity);
   }
 
-  public getText(textEntry: number) {
-    const text = this.tryGetText(textEntry);
+  public getText(textEntity: Entity) {
+    const text = this.tryGetText(textEntity);
     if (!text) {
-      throw new Error(`No text for entry ${textEntry} found!`);
+      throw new Error(`No text for entity ${textEntity} found!`);
     }
     return text;
   }

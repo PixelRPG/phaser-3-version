@@ -3,6 +3,24 @@ import { GameWorld } from "./worlds";
 
 import "phaser";
 
+const config: Phaser.Types.Core.GameConfig = {
+  type: Phaser.AUTO,
+  // width: 800,
+  // height: 600,
+  parent: "game-container",
+  pixelArt: true,
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { y: 0 },
+    },
+  },
+  scale: {
+    mode: Phaser.Scale.RESIZE,
+  },
+  scene: [],
+};
+
 /**
  * Credits:
  *  - Michael Hadley, https://github.com/mikewesthad/phaser-3-tilemap-blog-posts
@@ -18,6 +36,7 @@ class Scene extends Phaser.Scene {
       time: 0,
       delta: 0,
       scenes: [this],
+      phaserGameConfig: config,
       step: PhaserSceneMethod.init,
     });
   }
@@ -27,16 +46,17 @@ class Scene extends Phaser.Scene {
       time: 0,
       delta: 0,
       scenes: [this],
+      phaserGameConfig: config,
       step: PhaserSceneMethod.preload,
     });
   }
 
   create() {
-    console.debug("create");
     this.world.world.tick({
       time: 0,
       delta: 0,
       scenes: [this],
+      phaserGameConfig: config,
       step: PhaserSceneMethod.create,
     });
 
@@ -60,24 +80,12 @@ class Scene extends Phaser.Scene {
       time,
       delta,
       scenes: [this],
+      phaserGameConfig: config,
       step: PhaserSceneMethod.update,
     });
   }
 }
 
-const config: Phaser.Types.Core.GameConfig = {
-  type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  parent: "game-container",
-  pixelArt: true,
-  physics: {
-    default: "arcade",
-    arcade: {
-      gravity: { y: 0 },
-    },
-  },
-  scene: [Scene],
-};
+config.scene = [Scene];
 
 /*const game = */ new Phaser.Game(config);

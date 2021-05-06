@@ -5,6 +5,6 @@ export interface MapLayer extends ComponentProps {
   name: string;
   x: number;
   y: number;
-  assetMapEntry: number;
-  tilesetEntry: number;
+  assetMapEntity: number;
+  tilesetEntity: number;
 }

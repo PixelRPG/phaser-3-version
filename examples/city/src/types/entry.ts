@@ -1,1 +1,1 @@
-export type Entry = number;
+export type Entity = number;

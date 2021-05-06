@@ -18,11 +18,6 @@ export const phaserMapLayerEffect = createEffect<
   const onCreate = () => {
     for (const [entities, [mapLayers]] of query(MapLayerComponent)) {
       for (let i = 0; i < entities.length; i++) {
-        console.debug(
-          "afterPreload MapLayerComponent",
-          entities[i],
-          mapLayers[i]
-        );
         phaserService.createMapLayer(entities[i], mapLayers[i]);
       }
     }

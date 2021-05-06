@@ -9,11 +9,11 @@ export const TilesetComponent = createComponentType({
   schema: {
     key: string,
     name: string,
-    assetMapEntry: number,
+    assetMapEntity: number,
   },
   initialize(atlas, data: Tileset) {
     atlas.key = data.key;
     atlas.name = data.name;
-    atlas.assetMapEntry = data.assetMapEntry;
+    atlas.assetMapEntity = data.assetMapEntity;
   },
 });

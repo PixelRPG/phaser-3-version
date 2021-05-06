@@ -29,11 +29,6 @@ export const phaserAssetMapEffect = createEffect<
     for (const [entities, [assetMaps]] of query(AssetMapComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const scene = world.state.currentTickData.scenes[0];
-        console.debug(
-          "afterPreload AssetMapComponent",
-          entities[i],
-          assetMaps[i]
-        );
         phaserService.createMap(scene, entities[i], assetMaps[i]);
       }
     }

@@ -14,7 +14,6 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
     const state = {};
 
     const onPreload = () => {
-      console.debug("phaserAssetPreloadEffect");
       const scene = world.state.currentTickData.scenes[0];
       const assetAtlasQuery = query(AssetAtlasComponent);
       const assetImageQuery = query(AssetImageComponent);
@@ -23,7 +22,6 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
 
       for (const [, [tilesets]] of assetTilesetQuery) {
         for (const tileset of tilesets) {
-          console.debug("tileset", tileset);
           scene.load.image(tileset.key, tileset.url);
           tileset.loaded = true;
         }
@@ -31,7 +29,6 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
 
       for (const [, [atlases]] of assetAtlasQuery) {
         for (const atlas of atlases) {
-          console.debug("atlas", atlas);
           scene.load.atlas(atlas.key, atlas.url, atlas.xhrSettingsJsonUrl);
           atlas.loaded = true;
         }
@@ -39,7 +36,6 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
 
       for (const [, [images]] of assetImageQuery) {
         for (const image of images) {
-          console.debug("image", image);
           scene.load.image(
             image.key,
             image.url,
@@ -53,7 +49,6 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
 
       for (const [, [maps]] of asssetMapQuery) {
         for (const map of maps) {
-          console.debug("map", map);
           scene.load.tilemapTiledJSON(map.key, map.url);
           map.loaded = true;
         }
