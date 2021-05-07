@@ -247,7 +247,7 @@ export class GameWorld {
 
     this.spawnPlayerText(
       p1Entity,
-      'Arrow keys to move\nPress "D" to show hitboxes'
+      'Arrow keys to move\nPress "F1" to show hitboxes'
     );
 
     this.spawnPlayerText(p2Entity, p2Component.name);
