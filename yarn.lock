@@ -3686,21 +3686,40 @@ __metadata:
   resolution: "@pixelrpg/city@workspace:examples/city"
   dependencies:
     "@javelin/ecs": ^0.22.0
+    "@pixelrpg/engine": "workspace:*"
     "@pixelrpg/esbuild": "workspace:*"
     "@ribajs/eslint-config": next
-    "@ribajs/events": next
     "@ribajs/tsconfig": next
     "@ribajs/types": next
-    "@ribajs/utils": next
     "@types/jest": ^26.0.23
     "@typescript-eslint/eslint-plugin": ^4.22.1
     "@typescript-eslint/parser": ^4.22.1
-    bootstrap: next
     esbuild: ^0.11.19
     eslint: ^7.25.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^3.4.0
     free-tex-packer-cli: ^0.3.0
+    phaser: ^3.54.0
+    prettier: 2.2.1
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
+"@pixelrpg/engine@workspace:*, @pixelrpg/engine@workspace:packages/engine":
+  version: 0.0.0-use.local
+  resolution: "@pixelrpg/engine@workspace:packages/engine"
+  dependencies:
+    "@javelin/ecs": ^0.22.0
+    "@ribajs/eslint-config": next
+    "@ribajs/events": next
+    "@ribajs/tsconfig": next
+    "@ribajs/types": next
+    "@ribajs/utils": next
+    "@typescript-eslint/eslint-plugin": ^4.22.1
+    "@typescript-eslint/parser": ^4.22.1
+    eslint: ^7.25.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
     phaser: ^3.54.0
     prettier: 2.2.1
     typescript: ^4.2.4
@@ -4212,6 +4231,47 @@ __metadata:
     jest: ^26.6.3
     jest-extended: ^0.11.5
     popper.js: ^1.16.1
+    prettier: 2.2.1
+    ts-jest: ^26.5.6
+    typescript: ^4.2.4
+    webpack: ^5.36.2
+    webpack-cli: ^4.7.0
+  languageName: unknown
+  linkType: soft
+
+"@ribajs/bs5-photoswipe@workspace:*, @ribajs/bs5-photoswipe@workspace:packages/riba/packages/bs5-photoswipe":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/bs5-photoswipe@workspace:packages/riba/packages/bs5-photoswipe"
+  dependencies:
+    "@babel/cli": ^7.13.16
+    "@babel/core": ^7.14.0
+    "@babel/plugin-proposal-class-properties": ^7.13.0
+    "@babel/plugin-proposal-export-default-from": ^7.12.13
+    "@babel/plugin-proposal-object-rest-spread": ^7.13.8
+    "@babel/plugin-syntax-dynamic-import": ^7.8.3
+    "@babel/preset-env": ^7.14.1
+    "@babel/preset-typescript": ^7.13.0
+    "@babel/runtime": ^7.14.0
+    "@babel/runtime-corejs3": ^7.14.0
+    "@ribajs/bs5": "workspace:*"
+    "@ribajs/cache": "workspace:*"
+    "@ribajs/core": "workspace:*"
+    "@ribajs/eslint-config": "workspace:*"
+    "@ribajs/extras": "workspace:*"
+    "@ribajs/tsconfig": "workspace:*"
+    "@ribajs/utils": "workspace:*"
+    "@types/jest": ^26.0.23
+    "@typescript-eslint/eslint-plugin": ^4.22.1
+    "@typescript-eslint/parser": ^4.22.1
+    babel-loader: ^8.2.2
+    babel-plugin-array-includes: ^2.0.3
+    core-js: ^3.12.0
+    eslint: ^7.25.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    jest: ^26.6.3
+    jest-extended: ^0.11.5
+    photoswipe: ^4.1.3
     prettier: 2.2.1
     ts-jest: ^26.5.6
     typescript: ^4.2.4
@@ -5033,6 +5093,71 @@ __metadata:
     sass: ^1.32.12
     sass-loader: ^11.0.1
     serve: ^11.3.2
+    typescript: ^4.2.4
+    webpack: ^5.36.2
+    webpack-cli: ^4.7.0
+    webpack-dev-server: ^3.11.2
+  languageName: unknown
+  linkType: soft
+
+"@ribajs/demo-bs5-photoswipe@workspace:packages/riba/demos/bs5-photoswipe":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/demo-bs5-photoswipe@workspace:packages/riba/demos/bs5-photoswipe"
+  dependencies:
+    "@babel/cli": ^7.13.16
+    "@babel/core": ^7.14.0
+    "@babel/plugin-proposal-class-properties": ^7.13.0
+    "@babel/plugin-proposal-export-default-from": ^7.12.13
+    "@babel/plugin-proposal-object-rest-spread": ^7.13.8
+    "@babel/plugin-proposal-optional-chaining": ^7.13.12
+    "@babel/plugin-syntax-export-default-from": ^7.12.13
+    "@babel/plugin-transform-runtime": ^7.13.15
+    "@babel/preset-env": ^7.14.1
+    "@babel/preset-typescript": ^7.13.0
+    "@babel/runtime": ^7.14.0
+    "@babel/runtime-corejs3": ^7.14.0
+    "@ribajs/bs5": "workspace:*"
+    "@ribajs/bs5-photoswipe": "workspace:*"
+    "@ribajs/core": "workspace:*"
+    "@ribajs/eslint-config": "workspace:*"
+    "@ribajs/extras": "workspace:*"
+    "@ribajs/iconset": "workspace:*"
+    "@ribajs/masonry": "workspace:*"
+    "@ribajs/tsconfig": "workspace:*"
+    "@ribajs/types": "workspace:*"
+    "@ribajs/utils": "workspace:*"
+    "@ribajs/webpack-config": "workspace:*"
+    "@ribajs/webpack-serve": "workspace:*"
+    "@types/jest": ^26.0.23
+    "@typescript-eslint/eslint-plugin": ^4.22.1
+    "@typescript-eslint/experimental-utils": ^4.22.1
+    "@typescript-eslint/parser": ^4.22.1
+    "@yarnpkg/pnpify": ^3.0.0-rc.3
+    babel-jest: ^26.6.3
+    babel-loader: ^8.2.2
+    babel-plugin-array-includes: ^2.0.3
+    babelify: ^10.0.0
+    bootstrap: next
+    core-js: ^3.12.0
+    css-loader: ^5.2.4
+    eslint: ^7.25.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    html-loader: ^2.1.2
+    inspectpack: ^4.7.1
+    jest: ^26.6.3
+    jest-extended: ^0.11.5
+    mini-css-extract-plugin: ^1.6.0
+    postcss-loader: ^5.2.0
+    postcss-modules: ^4.0.0
+    postcss-preset-env: ^6.7.0
+    prettier: 2.2.1
+    pug-loader: ^2.4.0
+    sass: ^1.32.12
+    sass-loader: ^11.0.1
+    serve: ^11.3.2
+    terser-webpack-plugin: ^5.1.1
+    ts-jest: ^26.5.6
     typescript: ^4.2.4
     webpack: ^5.36.2
     webpack-cli: ^4.7.0
@@ -6524,6 +6649,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ribajs/masonry@workspace:*, @ribajs/masonry@workspace:packages/riba/packages/masonry":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/masonry@workspace:packages/riba/packages/masonry"
+  dependencies:
+    "@babel/runtime": ^7.14.0
+    "@babel/runtime-corejs3": ^7.14.0
+    "@ribajs/core": "workspace:*"
+    "@ribajs/utils": "workspace:*"
+    "@types/masonry-layout": ^4.2.2
+    "@types/node": ^15.0.2
+    masonry-layout: ^4.2.2
+  languageName: unknown
+  linkType: soft
+
 "@ribajs/moment@workspace:*, @ribajs/moment@workspace:packages/riba/packages/moment":
   version: 0.0.0-use.local
   resolution: "@ribajs/moment@workspace:packages/riba/packages/moment"
@@ -8006,6 +8145,15 @@ __metadata:
   version: 2.3.3
   resolution: "@types/lunr@npm:2.3.3"
   checksum: ae9e99337eb7ba9b6673167f212f5054ff9116daf1d507224b28fa3cbacea126a1101f788160e707d834cb4f9aa285c257f30777f7795241d82660042d958a09
+  languageName: node
+  linkType: hard
+
+"@types/masonry-layout@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "@types/masonry-layout@npm:4.2.2"
+  dependencies:
+    "@types/jquery": "*"
+  checksum: 4c0d8f46bb9a26ebc81eb9abc7156b5195ad1b91ae2066f302e2d91da9dd1c12f60464107b8e7cb558e1d8f1eadfd9b61db5420890f01cbb62f52bac3551a421
   languageName: node
   linkType: hard
 
@@ -12767,6 +12915,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"desandro-matches-selector@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "desandro-matches-selector@npm:2.0.2"
+  checksum: b16d94b0693e6981652445e55808764df2622033b2cd942163d6e492bb5108c26bef7f68e63973966cb210ec493c4fcc299b48aa50814892e8ebb6692ce84d9b
+  languageName: node
+  linkType: hard
+
 "destroy@npm:~1.0.4":
   version: 1.0.4
   resolution: "destroy@npm:1.0.4"
@@ -13781,6 +13936,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ev-emitter@npm:^1.0.0":
+  version: 1.1.1
+  resolution: "ev-emitter@npm:1.1.1"
+  checksum: c93adf4cfac74892e0eede007d2481b9621d345e97884ea06d1cf5bcfccf7c6a6d5e15aba9369b66c4087967b338694710508eb11253f01bba9e216359811153
+  languageName: node
+  linkType: hard
+
 "eventemitter3@npm:^3.1.0":
   version: 3.1.2
   resolution: "eventemitter3@npm:3.1.2"
@@ -14504,6 +14666,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fizzy-ui-utils@npm:^2.0.0":
+  version: 2.0.7
+  resolution: "fizzy-ui-utils@npm:2.0.7"
+  dependencies:
+    desandro-matches-selector: ^2.0.0
+  checksum: a4dd1c4f8cb425e890ae7a9068e3645b9cc01ddc86df961a6383f1aca5c38aae9862d2c08163dd7e693f1bd550adc11892288aa8519ef9618b17e5db8afebabe
+  languageName: node
+  linkType: hard
+
 "flagged-respawn@npm:^1.0.0":
   version: 1.0.1
   resolution: "flagged-respawn@npm:1.0.1"
@@ -15029,6 +15200,13 @@ fsevents@~2.3.1:
   version: 5.1.1
   resolution: "get-port@npm:5.1.1"
   checksum: 75a5af5cef1e601cfa5a071d1b205ba94338f69f83f1092039bdf8e15351a76f5e6b7df7d3987bd3b7ad5d6893759d2bc28d36d8a4ee65976c3868d7efe7cf8c
+  languageName: node
+  linkType: hard
+
+"get-size@npm:^2.0.2":
+  version: 2.0.3
+  resolution: "get-size@npm:2.0.3"
+  checksum: 31c88b42fea7f60e6921a4d67ea2314fc29b815adfccefe1e8ea48fb6f544c04878b90bd213183fb4ff79a7d05070ed29083c44f5d7b8c2460c91ce9ea35d123
   languageName: node
   linkType: hard
 
@@ -18687,6 +18865,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"masonry-layout@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "masonry-layout@npm:4.2.2"
+  dependencies:
+    get-size: ^2.0.2
+    outlayer: ^2.1.0
+  checksum: 0332563f7a4a40f7a0a114240df95dbfcf4eaa6bdef1316e441f7907b9ff3ea5ee20e7e37ff31fc784548792b2f57e868f41be0eaa31f0a6bb1446cc2d61cc10
+  languageName: node
+  linkType: hard
+
 "matchdep@npm:^2.0.0":
   version: 2.0.0
   resolution: "matchdep@npm:2.0.0"
@@ -20273,6 +20461,17 @@ fsevents@~2.3.1:
     os-homedir: ^1.0.0
     os-tmpdir: ^1.0.0
   checksum: 1c7462808c5ff0c2816b11f2f46265a98c395586058f98d73a6deac82955744484b277baedceeb962c419f3b75d0831a77ce7cf38b9e4f20729943ba79d72b08
+  languageName: node
+  linkType: hard
+
+"outlayer@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "outlayer@npm:2.1.1"
+  dependencies:
+    ev-emitter: ^1.0.0
+    fizzy-ui-utils: ^2.0.0
+    get-size: ^2.0.2
+  checksum: ad9902fb15b7db43f13315d41d4abf1b86f90116400027bad811ffd1df6d9a41330b8c88ad65c1ed0f26e8f078770923b9ea76e1ad37194bf8e48e3582effa6c
   languageName: node
   linkType: hard
 

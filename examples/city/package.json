@@ -38,9 +38,7 @@
   },
   "dependencies": {
     "@javelin/ecs": "^0.22.0",
-    "@ribajs/events": "next",
-    "@ribajs/utils": "next",
-    "bootstrap": "next",
+    "@pixelrpg/engine": "workspace:*",
     "phaser": "^3.54.0"
   }
 }

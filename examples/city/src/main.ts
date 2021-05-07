@@ -1,12 +1,10 @@
-import { PhaserSceneMethod } from "./types";
+import { PhaserSceneMethod } from "@pixelrpg/engine";
 import { GameWorld } from "./worlds";
 
 import "phaser";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  // width: 800,
-  // height: 600,
   parent: "game-container",
   pixelArt: true,
   physics: {
@@ -22,8 +20,6 @@ const config: Phaser.Types.Core.GameConfig = {
 };
 class Scene extends Phaser.Scene {
   world = new GameWorld();
-
-  // constructor() {}
 
   init() {
     this.world.world.tick({

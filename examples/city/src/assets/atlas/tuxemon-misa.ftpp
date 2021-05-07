@@ -1,11 +1,11 @@
 {
   "meta": {
-    "version": "0.6.6"
+    "version": "0.6.7"
   },
-  "savePath": "/home/jumplink/Projekte/rpg-phaser/examples/city/dist/assets/atlas/tuxemon-misa",
+  "savePath": "/home/jumplink/Projekte/PixelRPG/examples/city/dist/assets/atlas/tuxemon-misa",
   "images": [],
   "folders": [
-    "/home/jumplink/Projekte/rpg-phaser/examples/city/src/assets/atlas/tuxemon-misa"
+    "/home/jumplink/Projekte/PixelRPG/examples/city/src/assets/atlas/tuxemon-misa"
   ],
   "packOptions": {
     "textureName": "tuxemon-misa",
@@ -16,11 +16,10 @@
     "tinify": false,
     "tinifyKey": "",
     "scale": 1,
-    "disableSmoothing": false,
     "filter": "none",
     "exporter": "JSON (hash)",
     "fileName": "pack-result",
-    "savePath": "/home/jumplink/Projekte/rpg-phaser/examples/city/src/assets/atlas/tuxemon-misa",
+    "savePath": "/home/jumplink/Projekte/PixelRPG/examples/city/dist/assets/atlas/tuxemon-misa",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,

@@ -19,6 +19,7 @@
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "license": "MIT",
   "workspaces": [
+    "packages/engine",
     "packages/esbuild",
     "packages/javelin",
     "packages/javelin/packages/*",

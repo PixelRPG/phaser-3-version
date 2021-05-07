@@ -1,6 +1,7 @@
 import { createWorld } from "@javelin/ecs";
-import { WorldGameData, Player } from "../types";
 import {
+  WorldGameData,
+  Player,
   AssetAtlasComponent,
   AssetMapComponent,
   AssetTilesetComponent,
@@ -16,9 +17,9 @@ import {
   ScrollfactorComponent,
   CollisionComponent,
   DebugComponent,
-} from "../components";
-import { phaserSystem } from "../systems";
-import { mapObjectTopic } from "../topics";
+  phaserSystem,
+  mapObjectTopic,
+} from "@pixelrpg/engine";
 
 export class GameWorld {
   world = createWorld<WorldGameData>({

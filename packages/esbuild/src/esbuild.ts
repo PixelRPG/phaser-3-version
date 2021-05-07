@@ -46,11 +46,17 @@ if (env.serve) {
     servedir: "dist",
     port: env.port,
   };
+  console.info(`Serve on http://localhost:${serveOptions.port}`);
   esbuild.serve(serveOptions, config).catch((error: Error) => {
     console.error(error);
   });
 } else {
-  esbuild.build(config).catch((error: Error) => {
-    console.error(error);
-  });
+  esbuild
+    .build(config)
+    .then(() => {
+      console.info(`Build done: ${config.outdir}`);
+    })
+    .catch((error: Error) => {
+      console.error(error);
+    });
 }
