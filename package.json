@@ -27,6 +27,7 @@
     "packages/web-udp",
     "packages/web-udp/packages/*",
     "packages/web-udp/examples/*",
+    "packages/tile-extruder",
     "packages/riba",
     "packages/riba/packages/*",
     "packages/riba/infra/*",

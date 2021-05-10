@@ -1,10 +1,15 @@
 import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
-import { Environment } from "./types";
+import { Environment, AssetsConfig, Config } from "./types";
+import type { ESBuildServeOptions, ESBuildBuildOptions } from "esbuild";
+import { PollingWatchKind } from "typescript";
 
-export const getConfig = (env: Environment) => {
+export const getConfig = (env: Environment): Config => {
   env.development = env.development || !env.production;
   env.production = env.production || !env.development;
-  return {
+
+  const root = process.cwd();
+
+  const esbuild: ESBuildBuildOptions = {
     plugins: [pnpPlugin()],
     entryPoints: ["src/main.ts"],
     bundle: true,
@@ -12,9 +17,32 @@ export const getConfig = (env: Environment) => {
     outdir: "dist/assets/scripts",
     // outfile: "dist/assets/scripts/main.js",
     sourcemap: env.development,
-    watch: env.watch,
+    watch: env.watch || false,
     define: {
       global: "window",
     },
+  };
+
+  const serve: ESBuildServeOptions = {
+    servedir: "dist",
+    port: env.port,
+  };
+
+  const assets: AssetsConfig = {
+    tilemaps: {
+      indir: "./src/assets/tilemaps/",
+      outdir: "./dist/assets/tilemaps/",
+    },
+    tilesets: {
+      indir: "./src/assets/tilesets/",
+      outdir: "./dist/assets/tilesets/",
+    },
+  };
+
+  return {
+    root,
+    esbuild,
+    serve,
+    assets,
   };
 };

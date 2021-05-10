@@ -1,6 +1,6 @@
 {
     "extends": "@tsconfig/node14/tsconfig.json",
-    "files": ["./src/config.ts", "./src/esbuild.ts"],
+    "files": ["./src/index.ts"],
     "include": ["./typings"],
     "compilerOptions": {
         "outDir": "./dist",

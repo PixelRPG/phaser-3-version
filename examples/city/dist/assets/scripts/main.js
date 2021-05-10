@@ -82478,12 +82478,12 @@
       const assetMapEntity = this.world.spawn(assetMapComponent);
       const assetTilesetComponent = this.world.component(AssetTilesetComponent, {
         key: "tiles",
-        url: "./assets/tilesets/tuxmon-sample-32px-extruded.png"
+        url: "./assets/tilesets/tuxmon-sample.png"
       });
       this.world.spawn(assetTilesetComponent);
       const tilesetComponent = this.world.component(TilesetComponent, {
         key: "tiles",
-        name: "tuxmon-sample-32px-extruded",
+        name: "tuxmon-sample",
         assetMapEntity
       });
       const tilesetEntity = this.world.spawn(tilesetComponent);
