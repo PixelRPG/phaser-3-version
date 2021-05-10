@@ -1,18 +1,30 @@
-import { ComponentProps } from "@javelin/ecs";
+export interface Camera {
+  viewport: {
+    /** The horizontal position of the Camera viewport. Default 0. */
+    x?: number;
+    /** The vertical position of the Camera viewport. Default 0. */
+    y?: number;
+    /** The width of the Camera viewport. If not given it'll be the game config size. */
+    width?: number;
+    /** The height of the Camera viewport. If not given it'll be the game config size. */
+    height?: number;
+  };
 
-export interface Camera extends ComponentProps {
-  /** The horizontal position of the Camera viewport. Default 0. */
-  x?: number;
-  /** The vertical position of the Camera viewport. Default 0. */
-  y?: number;
-  /** The width of the Camera viewport. If not given it'll be the game config size. */
-  width?: number;
-  /** The height of the Camera viewport. If not given it'll be the game config size. */
-  height?: number;
   /** The name of the Camera. Default ''. */
   name?: string;
   /** Set this Camera as being the 'main' camera. This just makes the property `main` a reference to it. Default false. */
   isMain?: boolean;
+  /**
+   * Set the zoom value of the Camera.
+   *
+   * Changing to a smaller value, such as 0.5, will cause the camera to 'zoom out'.
+   * Changing to a larger value, such as 2, will cause the camera to 'zoom in'.
+   *
+   * A value of 1 means 'no zoom' and is the default.
+   *
+   * Changing the zoom does not impact the Camera viewport in any way, it is only applied during rendering.
+   */
+  zoom?: number;
   /**
    * Define the bounds of the Camera. The bounds are an axis-aligned rectangle.
    *

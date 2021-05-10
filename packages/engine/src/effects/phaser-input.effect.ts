@@ -4,6 +4,7 @@ import {
   World,
   query,
   Component,
+  ComponentProps,
 } from "@javelin/ecs";
 import {
   VelocityComponent,
@@ -26,7 +27,7 @@ export const phaserInputEffect = createEffect<null, WorldGameData[]>(
     const phaserService = PhaserService.getInstance();
 
     const getPlayerInput = (
-      playerComponent: Component<Player>
+      playerComponent: Component<Player & ComponentProps>
     ): PlayerInput | null => {
       const keyboard = world.state.currentTickData.scenes[0].input.keyboard;
       if (playerComponent.playerNumber === 1) {

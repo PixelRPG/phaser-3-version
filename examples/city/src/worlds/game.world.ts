@@ -37,7 +37,7 @@ export class GameWorld {
     const playerSpriteComponent = this.world.component(SpriteComponent, {
       key: "tuxemon-misa",
       frame: "misa-front",
-      scale: { x: 2, y: 2 },
+      // scale: { x: 2, y: 2 },
       size: { height: 15, width: 12 },
       offset: { x: 0, y: 20 },
     });
@@ -45,7 +45,7 @@ export class GameWorld {
     const playerPositionComponent = this.world.component(PositionComponent);
 
     const playerVelocityComponent = this.world.component(VelocityComponent, {
-      speed: 175,
+      speed: 70,
       x: 0,
       y: 0,
     });
@@ -132,7 +132,6 @@ export class GameWorld {
       name: "Below Player",
       x: 0,
       y: 0,
-      depth: -10,
       assetMapEntity,
       tilesetEntity,
     });
@@ -143,7 +142,6 @@ export class GameWorld {
       name: "World",
       x: 0,
       y: 0,
-      depth: 0,
       assetMapEntity,
       tilesetEntity,
       collides: true,
@@ -163,7 +161,6 @@ export class GameWorld {
       name: "Above Player",
       x: 0,
       y: 0,
-      depth: 10,
       assetMapEntity,
       tilesetEntity,
     });

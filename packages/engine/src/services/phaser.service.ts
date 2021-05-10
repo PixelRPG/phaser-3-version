@@ -1,4 +1,4 @@
-import { Component, World } from "@javelin/ecs";
+import { Component, World, ComponentProps } from "@javelin/ecs";
 import {
   AssetMap,
   Tileset,
@@ -67,7 +67,7 @@ export class PhaserService {
 
   public createMapLayer(
     mapLayerEntity: Entity,
-    mapLayerComponent: Component<MapLayer>
+    mapLayerComponent: Component<MapLayer & ComponentProps>
   ) {
     const map = this.getMap(mapLayerComponent.assetMapEntity);
     const tileset = this.getTileset(mapLayerComponent.tilesetEntity);
@@ -106,7 +106,7 @@ export class PhaserService {
 
   public createTileset(
     tilesetEntity: Entity,
-    tilesetComponent: Component<Tileset>
+    tilesetComponent: Component<Tileset & ComponentProps>
   ) {
     const map = this.getMap(tilesetComponent.assetMapEntity);
     const tileset = map.addTilesetImage(
@@ -136,7 +136,7 @@ export class PhaserService {
   public createMap(
     scene: Phaser.Scene,
     assetMapEntity: Entity,
-    assetMapComponent: Component<AssetMap>
+    assetMapComponent: Component<AssetMap & ComponentProps>
   ) {
     const map = scene.make.tilemap({
       key: assetMapComponent.key,
@@ -169,7 +169,7 @@ export class PhaserService {
   public createSprite(
     physics: Phaser.Physics.Arcade.ArcadePhysics,
     spriteEntity: Entity,
-    spriteComponent: Component<Sprite>
+    spriteComponent: Component<Sprite & ComponentProps>
   ) {
     const sprite = physics.add.sprite(
       0,
@@ -212,7 +212,7 @@ export class PhaserService {
   public createAnimation(
     animationManager: Phaser.Animations.AnimationManager,
     animationEntity: Entity,
-    animationComponent: Component<Animation>
+    animationComponent: Component<Animation & ComponentProps>
   ) {
     const animation = animationManager.create({
       key: animationComponent.key,
@@ -258,7 +258,7 @@ export class PhaserService {
   public createCamera(
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
     cameraEntity: Entity,
-    cameraComponent: Component<Camera>
+    cameraComponent: Component<Camera & ComponentProps>
   ) {
     let phaserCamera: Phaser.Cameras.Scene2D.Camera;
 
@@ -266,10 +266,10 @@ export class PhaserService {
       phaserCamera = cameraManager.main;
     } else {
       phaserCamera = cameraManager.add(
-        cameraComponent.x,
-        cameraComponent.y,
-        cameraComponent.width,
-        cameraComponent.height,
+        cameraComponent.viewport.x,
+        cameraComponent.viewport.y,
+        cameraComponent.viewport.width,
+        cameraComponent.viewport.height,
         cameraComponent.isMain,
         cameraComponent.name
       );
@@ -288,19 +288,25 @@ export class PhaserService {
 
   public updateCamera(
     cameraEntity: Entity,
-    cameraComponent: Component<Camera>,
+    cameraComponent: Component<Camera & ComponentProps>,
     phaserCamera?: Phaser.Cameras.Scene2D.Camera
   ) {
     if (!phaserCamera) {
       phaserCamera = this.getCamera(cameraEntity);
     }
 
-    if (typeof cameraComponent.width === "number") {
-      phaserCamera.setSize(cameraComponent.width, cameraComponent.height);
+    if (typeof cameraComponent.viewport.width === "number") {
+      phaserCamera.setSize(
+        cameraComponent.viewport.width,
+        cameraComponent.viewport.height
+      );
     }
 
-    if (typeof cameraComponent.x === "number") {
-      phaserCamera.setPosition(cameraComponent.x, cameraComponent.y);
+    if (typeof cameraComponent.viewport.x === "number") {
+      phaserCamera.setPosition(
+        cameraComponent.viewport.x,
+        cameraComponent.viewport.y
+      );
     }
 
     if (typeof cameraComponent.name === "string") {
@@ -314,6 +320,11 @@ export class PhaserService {
         cameraComponent.bounds.width,
         cameraComponent.bounds.height
       );
+    }
+
+    if (cameraComponent.zoom) {
+      // Use zoomTo for animated zoom
+      phaserCamera.setZoom(cameraComponent.zoom);
     }
 
     return phaserCamera;
@@ -339,7 +350,7 @@ export class PhaserService {
     world: World<any>,
     scene: Phaser.Scene,
     textEntity: Entity,
-    textComponent: Component<Text>
+    textComponent: Component<Text & ComponentProps>
   ) {
     const phaserText = scene.add.text(
       0,

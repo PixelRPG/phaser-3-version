@@ -4,6 +4,7 @@ import {
   World,
   query,
   Component,
+  ComponentProps,
 } from "@javelin/ecs";
 import { CameraComponent, PlayerComponent } from "../components";
 import { WorldGameData, PhaserSceneMethod, Camera, Player } from "../types";
@@ -32,7 +33,7 @@ export const phaserCameraEffect = createEffect<
    * @returns
    */
   const calcPlayerCamera = (
-    playerComponent: Component<Player>,
+    playerComponent: Component<Player & ComponentProps>,
     playerCount: number
   ): Camera => {
     const map = phaserService.getActiveMap();
@@ -67,12 +68,11 @@ export const phaserCameraEffect = createEffect<
       height = height / 2;
       borderY = 2;
     }
-    const viewport: Camera = {
+    const viewport: Camera["viewport"] = {
       x: 0,
       y: 0,
       width: width - borderX,
       height: height - borderY,
-      bounds,
     };
 
     switch (playerComponent.playerNumber) {
@@ -99,7 +99,10 @@ export const phaserCameraEffect = createEffect<
         );
     }
 
-    return viewport;
+    return {
+      viewport,
+      bounds,
+    };
   };
 
   /**

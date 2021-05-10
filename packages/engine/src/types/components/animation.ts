@@ -1,6 +1,4 @@
-import { ComponentProps } from "@javelin/ecs";
-
-export interface Animation extends ComponentProps {
+export interface Animation {
   key: string;
   frames: {
     atlasKey: string;
