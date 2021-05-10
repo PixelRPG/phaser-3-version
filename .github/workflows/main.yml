@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: '16'
       - run: |
+          git submodule update --init --recursive
+      - run: |
           yarn install
       - run: |
           yarn run lint
