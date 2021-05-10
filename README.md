@@ -1,6 +1,6 @@
 # PixelPRG
 
-Typescript + [Esbuild](https://esbuild.github.io/) + [Javelin (ECS)](https://github.com/3mcd/javelin)
+[Phaser](https://phaser.io/) + [Typescript](https://www.typescriptlang.org/) + [Esbuild](https://esbuild.github.io/) + [Javelin (ECS)](https://github.com/3mcd/javelin)
 
 ## Build
 
