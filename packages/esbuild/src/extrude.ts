@@ -4,7 +4,6 @@ import { resolve, relative, dirname } from "path";
 import { extrudeTilesetToJimp } from "tile-extruder";
 import glob from "fast-glob";
 import { TiledMapOrthogonal } from "tiled-types";
-import Jimp from "jimp";
 
 export const run = async (env: Environment, config: Config) => {
   const maps = await loadTilemaps(config);
