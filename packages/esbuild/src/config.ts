@@ -1,7 +1,6 @@
 import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
 import { Environment, AssetsConfig, Config } from "./types";
 import type { ESBuildServeOptions, ESBuildBuildOptions } from "esbuild";
-import { PollingWatchKind } from "typescript";
 
 export const getConfig = (env: Environment): Config => {
   env.development = env.development || !env.production;
