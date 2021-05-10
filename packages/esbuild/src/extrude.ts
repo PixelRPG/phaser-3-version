@@ -1,10 +1,10 @@
 import { Config, Environment, TileMap, Tileset, TilesetImage } from "./types";
 import { promises as fs } from "fs";
 import { resolve, relative, dirname } from "path";
-import { extrudeTilesetToImage } from "tile-extruder";
+import { extrudeTilesetToJimp } from "tile-extruder";
 import glob from "fast-glob";
 import { TiledMapOrthogonal } from "tiled-types";
-import { JsxEmit } from "typescript";
+import Jimp from "jimp";
 
 export const run = async (env: Environment, config: Config) => {
   const maps = await loadTilemaps(config);
@@ -44,7 +44,7 @@ const getTilesets = (maps: TileMap[]) => {
   return tilesets;
 };
 
-const getTilesetImages = (tilesets: Tileset[], config: Config) => {
+const getTilesetImages = (tilesets: Tileset[]) => {
   const images: TilesetImage[] = [];
   for (const tileset of tilesets) {
     if (tileset.data.image) {
@@ -63,10 +63,12 @@ const extrudeTilesets = async (maps: TileMap[], config: Config) => {
 
     for (const tileset of tilesets) {
       tileset.data = await extrudeTileset(tileset);
-      const images = getTilesetImages([tileset], config);
+      const images = getTilesetImages([tileset]);
 
       for (const image of images) {
-        await extrudeTilesetImage(image, tileset, config);
+        const size = await extrudeTilesetImage(image, tileset, config);
+        tileset.data.imageheight = size.height;
+        tileset.data.imagewidth = size.width;
       }
     }
 
@@ -112,13 +114,19 @@ const extrudeTilesetImage = async (
     config.assets.tilesets.outdir,
     relativeInput
   );
-  console.debug("->", image.absolutePath);
+  console.debug("->", input);
   console.debug("<-", output);
-  await extrudeTilesetToImage(
+  const extruded = await extrudeTilesetToJimp(
     tileset.data.tilewidth,
     tileset.data.tileheight,
     input,
-    output,
     {}
   );
+
+  await extruded.writeAsync(output);
+
+  return {
+    width: extruded.bitmap.width,
+    height: extruded.bitmap.height,
+  };
 };
