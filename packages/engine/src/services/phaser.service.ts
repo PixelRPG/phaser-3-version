@@ -65,7 +65,7 @@ export class PhaserService {
     return gameObject;
   }
 
-  public createMapLayer(
+  public createLayer(
     mapLayerEntity: Entity,
     mapLayerComponent: Component<MapLayer & ComponentProps>
   ) {
@@ -102,6 +102,11 @@ export class PhaserService {
 
   public getAllLayers() {
     return this.mapToArray<Phaser.Tilemaps.TilemapLayer>(this._layers);
+  }
+
+  public getLayerByProperty(key: keyof Phaser.Tilemaps.TilemapLayer, value: any) {
+    const layers = this.getAllLayers();
+    return layers.find(layer => layer[key] === value);
   }
 
   public createTileset(

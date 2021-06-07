@@ -10,19 +10,19 @@
     "@ribajs/eslint-config": "next",
     "@ribajs/tsconfig": "next",
     "@ribajs/types": "next",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
-    "eslint": "^7.26.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "2.3.0",
+    "prettier": "2.3.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "dependencies": {
     "@javelin/ecs": "^0.22.0",
     "@ribajs/events": "next",
     "@ribajs/utils": "next",
-    "phaser": "^3.54.0"
+    "phaser": "^3.55.2"
   }
 }

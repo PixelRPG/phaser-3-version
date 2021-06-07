@@ -50,9 +50,8 @@ export class GameWorld {
       y: 0,
     });
 
-    const playerCollisionVelocityComponent = this.world.component(
-      CollisionComponent
-    );
+    const playerCollisionVelocityComponent =
+      this.world.component(CollisionComponent);
 
     const playerComponent = this.world.component(PlayerComponent, playerData);
 
@@ -148,9 +147,8 @@ export class GameWorld {
       collisionProperty: "collides",
     });
     const mapLayerWorldDepthComponent = this.world.component(DepthComponent, 0);
-    const mapLayerWorldCollisionComponent = this.world.component(
-      CollisionComponent
-    );
+    const mapLayerWorldCollisionComponent =
+      this.world.component(CollisionComponent);
     this.world.spawn(
       mapLayerWorldComponent,
       mapLayerWorldDepthComponent,
@@ -233,10 +231,8 @@ export class GameWorld {
       name: "Player 1",
       playerNumber: 1,
     });
-    const {
-      playerEntity: p2Entity,
-      playerComponent: p2Component,
-    } = this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
+    const { playerEntity: p2Entity, playerComponent: p2Component } =
+      this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
     this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
     this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
 

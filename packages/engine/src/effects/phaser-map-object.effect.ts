@@ -27,6 +27,7 @@ export const phaserMapObjectEffect = createEffect<
           "Objects",
           (obj) => obj.name === "Spawn Point"
         );
+
         mapObjectTopic.push(currSpawnPoint);
       }
     }
