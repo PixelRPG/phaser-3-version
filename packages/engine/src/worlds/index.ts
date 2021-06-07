@@ -1,1 +1,1 @@
-export {};
+export * from "./phaser-scene.world";

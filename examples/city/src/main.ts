@@ -1,4 +1,3 @@
-import { PhaserSceneMethod } from "@pixelrpg/engine";
 import { GameWorld } from "./worlds";
 
 import "phaser";
@@ -18,50 +17,7 @@ const config: Phaser.Types.Core.GameConfig = {
   },
   scene: [],
 };
-class Scene extends Phaser.Scene {
-  world = new GameWorld();
 
-  init() {
-    this.world.world.tick({
-      time: 0,
-      delta: 0,
-      scenes: [this],
-      phaserGameConfig: config,
-      step: PhaserSceneMethod.init,
-    });
-  }
-
-  preload() {
-    this.world.world.tick({
-      time: 0,
-      delta: 0,
-      scenes: [this],
-      phaserGameConfig: config,
-      step: PhaserSceneMethod.preload,
-    });
-  }
-
-  create() {
-    this.world.world.tick({
-      time: 0,
-      delta: 0,
-      scenes: [this],
-      phaserGameConfig: config,
-      step: PhaserSceneMethod.create,
-    });
-  }
-
-  update(time: number, delta: number) {
-    this.world.world.tick({
-      time,
-      delta,
-      scenes: [this],
-      phaserGameConfig: config,
-      step: PhaserSceneMethod.update,
-    });
-  }
-}
-
-config.scene = [Scene];
+config.scene = [new GameWorld(config)];
 
 /*const game = */ new Phaser.Game(config);

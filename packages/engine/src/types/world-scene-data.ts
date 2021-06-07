@@ -1,9 +1,9 @@
 import { PhaserSceneMethod } from "./phaser-scene-method";
+import { PhaserSceneWorld } from "../worlds/phaser-scene.world";
 
-export type WorldGameData = {
+export type WorldSceneData = {
   time: number;
   delta: number;
-  scenes: Phaser.Scene[];
+  scene: PhaserSceneWorld;
   step: PhaserSceneMethod;
-  phaserGameConfig: Phaser.Types.Core.GameConfig;
 };

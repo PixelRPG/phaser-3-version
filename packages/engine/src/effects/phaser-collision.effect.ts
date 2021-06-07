@@ -5,7 +5,7 @@ import {
   VelocityComponent,
   MapLayerComponent,
 } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -14,14 +14,14 @@ const effectOptions: EffectOptions = { global: true };
  * - Should be called after the map layers effect
  * - Should be called after the sprite effect
  */
-export const phaserCollisionEffect = createEffect<any, WorldGameData[]>(
-  (world: World<WorldGameData>) => {
+export const phaserCollisionEffect = createEffect<any, WorldSceneData[]>(
+  (world: World<WorldSceneData>) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
 
     const onCreate = () => {
       const phaserCollisionLayers: Phaser.Tilemaps.TilemapLayer[] = [];
-      const scene = world.state.currentTickData.scenes[0];
+      const scene = world.state.currentTickData.scene;
 
       // Set collision for map layers
       for (const [entities] of query(MapLayerComponent, CollisionComponent)) {

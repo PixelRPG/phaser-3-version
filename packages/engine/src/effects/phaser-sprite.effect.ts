@@ -1,13 +1,13 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { SpriteComponent, PositionComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
 
 const effectOptions: EffectOptions = { global: true };
 
-export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
-  (world: World<WorldGameData>) => {
+export const phaserSpriteEffect = createEffect<any, WorldSceneData[]>(
+  (world: World<WorldSceneData>) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
 
@@ -42,7 +42,7 @@ export const phaserSpriteEffect = createEffect<any, WorldGameData[]>(
       for (const [entities, [sprites]] of query(SpriteComponent)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createSprite(
-            world.state.currentTickData.scenes[0].physics,
+            world.state.currentTickData.scene.physics,
             entities[i],
             sprites[i]
           );

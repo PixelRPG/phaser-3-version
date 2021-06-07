@@ -1,6 +1,6 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { TextComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -10,8 +10,8 @@ interface PhaserTextEffectState {}
 
 export const phaserTextEffect = createEffect<
   PhaserTextEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserTextEffectState = {};
   const phaserService = PhaserService.getInstance();
 
@@ -20,7 +20,7 @@ export const phaserTextEffect = createEffect<
       for (let i = 0; i < entities.length; i++) {
         phaserService.createText(
           world,
-          world.state.currentTickData.scenes[0],
+          world.state.currentTickData.scene,
           entities[i],
           texts[i]
         );

@@ -1,6 +1,6 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { ScrollfactorComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -10,8 +10,8 @@ interface PhaserScrollfactorEffectState {}
 
 export const phaserScrollfactorEffect = createEffect<
   PhaserScrollfactorEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserScrollfactorEffectState = {};
   const phaserService = PhaserService.getInstance();
 

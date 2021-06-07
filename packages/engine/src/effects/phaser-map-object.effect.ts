@@ -1,6 +1,6 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { AssetMapComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
 
@@ -11,8 +11,8 @@ interface PhaserTilesetEffectState {}
 
 export const phaserMapObjectEffect = createEffect<
   PhaserTilesetEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
 

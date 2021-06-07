@@ -1,20 +1,20 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { DebugComponent, MapLayerComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
 export const phaserDebugEffect = createEffect<
   { debug: boolean },
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state = {
     debug: false,
   };
   const phaserService = PhaserService.getInstance();
-  const scene = world.state.currentTickData.scenes[0];
-  const keyboard = world.state.currentTickData.scenes[0].input.keyboard;
+  const scene = world.state.currentTickData.scene;
+  const keyboard = world.state.currentTickData.scene.input.keyboard;
   const debugKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F1);
 
   /**

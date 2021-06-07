@@ -1,6 +1,6 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { AnimationComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -10,8 +10,8 @@ interface PhaserAnimationEffectState {}
 
 export const phaserAnimationEffect = createEffect<
   PhaserAnimationEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserAnimationEffectState = {};
   const phaserService = PhaserService.getInstance();
 
@@ -19,7 +19,7 @@ export const phaserAnimationEffect = createEffect<
     for (const [entities, [animations]] of query(AnimationComponent)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createAnimation(
-          world.state.currentTickData.scenes[0].anims,
+          world.state.currentTickData.scene.anims,
           entities[i],
           animations[i]
         );

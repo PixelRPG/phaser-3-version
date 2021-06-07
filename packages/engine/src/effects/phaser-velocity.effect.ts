@@ -1,6 +1,6 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { VelocityComponent, PositionComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
@@ -10,8 +10,8 @@ interface PhaserVelocityEffectState {}
 
 export const phaserVelocityEffect = createEffect<
   PhaserVelocityEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserVelocityEffectState = {};
   const phaserService = PhaserService.getInstance();
 

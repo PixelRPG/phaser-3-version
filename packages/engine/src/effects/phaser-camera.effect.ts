@@ -7,7 +7,7 @@ import {
   ComponentProps,
 } from "@javelin/ecs";
 import { CameraComponent, PlayerComponent } from "../components";
-import { WorldGameData, PhaserSceneMethod, Camera, Player } from "../types";
+import { WorldSceneData, PhaserSceneMethod, Camera, Player } from "../types";
 import { PhaserService } from "../services";
 import { extend, getViewportDimensions } from "@ribajs/utils";
 
@@ -18,12 +18,12 @@ interface PhaserCameraEffectState {}
 
 export const phaserCameraEffect = createEffect<
   PhaserCameraEffectState,
-  WorldGameData[]
->((world: World<WorldGameData>) => {
+  WorldSceneData[]
+>((world: World<WorldSceneData>) => {
   const state: PhaserCameraEffectState = {};
   const phaserService = PhaserService.getInstance();
-  const phaserScene = world.state.currentTickData.scenes[0];
-  const phaserGameConfig = world.state.currentTickData.phaserGameConfig;
+  const phaserScene = world.state.currentTickData.scene;
+  const phaserGameConfig = phaserScene.phaserGameConfig;
   const phaserCameras = phaserScene.cameras;
 
   /**

@@ -1,6 +1,6 @@
 import { createWorld } from "@javelin/ecs";
 import {
-  WorldGameData,
+  WorldSceneData,
   Player,
   AssetAtlasComponent,
   AssetMapComponent,
@@ -19,10 +19,13 @@ import {
   DebugComponent,
   phaserSystem,
   mapObjectTopic,
+  PhaserSceneWorld,
 } from "@pixelrpg/engine";
 
-export class GameWorld {
-  world = createWorld<WorldGameData>({
+export class GameWorld extends PhaserSceneWorld {
+  key = "game";
+
+  world = createWorld<WorldSceneData>({
     topics: [mapObjectTopic],
     systems: [phaserSystem],
   });
@@ -105,7 +108,9 @@ export class GameWorld {
     );
   }
 
-  constructor() {
+  constructor(config: Phaser.Types.Core.GameConfig) {
+    super(config);
+
     // MAP
 
     const assetMapComponent = this.world.component(AssetMapComponent, {

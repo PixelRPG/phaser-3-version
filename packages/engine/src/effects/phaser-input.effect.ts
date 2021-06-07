@@ -12,7 +12,7 @@ import {
   PlayerComponent,
 } from "../components";
 import {
-  WorldGameData,
+  WorldSceneData,
   PhaserSceneMethod,
   Player,
   PlayerInput,
@@ -21,15 +21,15 @@ import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
-export const phaserInputEffect = createEffect<null, WorldGameData[]>(
-  (world: World<WorldGameData>) => {
+export const phaserInputEffect = createEffect<null, WorldSceneData[]>(
+  (world: World<WorldSceneData>) => {
     const state = null;
     const phaserService = PhaserService.getInstance();
 
     const getPlayerInput = (
       playerComponent: Component<Player & ComponentProps>
     ): PlayerInput | null => {
-      const keyboard = world.state.currentTickData.scenes[0].input.keyboard;
+      const keyboard = world.state.currentTickData.scene.input.keyboard;
       if (playerComponent.playerNumber === 1) {
         const cursors = keyboard.createCursorKeys();
         return {

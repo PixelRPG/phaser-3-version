@@ -1,5 +1,5 @@
 import { System } from "@javelin/ecs";
-import { WorldGameData } from "../types";
+import { WorldSceneData } from "../types";
 
 import {
   phaserAnimationEffect,
@@ -23,7 +23,7 @@ import {
 /**
  * Preload game assets
  */
-export const phaserSystem: System<WorldGameData> = (/*world*/) => {
+export const phaserSystem: System<WorldSceneData> = (/*world*/) => {
   phaserAssetPreloadEffect();
   phaserAssetMapEffect();
   phaserTilesetEffect();

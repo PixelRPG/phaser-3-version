@@ -50,3 +50,6 @@ lerna-debug.log*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# Typescript
+*.tsbuildinfo

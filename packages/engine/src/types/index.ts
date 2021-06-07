@@ -8,4 +8,4 @@ export * from "./coordinates-2d";
 export * from "./entry";
 export * from "./components/map-layer";
 export * from "./components/sprite";
-export * from "./world-game-data";
+export * from "./world-scene-data";

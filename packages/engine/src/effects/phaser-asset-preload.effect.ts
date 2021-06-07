@@ -5,16 +5,16 @@ import {
   AssetImageComponent,
   AssetMapComponent,
 } from "../components";
-import { WorldGameData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod } from "../types";
 
 const effectOptions: EffectOptions = { global: true };
 
-export const phaserAssetPreloadEffect = createEffect<any, WorldGameData[]>(
-  (world: World<WorldGameData>) => {
+export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[]>(
+  (world: World<WorldSceneData>) => {
     const state = {};
 
     const onPreload = () => {
-      const scene = world.state.currentTickData.scenes[0];
+      const scene = world.state.currentTickData.scene;
       const assetAtlasQuery = query(AssetAtlasComponent);
       const assetImageQuery = query(AssetImageComponent);
       const assetTilesetQuery = query(AssetTilesetComponent);
