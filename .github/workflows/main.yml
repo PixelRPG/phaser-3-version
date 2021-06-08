@@ -5,12 +5,19 @@ on: # rebuild any PRs and main branch changes
     branches:
       - "*"
 jobs:
+  # https://github.com/marketplace/actions/checkout-submodules
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: textbook/git-checkout-submodule-action@master
-      - uses: actions/setup-node@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Checkout submodules
+        # uses: textbook/git-checkout-submodule-action@master
+        run: git submodule update --init --recursive
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
       - run: |
