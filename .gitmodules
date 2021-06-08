@@ -1,9 +1,6 @@
 [submodule "packages/javelin"]
 	path = packages/javelin
 	url = https://github.com/PixelRPG/javelin.git
-[submodule "packages/riba"]
-	path = packages/riba
-	url = https://github.com/ribajs/riba.git
 [submodule "packages/web-udp"]
 	path = packages/web-udp
 	url = https://github.com/PixelRPG/web-udp.git
