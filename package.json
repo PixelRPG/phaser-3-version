@@ -6,7 +6,8 @@
   "main": "src/index.html",
   "scripts": {
     "git:submodules": "git submodule update --init --recursive",
-    "build": "yarn workspaces foreach run build",
+    "build": "yarn run build:esbuild && yarn workspaces foreach run build",
+    "build:esbuild": "yarn workspace @pixelrpg/esbuild run build",
     "build:dev": "yarn workspaces foreach run build:dev",
     "start": "yarn workspace @pixelrpg/city run start",
     "clear": "yarn workspaces foreach run clear",
