@@ -20,11 +20,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: |
+      - name: Install dependencies
+        run: |
           yarn install
-      - run: |
+      - name: Build each package
+        run: |
           yarn run build
-      - run: |
+      - name: Lint each package
+        run: |
           yarn run lint
-      - run: |
+      - name: Run tests for each package
+        run: |
           yarn run test
