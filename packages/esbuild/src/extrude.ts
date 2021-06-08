@@ -86,6 +86,8 @@ const saveMap = async (map: TileMap, config: Config) => {
     config.assets.tilesets.outdir,
     relativeInput
   );
+  const outputDir = dirname(output);
+  await fs.mkdir(outputDir, { recursive: true });
   console.debug("->", input);
   console.debug("<-", output);
   await fs.writeFile(output, JSON.stringify(map.data));
@@ -113,6 +115,8 @@ const extrudeTilesetImage = async (
     config.assets.tilesets.outdir,
     relativeInput
   );
+  const outputDir = dirname(output);
+  await fs.mkdir(outputDir, { recursive: true });
   console.debug("->", input);
   console.debug("<-", output);
   const extruded = await extrudeTilesetToJimp(

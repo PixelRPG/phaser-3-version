@@ -27,4 +27,4 @@ const gameWorld = new GameWorld(config);
 game.scene.add(menuWorld.key, menuWorld);
 game.scene.add(gameWorld.key, gameWorld);
 
-game.scene.start("start-menu");
+game.scene.start("game"); // TODO start with "start-menu"

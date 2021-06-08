@@ -6,9 +6,10 @@
   "main": "src/index.html",
   "scripts": {
     "git:submodules": "git submodule update --init --recursive",
-    "build": "yarn run build:tile-extruder && yarn run build:esbuild && yarn workspaces foreach run build",
+    "build": "yarn run build:tile-extruder && yarn run build:esbuild && yarn run build:javelin && yarn workspaces foreach run build",
     "build:tile-extruder": "yarn workspace tile-extruder run build",
     "build:esbuild": "yarn workspace @pixelrpg/esbuild run build",
+    "build:javelin": "yarn workspace javelin run build",
     "build:dev": "yarn workspaces foreach run build:dev",
     "start": "yarn workspace @pixelrpg/city run start",
     "clear": "yarn workspaces foreach run clear",

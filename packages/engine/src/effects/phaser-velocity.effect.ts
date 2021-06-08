@@ -1,12 +1,11 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { VelocityComponent, PositionComponent } from "../components";
-import { WorldSceneData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PhaserVelocityEffectState {}
+type PhaserVelocityEffectState = EmptyObject;
 
 export const phaserVelocityEffect = createEffect<
   PhaserVelocityEffectState,

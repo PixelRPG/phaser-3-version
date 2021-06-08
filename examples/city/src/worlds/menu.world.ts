@@ -53,6 +53,7 @@ export class MenuWorld extends PhaserSceneWorld {
   override create() {
     super.create();
 
+    // TODO convert to entries / components
     // see https://labs.phaser.io/edit.html?src=src/physics/matterjs/restart%20physics%20scene.js&v=3.55.2
     const bg = this.add.image(0, 0, "buttonBG");
     const text = this.add.image(0, 0, "buttonText");

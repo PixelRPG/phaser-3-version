@@ -6,6 +6,7 @@ export * from "./player-input";
 export * from "./components/player";
 export * from "./size";
 export * from "./coordinates-2d";
+export * from "./empty-object";
 export * from "./entry";
 export * from "./components/map-layer";
 export * from "./components/sprite";

@@ -30,33 +30,37 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[]>(
       playerComponent: Component<Player & ComponentProps>
     ): PlayerInput | null => {
       const keyboard = world.state.currentTickData.scene.input.keyboard;
-      if (playerComponent.playerNumber === 1) {
-        const cursors = keyboard.createCursorKeys();
-        return {
-          left: cursors.left,
-          right: cursors.right,
-          up: cursors.up,
-          down: cursors.down,
-        };
-      }
-      if (playerComponent.playerNumber === 2) {
-        return {
-          left: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
-          right: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
-          up: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
-          down: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
-        };
-      }
-      if (playerComponent.playerNumber === 3) {
-        return {
-          left: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_ONE),
-          right: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_THREE),
-          up: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE),
-          down: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO),
-        };
-      }
-      if (playerComponent.playerNumber === 4) {
-        // TODO
+      const cursors = keyboard.createCursorKeys();
+      switch (playerComponent.playerNumber) {
+        case 1:
+          return {
+            left: cursors.left,
+            right: cursors.right,
+            up: cursors.up,
+            down: cursors.down,
+          };
+        case 2:
+          return {
+            left: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
+            right: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
+            up: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
+            down: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
+          };
+        case 3:
+          return {
+            left: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_ONE),
+            right: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_THREE),
+            up: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE),
+            down: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO),
+          };
+        case 4:
+          // TODO
+          break;
+        default:
+          console.warn(
+            `Only 1-4 player numbers  are supported but player number ${playerComponent.playerNumber} detected!\nThis player number will be ignored.`
+          );
+          break;
       }
       return null;
     };

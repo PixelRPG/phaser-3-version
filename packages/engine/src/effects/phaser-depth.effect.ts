@@ -1,12 +1,11 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { DepthComponent } from "../components";
-import { WorldSceneData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PhaserDepthEffectState {}
+type PhaserDepthEffectState = EmptyObject;
 
 export const phaserDepthEffect = createEffect<
   PhaserDepthEffectState,

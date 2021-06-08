@@ -1,12 +1,11 @@
 import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
 import { TilesetComponent } from "../components";
-import { WorldSceneData, PhaserSceneMethod } from "../types";
+import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
 const effectOptions: EffectOptions = { global: true };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PhaserTilesetEffectState {}
+type PhaserTilesetEffectState = EmptyObject;
 
 export const phaserTilesetEffect = createEffect<
   PhaserTilesetEffectState,

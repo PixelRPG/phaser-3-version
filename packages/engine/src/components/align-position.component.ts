@@ -1,15 +1,16 @@
 import { createComponentType, number } from "@javelin/ecs";
-import { ComponentType, AlignPosition } from "../types";
+import { ComponentType, AlignPosition, AlignType } from "../types";
 import { extend } from "../helper";
 
 /**
- * Set's the position of an entry directly
+ * TODO not used in any system yet
+ * Set's the position of an entry relative to another entry.
  */
 export const AlignPositionComponent = createComponentType({
   type: ComponentType.AlignPosition,
   schema: {
-    x: { type: number, defaultValue: 0 },
-    y: { type: number, defaultValue: 0 },
+    type: { type: number, defaultValue: AlignType.In },
+    toEntry: { type: number },
   },
   initialize(position, data: AlignPosition) {
     extend({ deep: true }, position, data);

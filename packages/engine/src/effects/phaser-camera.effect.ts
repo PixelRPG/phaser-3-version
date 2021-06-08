@@ -7,14 +7,19 @@ import {
   ComponentProps,
 } from "@javelin/ecs";
 import { CameraComponent, PlayerComponent } from "../components";
-import { WorldSceneData, PhaserSceneMethod, Camera, Player } from "../types";
+import {
+  WorldSceneData,
+  PhaserSceneMethod,
+  Camera,
+  Player,
+  EmptyObject,
+} from "../types";
 import { PhaserService } from "../services";
 import { extend, getViewportDimensions } from "../helper";
 
 const effectOptions: EffectOptions = { global: true };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PhaserCameraEffectState {}
+type PhaserCameraEffectState = EmptyObject;
 
 export const phaserCameraEffect = createEffect<
   PhaserCameraEffectState,
