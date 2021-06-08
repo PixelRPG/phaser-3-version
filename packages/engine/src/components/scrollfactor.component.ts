@@ -1,6 +1,6 @@
 import { createComponentType, number } from "@javelin/ecs";
 import { ComponentType, Scrollfactor } from "../types";
-import { extend } from "@ribajs/utils";
+import { extend } from "../helper";
 
 /**
  * Sets the scroll factor of a entry Game Object.

@@ -1,3 +1,4 @@
+export * from "./align-position";
 export * from "./animation";
 export * from "./asset-map";
 export * from "./asset-tileset";

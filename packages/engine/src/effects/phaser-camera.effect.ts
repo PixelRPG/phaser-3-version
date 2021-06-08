@@ -9,7 +9,7 @@ import {
 import { CameraComponent, PlayerComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod, Camera, Player } from "../types";
 import { PhaserService } from "../services";
-import { extend, getViewportDimensions } from "@ribajs/utils";
+import { extend, getViewportDimensions } from "../helper";
 
 const effectOptions: EffectOptions = { global: true };
 

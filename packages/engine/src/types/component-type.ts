@@ -1,4 +1,5 @@
 export enum ComponentType {
+  AlignPosition,
   AssetAtlas,
   AssetImage,
   AssetMap,

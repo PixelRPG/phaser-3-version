@@ -90,11 +90,10 @@ export class GameWorld extends PhaserSceneWorld {
         backgroundColor: "#ffffff",
       },
     });
-    const textPositionComponent = this.world.component(
-      PositionComponent,
-      16,
-      16
-    );
+    const textPositionComponent = this.world.component(PositionComponent, {
+      x: 16,
+      y: 16,
+    });
     const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
       x: 0,
       y: 0,

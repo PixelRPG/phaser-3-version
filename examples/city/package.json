@@ -22,9 +22,8 @@
   "license": "MIT",
   "devDependencies": {
     "@pixelrpg/esbuild": "workspace:*",
-    "@ribajs/eslint-config": "next",
-    "@ribajs/tsconfig": "next",
-    "@ribajs/types": "next",
+    "@pixelrpg/eslint-config": "workspace:*",
+    "@pixelrpg/tsconfig": "workspace:*",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",

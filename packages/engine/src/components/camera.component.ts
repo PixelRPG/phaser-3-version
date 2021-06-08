@@ -1,6 +1,6 @@
 import { createComponentType, number, boolean, string } from "@javelin/ecs";
 import { ComponentType, Camera } from "../types";
-import { extend } from "@ribajs/utils";
+import { extend } from "../helper";
 
 /**
  *

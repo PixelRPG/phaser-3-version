@@ -1,4 +1,5 @@
 export * from "./components";
+export * from "./align-type";
 export * from "./component-type";
 export * from "./phaser-scene-method";
 export * from "./player-input";

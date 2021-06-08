@@ -1,6 +1,6 @@
 import { createComponentType, boolean, number, string } from "@javelin/ecs";
 import { ComponentType, MapLayer } from "../types";
-import { extend } from "@ribajs/utils";
+import { extend } from "../helper";
 
 /**
  *

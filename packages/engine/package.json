@@ -7,9 +7,8 @@
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix && tsc --noEmit"
   },
   "devDependencies": {
-    "@ribajs/eslint-config": "next",
-    "@ribajs/tsconfig": "next",
-    "@ribajs/types": "next",
+    "@pixelrpg/eslint-config": "workspace:*",
+    "@pixelrpg/tsconfig": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.28.0",
@@ -21,8 +20,6 @@
   },
   "dependencies": {
     "@javelin/ecs": "^0.22.0",
-    "@ribajs/events": "next",
-    "@ribajs/utils": "next",
     "phaser": "^3.55.2"
   }
 }

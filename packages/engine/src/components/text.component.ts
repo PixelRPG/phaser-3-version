@@ -1,6 +1,6 @@
 import { createComponentType, boolean, string, number } from "@javelin/ecs";
 import { ComponentType, Text } from "../types";
-import { extend } from "@ribajs/utils";
+import { extend } from "../helper";
 
 /**
  * The text (box)

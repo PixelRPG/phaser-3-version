@@ -1,8 +1,10 @@
 import { createComponentType, number } from "@javelin/ecs";
-import { ComponentType } from "../types";
+import { ComponentType, Position } from "../types";
+import { extend } from "../helper";
 
 /**
- *
+ * Set's the position of an entry directly.
+ * If you want to align an entry to another one use the AlignPositionComponent instead.
  */
 export const PositionComponent = createComponentType({
   type: ComponentType.Position,
@@ -10,8 +12,7 @@ export const PositionComponent = createComponentType({
     x: { type: number, defaultValue: 0 },
     y: { type: number, defaultValue: 0 },
   },
-  initialize(position, x = 0, y = 0) {
-    position.x = x;
-    position.y = y;
+  initialize(position, data: Position = { x: 0, y: 0 }) {
+    extend({ deep: true }, position, data);
   },
 });

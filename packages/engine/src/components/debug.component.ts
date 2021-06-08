@@ -1,6 +1,6 @@
 import { createComponentType } from "@javelin/ecs";
 import { ComponentType, Debug } from "../types";
-import { extend } from "@ribajs/utils";
+import { extend } from "../helper";
 
 /**
  * Add this component to any entry or world for which you want to enable debugging

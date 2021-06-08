@@ -1,9 +1,10 @@
-import { World } from "@javelin/ecs";
+import { World, WorldSnapshot } from "@javelin/ecs";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 
 export abstract class PhaserSceneWorld extends Phaser.Scene {
   abstract world: World<WorldSceneData>;
   phaserGameConfig: Phaser.Types.Core.GameConfig;
+  snapshot?: WorldSnapshot;
 
   constructor(phaserGameConfig: Phaser.Types.Core.GameConfig) {
     super(phaserGameConfig);
@@ -44,5 +45,10 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
       scene: this,
       step: PhaserSceneMethod.update,
     });
+  }
+
+  switch(key: string | PhaserSceneWorld) {
+    this.snapshot = this.world.snapshot();
+    super.scene.switch(key);
   }
 }
