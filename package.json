@@ -12,7 +12,7 @@
     "build:javelin": "yarn workspace javelin run build",
     "build:web-udp": "yarn workspace web-udp run build",
     "build:dev": "yarn workspaces foreach run build:dev",
-    "start": "yarn workspace @pixelrpg/city run start",
+    "start": "yarn workspace @pixelrpg/tuxmon run start",
     "clear": "yarn workspaces foreach run clear",
     "lint": "yarn workspaces foreach run lint",
     "test": "yarn workspaces foreach run test"

@@ -2634,30 +2634,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixelrpg/city@workspace:examples/city":
-  version: 0.0.0-use.local
-  resolution: "@pixelrpg/city@workspace:examples/city"
-  dependencies:
-    "@javelin/ecs": ^0.22.0
-    "@pixelrpg/engine": "workspace:*"
-    "@pixelrpg/esbuild": "workspace:*"
-    "@pixelrpg/eslint-config": "workspace:*"
-    "@pixelrpg/tsconfig": "workspace:*"
-    "@types/jest": ^26.0.24
-    "@typescript-eslint/eslint-plugin": ^4.28.2
-    "@typescript-eslint/parser": ^4.28.2
-    esbuild: ^0.12.15
-    eslint: ^7.30.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^3.4.0
-    free-tex-packer-cli: ^0.3.0
-    phaser: ^3.55.2
-    prettier: 2.3.2
-    rimraf: ^3.0.2
-    typescript: ^4.3.5
-  languageName: unknown
-  linkType: soft
-
 "@pixelrpg/engine@workspace:*, @pixelrpg/engine@workspace:packages/engine":
   version: 0.0.0-use.local
   resolution: "@pixelrpg/engine@workspace:packages/engine"
@@ -2717,6 +2693,30 @@ __metadata:
 "@pixelrpg/tsconfig@workspace:*, @pixelrpg/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@pixelrpg/tsconfig@workspace:packages/tsconfig"
+  languageName: unknown
+  linkType: soft
+
+"@pixelrpg/tuxmon@workspace:examples/tuxmon":
+  version: 0.0.0-use.local
+  resolution: "@pixelrpg/tuxmon@workspace:examples/tuxmon"
+  dependencies:
+    "@javelin/ecs": ^0.22.0
+    "@pixelrpg/engine": "workspace:*"
+    "@pixelrpg/esbuild": "workspace:*"
+    "@pixelrpg/eslint-config": "workspace:*"
+    "@pixelrpg/tsconfig": "workspace:*"
+    "@types/jest": ^26.0.24
+    "@typescript-eslint/eslint-plugin": ^4.28.2
+    "@typescript-eslint/parser": ^4.28.2
+    esbuild: ^0.12.15
+    eslint: ^7.30.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    free-tex-packer-cli: ^0.3.0
+    phaser: ^3.55.2
+    prettier: 2.3.2
+    rimraf: ^3.0.2
+    typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
