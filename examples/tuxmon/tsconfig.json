@@ -1,8 +1,0 @@
-{
-  "extends": "@pixelrpg/tsconfig",
-  "compilerOptions": {
-    "outDir": "dist",
-    "types": [],
-    "lib": ["ESNext", "DOM", "scripthost"]
-  }
-}

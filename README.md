@@ -15,3 +15,6 @@ yarn run build
 yarn run start
 ```
 
+## Tools
+
+* [Free texture packer](https://github.com/odrick/free-tex-packer)
