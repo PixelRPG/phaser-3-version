@@ -1,10 +1,10 @@
-import { createComponentType, string, number } from "@javelin/ecs";
+import { component, string, number } from "@javelin/ecs";
 import { ComponentType, Animation } from "../types";
 
 /**
  *
  */
-export const AnimationComponent = createComponentType({
+export const AnimationComponent = component({
   type: ComponentType.Animation,
   schema: {
     key: string,

@@ -1,11 +1,11 @@
-import { createComponentType, boolean, number, string } from "@javelin/ecs";
+import { component, boolean, number, string } from "@javelin/ecs";
 import { ComponentType, MapLayer } from "../types";
 import { extend } from "../helper";
 
 /**
  *
  */
-export const MapLayerComponent = createComponentType({
+export const MapLayerComponent = component({
   type: ComponentType.MapLayer,
   schema: {
     name: string,

@@ -1,7 +1,7 @@
-import { createComponentType, string, boolean } from "@javelin/ecs";
+import { component, string, boolean } from "@javelin/ecs";
 import { ComponentType, AssetMap } from "../types";
 
-export const AssetMapComponent = createComponentType({
+export const AssetMapComponent = component({
   type: ComponentType.AssetMap,
   schema: {
     key: string,

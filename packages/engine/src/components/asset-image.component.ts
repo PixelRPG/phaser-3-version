@@ -1,8 +1,8 @@
-import { createComponentType, string, boolean } from "@javelin/ecs";
+import { component, string, boolean } from "@javelin/ecs";
 import { ComponentType } from "../types";
 import { createObjectType } from "./schemata";
 
-export const AssetImageComponent = createComponentType({
+export const AssetImageComponent = component({
   type: ComponentType.AssetImage,
   schema: {
     key: string,

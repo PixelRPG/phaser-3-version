@@ -1,21 +1,22 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
 import { DepthComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 type PhaserDepthEffectState = EmptyObject;
 
 export const phaserDepthEffect = createEffect<
   PhaserDepthEffectState,
-  WorldSceneData[]
->((world: World<WorldSceneData>) => {
+  WorldSceneData[],
+  WorldSceneData
+>((world) => {
   const state: PhaserDepthEffectState = {};
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [depths]] of query(DepthComponent)) {
+    for (const [entities, [depths]] of createQuery(DepthComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);
         if (!gameObject || typeof gameObject.setDepth !== "function") {
@@ -30,7 +31,7 @@ export const phaserDepthEffect = createEffect<
   };
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+    if (world.latestTickData.step === PhaserSceneMethod.create) {
       onCreate();
     }
 

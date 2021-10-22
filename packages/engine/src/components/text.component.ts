@@ -1,11 +1,11 @@
-import { createComponentType, boolean, string, number } from "@javelin/ecs";
+import { component, boolean, string, number } from "@javelin/ecs";
 import { ComponentType, Text } from "../types";
 import { extend } from "../helper";
 
 /**
  * The text (box)
  */
-export const TextComponent = createComponentType({
+export const TextComponent = component({
   type: ComponentType.Text,
   schema: {
     text: string,

@@ -1,11 +1,10 @@
 import {
   createEffect,
   EffectOptions,
-  World,
-  query,
-  Component,
-  ComponentProps,
+  createQuery,
+  ComponentOf,
 } from "@javelin/ecs";
+import { Schema } from "@javelin/core";
 import {
   VelocityComponent,
   SpriteComponent,
@@ -19,17 +18,17 @@ import {
 } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
-export const phaserInputEffect = createEffect<null, WorldSceneData[]>(
-  (world: World<WorldSceneData>) => {
+export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldSceneData>(
+  (world) => {
     const state = null;
     const phaserService = PhaserService.getInstance();
 
     const getPlayerInput = (
-      playerComponent: Component<Player & ComponentProps>
+      playerComponent: ComponentOf<Player & Schema>
     ): PlayerInput | null => {
-      const keyboard = world.state.currentTickData.scene.input.keyboard;
+      const keyboard = world.latestTickData.scene.input.keyboard;
       const cursors = keyboard.createCursorKeys();
       switch (playerComponent.playerNumber) {
         case 1:
@@ -66,7 +65,7 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[]>(
     };
 
     const eachUpdate = () => {
-      for (const [entities, [velocitys, players]] of query(
+      for (const [entities, [velocitys, players]] of createQuery(
         VelocityComponent,
         PlayerComponent,
         SpriteComponent
@@ -128,7 +127,7 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[]>(
     };
 
     return () => {
-      if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+      if (world.latestTickData.step === PhaserSceneMethod.update) {
         eachUpdate();
       }
 

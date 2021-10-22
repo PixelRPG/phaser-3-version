@@ -9,17 +9,18 @@
   "devDependencies": {
     "@pixelrpg/eslint-config": "workspace:*",
     "@pixelrpg/tsconfig": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
-    "eslint": "^7.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "2.3.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.4.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@javelin/ecs": "^0.22.0",
+    "@javelin/core": "workspace:packages/javelin/packages/core",
+    "@javelin/ecs": "workspace:*",
     "phaser": "^3.55.2"
   }
 }

@@ -1,14 +1,8 @@
+import { Viewport } from '../viewport';
+import { CameraBounds } from '../camera-bounds';
+
 export interface Camera {
-  viewport: {
-    /** The horizontal position of the Camera viewport. Default 0. */
-    x?: number;
-    /** The vertical position of the Camera viewport. Default 0. */
-    y?: number;
-    /** The width of the Camera viewport. If not given it'll be the game config size. */
-    width?: number;
-    /** The height of the Camera viewport. If not given it'll be the game config size. */
-    height?: number;
-  };
+  viewport: Viewport;
 
   /** The name of the Camera. Default ''. */
   name?: string;
@@ -44,16 +38,5 @@ export interface Camera {
    * to be -1024, -1024, with a width and height of 2048. Depending on your game you may find
    * it easier for 0x0 to be the top-left of the bounds, or you may wish 0x0 to be the middle.
    */
-  bounds?: {
-    /** The top-left x coordinate of the bounds. */
-    x: number;
-    /** The top-left y coordinate of the bounds. */
-    y: number;
-    /** The width of the bounds, in pixels. */
-    width: number;
-    /** The height of the bounds, in pixels. */
-    height: number;
-    /** If `true` the Camera will automatically be centered on the new bounds. Default false. */
-    centerOn?: boolean;
-  };
+  bounds?:CameraBounds;
 }

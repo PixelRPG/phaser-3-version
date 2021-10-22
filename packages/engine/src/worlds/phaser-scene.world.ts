@@ -12,7 +12,7 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
   }
 
   init() {
-    this.world.tick({
+    this.world.step({
       time: 0,
       delta: 0,
       scene: this,
@@ -21,7 +21,7 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
   }
 
   preload() {
-    this.world.tick({
+    this.world.step({
       time: 0,
       delta: 0,
       scene: this,
@@ -30,7 +30,7 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
   }
 
   create() {
-    this.world.tick({
+    this.world.step({
       time: 0,
       delta: 0,
       scene: this,
@@ -39,7 +39,7 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
   }
 
   update(time: number, delta: number) {
-    this.world.tick({
+    this.world.step({
       time,
       delta,
       scene: this,
@@ -48,7 +48,7 @@ export abstract class PhaserSceneWorld extends Phaser.Scene {
   }
 
   switch(key: string | PhaserSceneWorld) {
-    this.snapshot = this.world.snapshot();
+    this.snapshot = this.world.createSnapshot();
     super.scene.switch(key);
   }
 }

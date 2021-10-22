@@ -1,21 +1,22 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
 import { PositionComponent, VelocityComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 type PhaserPositionEffectState = EmptyObject;
 
 export const phaserPositionEffect = createEffect<
   PhaserPositionEffectState,
-  WorldSceneData[]
->((world: World<WorldSceneData>) => {
+  WorldSceneData[],
+  WorldSceneData
+>((world) => {
   const state: PhaserPositionEffectState = {};
   const phaserService = PhaserService.getInstance();
 
   const initDirectPositions = () => {
-    for (const [entities, [positions]] of query(PositionComponent)) {
+    for (const [entities, [positions]] of createQuery(PositionComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);
         if (!gameObject || typeof gameObject.setPosition !== "function") {
@@ -31,11 +32,11 @@ export const phaserPositionEffect = createEffect<
 
   const updatePositions = () => {
     // const velocityEntities: number[] = [];
-    // query(VelocityComponent).forEach((entity) => {
+    // createQuery(VelocityComponent).forEach((entity) => {
     //   velocityEntities.push(entity);
     // });
 
-    for (const [entities, [positions]] of query(PositionComponent)) {
+    for (const [entities, [positions]] of createQuery(PositionComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const entry = entities[i];
         // Ignore position if velocity is set because in this case phaser set's the position by itself
@@ -64,11 +65,11 @@ export const phaserPositionEffect = createEffect<
   };
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+    if (world.latestTickData.step === PhaserSceneMethod.create) {
       onCreate();
     }
 
-    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+    if (world.latestTickData.step === PhaserSceneMethod.update) {
       eachUpdate();
     }
 

@@ -1,12 +1,12 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, World, createQuery } from "@javelin/ecs";
 import { SpriteComponent, PositionComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
-export const phaserSpriteEffect = createEffect<any, WorldSceneData[]>(
+export const phaserSpriteEffect = createEffect<any, WorldSceneData[], WorldSceneData>(
   (world: World<WorldSceneData>) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
@@ -21,7 +21,7 @@ export const phaserSpriteEffect = createEffect<any, WorldSceneData[]>(
         throw new Error("A spawn point must have coordinates!");
       }
 
-      for (const [entities, [, positions]] of query(
+      for (const [entities, [, positions]] of createQuery(
         SpriteComponent,
         PositionComponent
       )) {
@@ -39,10 +39,10 @@ export const phaserSpriteEffect = createEffect<any, WorldSceneData[]>(
     };
 
     const onCreate = () => {
-      for (const [entities, [sprites]] of query(SpriteComponent)) {
+      for (const [entities, [sprites]] of createQuery(SpriteComponent)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createSprite(
-            world.state.currentTickData.scene.physics,
+            world.latestTickData.scene.physics,
             entities[i],
             sprites[i]
           );
@@ -59,7 +59,7 @@ export const phaserSpriteEffect = createEffect<any, WorldSceneData[]>(
     };
 
     return () => {
-      if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      if (world.latestTickData.step === PhaserSceneMethod.create) {
         onCreate();
       }
 

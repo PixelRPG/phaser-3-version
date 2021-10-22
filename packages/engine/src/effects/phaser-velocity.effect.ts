@@ -1,21 +1,22 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
 import { VelocityComponent, PositionComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 type PhaserVelocityEffectState = EmptyObject;
 
 export const phaserVelocityEffect = createEffect<
   PhaserVelocityEffectState,
-  WorldSceneData[]
->((world: World<WorldSceneData>) => {
+  WorldSceneData[],
+  WorldSceneData
+>((world) => {
   const state: PhaserVelocityEffectState = {};
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [velocitys, positions]] of query(
+    for (const [entities, [velocitys, positions]] of createQuery(
       VelocityComponent,
       PositionComponent
     )) {
@@ -42,7 +43,7 @@ export const phaserVelocityEffect = createEffect<
   };
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.update) {
+    if (world.latestTickData.step === PhaserSceneMethod.update) {
       onCreate();
     }
 

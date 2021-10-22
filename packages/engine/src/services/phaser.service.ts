@@ -1,4 +1,5 @@
-import { Component, World, ComponentProps } from "@javelin/ecs";
+import { ComponentOf, World } from "@javelin/ecs";
+import { Schema } from "@javelin/core";
 import {
   AssetMap,
   Tileset,
@@ -8,6 +9,11 @@ import {
   Camera,
   Text,
   Entity,
+  Coordinates2D,
+  Size,
+  AnimationFrame,
+  Viewport,
+  CameraBounds,
 } from "../types";
 
 export class PhaserService {
@@ -67,7 +73,7 @@ export class PhaserService {
 
   public createLayer(
     mapLayerEntity: Entity,
-    mapLayerComponent: Component<MapLayer & ComponentProps>
+    mapLayerComponent: ComponentOf<MapLayer & Schema>
   ) {
     const map = this.getMap(mapLayerComponent.assetMapEntity);
     const tileset = this.getTileset(mapLayerComponent.tilesetEntity);
@@ -111,7 +117,7 @@ export class PhaserService {
 
   public createTileset(
     tilesetEntity: Entity,
-    tilesetComponent: Component<Tileset & ComponentProps>
+    tilesetComponent: ComponentOf<Tileset & Schema>
   ) {
     const map = this.getMap(tilesetComponent.assetMapEntity);
     const tileset = map.addTilesetImage(
@@ -141,7 +147,7 @@ export class PhaserService {
   public createMap(
     scene: Phaser.Scene,
     assetMapEntity: Entity,
-    assetMapComponent: Component<AssetMap & ComponentProps>
+    assetMapComponent: ComponentOf<AssetMap & Schema>
   ) {
     const map = scene.make.tilemap({
       key: assetMapComponent.key,
@@ -174,7 +180,7 @@ export class PhaserService {
   public createSprite(
     physics: Phaser.Physics.Arcade.ArcadePhysics,
     spriteEntity: Entity,
-    spriteComponent: Component<Sprite & ComponentProps>
+    spriteComponent: ComponentOf<Sprite & Schema>
   ) {
     const sprite = physics.add.sprite(
       0,
@@ -184,15 +190,18 @@ export class PhaserService {
     );
 
     if (spriteComponent.scale) {
-      sprite.setScale(spriteComponent.scale.x, spriteComponent.scale.y);
+      const scale = spriteComponent.scale as Coordinates2D;
+      sprite.setScale(scale.x, scale.y);
     }
 
     if (spriteComponent.size) {
-      sprite.setSize(spriteComponent.size.width, spriteComponent.size.height);
+      const size = spriteComponent.size as Size;
+      sprite.setSize(size.width, size.height);
     }
 
     if (spriteComponent.offset) {
-      sprite.setOffset(spriteComponent.offset.x, spriteComponent.offset.y);
+      const offset = spriteComponent.offset as Coordinates2D;
+      sprite.setOffset(offset.x, offset.y);
     }
     this._sprites.set(spriteEntity, sprite);
     return sprite;
@@ -217,17 +226,18 @@ export class PhaserService {
   public createAnimation(
     animationManager: Phaser.Animations.AnimationManager,
     animationEntity: Entity,
-    animationComponent: Component<Animation & ComponentProps>
+    animationComponent: ComponentOf<Animation & Schema>
   ) {
+    const frame = animationComponent.frames as AnimationFrame;
     const animation = animationManager.create({
       key: animationComponent.key,
       frames: animationManager.generateFrameNames(
-        animationComponent.frames.atlasKey,
+        frame.atlasKey,
         {
-          prefix: animationComponent.frames.prefix,
-          start: animationComponent.frames.start,
-          end: animationComponent.frames.end,
-          zeroPad: animationComponent.frames.zeroPad,
+          prefix: frame.prefix,
+          start: frame.start,
+          end: frame.end,
+          zeroPad: frame.zeroPad,
         }
       ),
       frameRate: animationComponent.frameRate,
@@ -263,18 +273,19 @@ export class PhaserService {
   public createCamera(
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
     cameraEntity: Entity,
-    cameraComponent: Component<Camera & ComponentProps>
+    cameraComponent: ComponentOf<Camera & Schema>
   ) {
     let phaserCamera: Phaser.Cameras.Scene2D.Camera;
 
     if (cameraComponent.isMain) {
       phaserCamera = cameraManager.main;
     } else {
+      const viewport = cameraComponent.viewport as Viewport;
       phaserCamera = cameraManager.add(
-        cameraComponent.viewport.x,
-        cameraComponent.viewport.y,
-        cameraComponent.viewport.width,
-        cameraComponent.viewport.height,
+        viewport.x,
+        viewport.y,
+        viewport.width,
+        viewport.height,
         cameraComponent.isMain,
         cameraComponent.name
       );
@@ -293,24 +304,26 @@ export class PhaserService {
 
   public updateCamera(
     cameraEntity: Entity,
-    cameraComponent: Component<Camera & ComponentProps>,
+    cameraComponent: ComponentOf<Camera & Schema>,
     phaserCamera?: Phaser.Cameras.Scene2D.Camera
   ) {
     if (!phaserCamera) {
       phaserCamera = this.getCamera(cameraEntity);
     }
 
-    if (typeof cameraComponent.viewport.width === "number") {
+    const viewport = cameraComponent.viewport as Viewport;
+
+    if (typeof viewport.width === "number") {
       phaserCamera.setSize(
-        cameraComponent.viewport.width,
-        cameraComponent.viewport.height
+        viewport.width,
+        viewport.height
       );
     }
 
-    if (typeof cameraComponent.viewport.x === "number") {
+    if (typeof viewport.x === "number") {
       phaserCamera.setPosition(
-        cameraComponent.viewport.x,
-        cameraComponent.viewport.y
+        viewport.x,
+        viewport.y
       );
     }
 
@@ -319,11 +332,12 @@ export class PhaserService {
     }
 
     if (cameraComponent.bounds) {
+      const bounds = cameraComponent.bounds as CameraBounds;
       phaserCamera.setBounds(
-        cameraComponent.bounds.x,
-        cameraComponent.bounds.y,
-        cameraComponent.bounds.width,
-        cameraComponent.bounds.height
+        bounds.x,
+        bounds.y,
+        bounds.width,
+        bounds.height
       );
     }
 
@@ -355,7 +369,7 @@ export class PhaserService {
     world: World<any>,
     scene: Phaser.Scene,
     textEntity: Entity,
-    textComponent: Component<Text & ComponentProps>
+    textComponent: ComponentOf<Text & Schema>
   ) {
     const phaserText = scene.add.text(
       0,

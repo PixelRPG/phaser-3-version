@@ -1,4 +1,4 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
 import { TILE_COLLSION_LAYER } from "../constants";
 import {
   CollisionComponent,
@@ -8,23 +8,23 @@ import {
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 /**
  * - Should be called after the map layers effect
  * - Should be called after the sprite effect
  */
-export const phaserCollisionEffect = createEffect<any, WorldSceneData[]>(
-  (world: World<WorldSceneData>) => {
+export const phaserCollisionEffect = createEffect<any, WorldSceneData[], WorldSceneData>(
+  (world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
 
     const onCreate = () => {
       const phaserCollisionLayers: Phaser.Tilemaps.TilemapLayer[] = [];
-      const scene = world.state.currentTickData.scene;
+      const scene = world.latestTickData.scene;
 
       // Set collision for map layers
-      for (const [entities] of query(MapLayerComponent, CollisionComponent)) {
+      for (const [entities] of createQuery(MapLayerComponent, CollisionComponent)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserCollisionLayer = phaserService.getLayer(entities[i]);
           phaserCollisionLayer.setCollisionByProperty({
@@ -35,7 +35,7 @@ export const phaserCollisionEffect = createEffect<any, WorldSceneData[]>(
       }
 
       // Set collision for sprites
-      for (const [entities] of query(VelocityComponent, CollisionComponent)) {
+      for (const [entities] of createQuery(VelocityComponent, CollisionComponent)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserGameObject = phaserService.getGameObject(entities[i]);
           for (const phaserCollisionLayer of phaserCollisionLayers) {
@@ -46,7 +46,7 @@ export const phaserCollisionEffect = createEffect<any, WorldSceneData[]>(
     };
 
     return () => {
-      if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+      if (world.latestTickData.step === PhaserSceneMethod.create) {
         onCreate();
       }
 

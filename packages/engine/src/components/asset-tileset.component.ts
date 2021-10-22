@@ -1,10 +1,10 @@
-import { createComponentType, boolean, string } from "@javelin/ecs";
+import { component, boolean, string } from "@javelin/ecs";
 import { ComponentType, AssetTileset } from "../types";
 
 /**
  * The tileset used in tiledmaps
  */
-export const AssetTilesetComponent = createComponentType({
+export const AssetTilesetComponent = component({
   type: ComponentType.AssetTileset,
   schema: {
     key: string,

@@ -1,10 +1,10 @@
-import { createComponentType, number } from "@javelin/ecs";
+import { component, number } from "@javelin/ecs";
 import { ComponentType, Velocity } from "../types";
 
 /**
  *
  */
-export const VelocityComponent = createComponentType({
+export const VelocityComponent = component({
   type: ComponentType.Velocity,
   schema: {
     speed: { type: number, defaultValue: 0 },

@@ -1,10 +1,10 @@
-import { createComponentType, string, number } from "@javelin/ecs";
+import { component, string, number } from "@javelin/ecs";
 import { ComponentType, Sprite } from "../types";
 
 /**
  *
  */
-export const SpriteComponent = createComponentType({
+export const SpriteComponent = component({
   type: ComponentType.Sprite,
   schema: {
     key: string,

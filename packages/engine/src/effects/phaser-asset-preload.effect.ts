@@ -1,4 +1,4 @@
-import { createEffect, query, EffectOptions, World } from "@javelin/ecs";
+import { createEffect, createQuery, EffectOptions } from "@javelin/ecs";
 import {
   AssetAtlasComponent,
   AssetTilesetComponent,
@@ -7,18 +7,18 @@ import {
 } from "../components";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
-export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[]>(
-  (world: World<WorldSceneData>) => {
+export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[], WorldSceneData>(
+  (world) => {
     const state = {};
 
     const onPreload = () => {
-      const scene = world.state.currentTickData.scene;
-      const assetAtlasQuery = query(AssetAtlasComponent);
-      const assetImageQuery = query(AssetImageComponent);
-      const assetTilesetQuery = query(AssetTilesetComponent);
-      const asssetMapQuery = query(AssetMapComponent);
+      const scene = world.latestTickData.scene;
+      const assetAtlasQuery = createQuery(AssetAtlasComponent);
+      const assetImageQuery = createQuery(AssetImageComponent);
+      const assetTilesetQuery = createQuery(AssetTilesetComponent);
+      const asssetMapQuery = createQuery(AssetMapComponent);
 
       for (const [, [tilesets]] of assetTilesetQuery) {
         for (const tileset of tilesets) {
@@ -56,7 +56,7 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[]>(
     };
 
     return () => {
-      if (world.state.currentTickData.step === PhaserSceneMethod.preload) {
+      if (world.latestTickData.step === PhaserSceneMethod.preload) {
         onPreload();
       }
       return state;

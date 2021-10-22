@@ -1,20 +1,21 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, World, createQuery } from "@javelin/ecs";
 import { DebugComponent, MapLayerComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 export const phaserDebugEffect = createEffect<
   { debug: boolean },
-  WorldSceneData[]
->((world: World<WorldSceneData>) => {
+  WorldSceneData[],
+  WorldSceneData
+>((world) => {
   const state = {
     debug: false,
   };
   const phaserService = PhaserService.getInstance();
-  const scene = world.state.currentTickData.scene;
-  const keyboard = world.state.currentTickData.scene.input.keyboard;
+  const scene = world.latestTickData.scene;
+  const keyboard = world.latestTickData.scene.input.keyboard;
   const debugKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F1);
 
   /**
@@ -26,7 +27,7 @@ export const phaserDebugEffect = createEffect<
       .setAlpha(0.75)
       .setDepth(20);
 
-    for (const [entities, [mapLayers]] of query(MapLayerComponent)) {
+    for (const [entities, [mapLayers]] of createQuery(MapLayerComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const mapLayerComponent = mapLayers[i];
         if (mapLayerComponent.collides) {
@@ -53,14 +54,14 @@ export const phaserDebugEffect = createEffect<
   };
 
   const onCreate = () => {
-    const debugs = query(DebugComponent);
+    const debugs = createQuery(DebugComponent);
     if (debugs.length) {
       debugKey.once("down", onDebugkeyDown);
     }
   };
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+    if (world.latestTickData.step === PhaserSceneMethod.create) {
       onCreate();
     }
     return state;

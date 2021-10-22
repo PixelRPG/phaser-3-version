@@ -1,4 +1,4 @@
-import { createComponentType, string, boolean } from "@javelin/ecs";
+import { component, string, boolean } from "@javelin/ecs";
 import { ComponentType } from "../types";
 
 /**
@@ -9,7 +9,7 @@ import { ComponentType } from "../types";
  * @see https://labs.phaser.io/view.html?src=src\animation\create%20animation%20from%20texture%20atlas.js
  * @see https://labs.phaser.io/edit.html?src=src\animation\create%20animation%20from%20sprite%20sheet.js
  */
-export const AssetAtlasComponent = createComponentType({
+export const AssetAtlasComponent = component({
   type: ComponentType.AssetAtlas,
   schema: {
     key: string,

@@ -1,22 +1,23 @@
-import { createEffect, EffectOptions, World, query } from "@javelin/ecs";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
 import { AssetMapComponent } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
 
-const effectOptions: EffectOptions = { global: true };
+const effectOptions: EffectOptions = { shared: true };
 
 type PhaserTilesetEffectState = EmptyObject;
 
 export const phaserMapObjectEffect = createEffect<
   PhaserTilesetEffectState,
-  WorldSceneData[]
->((world: World<WorldSceneData>) => {
+  WorldSceneData[],
+  WorldSceneData
+>((world) => {
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, []] of query(AssetMapComponent)) {
+    for (const [entities, []] of createQuery(AssetMapComponent)) {
       for (let i = 0; i < entities.length; i++) {
         const map = phaserService.getMap(entities[i]);
 
@@ -33,7 +34,7 @@ export const phaserMapObjectEffect = createEffect<
   };
 
   return () => {
-    if (world.state.currentTickData.step === PhaserSceneMethod.create) {
+    if (world.latestTickData.step === PhaserSceneMethod.create) {
       onCreate();
     }
 

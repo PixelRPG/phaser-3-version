@@ -1,11 +1,11 @@
-import { createComponentType, number, boolean, string } from "@javelin/ecs";
+import { component, number, boolean, string } from "@javelin/ecs";
 import { ComponentType, Camera } from "../types";
 import { extend } from "../helper";
 
 /**
  *
  */
-export const CameraComponent = createComponentType({
+export const CameraComponent = component({
   type: ComponentType.Camera,
   schema: {
     name: { type: string, defaultValue: "" },

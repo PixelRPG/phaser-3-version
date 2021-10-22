@@ -1,5 +1,7 @@
 export * from "./components";
 export * from "./align-type";
+export * from "./animation-frame";
+export * from "./camera-bounds";
 export * from "./component-type";
 export * from "./phaser-scene-method";
 export * from "./player-input";
@@ -10,4 +12,5 @@ export * from "./empty-object";
 export * from "./entry";
 export * from "./components/map-layer";
 export * from "./components/sprite";
+export * from "./viewport";
 export * from "./world-scene-data";

@@ -1,4 +1,4 @@
 /* eslint-disable no-undef */
 module.exports = {
-  plugins: [require("postcss-preset-env")],
+  plugins: [require.resolve("postcss-preset-env")],
 };
