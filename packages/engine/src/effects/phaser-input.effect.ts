@@ -2,18 +2,16 @@ import {
   createEffect,
   EffectOptions,
   createQuery,
-  ComponentOf,
 } from "@javelin/ecs";
-import { Schema } from "@javelin/core";
 import {
-  VelocityComponent,
-  SpriteComponent,
   PlayerComponent,
+  Velocity,
+  Sprite,
+  Player,
 } from "../components";
 import {
   WorldSceneData,
   PhaserSceneMethod,
-  Player,
   PlayerInput,
 } from "../types";
 import { PhaserService } from "../services";
@@ -26,7 +24,7 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldScene
     const phaserService = PhaserService.getInstance();
 
     const getPlayerInput = (
-      playerComponent: ComponentOf<Player & Schema>
+      playerComponent: typeof PlayerComponent
     ): PlayerInput | null => {
       const keyboard = world.latestTickData.scene.input.keyboard;
       const cursors = keyboard.createCursorKeys();
@@ -66,9 +64,9 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldScene
 
     const eachUpdate = () => {
       for (const [entities, [velocitys, players]] of createQuery(
-        VelocityComponent,
-        PlayerComponent,
-        SpriteComponent
+        Velocity,
+        Player,
+        Sprite
       )) {
         for (let i = 0; i < entities.length; i++) {
           const sprite = phaserService.getSprite(entities[i]);

@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { ScrollfactorComponent } from "../components";
+import { Scrollfactor } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserScrollfactorEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onUpdate = () => {
-    for (const [entities, [depths]] of createQuery(ScrollfactorComponent)) {
+    for (const [entities, [depths]] of createQuery(Scrollfactor)) {
       for (let i = 0; i < entities.length; i++) {
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);
         if (!gameObject || typeof gameObject.setScrollFactor !== "function") {

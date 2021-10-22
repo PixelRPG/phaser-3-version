@@ -1,9 +1,9 @@
 import { createEffect, createQuery, EffectOptions } from "@javelin/ecs";
 import {
-  AssetAtlasComponent,
-  AssetTilesetComponent,
-  AssetImageComponent,
-  AssetMapComponent,
+  AssetAtlas,
+  AssetTileset,
+  AssetImage,
+  AssetMap,
 } from "../components";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 
@@ -15,10 +15,10 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[], Worl
 
     const onPreload = () => {
       const scene = world.latestTickData.scene;
-      const assetAtlasQuery = createQuery(AssetAtlasComponent);
-      const assetImageQuery = createQuery(AssetImageComponent);
-      const assetTilesetQuery = createQuery(AssetTilesetComponent);
-      const asssetMapQuery = createQuery(AssetMapComponent);
+      const assetAtlasQuery = createQuery(AssetAtlas);
+      const assetImageQuery = createQuery(AssetImage);
+      const assetTilesetQuery = createQuery(AssetTileset);
+      const asssetMapQuery = createQuery(AssetMap);
 
       for (const [, [tilesets]] of assetTilesetQuery) {
         for (const tileset of tilesets) {

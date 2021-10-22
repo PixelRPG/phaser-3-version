@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { MapLayerComponent } from "../components";
+import { MapLayer } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserMapLayerEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [mapLayers]] of createQuery(MapLayerComponent)) {
+    for (const [entities, [mapLayers]] of createQuery(MapLayer)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createLayer(entities[i], mapLayers[i]);
       }

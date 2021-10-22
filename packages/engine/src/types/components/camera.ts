@@ -38,5 +38,5 @@ export interface Camera {
    * to be -1024, -1024, with a width and height of 2048. Depending on your game you may find
    * it easier for 0x0 to be the top-left of the bounds, or you may wish 0x0 to be the middle.
    */
-  bounds?:CameraBounds;
+  bounds?: CameraBounds;
 }

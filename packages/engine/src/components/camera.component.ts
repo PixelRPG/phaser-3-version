@@ -1,27 +1,25 @@
 import { component, number, boolean, string } from "@javelin/ecs";
-import { ComponentType, Camera } from "../types";
-import { extend } from "../helper";
+
+export const Camera = {
+  name: string,
+  isMain: boolean,
+  viewport: {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  },
+  zoom: number,
+  bounds: {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    centerOn: boolean,
+  }
+};
 
 /**
  *
  */
-export const CameraComponent = component({
-  type: ComponentType.Camera,
-  schema: {
-    name: { type: string, defaultValue: "" },
-    isMain: { type: boolean, defaultValue: false },
-    viewport: {
-      x: { type: number, defaultValue: 0 },
-      y: { type: number, defaultValue: 0 },
-      width: number,
-      height: number,
-    },
-    zoom: { type: number, defaultValue: 2 },
-  },
-  initialize(camera, data: Camera) {
-    data.viewport.x = data.viewport.x || 0;
-    data.viewport.y = data.viewport.y || 0;
-    data.zoom = data.zoom || 2;
-    extend({ deep: true }, camera, data);
-  },
-});
+export const CameraComponent = component(Camera, { zoom: 2});

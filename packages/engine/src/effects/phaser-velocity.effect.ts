@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { VelocityComponent, PositionComponent } from "../components";
+import { Velocity, Position } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -17,8 +17,8 @@ export const phaserVelocityEffect = createEffect<
 
   const onCreate = () => {
     for (const [entities, [velocitys, positions]] of createQuery(
-      VelocityComponent,
-      PositionComponent
+      Velocity,
+      Position
     )) {
       for (let i = 0; i < entities.length; i++) {
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);

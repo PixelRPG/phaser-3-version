@@ -1,13 +1,6 @@
 import { ComponentOf, World } from "@javelin/ecs";
 import { Schema } from "@javelin/core";
 import {
-  AssetMap,
-  Tileset,
-  MapLayer,
-  Sprite,
-  Animation,
-  Camera,
-  Text,
   Entity,
   Coordinates2D,
   Size,
@@ -15,6 +8,16 @@ import {
   Viewport,
   CameraBounds,
 } from "../types";
+
+import {
+  AssetMapComponent,
+  TilesetComponent,
+  MapLayerComponent,
+  SpriteComponent,
+  AnimationComponent,
+  CameraComponent,
+  TextComponent,
+} from "../components";
 
 export class PhaserService {
   protected static instance: PhaserService;
@@ -73,7 +76,7 @@ export class PhaserService {
 
   public createLayer(
     mapLayerEntity: Entity,
-    mapLayerComponent: ComponentOf<MapLayer & Schema>
+    mapLayerComponent: typeof MapLayerComponent
   ) {
     const map = this.getMap(mapLayerComponent.assetMapEntity);
     const tileset = this.getTileset(mapLayerComponent.tilesetEntity);
@@ -117,7 +120,7 @@ export class PhaserService {
 
   public createTileset(
     tilesetEntity: Entity,
-    tilesetComponent: ComponentOf<Tileset & Schema>
+    tilesetComponent: typeof TilesetComponent
   ) {
     const map = this.getMap(tilesetComponent.assetMapEntity);
     const tileset = map.addTilesetImage(
@@ -147,7 +150,7 @@ export class PhaserService {
   public createMap(
     scene: Phaser.Scene,
     assetMapEntity: Entity,
-    assetMapComponent: ComponentOf<AssetMap & Schema>
+    assetMapComponent: typeof AssetMapComponent
   ) {
     const map = scene.make.tilemap({
       key: assetMapComponent.key,
@@ -180,7 +183,7 @@ export class PhaserService {
   public createSprite(
     physics: Phaser.Physics.Arcade.ArcadePhysics,
     spriteEntity: Entity,
-    spriteComponent: ComponentOf<Sprite & Schema>
+    spriteComponent: typeof SpriteComponent
   ) {
     const sprite = physics.add.sprite(
       0,
@@ -226,7 +229,7 @@ export class PhaserService {
   public createAnimation(
     animationManager: Phaser.Animations.AnimationManager,
     animationEntity: Entity,
-    animationComponent: ComponentOf<Animation & Schema>
+    animationComponent: typeof AnimationComponent
   ) {
     const frame = animationComponent.frames as AnimationFrame;
     const animation = animationManager.create({
@@ -273,7 +276,7 @@ export class PhaserService {
   public createCamera(
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
     cameraEntity: Entity,
-    cameraComponent: ComponentOf<Camera & Schema>
+    cameraComponent: typeof CameraComponent
   ) {
     let phaserCamera: Phaser.Cameras.Scene2D.Camera;
 
@@ -304,7 +307,7 @@ export class PhaserService {
 
   public updateCamera(
     cameraEntity: Entity,
-    cameraComponent: ComponentOf<Camera & Schema>,
+    cameraComponent: typeof CameraComponent,
     phaserCamera?: Phaser.Cameras.Scene2D.Camera
   ) {
     if (!phaserCamera) {
@@ -369,7 +372,7 @@ export class PhaserService {
     world: World<any>,
     scene: Phaser.Scene,
     textEntity: Entity,
-    textComponent: ComponentOf<Text & Schema>
+    textComponent: typeof TextComponent,
   ) {
     const phaserText = scene.add.text(
       0,

@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { AnimationComponent } from "../components";
+import { Animation } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserAnimationEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [animations]] of createQuery(AnimationComponent)) {
+    for (const [entities, [animations]] of createQuery(Animation)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createAnimation(
           world.latestTickData.scene.anims,

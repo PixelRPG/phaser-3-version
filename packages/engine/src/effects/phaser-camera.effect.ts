@@ -2,16 +2,14 @@ import {
   createEffect,
   EffectOptions,
   createQuery,
-  ComponentOf,
 } from "@javelin/ecs";
 import { Schema } from "@javelin/core";
-import { CameraComponent, PlayerComponent } from "../components";
+import { CameraComponent, PlayerComponent, Player, Camera } from "../components";
 import {
   WorldSceneData,
   PhaserSceneMethod,
-  Camera,
-  Player,
   EmptyObject,
+  Camera as TCamera
 } from "../types";
 import { PhaserService } from "../services";
 import { extend, getViewportDimensions } from "../helper";
@@ -38,9 +36,9 @@ export const phaserCameraEffect = createEffect<
    * @returns
    */
   const calcPlayerCamera = (
-    playerComponent: ComponentOf<Player & Schema>,
+    playerComponent: typeof PlayerComponent,
     playerCount: number
-  ): Camera => {
+  ): TCamera => {
     const map = phaserService.getActiveMap();
 
     let width: number;
@@ -49,7 +47,7 @@ export const phaserCameraEffect = createEffect<
     let borderX = 0;
     let borderY = 0;
 
-    const bounds: Camera["bounds"] = {
+    const bounds: TCamera["bounds"] = {
       width: map.widthInPixels,
       height: map.heightInPixels,
       x: 0,
@@ -73,7 +71,7 @@ export const phaserCameraEffect = createEffect<
       height = height / 2;
       borderY = 2;
     }
-    const viewport: Camera["viewport"] = {
+    const viewport: TCamera["viewport"] = {
       x: 0,
       y: 0,
       width: width - borderX,
@@ -116,7 +114,7 @@ export const phaserCameraEffect = createEffect<
    */
   const attachCamerasToPlayers = () => {
     // Create a camera for each player
-    for (const [playerEntities, [players]] of createQuery(PlayerComponent)) {
+    for (const [playerEntities, [players]] of createQuery(Player)) {
       const playerCount = playerEntities.length;
       if (playerCount > 4) {
         throw new Error(
@@ -130,11 +128,11 @@ export const phaserCameraEffect = createEffect<
         const phaserGameObject = phaserService.getGameObject(playerEntity);
         const data = calcPlayerCamera(playerComponent, playerCount);
 
-        const cameraComponent = world.get<Camera & Schema>(CameraComponent, {
+        const cameraComponent = world.get<typeof Camera>(CameraComponent, {
           isMain: playerComponent.playerNumber === 1,
           name: playerComponent.name,
           ...data,
-        } as Camera & Schema);
+        });
 
         world.attach(playerEntity, cameraComponent);
 
@@ -152,8 +150,8 @@ export const phaserCameraEffect = createEffect<
 
   const resizePlayerCameras = () => {
     for (const [cameraEntities, [cameras, players]] of createQuery(
-      CameraComponent,
-      PlayerComponent
+      Camera,
+      Player
     )) {
       const playerCount = cameraEntities.length;
       for (let i = 0; i < cameraEntities.length; i++) {

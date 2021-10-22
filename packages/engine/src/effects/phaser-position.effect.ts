@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { PositionComponent, VelocityComponent } from "../components";
+import { Position, Velocity } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserPositionEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const initDirectPositions = () => {
-    for (const [entities, [positions]] of createQuery(PositionComponent)) {
+    for (const [entities, [positions]] of createQuery(Position)) {
       for (let i = 0; i < entities.length; i++) {
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);
         if (!gameObject || typeof gameObject.setPosition !== "function") {
@@ -36,11 +36,11 @@ export const phaserPositionEffect = createEffect<
     //   velocityEntities.push(entity);
     // });
 
-    for (const [entities, [positions]] of createQuery(PositionComponent)) {
+    for (const [entities, [positions]] of createQuery(Position)) {
       for (let i = 0; i < entities.length; i++) {
         const entry = entities[i];
         // Ignore position if velocity is set because in this case phaser set's the position by itself
-        if (world.has(entry, VelocityComponent)) {
+        if (world.has(entry, Velocity)) {
           continue;
         }
 

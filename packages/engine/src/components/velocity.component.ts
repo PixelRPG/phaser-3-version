@@ -1,19 +1,12 @@
 import { component, number } from "@javelin/ecs";
-import { ComponentType, Velocity } from "../types";
+
+export const Velocity = {
+  speed: number,
+  x: number,
+  y: number
+}
 
 /**
  *
  */
-export const VelocityComponent = component({
-  type: ComponentType.Velocity,
-  schema: {
-    speed: { type: number, defaultValue: 0 },
-    x: { type: number, defaultValue: 0 },
-    y: { type: number, defaultValue: 0 },
-  },
-  initialize(velocity, data: Velocity) {
-    velocity.speed = data.speed;
-    velocity.x = data.x;
-    velocity.y = data.y;
-  },
-});
+export const VelocityComponent = component(Velocity);

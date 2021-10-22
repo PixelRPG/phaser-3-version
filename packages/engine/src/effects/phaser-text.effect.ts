@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { TextComponent } from "../components";
+import { Text } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserTextEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [texts]] of createQuery(TextComponent)) {
+    for (const [entities, [texts]] of createQuery(Text)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createText(
           world,

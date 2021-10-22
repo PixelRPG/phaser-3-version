@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { TilesetComponent } from "../components";
+import { Tileset } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 
@@ -16,7 +16,7 @@ export const phaserTilesetEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, [tilesets]] of createQuery(TilesetComponent)) {
+    for (const [entities, [tilesets]] of createQuery(Tileset)) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createTileset(entities[i], tilesets[i]);
       }

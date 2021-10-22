@@ -1,12 +1,12 @@
 import { component, number, string } from "@javelin/ecs";
-import { Schema } from "@javelin/core";
-import { Tileset } from "../types";
+
+export const Tileset = {
+  key: string,
+  name: string,
+  assetMapEntity: number,
+}
 
 /**
  * The tileset image used in tiledmaps
  */
-export const TilesetComponent = component<Tileset & Schema>({
-  key: number,
-  name: string,
-  assetMapEntity: number,
-});
+export const TilesetComponent = component(Tileset);
