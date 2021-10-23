@@ -1,11 +1,11 @@
-import { component, string, boolean } from "@javelin/ecs";
-import { createObjectType } from "./schemata";
+import { component, string, boolean, objectOf } from "@javelin/ecs";
+import { xhrSettings } from "./schemata/xhr-settings";
 
 export const AssetImage = {
   key: string,
   url: string,
   name: string,
-  xhrSettings: createObjectType<Phaser.Types.Loader.XHRSettingsObject>(),
+  xhrSettings: objectOf(xhrSettings),
   loaded: boolean,
 };
 

@@ -1,7 +1,7 @@
-import { Viewport } from '../viewport';
-import { CameraBounds } from '../camera-bounds';
+import { Viewport } from "./viewport";
+import { CameraBounds } from "./camera-bounds";
 
-export interface Camera {
+export interface CameraData {
   viewport: Viewport;
 
   /** The name of the Camera. Default ''. */

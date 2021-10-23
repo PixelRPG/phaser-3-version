@@ -1,5 +1,5 @@
 import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
-import { AssetMapComponent } from "../components";
+import { AssetMap } from "../components";
 import { WorldSceneData, PhaserSceneMethod, EmptyObject } from "../types";
 import { PhaserService } from "../services";
 import { mapObjectTopic } from "../topics";
@@ -17,7 +17,7 @@ export const phaserMapObjectEffect = createEffect<
   const phaserService = PhaserService.getInstance();
 
   const onCreate = () => {
-    for (const [entities, []] of createQuery(AssetMapComponent)) {
+    for (const [entities, []] of createQuery(AssetMap)) {
       for (let i = 0; i < entities.length; i++) {
         const map = phaserService.getMap(entities[i]);
 

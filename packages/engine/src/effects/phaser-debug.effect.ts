@@ -1,5 +1,5 @@
-import { createEffect, EffectOptions, World, createQuery } from "@javelin/ecs";
-import { DebugComponent, MapLayerComponent } from "../components";
+import { createEffect, EffectOptions, createQuery } from "@javelin/ecs";
+import { Debug, MapLayer } from "../components";
 import { WorldSceneData, PhaserSceneMethod } from "../types";
 import { PhaserService } from "../services";
 
@@ -27,7 +27,7 @@ export const phaserDebugEffect = createEffect<
       .setAlpha(0.75)
       .setDepth(20);
 
-    for (const [entities, [mapLayers]] of createQuery(MapLayerComponent)) {
+    for (const [entities, [mapLayers]] of createQuery(MapLayer)) {
       for (let i = 0; i < entities.length; i++) {
         const mapLayerComponent = mapLayers[i];
         if (mapLayerComponent.collides) {
@@ -54,7 +54,7 @@ export const phaserDebugEffect = createEffect<
   };
 
   const onCreate = () => {
-    const debugs = createQuery(DebugComponent);
+    const debugs = createQuery(Debug);
     if (debugs.length) {
       debugKey.once("down", onDebugkeyDown);
     }

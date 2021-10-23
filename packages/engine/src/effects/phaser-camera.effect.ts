@@ -3,13 +3,17 @@ import {
   EffectOptions,
   createQuery,
 } from "@javelin/ecs";
-import { Schema } from "@javelin/core";
-import { CameraComponent, PlayerComponent, Player, Camera } from "../components";
+import {
+  Camera,
+  CameraComponent,
+  PlayerComponent,
+  Player,
+} from "../components";
 import {
   WorldSceneData,
   PhaserSceneMethod,
   EmptyObject,
-  Camera as TCamera
+  CameraData,
 } from "../types";
 import { PhaserService } from "../services";
 import { extend, getViewportDimensions } from "../helper";
@@ -38,7 +42,7 @@ export const phaserCameraEffect = createEffect<
   const calcPlayerCamera = (
     playerComponent: typeof PlayerComponent,
     playerCount: number
-  ): TCamera => {
+  ): CameraData => {
     const map = phaserService.getActiveMap();
 
     let width: number;
@@ -47,7 +51,7 @@ export const phaserCameraEffect = createEffect<
     let borderX = 0;
     let borderY = 0;
 
-    const bounds: TCamera["bounds"] = {
+    const bounds: CameraData["bounds"] = {
       width: map.widthInPixels,
       height: map.heightInPixels,
       x: 0,
@@ -71,7 +75,7 @@ export const phaserCameraEffect = createEffect<
       height = height / 2;
       borderY = 2;
     }
-    const viewport: TCamera["viewport"] = {
+    const viewport: CameraData["viewport"] = {
       x: 0,
       y: 0,
       width: width - borderX,
@@ -128,7 +132,7 @@ export const phaserCameraEffect = createEffect<
         const phaserGameObject = phaserService.getGameObject(playerEntity);
         const data = calcPlayerCamera(playerComponent, playerCount);
 
-        const cameraComponent = world.get<typeof Camera>(CameraComponent, {
+        const cameraComponent = world.get<typeof Camera>(Camera, {
           isMain: playerComponent.playerNumber === 1,
           name: playerComponent.name,
           ...data,

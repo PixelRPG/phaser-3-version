@@ -39,7 +39,7 @@ export const phaserAssetPreloadEffect = createEffect<any, WorldSceneData[], Worl
           scene.load.image(
             image.key,
             image.url,
-            image.xhrSettings as
+            image.xhrSettings as any as
               | Phaser.Types.Loader.XHRSettingsObject
               | undefined
           );

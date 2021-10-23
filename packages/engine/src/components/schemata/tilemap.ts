@@ -1,10 +1,10 @@
-import { string } from "@javelin/ecs";
-import { createObjectType } from "./create-object-type";
-import { createNullableObjectType } from "./create-nullable-object-type";
+import { string, objectOf } from "@javelin/ecs";
+import { xhrSettings } from "./xhr-settings";
+import { phaserMap } from "./phaser-map";
 
 export const tilemap = {
   key: string,
   url: string,
-  xhrSettings: createObjectType<Phaser.Types.Loader.XHRSettingsObject>(),
-  phaserMap: createNullableObjectType<Phaser.Tilemaps.Tilemap>(),
+  xhrSettings: objectOf(xhrSettings),
+  phaserMap: objectOf(phaserMap),
 };

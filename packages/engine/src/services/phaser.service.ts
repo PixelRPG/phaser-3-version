@@ -1,5 +1,4 @@
-import { ComponentOf, World } from "@javelin/ecs";
-import { Schema } from "@javelin/core";
+import { World } from "@javelin/ecs";
 import {
   Entity,
   Coordinates2D,
@@ -113,9 +112,12 @@ export class PhaserService {
     return this.mapToArray<Phaser.Tilemaps.TilemapLayer>(this._layers);
   }
 
-  public getLayerByProperty(key: keyof Phaser.Tilemaps.TilemapLayer, value: any) {
+  public getLayerByProperty(
+    key: keyof Phaser.Tilemaps.TilemapLayer,
+    value: any
+  ) {
     const layers = this.getAllLayers();
-    return layers.find(layer => layer[key] === value);
+    return layers.find((layer) => layer[key] === value);
   }
 
   public createTileset(
@@ -234,15 +236,12 @@ export class PhaserService {
     const frame = animationComponent.frames as AnimationFrame;
     const animation = animationManager.create({
       key: animationComponent.key,
-      frames: animationManager.generateFrameNames(
-        frame.atlasKey,
-        {
-          prefix: frame.prefix,
-          start: frame.start,
-          end: frame.end,
-          zeroPad: frame.zeroPad,
-        }
-      ),
+      frames: animationManager.generateFrameNames(frame.atlasKey, {
+        prefix: frame.prefix,
+        start: frame.start,
+        end: frame.end,
+        zeroPad: frame.zeroPad,
+      }),
       frameRate: animationComponent.frameRate,
       repeat: animationComponent.repeat,
     });
@@ -317,17 +316,11 @@ export class PhaserService {
     const viewport = cameraComponent.viewport as Viewport;
 
     if (typeof viewport.width === "number") {
-      phaserCamera.setSize(
-        viewport.width,
-        viewport.height
-      );
+      phaserCamera.setSize(viewport.width, viewport.height);
     }
 
     if (typeof viewport.x === "number") {
-      phaserCamera.setPosition(
-        viewport.x,
-        viewport.y
-      );
+      phaserCamera.setPosition(viewport.x, viewport.y);
     }
 
     if (typeof cameraComponent.name === "string") {
@@ -336,12 +329,7 @@ export class PhaserService {
 
     if (cameraComponent.bounds) {
       const bounds = cameraComponent.bounds as CameraBounds;
-      phaserCamera.setBounds(
-        bounds.x,
-        bounds.y,
-        bounds.width,
-        bounds.height
-      );
+      phaserCamera.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
     }
 
     if (cameraComponent.zoom) {
@@ -372,7 +360,7 @@ export class PhaserService {
     world: World<any>,
     scene: Phaser.Scene,
     textEntity: Entity,
-    textComponent: typeof TextComponent,
+    textComponent: typeof TextComponent
   ) {
     const phaserText = scene.add.text(
       0,
