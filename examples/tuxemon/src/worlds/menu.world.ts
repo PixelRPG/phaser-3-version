@@ -1,11 +1,11 @@
-import { createWorld } from "@javelin/ecs";
+import { createWorld, component } from "@javelin/ecs";
 import {
   WorldSceneData,
   phaserSystem,
   PhaserSceneWorld,
-  TextComponent,
-  PositionComponent,
-  DepthComponent,
+  Text,
+  Position,
+  Depth,
 } from "@pixelrpg/engine";
 
 export class MenuWorld extends PhaserSceneWorld {
@@ -18,30 +18,31 @@ export class MenuWorld extends PhaserSceneWorld {
 
   spawnMenuText(text: string) {
     // Help text that has a "fixed" position on the screen
-    const textComponent = this.world.component(TextComponent, {
+    const textComponent = component(Text, {
       text: text,
       style: {
         font: "18px monospace",
         color: "#ffffff",
-        padding: { x: 20, y: 10 },
+        padding: { x: 20, y: 10 } as any, // TODO
         // backgroundColor: "#ffffff",
-      },
+      } as any, // TODO
     });
-    const textPositionComponent = this.world.component(PositionComponent, {
+    const textPositionComponent = component(Position, {
       x: 16,
       y: 16,
     });
-    // const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
+    // const scrollfactorComponent = component(ScrollfactorComponent, {
     //   x: 0,
     //   y: 0,
     // });
-    const textDepthComponent = this.world.component(DepthComponent, 30);
-    this.world.spawn(
+    const textDepthComponent = component(Depth, { depth: 30 });
+    const depthEntity = this.world.create(
       textComponent,
       textPositionComponent,
       //scrollfactorComponent,
       textDepthComponent
     );
+    this.world.attach(depthEntity);
   }
 
   constructor(config: Phaser.Types.Core.GameConfig) {

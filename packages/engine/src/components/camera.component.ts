@@ -1,4 +1,5 @@
 import { component, number, boolean, string } from "@javelin/ecs";
+import { FieldExtract } from "@javelin/core";
 
 export const Camera = {
   name: string,
@@ -16,10 +17,15 @@ export const Camera = {
     width: number,
     height: number,
     centerOn: boolean,
-  }
+  },
 };
 
 /**
  *
  */
-export const CameraComponent = component(Camera, { zoom: 2});
+export const createCameraComponent = (
+  props: Partial<FieldExtract<typeof Camera>>
+) => {
+  props = { zoom: 2, ...props };
+  return component(Camera, props);
+};

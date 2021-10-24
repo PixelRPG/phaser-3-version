@@ -28,9 +28,55 @@
     return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
   };
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/debug.js
+  var require_debug = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/debug.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.ErrorType = exports.assert = void 0;
+      function assert(expression, message = "", type) {
+        if (!expression) {
+          throw new Error(type !== void 0 ? `${errorMessagePrefixes[type]}: ${message}` : message);
+        }
+      }
+      exports.assert = assert;
+      var ErrorType;
+      (function(ErrorType2) {
+        ErrorType2[ErrorType2["Internal"] = 0] = "Internal";
+        ErrorType2[ErrorType2["Query"] = 1] = "Query";
+      })(ErrorType = exports.ErrorType || (exports.ErrorType = {}));
+      var errorMessagePrefixes = {
+        [ErrorType.Internal]: "Internal Error",
+        [ErrorType.Query]: "Query Error"
+      };
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model.js
+  var require_model = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.FieldKind = exports.$flat = exports.$kind = void 0;
+      exports.$kind = Symbol("javelin_field_kind");
+      exports.$flat = Symbol("javelin_model_flat");
+      var FieldKind;
+      (function(FieldKind2) {
+        FieldKind2[FieldKind2["Number"] = 0] = "Number";
+        FieldKind2[FieldKind2["String"] = 1] = "String";
+        FieldKind2[FieldKind2["Boolean"] = 2] = "Boolean";
+        FieldKind2[FieldKind2["Array"] = 3] = "Array";
+        FieldKind2[FieldKind2["Object"] = 4] = "Object";
+        FieldKind2[FieldKind2["Set"] = 5] = "Set";
+        FieldKind2[FieldKind2["Map"] = 6] = "Map";
+        FieldKind2[FieldKind2["Dynamic"] = 7] = "Dynamic";
+      })(FieldKind = exports.FieldKind || (exports.FieldKind = {}));
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/fp.js
   var require_fp = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/fp.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/fp.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.noop = void 0;
@@ -40,12 +86,12 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/array.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/array.js
   var require_array = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/array.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/array.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.unpackSparseArray = exports.packSparseArray = exports.arrayOf = exports.mutableEmpty = exports.mutableRemove = exports.mutableRemoveUnordered = void 0;
+      exports.unpackSparseArray = exports.packSparseArray = exports.createArray = exports.mutableEmpty = exports.mutableRemove = exports.mutableRemoveByIndexUnordered = exports.mutableRemoveUnordered = void 0;
       var fp_1 = require_fp();
       function mutableRemoveUnordered(arr, element) {
         const length = arr.length;
@@ -60,6 +106,18 @@
         return true;
       }
       exports.mutableRemoveUnordered = mutableRemoveUnordered;
+      function mutableRemoveByIndexUnordered(arr, index) {
+        const length = arr.length;
+        if (index === -1) {
+          return false;
+        }
+        const last = arr.pop();
+        if (index < length - 1) {
+          arr[index] = last;
+        }
+        return true;
+      }
+      exports.mutableRemoveByIndexUnordered = mutableRemoveByIndexUnordered;
       function mutableRemove(arr, element) {
         const index = arr.indexOf(element);
         if (index === -1) {
@@ -72,12 +130,13 @@
       function mutableEmpty(arr) {
         while (arr.length > 0)
           arr.pop();
+        return arr;
       }
       exports.mutableEmpty = mutableEmpty;
-      function arrayOf(len = 0, f = fp_1.noop) {
+      function createArray(len = 0, f = fp_1.noop) {
         return Array(len).fill(void 0).map((_, i) => f(i));
       }
-      exports.arrayOf = arrayOf;
+      exports.createArray = createArray;
       function packSparseArray(array) {
         return array.reduce((a, x, i) => {
           a[i] = x;
@@ -99,36 +158,9 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/signal.js
-  var require_signal = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/signal.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createSignal = void 0;
-      var array_1 = require_array();
-      var createSignal = () => {
-        const subscribers = [];
-        const subscribe = (subscriber) => {
-          subscribers.push(subscriber);
-          return () => array_1.mutableRemoveUnordered(subscribers, subscriber);
-        };
-        const dispatch = (t, t2, t3) => {
-          for (let i = 0; i < subscribers.length; i++) {
-            subscribers[i](t, t2, t3);
-          }
-        };
-        return {
-          subscribe,
-          dispatch
-        };
-      };
-      exports.createSignal = createSignal;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/index.js
-  var require_util = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/util/index.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/index.js
+  var require_utils = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -152,247 +184,231 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/archetype.js
-  var require_archetype = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/archetype.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model_helpers.js
+  var require_model_helpers = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model_helpers.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createArchetype = void 0;
-      var signal_1 = require_signal();
-      var util_1 = require_util();
-      function createArchetypeState(options) {
-        const snapshot = "snapshot" in options ? options.snapshot : null;
-        const entities = snapshot ? Object.keys(snapshot.indices).map(Number) : [];
-        const indices = snapshot ? util_1.unpackSparseArray(snapshot.indices) : [];
-        const signature = ("signature" in options ? options.signature : options.snapshot.signature).slice().sort((a, b) => a - b);
-        const table = snapshot ? snapshot.table.map((column) => column.slice()) : signature.map(() => []);
-        const signatureInverse = signature.reduce((a, x, i) => {
-          a[x] = i;
-          return a;
-        }, []);
-        return { entities, indices, signature, signatureInverse, table };
-      }
-      function createArchetype(options) {
-        const { signature, signatureInverse, entities, indices, table } = createArchetypeState(options);
-        const inserted = signal_1.createSignal();
-        const removed = signal_1.createSignal();
-        function insert(entity, components) {
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            const componentTypeIndex = signatureInverse[component19._tid];
-            table[componentTypeIndex].push(component19);
-          }
-          indices[entity] = entities.push(entity) - 1;
-          inserted.dispatch(entity);
-        }
-        function remove(entity) {
-          const length = entities.length;
-          const index = indices[entity];
-          const head = entities.pop();
-          delete indices[entity];
-          if (index === length - 1) {
-            for (const column of table)
-              column.pop();
-          } else {
-            for (const column of table) {
-              column[index] = column.pop();
-            }
-            entities[index] = head;
-            indices[head] = index;
-          }
-          removed.dispatch(entity);
-        }
-        return {
-          entities,
-          indices,
-          insert,
-          inserted,
-          remove,
-          removed,
-          signature,
-          signatureInverse,
-          table
-        };
-      }
-      exports.createArchetype = createArchetype;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/component.js
-  var require_component = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/component.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/internal/globals.js
-  var require_globals = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/internal/globals.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.globals = void 0;
-      exports.globals = {
-        __WORLDS__: [],
-        __CURRENT_WORLD__: -1
+      exports.resetSchemaInstance = exports.createSchemaInstance = exports.createModel = exports.isSimple = exports.isSchema = exports.isPrimitiveField = exports.isField = exports.dynamic = exports.mapOf = exports.setOf = exports.objectOf = exports.arrayOf = exports.boolean = exports.string = exports.number = void 0;
+      var utils_1 = require_utils();
+      var model_1 = require_model();
+      exports.number = {
+        [model_1.$kind]: model_1.FieldKind.Number,
+        get: () => 0
       };
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effect.js
-  var require_effect = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effect.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createEffect = void 0;
-      var globals_1 = require_globals();
-      function isPromise(object) {
-        return typeof object === "object" && object !== null && "then" in object;
-      }
-      function createEffect17(factory, options = { throw: false, global: false }) {
-        const { global: global2 } = options;
-        const systemEffectDataByWorldId = [];
-        let previousTick;
-        let previousWorld;
-        let previousSystem;
-        let currentWorld;
-        let currentSystem;
-        let cellCount = -1;
-        return function effect(...args) {
-          currentWorld = globals_1.globals.__CURRENT_WORLD__;
-          const world = globals_1.globals.__WORLDS__[currentWorld];
-          const currentTick = world.state.currentTick;
-          currentSystem = global2 ? 0 : world.state.currentSystem;
-          let currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld];
-          if (systemEffectDataByWorldId[currentWorld] === void 0) {
-            currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld] = [];
-          }
-          let currentSystemEffect = currentWorldSystemEffectData[currentSystem];
-          if (currentSystemEffect === void 0) {
-            currentSystemEffect = currentWorldSystemEffectData[currentSystem] = {
-              cells: [],
-              cellCount: -1
-            };
-          }
-          if (global2 === true || previousWorld !== currentWorld && previousWorld !== void 0) {
-            cellCount = 0;
-          } else if (previousSystem !== void 0 && (previousTick !== currentTick || previousSystem !== currentSystem)) {
-            let previousSystemEffectData = currentWorldSystemEffectData[previousSystem];
-            if (previousSystemEffectData.cellCount !== -1 && previousSystemEffectData.cellCount !== cellCount) {
-              throw new Error(`Failed to execute effect: encountered too ${previousSystemEffectData.cellCount > cellCount ? "few" : "many"} effects this tick`);
-            }
-            previousSystemEffectData.cellCount = cellCount;
-            cellCount = 0;
-          } else {
-            cellCount++;
-          }
-          let cell = currentSystemEffect.cells[cellCount];
-          if (!cell) {
-            cell = currentSystemEffect.cells[cellCount] = {
-              executor: factory(world),
-              lockGlobal: false,
-              lockAsync: false,
-              lockGlobalTick: -1,
-              state: null
-            };
-          }
-          if (global2) {
-            if (cell.lockGlobalTick !== world.state.currentTick) {
-              cell.lockGlobal = false;
-              cell.lockGlobalTick = world.state.currentTick;
-            } else {
-              cell.lockGlobal = true;
-            }
-          }
-          if (cell.lockGlobal || cell.lockAsync) {
-            return cell.state;
-          }
-          const result = cell.executor(...args);
-          if (isPromise(result)) {
-            cell.lockAsync = true;
-            result.then((result2) => cell.state = result2).catch((error) => console.error(`Uncaught error in effect: ${error.message}`, error)).then(() => cell.lockAsync = false);
-          } else {
-            cell.state = result;
-          }
-          previousTick = currentTick;
-          previousWorld = currentWorld;
-          previousSystem = currentSystem;
-          return cell.state;
+      exports.string = {
+        [model_1.$kind]: model_1.FieldKind.String,
+        get: () => ""
+      };
+      exports.boolean = {
+        [model_1.$kind]: model_1.FieldKind.Boolean,
+        get: () => false
+      };
+      function arrayOf(element) {
+        return {
+          [model_1.$kind]: model_1.FieldKind.Array,
+          get: (array = []) => (0, utils_1.mutableEmpty)(array),
+          element
         };
       }
-      exports.createEffect = createEffect17;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.js
-  var require_ref = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/ref.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.ref = void 0;
-      var effect_1 = require_effect();
-      exports.ref = effect_1.createEffect(() => {
-        let initial = true;
-        const state = { value: null };
-        return (initialValue) => {
-          if (initial) {
-            state.value = initialValue;
-            initial = false;
-          }
-          return state;
+      exports.arrayOf = arrayOf;
+      function objectOf3(element, key = exports.string) {
+        return {
+          [model_1.$kind]: model_1.FieldKind.Object,
+          get: (object = {}) => {
+            for (const prop in object) {
+              delete object[prop];
+            }
+            return object;
+          },
+          key,
+          element
         };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.js
-  var require_timer = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/timer.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.timer = void 0;
-      var effect_1 = require_effect();
-      exports.timer = effect_1.createEffect(() => {
-        let state = 0;
-        let timer;
-        return (duration, invalidate = false) => {
-          if (invalidate) {
-            state = 0;
-            clearTimeout(timer);
-          }
-          if (state === 0) {
-            state = 1;
-            timer = setTimeout(() => {
-              state = 2;
-            }, duration);
-          }
-          return state === 2;
+      }
+      exports.objectOf = objectOf3;
+      function setOf(element) {
+        return {
+          [model_1.$kind]: model_1.FieldKind.Set,
+          get: (set = new Set()) => {
+            set.clear();
+            return set;
+          },
+          element
         };
-      });
+      }
+      exports.setOf = setOf;
+      function mapOf(key, element) {
+        return {
+          [model_1.$kind]: model_1.FieldKind.Map,
+          get: (map = new Map()) => {
+            map.clear();
+            return map;
+          },
+          key,
+          element
+        };
+      }
+      exports.mapOf = mapOf;
+      function dynamic(get = () => null) {
+        return {
+          [model_1.$kind]: model_1.FieldKind.Dynamic,
+          get
+        };
+      }
+      exports.dynamic = dynamic;
+      function isField(object) {
+        return model_1.$kind in object;
+      }
+      exports.isField = isField;
+      function isPrimitiveField(object) {
+        if (!isField(object)) {
+          return false;
+        }
+        const kind = object[model_1.$kind];
+        return kind === model_1.FieldKind.Number || kind === model_1.FieldKind.String || kind === model_1.FieldKind.Boolean || kind === model_1.FieldKind.Dynamic;
+      }
+      exports.isPrimitiveField = isPrimitiveField;
+      function isSchema(node) {
+        return !(model_1.$kind in node);
+      }
+      exports.isSchema = isSchema;
+      function isSimple(node) {
+        if (isSchema(node)) {
+          return node.fields.every(isPrimitiveField);
+        } else if ("element" in node) {
+          return isPrimitiveField(node.element);
+        }
+        return true;
+      }
+      exports.isSimple = isSimple;
+      function collate(visiting, cursor, traverse = []) {
+        let base = {
+          id: cursor.id,
+          lo: cursor.id,
+          hi: cursor.id,
+          deep: traverse.length > 0,
+          traverse
+        };
+        cursor.id++;
+        let node;
+        if (isField(visiting)) {
+          node = { ...base, ...visiting };
+          if ("element" in node) {
+            node.element = collate(node.element, cursor, "key" in node ? [...traverse, node.key] : traverse);
+          }
+        } else {
+          const keys = Object.keys(visiting);
+          const keysByFieldId = [];
+          const fields = [];
+          const fieldsByKey = {};
+          const fieldIdsByKey = {};
+          for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const child = collate(visiting[key], cursor, traverse);
+            keysByFieldId[child.id] = key;
+            fieldsByKey[key] = child;
+            fieldIdsByKey[key] = child.id;
+            fields.push(child);
+          }
+          node = {
+            ...base,
+            keys,
+            keysByFieldId,
+            fields,
+            fieldsByKey,
+            fieldIdsByKey
+          };
+        }
+        node.hi = cursor.id;
+        return node;
+      }
+      function flattenModelNode(node, flat) {
+        flat[node.id] = node;
+        if (isField(node)) {
+          if ("element" in node) {
+            flattenModelNode(node.element, flat);
+          }
+        } else {
+          for (let i = 0; i < node.fields.length; i++) {
+            flattenModelNode(node.fields[i], flat);
+          }
+        }
+      }
+      function flattenModel(model) {
+        const flat = {};
+        for (const prop in model) {
+          flattenModelNode(model[prop], flat[prop] = {});
+        }
+        return flat;
+      }
+      function createModel(config2) {
+        const model = {};
+        config2.forEach((schema, t) => model[t] = collate(schema, { id: 0 }));
+        return Object.defineProperty(model, model_1.$flat, {
+          enumerable: false,
+          writable: false,
+          value: flattenModel(model)
+        });
+      }
+      exports.createModel = createModel;
+      function createSchemaInstance(schema, object = {}) {
+        for (const prop in schema) {
+          const type = schema[prop];
+          let value;
+          if (isField(type)) {
+            value = type.get();
+          } else {
+            value = createSchemaInstance({}, type);
+          }
+          object[prop] = value;
+        }
+        return object;
+      }
+      exports.createSchemaInstance = createSchemaInstance;
+      function resetSchemaInstance(object, schema) {
+        for (const prop in schema) {
+          const type = schema[prop];
+          if (isField(type)) {
+            object[prop] = type.get(object[prop]);
+          } else {
+            resetSchemaInstance(object[prop], type);
+          }
+        }
+        return object;
+      }
+      exports.resetSchemaInstance = resetSchemaInstance;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.js
-  var require_interval = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/interval.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/index.js
+  var require_model2 = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/index.js"(exports) {
       "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.interval = void 0;
-      var effect_1 = require_effect();
-      var ref_1 = require_ref();
-      var timer_1 = require_timer();
-      exports.interval = effect_1.createEffect(() => (t) => {
-        const invalidate = ref_1.ref(false);
-        const done = timer_1.timer(t, invalidate.value);
-        invalidate.value = done;
-        return done;
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() {
+          return m[k];
+        } });
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
       });
+      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
+            __createBinding(exports2, m, p);
+      };
+      Object.defineProperty(exports, "__esModule", { value: true });
+      __exportStar(require_model(), exports);
+      __exportStar(require_model_helpers(), exports);
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/stack_pool.js
   var require_stack_pool = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/pool/stack_pool.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/stack_pool.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.createStackPool = void 0;
@@ -423,9 +439,9 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/pool/index.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/index.js
   var require_pool = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/pool/index.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -448,266 +464,9 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/type.js
-  var require_type = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/type.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.typeIsSuperset = exports.typeHash = void 0;
-      var typeHash = (type) => {
-        let buckets = 97;
-        let bucket = type.length % buckets;
-        for (let i = 0; i < type.length; i++) {
-          bucket = (bucket + type[i]) % buckets;
-        }
-        return bucket;
-      };
-      exports.typeHash = typeHash;
-      var typeIsSuperset = (right, left) => {
-        let i = 0;
-        let j = 0;
-        if (right.length < left.length) {
-          return false;
-        }
-        while (i < right.length && j < left.length) {
-          if (right[i] < left[j]) {
-            i++;
-          } else if (right[i] === left[j]) {
-            i++;
-            j++;
-          } else {
-            return false;
-          }
-        }
-        return j === left.length;
-      };
-      exports.typeIsSuperset = typeIsSuperset;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/query.js
-  var require_query = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/query.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.query = exports.queryMatchesArchetype = void 0;
-      var globals_1 = require_globals();
-      var pool_1 = require_pool();
-      var type_1 = require_type();
-      var util_1 = require_util();
-      var queryMatchesArchetype = (query2, archetype) => type_1.typeIsSuperset(archetype.signature, query2.signature) && archetype.signature.every((c) => !query2.filters.not.has(c));
-      exports.queryMatchesArchetype = queryMatchesArchetype;
-      function query(...selector) {
-        const length = selector.length;
-        const layout = selector.map((s) => s.type);
-        const filters = {
-          not: new Set()
-        };
-        const signature = layout.slice().sort((a, b) => a - b);
-        const recordsByWorldId = [];
-        const maybeRegisterArchetype = (archetype, records) => {
-          if (exports.queryMatchesArchetype(query2, archetype)) {
-            const columns = layout.map((componentTypeId) => archetype.table[archetype.signature.indexOf(componentTypeId)]);
-            records.push([archetype.entities, columns]);
-          }
-        };
-        const registerWorld = (worldId) => {
-          const world = globals_1.globals.__WORLDS__[worldId];
-          const records = [];
-          recordsByWorldId[worldId] = records;
-          world.storage.archetypes.forEach((archetype) => maybeRegisterArchetype(archetype, records));
-          world.storage.archetypeCreated.subscribe((archetype) => maybeRegisterArchetype(archetype, records));
-          return records;
-        };
-        const pool = pool_1.createStackPool(() => [], (components) => {
-          util_1.mutableEmpty(components);
-          return components;
-        }, 1e3);
-        const query2 = {
-          layout,
-          length,
-          signature,
-          filters,
-          not(...selector2) {
-            for (let i = 0; i < selector2.length; i++) {
-              filters.not.add(selector2[i].type);
-            }
-            return query2;
-          },
-          forEach(iteratee) {
-            const records = recordsByWorldId[globals_1.globals.__CURRENT_WORLD__] || registerWorld(globals_1.globals.__CURRENT_WORLD__);
-            const components = pool.retain();
-            for (let i = 0; i < records.length; i++) {
-              const [entities, columns] = records[i];
-              for (let j = 0; j < entities.length; j++) {
-                for (let k = 0; k < length; k++) {
-                  components[k] = columns[k][j];
-                }
-                iteratee(entities[j], components);
-              }
-            }
-            pool.release(components);
-          },
-          [Symbol.iterator]() {
-            return (recordsByWorldId[globals_1.globals.__CURRENT_WORLD__] || registerWorld(globals_1.globals.__CURRENT_WORLD__))[Symbol.iterator]();
-          }
-        };
-        return query2;
-      }
-      exports.query = query;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.js
-  var require_monitors = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/monitors.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.onRemove = exports.onInsert = void 0;
-      var effect_1 = require_effect();
-      var query_1 = require_query();
-      var util_1 = require_util();
-      var createMonitor = (predicate, emitExisting = false) => effect_1.createEffect((world) => {
-        const { storage: { entityRelocated } } = world;
-        let active = null;
-        let staged = [];
-        let ready = [];
-        const forEach = (iteratee) => {
-          for (let i = 0; i < ready.length; i++) {
-            iteratee(ready[i]);
-          }
-        };
-        const api = {
-          forEach,
-          [Symbol.iterator]: () => ready[Symbol.iterator]()
-        };
-        const reset = (query) => {
-          util_1.mutableEmpty(staged);
-          util_1.mutableEmpty(ready);
-          if (active === null && emitExisting) {
-            for (const [entities] of query) {
-              for (let i = 0; i < entities.length; i++) {
-                staged.push(entities[i]);
-              }
-            }
-          }
-          active = query;
-        };
-        entityRelocated.subscribe((entity, prev, next) => {
-          if (active === null || predicate(active, prev, next) === false) {
-            return;
-          }
-          staged.push(entity);
-        });
-        return function monitor(query) {
-          let entity;
-          if (active !== query) {
-            reset(query);
-          }
-          util_1.mutableEmpty(ready);
-          while ((entity = staged.pop()) !== void 0) {
-            ready.push(entity);
-          }
-          return api;
-        };
-      });
-      exports.onInsert = createMonitor((query, prev, next) => {
-        const matchPrev = query_1.queryMatchesArchetype(query, prev);
-        const matchNext = query_1.queryMatchesArchetype(query, next);
-        return !matchPrev && matchNext;
-      }, true);
-      exports.onRemove = createMonitor((query, prev, next) => {
-        const matchPrev = query_1.queryMatchesArchetype(query, prev);
-        const matchNext = query_1.queryMatchesArchetype(query, next);
-        return matchPrev && !matchNext;
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.js
-  var require_triggers = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/triggers.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.onDetach = exports.onAttach = void 0;
-      var effect_1 = require_effect();
-      var pool_1 = require_pool();
-      var pairPool = pool_1.createStackPool(() => [-1, null], (event) => {
-        event[0] = -1;
-        event[1] = null;
-        return event;
-      }, 1e3);
-      var createTrigger = (worldSignalSelector, emitExisting = false) => effect_1.createEffect((world) => {
-        const { storage: { archetypes } } = world;
-        const ready = [];
-        const staged = [];
-        const forEach = (iteratee) => {
-          for (let i = 0; i < ready.length; i++) {
-            iteratee(ready[i][0], ready[i][1]);
-          }
-        };
-        const api = {
-          forEach,
-          [Symbol.iterator]: () => ready[Symbol.iterator]()
-        };
-        const signal = worldSignalSelector(world);
-        const push = (entity, component19) => {
-          const pair = pairPool.retain();
-          pair[0] = entity;
-          pair[1] = component19;
-          staged.push(pair);
-        };
-        const initialize = (componentType) => {
-          if (!emitExisting) {
-            return;
-          }
-          for (let i = 0; i < archetypes.length; i++) {
-            const { table, entities, signatureInverse } = archetypes[i];
-            const index = signatureInverse[componentType.type];
-            if (index !== void 0) {
-              const column = table[index];
-              for (let i2 = 0; i2 < entities.length; i2++) {
-                push(entities[i2], column[i2]);
-              }
-            }
-          }
-        };
-        let type = null;
-        signal.subscribe((entity, components) => {
-          if (type === null) {
-            return;
-          }
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            if (component19._tid === type) {
-              push(entity, component19);
-            }
-          }
-        });
-        return (componentType) => {
-          if (type === null) {
-            initialize(componentType);
-          }
-          type = componentType.type;
-          let r;
-          while (r = ready.pop()) {
-            pairPool.release(r);
-          }
-          let s;
-          while (s = staged.pop()) {
-            ready.push(s);
-          }
-          return api;
-        };
-      });
-      exports.onAttach = createTrigger((world) => world.attached, true);
-      exports.onDetach = createTrigger((world) => world.detached);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.js
-  var require_core = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/core/index.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/index.js
+  var require_cjs = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -726,27 +485,556 @@
             __createBinding(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_interval(), exports);
-      __exportStar(require_ref(), exports);
-      __exportStar(require_timer(), exports);
-      __exportStar(require_monitors(), exports);
-      __exportStar(require_triggers(), exports);
+      __exportStar(require_debug(), exports);
+      __exportStar(require_model2(), exports);
+      __exportStar(require_pool(), exports);
+      __exportStar(require_utils(), exports);
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.js
-  var require_request = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/request.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/signal.js
+  var require_signal = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/signal.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.request = void 0;
+      exports.createSignal = void 0;
+      var core_1 = require_cjs();
+      var createSignal = () => {
+        const subscribers = [];
+        const subscribe = (subscriber) => {
+          subscribers.push(subscriber);
+          return () => (0, core_1.mutableRemoveUnordered)(subscribers, subscriber);
+        };
+        const dispatch = (arg1, arg2, arg3, arg4) => {
+          for (let i = 0; i < subscribers.length; i++) {
+            subscribers[i](arg1, arg2, arg3, arg4);
+          }
+        };
+        return {
+          subscribe,
+          dispatch
+        };
+      };
+      exports.createSignal = createSignal;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/internals.js
+  var require_internals = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/internals.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.UNSAFE_setModel = exports.UNSAFE_modelChanged = exports.UNSAFE_internals = void 0;
+      var core_1 = require_cjs();
+      var signal_1 = require_signal();
+      exports.UNSAFE_internals = {
+        instanceTypeLookup: new WeakMap(),
+        model: { [core_1.$flat]: {} },
+        schemaIndex: new WeakMap(),
+        schemaPools: new Map(),
+        worlds: [],
+        currentWorldId: -1,
+        worldIds: 0
+      };
+      exports.UNSAFE_modelChanged = (0, signal_1.createSignal)();
+      function UNSAFE_setModel(model) {
+        ;
+        exports.UNSAFE_internals.model = model;
+        exports.UNSAFE_modelChanged.dispatch(model);
+      }
+      exports.UNSAFE_setModel = UNSAFE_setModel;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/index.js
+  var require_internal = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/index.js"(exports) {
+      "use strict";
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() {
+          return m[k];
+        } });
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      });
+      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
+            __createBinding(exports2, m, p);
+      };
+      Object.defineProperty(exports, "__esModule", { value: true });
+      __exportStar(require_internals(), exports);
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/component.js
+  var require_component = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/component.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.getSchemaId = exports.toComponent = exports.toComponentFromType = exports.component = exports.registerSchema = exports.createComponentPool = exports.isComponentOf = exports.$pool = exports.$type = void 0;
+      var core_1 = require_cjs();
+      var internal_1 = require_internal();
+      exports.$type = Symbol("javelin_component_type");
+      exports.$pool = Symbol("javelin_component_pool");
+      var { schemaIndex, schemaPools, instanceTypeLookup } = internal_1.UNSAFE_internals;
+      var schemaIds = 0;
+      function createComponentBase(schema, pool = true) {
+        return Object.defineProperties({}, {
+          [exports.$type]: {
+            value: schemaIndex.get(schema),
+            writable: false,
+            enumerable: false
+          },
+          [exports.$pool]: {
+            value: pool,
+            writable: false,
+            enumerable: false
+          }
+        });
+      }
+      function isComponentOf(component22, schema) {
+        return getSchemaId(component22) === schemaIndex.get(schema);
+      }
+      exports.isComponentOf = isComponentOf;
+      function createComponentPool(schema, poolSize) {
+        const componentPool = (0, core_1.createStackPool)(() => (0, core_1.createSchemaInstance)(schema, createComponentBase(schema)), (component22) => (0, core_1.resetSchemaInstance)(component22, schema), poolSize);
+        return componentPool;
+      }
+      exports.createComponentPool = createComponentPool;
+      var modelConfig = new Map();
+      function registerSchema(schema, schemaId, poolSize = 1e3) {
+        let type = schemaIndex.get(schema);
+        if (type !== void 0) {
+          return type;
+        }
+        type = schemaId;
+        if (type === void 0) {
+          while (modelConfig.has(schemaIds)) {
+            schemaIds++;
+          }
+          type = schemaIds;
+        } else if (modelConfig.has(type)) {
+          throw new Error("Failed to register component type: a component with same id is already registered");
+        }
+        if (poolSize > 0) {
+          schemaPools.set(type, createComponentPool(schema, poolSize));
+        }
+        modelConfig.set(type, schema);
+        schemaIndex.set(schema, type);
+        (0, internal_1.UNSAFE_setModel)((0, core_1.createModel)(modelConfig));
+        return type;
+      }
+      exports.registerSchema = registerSchema;
+      function createComponentInner(schema) {
+        const type = registerSchema(schema);
+        const pool = internal_1.UNSAFE_internals.schemaPools.get(type);
+        return pool ? pool.retain() : (0, core_1.createSchemaInstance)(schema, createComponentBase(schema, false));
+      }
+      function component21(schema, props) {
+        const instance = createComponentInner(schema);
+        if (props !== void 0) {
+          Object.assign(instance, props);
+        }
+        return instance;
+      }
+      exports.component = component21;
+      function toComponentFromType(object, type) {
+        try {
+          ;
+          object[exports.$type] = type;
+          object[exports.$pool] = false;
+        } catch {
+        }
+        if (object[exports.$type] !== type) {
+          instanceTypeLookup.set(object, type);
+        }
+        return object;
+      }
+      exports.toComponentFromType = toComponentFromType;
+      function toComponent(object, schema) {
+        const type = registerSchema(schema, void 0, 0);
+        return toComponentFromType(object, type);
+      }
+      exports.toComponent = toComponent;
+      function getSchemaId(component22) {
+        var _a;
+        const type = (_a = component22[exports.$type]) !== null && _a !== void 0 ? _a : instanceTypeLookup.get(component22);
+        if (type === void 0) {
+          throw new Error("Failed to get component type id: object is not a component");
+        }
+        return type;
+      }
+      exports.getSchemaId = getSchemaId;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect.js
+  var require_effect = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.createEffect = void 0;
+      var internal_1 = require_internal();
+      function isPromise(object) {
+        return typeof object === "object" && object !== null && "then" in object;
+      }
+      function createEffect17(factory, options = { shared: false }) {
+        const { shared: global2 } = options;
+        const systemEffectDataByWorldId = [];
+        let previousStep;
+        let previousWorld;
+        let previousSystem;
+        let currentWorld;
+        let latestSystemId;
+        let cellCount = -1;
+        return function effect(...args) {
+          currentWorld = internal_1.UNSAFE_internals.currentWorldId;
+          const world = internal_1.UNSAFE_internals.worlds[currentWorld];
+          const step = world.latestTick;
+          latestSystemId = global2 ? 0 : world.latestSystemId;
+          let currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld];
+          if (systemEffectDataByWorldId[currentWorld] === void 0) {
+            currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld] = [];
+          }
+          let currentSystemEffect = currentWorldSystemEffectData[latestSystemId];
+          if (currentSystemEffect === void 0) {
+            currentSystemEffect = currentWorldSystemEffectData[latestSystemId] = {
+              cells: [],
+              cellCount: -1
+            };
+          }
+          if (global2 === true || previousWorld !== currentWorld && previousWorld !== void 0) {
+            cellCount = 0;
+          } else if (previousSystem !== void 0 && (previousStep !== step || previousSystem !== latestSystemId)) {
+            const previousSystemEffectData = currentWorldSystemEffectData[previousSystem];
+            if (previousSystemEffectData.cellCount !== -1 && previousSystemEffectData.cellCount !== cellCount) {
+              throw new Error(`Failed to execute effect: encountered too ${previousSystemEffectData.cellCount > cellCount ? "few" : "many"} effects this step`);
+            }
+            previousSystemEffectData.cellCount = cellCount;
+            cellCount = 0;
+          } else {
+            cellCount++;
+          }
+          let cell = currentSystemEffect.cells[cellCount];
+          if (!cell) {
+            cell = currentSystemEffect.cells[cellCount] = {
+              executor: factory(world),
+              lockShare: false,
+              lockAsync: false,
+              lockShareTick: null,
+              state: null
+            };
+          }
+          if (global2) {
+            if (cell.lockShareTick !== world.latestTick) {
+              cell.lockShare = false;
+              cell.lockShareTick = world.latestTick;
+            } else {
+              cell.lockShare = true;
+            }
+          }
+          if (cell.lockShare || cell.lockAsync) {
+            return cell.state;
+          }
+          const result = cell.executor(...args);
+          if (isPromise(result)) {
+            cell.lockAsync = true;
+            result.then((result2) => cell.state = result2).catch((error) => console.error(`Uncaught error in effect: ${error.message}`, error)).then(() => cell.lockAsync = false);
+          } else {
+            cell.state = result;
+          }
+          previousStep = step;
+          previousWorld = currentWorld;
+          previousSystem = latestSystemId;
+          return cell.state;
+        };
+      }
+      exports.createEffect = createEffect17;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_ref.js
+  var require_use_ref = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_ref.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useRef = void 0;
       var effect_1 = require_effect();
-      exports.request = effect_1.createEffect(() => {
+      exports.useRef = (0, effect_1.createEffect)(() => {
+        let initial = true;
+        const api = { value: null };
+        return function useRef(initialValue) {
+          if (initial) {
+            api.value = initialValue;
+            initial = false;
+          }
+          return api;
+        };
+      });
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_init.js
+  var require_use_init = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_init.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useInit = void 0;
+      var use_ref_1 = require_use_ref();
+      function useInit() {
+        const init = (0, use_ref_1.useRef)(true);
+        const value = init.value;
+        init.value = false;
+        return value;
+      }
+      exports.useInit = useInit;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js
+  var require_use_performance = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.usePerformance = void 0;
+      var effect_1 = require_effect();
+      var isomorphic_utils_1 = __require("@javelin/isomorphic-utils");
+      exports.usePerformance = (0, effect_1.createEffect)(() => {
+        return function usePerformance() {
+          return isomorphic_utils_1.performance;
+        };
+      });
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_interval.js
+  var require_use_interval = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_interval.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useInterval = void 0;
+      var use_performance_1 = require_use_performance();
+      var use_ref_1 = require_use_ref();
+      function useInterval(interval) {
+        const performance2 = (0, use_performance_1.usePerformance)();
+        const config2 = (0, use_ref_1.useRef)(interval);
+        const prev = (0, use_ref_1.useRef)(0);
+        const time = performance2.now();
+        if (!prev.value) {
+          prev.value = time;
+        }
+        if (interval !== config2.value) {
+          prev.value = time;
+          config2.value = interval;
+        }
+        let hit = false;
+        if (time - prev.value >= interval) {
+          hit = true;
+          prev.value = time;
+        }
+        return hit;
+      }
+      exports.useInterval = useInterval;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_monitor.js
+  var require_use_monitor = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_monitor.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useMonitor = void 0;
+      var core_1 = require_cjs();
+      var effect_1 = require_effect();
+      var snapshots = (0, core_1.createStackPool)(() => [-1, [], []], (c) => {
+        c[0] = -1;
+        (0, core_1.mutableEmpty)(c[1]);
+        (0, core_1.mutableEmpty)(c[2]);
+        return c;
+      }, 1e3);
+      exports.useMonitor = (0, effect_1.createEffect)((world) => {
+        const { storage: { entityRelocating, entityRelocated, archetypes: [rootArchetype] } } = world;
+        const matched = new Set();
+        let stagedEnter = [];
+        let stagedExit = [];
+        let readyEnter = [];
+        let readyExit = [];
+        let _query = null;
+        const register = (query) => {
+          _query = query;
+          (0, core_1.mutableEmpty)(stagedEnter);
+          (0, core_1.mutableEmpty)(stagedExit);
+          (0, core_1.mutableEmpty)(readyEnter);
+          (0, core_1.mutableEmpty)(readyExit);
+          for (const [entities] of query) {
+            for (let i = 0; i < entities.length; i++) {
+              const entity = entities[i];
+              const snapshot = snapshots.retain();
+              snapshot[0] = entity;
+              query.get(entity, snapshot[1]);
+              query.get(entity, snapshot[2]);
+              stagedEnter.push(snapshot);
+            }
+          }
+        };
+        entityRelocating.subscribe(function detectMonitorExit(entity, prev, next, diff) {
+          if (_query === null)
+            return;
+          const matchCurr = matched.has(entity);
+          const matchPrev = _query.matchesType(prev.type);
+          const matchNext = _query.matchesType(next.type);
+          const isExit = matchPrev && (!matchNext || next === rootArchetype);
+          if (!isExit)
+            return;
+          if (matchCurr) {
+            const index = stagedEnter.findIndex(([e]) => e === entity);
+            (0, core_1.assert)(index !== -1);
+            (0, core_1.mutableRemoveByIndexUnordered)(stagedEnter, index);
+            return;
+          }
+          const snapshot = snapshots.retain();
+          snapshot[0] = entity;
+          _query.get(entity, snapshot[1]);
+          _query.match(diff, snapshot[2]);
+          stagedExit.push(snapshot);
+        });
+        entityRelocated.subscribe(function detectMonitorEnter(entity, prev, next, diff) {
+          if (_query === null)
+            return;
+          const matchPrev = _query.matchesType(prev.type);
+          const matchNext = _query.matchesType(next.type);
+          if (!matchPrev && matchNext) {
+            const snapshot = snapshots.retain();
+            snapshot[0] = entity;
+            _query.get(entity, snapshot[1]);
+            _query.match(diff, snapshot[2]);
+            stagedEnter.push(snapshot);
+            matched.add(entity);
+          }
+        });
+        return function useMonitor(query, onEnter, onExit) {
+          if (_query !== query && !(_query === null || _query === void 0 ? void 0 : _query.equals(query))) {
+            register(query);
+          }
+          let result;
+          (0, core_1.mutableEmpty)(readyEnter);
+          (0, core_1.mutableEmpty)(readyExit);
+          while ((result = stagedEnter.pop()) !== void 0) {
+            readyEnter.push(result);
+          }
+          while ((result = stagedExit.pop()) !== void 0) {
+            readyExit.push(result);
+          }
+          matched.clear();
+          if (onEnter !== void 0) {
+            for (let i = 0; i < readyEnter.length; i++) {
+              const snapshot = readyEnter[i];
+              onEnter(snapshot[0], snapshot[1], snapshot[2]);
+              snapshots.release(snapshot);
+            }
+          }
+          if (onExit !== void 0) {
+            for (let i = 0; i < readyExit.length; i++) {
+              const snapshot = readyExit[i];
+              onExit(snapshot[0], snapshot[1], snapshot[2]);
+              snapshots.release(snapshot);
+            }
+          }
+        };
+      });
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_timer.js
+  var require_use_timer = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_timer.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useTimer = void 0;
+      var effect_1 = require_effect();
+      exports.useTimer = (0, effect_1.createEffect)(() => {
+        let state = 0;
+        let timer;
+        return function useTimer(duration, invalidate = false) {
+          if (invalidate) {
+            state = 0;
+            clearTimeout(timer);
+          }
+          if (state === 0) {
+            state = 1;
+            timer = setTimeout(() => {
+              state = 2;
+            }, duration);
+          }
+          return state === 2;
+        };
+      });
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_world.js
+  var require_use_world = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_world.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useWorld = void 0;
+      var internal_1 = require_internal();
+      function useWorld() {
+        return internal_1.UNSAFE_internals.worlds[internal_1.UNSAFE_internals.currentWorldId];
+      }
+      exports.useWorld = useWorld;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/index.js
+  var require_core = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/index.js"(exports) {
+      "use strict";
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() {
+          return m[k];
+        } });
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      });
+      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
+            __createBinding(exports2, m, p);
+      };
+      Object.defineProperty(exports, "__esModule", { value: true });
+      __exportStar(require_use_init(), exports);
+      __exportStar(require_use_interval(), exports);
+      __exportStar(require_use_monitor(), exports);
+      __exportStar(require_use_performance(), exports);
+      __exportStar(require_use_ref(), exports);
+      __exportStar(require_use_timer(), exports);
+      __exportStar(require_use_world(), exports);
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_request.js
+  var require_use_request = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_request.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.useRequest = void 0;
+      var effect_1 = require_effect();
+      exports.useRequest = (0, effect_1.createEffect)(() => {
         let state = { response: null, error: null, done: false };
         let fetching = false;
         let previousUrl;
-        let abortController = new window.AbortController();
-        return (url, options, invalidate = previousUrl !== void 0 && url !== previousUrl) => {
+        let abortController = new (typeof window === "object" ? window : window).AbortController();
+        return function useRequest(url, options, invalidate = previousUrl !== void 0 && url !== previousUrl) {
           if (url === null || invalidate) {
             abortController.abort();
             abortController = new AbortController();
@@ -777,35 +1065,38 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.js
-  var require_json = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/json.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_json.js
+  var require_use_json = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_json.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.json = void 0;
+      exports.useJson = void 0;
       var effect_1 = require_effect();
       var core_1 = require_core();
-      var request_1 = require_request();
-      exports.json = effect_1.createEffect(() => {
+      var use_request_1 = require_use_request();
+      exports.useJson = (0, effect_1.createEffect)(() => {
         let response;
-        return (...args) => {
-          const previousResponse = core_1.ref(null);
-          const result = request_1.request(...args);
+        return function useJson(...args) {
+          const previousResponse = (0, core_1.useRef)(null);
+          const result = (0, use_request_1.useRequest)(...args);
           if (result.response && result.response !== previousResponse.value) {
             result.response.json().then((json) => {
               response = json;
             });
             previousResponse.value = result.response;
           }
-          return { ...result, response: response || null };
+          return {
+            ...result,
+            response: response || null
+          };
         };
       });
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/index.js
   var require_web = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/web/index.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -824,14 +1115,14 @@
             __createBinding(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_request(), exports);
-      __exportStar(require_json(), exports);
+      __exportStar(require_use_request(), exports);
+      __exportStar(require_use_json(), exports);
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/index.js
   var require_effects = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/effects/index.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -855,673 +1146,623 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/symbols.js
-  var require_symbols = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/symbols.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect_utils.js
+  var require_effect_utils = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect_utils.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.$isDataType = void 0;
-      exports.$isDataType = Symbol("is_data_type");
+      exports.createImmutableRef = exports.createRef = void 0;
+      var effect_1 = require_effect();
+      var use_ref_1 = require_use_ref();
+      var createRef = (initializer, options = {}) => (0, effect_1.createEffect)((world) => {
+        const initialValue = initializer(world);
+        return () => (0, use_ref_1.useRef)(initialValue);
+      }, options);
+      exports.createRef = createRef;
+      function createImmutableRef(initializer, options = {}) {
+        return (0, effect_1.createEffect)((world) => {
+          const initialValue = initializer(world);
+          return () => (0, use_ref_1.useRef)(initialValue).value;
+        }, options);
+      }
+      exports.createImmutableRef = createImmutableRef;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.js
-  var require_schema_utils = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_utils.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/entity.js
+  var require_entity = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/entity.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.schemaEqualsSerializedSchema = exports.serializeSchema = exports.resetComponentFromSchema = exports.initializeComponentFromSchema = exports.isDataType = exports.createDataType = void 0;
-      var symbols_1 = require_symbols();
-      function createDataType3(config2) {
-        return { ...config2, [symbols_1.$isDataType]: true };
-      }
-      exports.createDataType = createDataType3;
-      function isDataType(obj) {
-        return typeof obj === "object" && obj !== null && obj[symbols_1.$isDataType];
-      }
-      exports.isDataType = isDataType;
-      function initializeComponentFromSchema(component19, schema) {
-        for (const prop in schema) {
-          const value = schema[prop];
-          if (isDataType(value)) {
-            component19[prop] = value.create(void 0);
-          } else if ("type" in value && isDataType(value.type)) {
-            const { type, defaultValue } = value;
-            component19[prop] = type.create(defaultValue);
-          } else {
-            initializeComponentFromSchema(component19, value);
-          }
-        }
-        return component19;
-      }
-      exports.initializeComponentFromSchema = initializeComponentFromSchema;
-      function resetComponentFromSchema(component19, schema) {
-        for (const prop in schema) {
-          const value = schema[prop];
-          if (isDataType(value)) {
-            value.reset(component19, prop, void 0);
-          } else if ("type" in value && isDataType(value.type)) {
-            const { type, defaultValue } = value;
-            type.reset(component19, prop, defaultValue);
-          } else {
-            resetComponentFromSchema(component19, value);
-          }
-        }
-        return component19;
-      }
-      exports.resetComponentFromSchema = resetComponentFromSchema;
-      function serializeSchema(schema) {
-        const out = {};
-        for (const prop in schema) {
-          const value = schema[prop];
-          if (isDataType(value)) {
-            out[prop] = value.name;
-          } else if ("type" in value && isDataType(value.type)) {
-            out[prop] = value.type.name;
-          } else {
-            out[prop] = serializeSchema(value);
-          }
-        }
-        return out;
-      }
-      exports.serializeSchema = serializeSchema;
-      function schemaEqualsSerializedSchema(schema, serializedSchema) {
-        if (Object.keys(schema).length !== Object.keys(serializedSchema).length) {
-          return false;
-        }
-        for (const prop in schema) {
-          const value = schema[prop];
-          if (isDataType(value)) {
-            if (serializedSchema[prop] !== value.name) {
-              return false;
-            }
-          } else if ("type" in value && isDataType(value.type)) {
-            if (serializedSchema[prop] !== value.type.name) {
-              return false;
-            }
-          } else {
-            const result = schemaEqualsSerializedSchema(value, serializedSchema[prop]);
-            if (!result) {
-              return false;
-            }
-          }
-        }
-        return true;
-      }
-      exports.schemaEqualsSerializedSchema = schemaEqualsSerializedSchema;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.js
-  var require_component_helpers = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/helpers/component_helpers.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/observe.js
+  var require_observe = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/observe.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.isComponentOf = exports.createComponentPool = exports.serializeComponentType = exports.createComponentBase = exports.createComponentType = void 0;
-      var stack_pool_1 = require_stack_pool();
-      var schema_utils_1 = require_schema_utils();
-      function createComponentType(options) {
-        return {
-          ...options,
-          schema: options.schema || {}
-        };
-      }
-      exports.createComponentType = createComponentType;
-      function createComponentBase(componentType) {
-        return Object.defineProperties({}, {
-          _tid: { value: componentType.type, writable: false, enumerable: true }
-        });
-      }
-      exports.createComponentBase = createComponentBase;
-      function serializeComponentType(componentType) {
-        return {
-          name: componentType.name,
-          type: componentType.type,
-          schema: schema_utils_1.serializeSchema(componentType.schema)
-        };
-      }
-      exports.serializeComponentType = serializeComponentType;
-      function createComponentPool(componentType, poolSize) {
-        const componentPool = stack_pool_1.createStackPool(() => schema_utils_1.initializeComponentFromSchema(createComponentBase(componentType), componentType.schema), (c) => schema_utils_1.resetComponentFromSchema(c, componentType.schema), poolSize);
-        return componentPool;
-      }
-      exports.createComponentPool = createComponentPool;
-      function isComponentOf(component19, componentTypeId) {
-        return component19._tid === componentTypeId.type;
-      }
-      exports.isComponentOf = isComponentOf;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.js
-  var require_helpers = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/helpers/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
+      exports.resetPatch = exports.createPatch = exports.getFieldValue = exports.clearObservedChanges = exports.observe = exports.$delete = exports.$changes = exports.$touched = exports.$self = void 0;
+      var core_1 = require_cjs();
+      var component_1 = require_component();
+      var internal_1 = require_internal();
+      exports.$self = Symbol("javelin_proxy_self");
+      exports.$touched = Symbol("javelin_proxy_touched");
+      exports.$changes = Symbol("javelin_proxy_changes");
+      exports.$delete = Symbol("javelin_proxy_deleted");
+      var proxies = new WeakMap();
+      var simpleStructHandler = {
+        get(target, key) {
+          if (key === exports.$self)
+            return target;
+          target[exports.$touched] = true;
+          return target[key];
+        },
+        set(target, key, value) {
+          const changes = target[exports.$changes];
+          target[key] = value;
+          target[exports.$touched] = true;
+          changes.changes[key] = value;
+          changes.dirty = true;
+          return true;
+        }
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_component_helpers(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.js
-  var require_schema_types = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/schema_types.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      var symbols_1 = require_symbols();
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.js
-  var require_standard_data_types = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/standard_data_types.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.string = exports.boolean = exports.number = exports.array = void 0;
-      var array_1 = require_array();
-      var schema_utils_1 = require_schema_utils();
-      var array = (type) => schema_utils_1.createDataType({
-        name: "array",
-        create(value = []) {
+      var structHandler = {
+        get(target, key) {
+          if (key === exports.$self)
+            return target;
+          const value = target[key];
+          target[exports.$touched] = true;
+          if (typeof value === "object" && value !== null) {
+            return proxify(value, target, key);
+          }
           return value;
         },
-        reset(c, key, defaultValue) {
-          if (typeof defaultValue !== "undefined") {
-            c[key] = defaultValue.slice();
-          } else {
-            array_1.mutableEmpty(c[key]);
-          }
-        }
-      });
-      exports.array = array;
-      exports.number = schema_utils_1.createDataType({
-        name: "number",
-        create(value = 0) {
-          return value;
-        },
-        reset(c, key, value = 0) {
-          c[key] = value;
-        }
-      });
-      exports.boolean = schema_utils_1.createDataType({
-        name: "boolean",
-        create(value = false) {
-          return value;
-        },
-        reset(c, key, value = false) {
-          c[key] = value;
-        }
-      });
-      exports.string = schema_utils_1.createDataType({
-        name: "string",
-        create(value = "") {
-          return value;
-        },
-        reset(c, key, value = "") {
-          c[key] = value;
-        }
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.js
-  var require_schema = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/schema/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
+        set: simpleStructHandler.set
       };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_schema_types(), exports);
-      __exportStar(require_schema_utils(), exports);
-      __exportStar(require_standard_data_types(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/debug.js
-  var require_debug = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/debug.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.ErrorType = exports.assert = void 0;
-      function assert(expression, message, type) {
-        if (!expression) {
-          throw new Error(type !== void 0 ? `${errorMessagePrefixes[type]}: ${message}` : message);
-        }
-      }
-      exports.assert = assert;
-      var ErrorType;
-      (function(ErrorType2) {
-        ErrorType2[ErrorType2["Internal"] = 0] = "Internal";
-      })(ErrorType = exports.ErrorType || (exports.ErrorType = {}));
-      var errorMessagePrefixes = {
-        [ErrorType.Internal]: "Internal Error"
+      var simpleArrayHandler = simpleStructHandler;
+      var arrayHandler = {
+        get: structHandler.get,
+        set: simpleArrayHandler.set
       };
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/mutation_cache.js
-  var require_mutation_cache = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/mutation_cache.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createMutationCache = exports.mutArrayMethodsByType = exports.MUT_ARRAY_METHODS = exports.MutArrayMethodType = exports.applyMutation = void 0;
-      var rMethod = /^\d+\(\)$/;
-      var rInteger = /\d+/;
-      var splitPathCache = {};
-      function splitPath(path) {
-        let splitPath2 = splitPathCache[path];
-        if (!splitPath2) {
-          splitPath2 = path.split(".");
-          for (let i = 0; i < splitPath2.length; i++) {
-            const pathComponent = splitPath2[i];
-            if (rInteger.test(pathComponent)) {
-              splitPath2[i] = Number(pathComponent);
-            }
-          }
-          splitPathCache[path] = splitPath2;
+      var simpleObjectHandler = {
+        ...simpleStructHandler,
+        deleteProperty(target, key) {
+          const changes = target[exports.$changes];
+          delete target[key];
+          target[exports.$touched] = true;
+          changes.changes[key] = exports.$delete;
+          changes.dirty = true;
+          return true;
         }
-        return splitPath2;
-      }
-      function applyMutation(root, path, value) {
-        var _a;
-        const arrPath = splitPath(path);
-        const key = arrPath[arrPath.length - 1];
-        let target = root;
-        for (let i = 0; i < arrPath.length - 1; i++) {
-          target = target[arrPath[i]];
-        }
-        const methodMatches = typeof key === "string" && key.match(rMethod);
-        const methodType = methodMatches ? Number(methodMatches[0]) : null;
-        if (typeof methodType === "number") {
-          (_a = exports.mutArrayMethodsByType.get(methodType)) === null || _a === void 0 ? void 0 : _a.apply(arrPath[arrPath.length - 2], value);
-        }
-        target[key] = value;
-      }
-      exports.applyMutation = applyMutation;
-      var isValidProxyTarget = (obj) => typeof obj === "object" && obj !== null || typeof obj === "function";
-      var MutArrayMethodType;
-      (function(MutArrayMethodType2) {
-        MutArrayMethodType2[MutArrayMethodType2["Push"] = 0] = "Push";
-        MutArrayMethodType2[MutArrayMethodType2["Pop"] = 1] = "Pop";
-        MutArrayMethodType2[MutArrayMethodType2["Shift"] = 2] = "Shift";
-        MutArrayMethodType2[MutArrayMethodType2["Unshift"] = 3] = "Unshift";
-        MutArrayMethodType2[MutArrayMethodType2["Splice"] = 4] = "Splice";
-      })(MutArrayMethodType = exports.MutArrayMethodType || (exports.MutArrayMethodType = {}));
-      exports.MUT_ARRAY_METHODS = new Map([
-        [Array.prototype.push, MutArrayMethodType.Push],
-        [Array.prototype.pop, MutArrayMethodType.Pop],
-        [Array.prototype.shift, MutArrayMethodType.Shift],
-        [Array.prototype.unshift, MutArrayMethodType.Unshift],
-        [Array.prototype.splice, MutArrayMethodType.Splice]
-      ]);
-      exports.mutArrayMethodsByType = new Map([
-        [MutArrayMethodType.Push, Array.prototype.push],
-        [MutArrayMethodType.Pop, Array.prototype.pop],
-        [MutArrayMethodType.Shift, Array.prototype.shift],
-        [MutArrayMethodType.Unshift, Array.prototype.unshift],
-        [MutArrayMethodType.Splice, Array.prototype.splice]
-      ]);
-      var ROOT_PATH = "";
-      var createMutationCache = ({ onChange }) => {
-        const targetRoots = new WeakMap();
-        const targetPaths = new WeakMap();
-        const targetProxies = new WeakMap();
-        const proxyTargetLookup = new WeakMap();
-        const locked = new WeakSet();
-        function getPath(target, key) {
-          const basePath = targetPaths.get(target);
-          if (basePath === ROOT_PATH) {
-            return key.toString();
-          }
-          return `${basePath}.${key}`;
-        }
-        function getProxy(target, root = target, path = ROOT_PATH) {
-          let proxy2 = targetProxies.get(target);
-          if (proxy2 === void 0) {
-            proxy2 = new Proxy(target, handler);
-            targetProxies.set(target, proxy2);
-            proxyTargetLookup.set(proxy2, target);
-            targetRoots.set(target, root);
-            targetPaths.set(target, path);
-          }
-          return proxy2;
-        }
-        const handler = {
-          get(target, propertyKey, receiver) {
-            const value = Reflect.get(target, propertyKey, receiver);
-            if (typeof propertyKey !== "symbol" && isValidProxyTarget(value)) {
-              return getProxy(value, targetRoots.get(target), getPath(target, propertyKey));
-            }
-            return value;
-          },
-          set(target, propertyKey, value, receiver) {
-            const previous = target[propertyKey];
-            target[propertyKey] = value;
-            if (previous !== value && !locked.has(target) && typeof propertyKey !== "symbol") {
-              onChange(targetRoots.get(target), target, getPath(target, propertyKey), value);
-            }
-            return true;
-          },
-          apply(target, thisArgument, argumentsList) {
-            const isArray = Array.isArray(thisArgument);
-            const targetProxy = proxyTargetLookup.get(thisArgument);
-            let mutArrayMethodType = exports.MUT_ARRAY_METHODS.get(target);
-            let hasMutArrayMethodType = isArray && typeof mutArrayMethodType === "number";
-            if (hasMutArrayMethodType) {
-              locked.add(targetProxy);
-            }
-            const result = Reflect.apply(target, thisArgument, argumentsList);
-            if (hasMutArrayMethodType) {
-              onChange(targetRoots.get(targetProxy), thisArgument, getPath(targetProxy, `${mutArrayMethodType}()`), argumentsList);
-              locked.delete(thisArgument);
-            }
-            return result;
-          }
-        };
-        function revoke(target) {
-          const proxy2 = targetProxies.get(target);
-          targetProxies.delete(target);
-          proxyTargetLookup.delete(proxy2);
-        }
-        function proxy(target) {
-          return getProxy(target);
-        }
-        return {
-          proxy,
-          revoke
-        };
       };
-      exports.createMutationCache = createMutationCache;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/storage.js
-  var require_storage = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/storage.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createStorage = void 0;
-      var archetype_1 = require_archetype();
-      var debug_1 = require_debug();
-      var mutation_cache_1 = require_mutation_cache();
-      var signal_1 = require_signal();
-      var util_1 = require_util();
-      function createStorage(options = {}) {
-        const archetypeCreated = signal_1.createSignal();
-        const entityRelocated = signal_1.createSignal();
-        const mutationCache = mutation_cache_1.createMutationCache({
-          onChange(component19, target, path, value, mutArrayMethodType) {
-            let changes = mutations.get(component19);
-            if (!changes) {
-              changes = [];
-              mutations.set(component19, changes);
-            }
-            if (mutArrayMethodType) {
-              changes.push(path, value, mutArrayMethodType);
-            } else {
-              changes.push(path, value);
-            }
+      var objectHandler = {
+        ...structHandler,
+        deleteProperty: simpleObjectHandler.deleteProperty
+      };
+      var setHandler = {
+        get(target, key) {
+          if (key === exports.$self)
+            return target;
+          const value = target[key];
+          target[exports.$touched] = true;
+          return typeof value === "function" ? new Proxy(value, setMethodHandler) : value;
+        }
+      };
+      var setMethodHandler = {
+        apply(method, target, args) {
+          const { [exports.$self]: self, [exports.$changes]: changes } = target;
+          target[exports.$touched] = true;
+          switch (method) {
+            case Set.prototype.add:
+              changes.changes.add.push(args[0]);
+              changes.dirty = true;
+              break;
+            case Set.prototype.delete:
+              changes.changes.delete.push(args[0]);
+              changes.dirty = true;
+              break;
+            case Set.prototype.clear:
+              self.forEach((value) => changes.changes.delete.push(value));
+              changes.dirty = true;
+              break;
           }
-        });
-        const mutations = new Map();
-        const archetypes = options.snapshot ? options.snapshot.archetypes.map((snapshot2) => archetype_1.createArchetype({ snapshot: snapshot2 })) : [];
-        const archetypeIndicesByEntity = [];
-        function findArchetype(components) {
-          const componentsLength = components.length;
-          for (let i = 0; i < archetypes.length; i++) {
-            const archetype = archetypes[i];
-            const { signature } = archetype;
-            if (signature.length !== componentsLength) {
-              continue;
-            }
-            let match = true;
-            for (let j = 0; j < componentsLength; j++) {
-              if (signature.indexOf(components[j]._tid) === -1) {
-                match = false;
-                break;
+          return method.apply(self, args);
+        }
+      };
+      var mapHandler = {
+        get(target, key, receiver) {
+          if (key === exports.$self)
+            return target;
+          const value = Reflect.get(target, key, receiver);
+          target[exports.$touched] = true;
+          return typeof value === "function" ? new Proxy(value, mapMethodHandler) : value;
+        }
+      };
+      var mapMethodHandler = {
+        apply(method, target, args) {
+          const { [exports.$self]: self } = target;
+          const { [exports.$changes]: changes } = self;
+          self[exports.$touched] = true;
+          switch (method) {
+            case Map.prototype.get: {
+              const value = method.apply(self, args);
+              if (typeof value === "object" && value !== null) {
+                return proxify(value, self, args[0]);
               }
             }
-            if (match) {
-              return archetype;
-            }
+            case Map.prototype.set:
+              changes.changes.set(args[0], args[1]);
+              changes.dirty = true;
+              break;
+            case Map.prototype.delete:
+              changes.changes.set(args[0], exports.$delete);
+              changes.dirty = true;
+              break;
+            case Map.prototype.clear:
+              self.forEach((_, key) => changes.changes.set(key, exports.$delete));
+              changes.dirty = true;
+              return self.clear();
           }
-          return null;
+          return method.apply(self, args);
         }
-        function findOrCreateArchetype(components) {
-          let archetype = findArchetype(components);
-          if (!archetype) {
-            archetype = archetype_1.createArchetype({
-              signature: components.map((c) => c._tid)
-            });
-            archetypes.push(archetype);
-            archetypeCreated.dispatch(archetype);
-          }
-          return archetype;
-        }
-        function create(entity, components) {
-          const archetype = findOrCreateArchetype(components);
-          archetype.insert(entity, components);
-          archetypeIndicesByEntity[entity] = archetypes.indexOf(archetype);
-          return entity;
-        }
-        function getEntityArchetype(entity) {
-          const location = archetypeIndicesByEntity[entity];
-          if (location === void 0) {
-            throw new Error(`Failed to locate entity. Entity does not exist.`);
-          }
-          if (location === null) {
-            throw new Error(`Failed to locate entity. Entity has been removed.`);
-          }
-          return archetypes[location];
-        }
-        function relocate(source, entity, components) {
-          source.remove(entity);
-          const destination = findOrCreateArchetype(components);
-          destination.insert(entity, components);
-          archetypeIndicesByEntity[entity] = archetypes.indexOf(destination);
-          entityRelocated.dispatch(entity, source, destination);
-        }
-        function insert(entity, components) {
-          const source = getEntityArchetype(entity);
-          const entityIndex = source.indices[entity];
-          let destinationComponents = components.slice();
-          for (let i = 0; i < source.signature.length; i++) {
-            const componentTypeId = source.signature[i];
-            if (components.find((c) => c._tid === componentTypeId)) {
-              throw new Error(`Cannot attach component with type ${componentTypeId} \u2014 entity already has component of type.`);
-            }
-            destinationComponents.push(source.table[i][entityIndex]);
-          }
-          relocate(source, entity, destinationComponents);
-        }
-        function remove(entity, components) {
-          const typesToRemove = components.map((component19) => component19._tid);
-          removeByTypeIds(entity, typesToRemove);
-        }
-        function removeByTypeIds(entity, componentTypeIds) {
-          const source = getEntityArchetype(entity);
-          const entityIndex = source.indices[entity];
-          let destinationComponents = [];
-          for (let i = 0; i < source.signature.length; i++) {
-            const type = source.signature[i];
-            const component19 = source.table[i][entityIndex];
-            if (!componentTypeIds.includes(type)) {
-              destinationComponents.push(component19);
-            } else {
-              mutationCache.revoke(component19);
-              mutations.delete(component19);
-            }
-          }
-          relocate(source, entity, destinationComponents);
-        }
-        function destroy(entity) {
-          remove(entity, getEntityComponents(entity));
-          archetypeIndicesByEntity[entity] = null;
-        }
-        function patch(entity, componentTypeId, path, value) {
-          const archetype = getEntityArchetype(entity);
-          const entityIndex = archetype.indices[entity];
-          const column = archetype.signatureInverse[componentTypeId];
-          if (column === void 0) {
-            return;
-          }
-          const component19 = archetype.table[column][entityIndex];
-          debug_1.assert(component19 !== void 0, "Failed to patch component: entity does not exist in archetype");
-          mutation_cache_1.applyMutation(getObservedComponent(component19), path, value);
-        }
-        const tmpComponentsToInsert = [];
-        function upsert(entity, components) {
-          const archetype = getEntityArchetype(entity);
-          const entityIndex = archetype.indices[entity];
-          util_1.mutableEmpty(tmpComponentsToInsert);
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            const column = archetype.signatureInverse[component19._tid];
-            if (column === void 0) {
-              tmpComponentsToInsert.push(component19);
-            } else {
-              const target = getObservedComponent(archetype.table[column][entityIndex]);
-              Object.assign(target, component19);
-            }
-          }
-          if (tmpComponentsToInsert.length > 0) {
-            insert(entity, tmpComponentsToInsert);
+      };
+      function getHandler(node) {
+        const simple = (0, core_1.isSimple)(node);
+        if ((0, core_1.isField)(node)) {
+          switch (node[core_1.$kind]) {
+            case core_1.FieldKind.Array:
+              return simple ? simpleArrayHandler : arrayHandler;
+            case core_1.FieldKind.Object:
+              return simple ? simpleObjectHandler : objectHandler;
+            case core_1.FieldKind.Set:
+              return setHandler;
+            case core_1.FieldKind.Map:
+              return mapHandler;
+            default:
+              throw new Error("Failed to observe object: cannot observe a primitive type");
           }
         }
-        function hasComponent(entity, componentType) {
-          const archetype = getEntityArchetype(entity);
-          return archetype.signature.includes(componentType.type);
-        }
-        function findComponent(entity, componentType) {
-          return findComponentByComponentTypeId(entity, componentType.type);
-        }
-        function findComponentByComponentTypeId(entity, componentTypeId) {
-          const archetype = getEntityArchetype(entity);
-          const column = archetype.signatureInverse[componentTypeId];
-          if (column === void 0) {
-            return null;
-          }
-          const entityIndex = archetype.indices[entity];
-          return archetype.table[column][entityIndex];
-        }
-        function getEntityComponents(entity) {
-          const archetype = getEntityArchetype(entity);
-          const entityIndex = archetype.indices[entity];
-          const result = [];
-          for (let i = 0; i < archetype.table.length; i++) {
-            result.push(archetype.table[i][entityIndex]);
-          }
-          return result;
-        }
-        function clearMutations() {
-          mutations.forEach(util_1.mutableEmpty);
-        }
-        function getComponentMutations(component19) {
-          const changeSet = mutations.get(component19);
-          if (!changeSet) {
-            throw new Error("ChangeSet does not exist for component.");
-          }
-          return changeSet;
-        }
-        function getObservedComponent(component19) {
-          return mutationCache.proxy(component19);
-        }
-        function isComponentChanged(component19) {
-          const changeSet = mutations.get(component19);
-          return changeSet ? changeSet.length > 0 : false;
-        }
-        function clear() {
-          mutations.clear();
-          util_1.mutableEmpty(archetypes);
-          util_1.mutableEmpty(archetypeIndicesByEntity);
-        }
-        function snapshot() {
-          return {
-            archetypes: archetypes.map((archetype) => ({
-              signature: archetype.signature.slice(),
-              table: archetype.table.map((column) => column.map((component19) => ({ ...component19 }))),
-              indices: util_1.packSparseArray(archetype.indices)
-            }))
-          };
-        }
-        return {
-          archetypeCreated,
-          archetypes,
-          clear,
-          clearMutations,
-          create,
-          destroy,
-          entityRelocated,
-          findComponent,
-          findComponentByComponentTypeId,
-          getComponentMutations,
-          getEntityComponents,
-          getObservedComponent,
-          hasComponent,
-          insert,
-          isComponentChanged,
-          patch,
-          remove,
-          removeByTypeIds,
-          snapshot,
-          upsert
-        };
+        return simple ? simpleStructHandler : structHandler;
       }
-      exports.createStorage = createStorage;
+      function getChanges(node) {
+        const base = { dirty: false, node };
+        if ((0, core_1.isField)(node)) {
+          switch (node[core_1.$kind]) {
+            case core_1.FieldKind.Array:
+              return { ...base, changes: {} };
+            case core_1.FieldKind.Object:
+              return { ...base, changes: {} };
+            case core_1.FieldKind.Set:
+              return { ...base, changes: { add: [], delete: [] } };
+            case core_1.FieldKind.Map:
+              return { ...base, changes: new Map() };
+          }
+        }
+        return { ...base, changes: {} };
+      }
+      var descriptorBase = {
+        configurable: false,
+        enumerable: true,
+        writable: false
+      };
+      function register(object, node) {
+        const changes = getChanges(node);
+        const observed = Object.defineProperties(object, {
+          [exports.$self]: { ...descriptorBase, value: object },
+          [exports.$changes]: { ...descriptorBase, value: changes }
+        });
+        const handler = getHandler(node);
+        const proxy = new Proxy(observed, handler);
+        proxies.set(object, proxy);
+        return proxy;
+      }
+      function proxify(object, parent, key) {
+        var _a;
+        const parentNode = parent[exports.$changes].node;
+        let node;
+        if ((0, core_1.isSchema)(parentNode)) {
+          node = parentNode.fieldsByKey[key];
+        } else {
+          (0, core_1.assert)("element" in parentNode);
+          node = parentNode.element;
+        }
+        return (_a = proxies.get(object)) !== null && _a !== void 0 ? _a : register(object, node);
+      }
+      function observe(component21) {
+        var _a;
+        ;
+        component21[exports.$touched] = true;
+        return (_a = proxies.get(component21)) !== null && _a !== void 0 ? _a : register(component21, internal_1.UNSAFE_internals.model[(0, component_1.getSchemaId)(component21)]);
+      }
+      exports.observe = observe;
+      function clearObservedChangesInner(object, node) {
+        if (object[exports.$touched] !== true) {
+          return;
+        }
+        const changes = object[exports.$changes];
+        if ((0, core_1.isSchema)(node)) {
+          for (const prop in changes.changes) {
+            delete changes.changes[prop];
+          }
+          for (let i = 0; i < node.fields.length; i++) {
+            clearObservedChangesInner(object[node.keys[i]], node.fields[i]);
+          }
+        } else if ("element" in node) {
+          const element = node.element;
+          switch (node[core_1.$kind]) {
+            case core_1.FieldKind.Array: {
+              for (const prop in changes.changes) {
+                delete changes.changes[prop];
+              }
+              for (let i = 0; i < object.length; i++) {
+                clearObservedChangesInner(object[i], element);
+              }
+              break;
+            }
+            case core_1.FieldKind.Object: {
+              for (const prop in changes.changes) {
+                delete changes.changes[prop];
+              }
+              for (const prop in object) {
+                clearObservedChangesInner(object[prop], element);
+              }
+              break;
+            }
+            case core_1.FieldKind.Set: {
+              (0, core_1.mutableEmpty)(changes.changes.add);
+              (0, core_1.mutableEmpty)(changes.changes.delete);
+              break;
+            }
+            case core_1.FieldKind.Map: {
+              ;
+              changes.changes.clear();
+              object.forEach((value) => clearObservedChangesInner(value, element));
+              break;
+            }
+          }
+        }
+        changes.dirty = false;
+        object[exports.$touched] = false;
+      }
+      function clearObservedChanges(component21) {
+        const self = exports.$self in component21 ? component21[exports.$self] : component21;
+        const node = internal_1.UNSAFE_internals.model[(0, component_1.getSchemaId)(self)];
+        return clearObservedChangesInner(self, node);
+      }
+      exports.clearObservedChanges = clearObservedChanges;
+      function getFieldValue(node, object, fieldId, traverse) {
+        let t = 0;
+        let key = null;
+        let ref = object;
+        outer:
+          while (node.id !== fieldId) {
+            if ((0, core_1.isField)(node)) {
+              (0, core_1.assert)("element" in node);
+              key = traverse[t++];
+              switch (node[core_1.$kind]) {
+                case core_1.FieldKind.Array:
+                case core_1.FieldKind.Object:
+                  ref = ref[key];
+                  break;
+                case core_1.FieldKind.Map:
+                  ref = ref.get(key);
+                  break;
+                default:
+                  throw new Error("Failed to apply change: invalid target field");
+              }
+              node = node.element;
+            } else {
+              for (let i = 0; i < node.fields.length; i++) {
+                const child = node.fields[i];
+                if (child.lo <= fieldId && child.hi >= fieldId) {
+                  key = node.keys[i];
+                  node = child;
+                  if (node.id !== fieldId) {
+                    ref = ref[key];
+                  }
+                  continue outer;
+                }
+              }
+            }
+          }
+        return ref;
+      }
+      exports.getFieldValue = getFieldValue;
+      function createPatchInner(object, patch = { changes: new Map(), children: new Map() }) {
+        const self = object[exports.$self];
+        const { [exports.$changes]: { node, changes } } = self;
+        const simple = (0, core_1.isSimple)(node);
+        if ((0, core_1.isSchema)(node)) {
+          if (simple) {
+            for (let i = 0; i < node.fields.length; i++) {
+              const key = node.keys[i];
+              if (key in changes)
+                patch.changes.set(key, self[key]);
+            }
+          } else {
+            for (let i = 0; i < node.fields.length; i++) {
+              const key = node.keys[i];
+              const value = self[key];
+              if (key in changes)
+                patch.changes.set(key, value);
+              if (value[exports.$touched]) {
+                patch.children.set(key, createPatchInner(value, patch.children.get(key)));
+              }
+            }
+          }
+        } else if ("element" in node) {
+          switch (node[core_1.$kind]) {
+            case core_1.FieldKind.Array:
+              if (simple) {
+                for (let i = 0; i < self.length; i++) {
+                  if (i in changes)
+                    patch.changes.set(i, self[i]);
+                }
+              } else {
+                for (let i = 0; i < self.length; i++) {
+                  const value = self[i];
+                  if (i in changes)
+                    patch.changes.set(i, value);
+                  if (value[exports.$touched])
+                    patch.children.set(i, createPatchInner(value, patch.children.get(i)));
+                }
+              }
+              break;
+            case core_1.FieldKind.Map:
+              if (simple) {
+                ;
+                changes.forEach((value, key) => patch.changes.set(key, value));
+              } else {
+                ;
+                self.forEach((value, key) => {
+                  if (changes.has(key)) {
+                    patch.changes.set(key, value);
+                    if (value[exports.$touched])
+                      patch.children.set(key, createPatchInner(value, patch.children.get(key)));
+                  }
+                });
+              }
+              break;
+          }
+        }
+        return patch;
+      }
+      function createPatch(component21, patch = {
+        schemaId: (0, component_1.getSchemaId)(component21),
+        children: new Map(),
+        changes: new Map()
+      }) {
+        if (exports.$changes in component21) {
+          createPatchInner(component21, patch);
+        }
+        return patch;
+      }
+      exports.createPatch = createPatch;
+      function resetPatch(patch) {
+        patch.changes.clear();
+        patch.children.clear();
+      }
+      exports.resetPatch = resetPatch;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/topic.js
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/type.js
+  var require_type = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/type.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.typeIsSuperset = exports.normalizeType = void 0;
+      function normalizeType(type) {
+        return type.slice().sort((a, b) => a - b);
+      }
+      exports.normalizeType = normalizeType;
+      function typeIsSuperset(right, left) {
+        let i = 0;
+        let j = 0;
+        if (right.length < left.length) {
+          return false;
+        }
+        while (i < right.length && j < left.length) {
+          if (right[i] < left[j]) {
+            i++;
+          } else if (right[i] === left[j]) {
+            i++;
+            j++;
+          } else {
+            return false;
+          }
+        }
+        return j === left.length;
+      }
+      exports.typeIsSuperset = typeIsSuperset;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/query.js
+  var require_query = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/query.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.createQuery = void 0;
+      var core_1 = require_cjs();
+      var component_1 = require_component();
+      var internal_1 = require_internal();
+      var type_1 = require_type();
+      var ERROR_MSG_UNBOUND_QUERY = "a query must be executed within a system or bound to a world using Query.bind()";
+      function matchesTypeInner(typeA, typeB, filters) {
+        return (0, type_1.typeIsSuperset)(typeB, typeA) && typeB.every((c) => !filters.not.has(c));
+      }
+      function createQueryInternal(options) {
+        var _a, _b;
+        const length = options.select.length;
+        const filters = (_a = options.filters) !== null && _a !== void 0 ? _a : { not: new Set() };
+        const type = (0, type_1.normalizeType)(options.select.map((schema) => (0, component_1.registerSchema)(schema)));
+        const layout = ((_b = options.include) !== null && _b !== void 0 ? _b : options.select).map((schema) => (0, component_1.registerSchema)(schema));
+        const recordsIndex = [];
+        const pool = (0, core_1.createStackPool)(() => [], (components) => {
+          (0, core_1.mutableEmpty)(components);
+          return components;
+        }, 1e3);
+        let boundWorldId = options.boundWorldId;
+        function maybeRegisterArchetype(archetype, records) {
+          if (matchesTypeInner(type, archetype.type, filters)) {
+            const columns = layout.map((schemaId) => archetype.table[archetype.type.indexOf(schemaId)]);
+            records.push([
+              archetype.entities,
+              columns,
+              archetype.indices
+            ]);
+          }
+        }
+        function registerWorld(worldId) {
+          const world = internal_1.UNSAFE_internals.worlds[worldId];
+          const records = [];
+          recordsIndex[worldId] = records;
+          world.storage.archetypes.forEach((archetype) => maybeRegisterArchetype(archetype, records));
+          world.storage.archetypeCreated.subscribe((archetype) => maybeRegisterArchetype(archetype, records));
+          return records;
+        }
+        function forEach(iteratee) {
+          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
+          (0, core_1.assert)(worldId !== null && worldId !== -1, ERROR_MSG_UNBOUND_QUERY, core_1.ErrorType.Query);
+          const records = recordsIndex[worldId] || registerWorld(worldId);
+          const components = pool.retain();
+          for (let i = 0; i < records.length; i++) {
+            const [entities, columns] = records[i];
+            for (let j = 0; j < entities.length; j++) {
+              for (let k = 0; k < length; k++) {
+                components[k] = columns[k][j];
+              }
+              iteratee(entities[j], components);
+            }
+          }
+          pool.release(components);
+        }
+        function iterator() {
+          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
+          (0, core_1.assert)(worldId !== null && worldId !== -1, ERROR_MSG_UNBOUND_QUERY, core_1.ErrorType.Query);
+          return (recordsIndex[worldId] || registerWorld(worldId))[Symbol.iterator]();
+        }
+        function not(...exclude) {
+          return createQueryInternal({
+            ...options,
+            filters: {
+              not: new Set(exclude.map((schema) => internal_1.UNSAFE_internals.schemaIndex.get(schema)).filter((x) => typeof x === "number"))
+            }
+          });
+        }
+        function select(...include) {
+          return createQueryInternal({ ...options, include });
+        }
+        function get(entity, out = []) {
+          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
+          const records = recordsIndex[worldId];
+          for (let i = 0; i < records.length; i++) {
+            const [, columns, indices] = records[i];
+            const index = indices[entity];
+            if (index !== void 0) {
+              for (let i2 = 0; i2 < columns.length; i2++) {
+                out[i2] = columns[i2][index];
+              }
+              return out;
+            }
+          }
+          throw new Error("Failed to get components of query: entity does not match query");
+        }
+        function bind(world) {
+          return createQueryInternal({
+            ...options,
+            boundWorldId: world.id
+          });
+        }
+        function test(entity) {
+          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
+          const records = recordsIndex[worldId];
+          for (let i = 0; i < records.length; i++) {
+            const record = records[i];
+            if (record[2][entity] !== void 0) {
+              return true;
+            }
+          }
+          return false;
+        }
+        let _type = type;
+        function matchesType(type2) {
+          return matchesTypeInner(_type, type2, filters);
+        }
+        function equals(query2) {
+          if (query2.type.length !== type.length) {
+            return false;
+          }
+          for (let i = 0; i < query2.type.length; i++) {
+            if (query2.type[i] !== type[i]) {
+              return false;
+            }
+          }
+          if (query2.filters.not.size !== filters.not.size) {
+            return false;
+          }
+          let result = true;
+          query2.filters.not.forEach((schemaId) => result = result && filters.not.has(schemaId));
+          return result;
+        }
+        function match(components, out = []) {
+          for (let i = 0; i < layout.length; i++) {
+            out[i] = null;
+          }
+          for (let i = 0; i < components.length; i++) {
+            const component21 = components[i];
+            const index = layout.indexOf((0, component_1.getSchemaId)(component21));
+            if (index !== -1) {
+              out[index] = component21;
+            }
+          }
+          return out;
+        }
+        const query = forEach;
+        query[Symbol.iterator] = iterator;
+        query.type = type;
+        query.filters = filters;
+        query.not = not;
+        query.select = select;
+        query.get = get;
+        query.bind = bind;
+        query.test = test;
+        query.matchesType = matchesType;
+        query.equals = equals;
+        query.match = match;
+        return query;
+      }
+      function createQuery17(...select) {
+        return createQueryInternal({ select });
+      }
+      exports.createQuery = createQuery17;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/topic.js
   var require_topic = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/topic.js"(exports) {
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/topic.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.createTopic = void 0;
-      var array_1 = require_array();
+      var core_1 = require_cjs();
       var createTopic2 = () => {
         const staged = [];
         const ready = [];
         const push = (event) => staged.push(event);
         const pushImmediate = (event) => ready.push(event);
         const flush = () => {
-          array_1.mutableEmpty(ready);
+          (0, core_1.mutableEmpty)(ready);
           const len = staged.length;
           for (let i = len - 1; i >= 0; i--) {
             ready[i] = staged.pop();
           }
         };
         const clear = () => {
-          array_1.mutableEmpty(staged);
-          array_1.mutableEmpty(ready);
+          (0, core_1.mutableEmpty)(staged);
+          (0, core_1.mutableEmpty)(ready);
         };
         return {
           *[Symbol.iterator]() {
@@ -1539,140 +1780,309 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/world_op.js
-  var require_world_op = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/world_op.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/archetype.js
+  var require_archetype = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/archetype.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.WorldOpType = void 0;
-      var WorldOpType;
-      (function(WorldOpType2) {
-        WorldOpType2[WorldOpType2["Spawn"] = 0] = "Spawn";
-        WorldOpType2[WorldOpType2["Attach"] = 1] = "Attach";
-        WorldOpType2[WorldOpType2["Detach"] = 2] = "Detach";
-        WorldOpType2[WorldOpType2["Mutate"] = 3] = "Mutate";
-        WorldOpType2[WorldOpType2["Destroy"] = 4] = "Destroy";
-      })(WorldOpType = exports.WorldOpType || (exports.WorldOpType = {}));
+      exports.createArchetype = void 0;
+      var core_1 = require_cjs();
+      var component_1 = require_component();
+      var type_1 = require_type();
+      function hydrateTableFromSnapshot(table, type) {
+        return table.map((column, i) => {
+          const schemaId = type[i];
+          return column.slice().map((component21) => (0, component_1.toComponentFromType)(component21, schemaId));
+        });
+      }
+      function createArchetypeStateFromSnapshot(snapshot) {
+        const entities = Object.keys(snapshot.indices).map(Number);
+        const indices = (0, core_1.unpackSparseArray)(snapshot.indices);
+        const type = (0, type_1.normalizeType)(snapshot.type);
+        const table = hydrateTableFromSnapshot(snapshot.table, type);
+        return { entities, indices, type, table };
+      }
+      function createStore(options) {
+        if ("snapshot" in options) {
+          return createArchetypeStateFromSnapshot(options.snapshot);
+        }
+        const type = (0, type_1.normalizeType)(options.type);
+        const table = type.map(() => []);
+        return { entities: [], indices: [], type, table };
+      }
+      function invertSignature(signature) {
+        return signature.reduce((a, x, i) => {
+          a[x] = i;
+          return a;
+        }, []);
+      }
+      function createArchetype(options) {
+        const { table, indices, entities, type } = createStore(options);
+        const typeInverse = invertSignature(type);
+        function insert(entity, components) {
+          for (let i = 0; i < components.length; i++) {
+            const component21 = components[i];
+            const schemaIndex = typeInverse[(0, component_1.getSchemaId)(component21)];
+            table[schemaIndex].push(component21);
+          }
+          indices[entity] = entities.push(entity) - 1;
+        }
+        function remove(entity) {
+          const length = entities.length;
+          const index = indices[entity];
+          const head = entities.pop();
+          delete indices[entity];
+          if (index === length - 1) {
+            for (const column of table)
+              column.pop();
+          } else {
+            for (const column of table) {
+              column[index] = column.pop();
+            }
+            entities[index] = head;
+            indices[head] = index;
+          }
+        }
+        return {
+          entities,
+          indices,
+          insert,
+          remove,
+          type,
+          typeInverse,
+          table
+        };
+      }
+      exports.createArchetype = createArchetype;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/world.js
-  var require_world = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/world.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/storage.js
+  var require_storage = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/storage.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createWorld = void 0;
-      var helpers_1 = require_helpers();
-      var globals_1 = require_globals();
-      var pool_1 = require_pool();
-      var schema_1 = require_schema();
+      exports.createStorage = void 0;
+      var core_1 = require_cjs();
+      var archetype_1 = require_archetype();
+      var component_1 = require_component();
+      var internal_1 = require_internal();
       var signal_1 = require_signal();
-      var storage_1 = require_storage();
-      var util_1 = require_util();
-      var world_op_1 = require_world_op();
-      function getInitialWorldState() {
+      var ERROR_ENTITY_NOT_CREATED = "Failed to locate entity: entity has not been created";
+      var ERROR_ALREADY_DESTROYED = "Failed to locate entity: entity has been destroyed";
+      var ERROR_NO_SCHEMA = "Failed to locate component: schema not registered";
+      function createStorage(options = {}) {
+        const archetypes = options.snapshot ? options.snapshot.archetypes.map((snapshot) => (0, archetype_1.createArchetype)({ snapshot })) : [(0, archetype_1.createArchetype)({ type: [] })];
+        const entityIndex = [];
+        const entityRelocating = (0, signal_1.createSignal)();
+        const entityRelocated = (0, signal_1.createSignal)();
+        const archetypeCreated = (0, signal_1.createSignal)();
+        function findArchetype(components) {
+          const length = components.length;
+          outer:
+            for (let i = 0; i < archetypes.length; i++) {
+              const archetype = archetypes[i];
+              const { type, typeInverse } = archetype;
+              if (type.length !== length) {
+                continue;
+              }
+              for (let j = 0; j < length; j++) {
+                if (typeInverse[(0, component_1.getSchemaId)(components[j])] === void 0) {
+                  continue outer;
+                }
+              }
+              return archetype;
+            }
+          return null;
+        }
+        function findOrCreateArchetype(components) {
+          let archetype = findArchetype(components);
+          if (archetype === null) {
+            archetype = (0, archetype_1.createArchetype)({
+              type: components.map(component_1.getSchemaId)
+            });
+            archetypes.push(archetype);
+            archetypeCreated.dispatch(archetype);
+          }
+          return archetype;
+        }
+        function getEntityArchetype(entity) {
+          const archetype = entityIndex[entity];
+          (0, core_1.assert)(archetype !== void 0, ERROR_ENTITY_NOT_CREATED);
+          (0, core_1.assert)(archetype !== null, ERROR_ALREADY_DESTROYED);
+          return archetype;
+        }
+        function relocate(prev, entity, components, changed) {
+          const next = findOrCreateArchetype(components);
+          entityRelocating.dispatch(entity, prev, next, changed);
+          prev.remove(entity);
+          next.insert(entity, components);
+          entityIndex[entity] = next;
+          entityRelocated.dispatch(entity, prev, next, changed);
+        }
+        function attachComponents(entity, components) {
+          const source = entityIndex[entity];
+          if (source === void 0 || source === null) {
+            const archetype = findOrCreateArchetype(components);
+            entityRelocating.dispatch(entity, archetypes[0], archetype, components);
+            archetype.insert(entity, components);
+            entityIndex[entity] = archetype;
+            entityRelocated.dispatch(entity, archetypes[0], archetype, components);
+          } else {
+            const index = source.indices[entity];
+            const final = components.slice();
+            for (let i = 0; i < source.type.length; i++) {
+              const schemaId = source.type[i];
+              if (components.find((c) => (0, component_1.getSchemaId)(c) === schemaId)) {
+                continue;
+              }
+              final.push(source.table[i][index]);
+            }
+            relocate(source, entity, final, components);
+          }
+        }
+        function detachBySchemaId(entity, type) {
+          const source = getEntityArchetype(entity);
+          const removed = [];
+          const final = [];
+          const index = source.indices[entity];
+          for (let i = 0; i < source.type.length; i++) {
+            const schemaId = source.type[i];
+            const component21 = source.table[i][index];
+            (type.includes(schemaId) ? removed : final).push(component21);
+          }
+          relocate(source, entity, final, removed);
+        }
+        function clearComponents(entity) {
+          const archetype = getEntityArchetype(entity);
+          detachBySchemaId(entity, archetype.type);
+          entityIndex[entity] = null;
+        }
+        const tmpComponentsToInsert = [];
+        function attachOrUpdateComponents(entity, components) {
+          const archetype = getEntityArchetype(entity);
+          const index = archetype.indices[entity];
+          (0, core_1.mutableEmpty)(tmpComponentsToInsert);
+          for (let i = 0; i < components.length; i++) {
+            const component21 = components[i];
+            const column = archetype.typeInverse[(0, component_1.getSchemaId)(component21)];
+            if (column === void 0) {
+              tmpComponentsToInsert.push(component21);
+            } else {
+              Object.assign(archetype.table[column][index], component21);
+            }
+          }
+          if (tmpComponentsToInsert.length > 0) {
+            attachComponents(entity, tmpComponentsToInsert);
+          }
+        }
+        function hasComponentOfSchema(entity, schema) {
+          const archetype = getEntityArchetype(entity);
+          const type = internal_1.UNSAFE_internals.schemaIndex.get(schema);
+          (0, core_1.assert)(type !== void 0, ERROR_NO_SCHEMA);
+          return archetype.type.includes(type);
+        }
+        function getComponentBySchema(entity, schema) {
+          const type = internal_1.UNSAFE_internals.schemaIndex.get(schema);
+          (0, core_1.assert)(type !== void 0, ERROR_NO_SCHEMA);
+          return getComponentBySchemaId(entity, type);
+        }
+        function getComponentBySchemaId(entity, schemaId) {
+          const archetype = getEntityArchetype(entity);
+          const column = archetype.typeInverse[schemaId];
+          if (column === void 0) {
+            return null;
+          }
+          const entityIndex2 = archetype.indices[entity];
+          return archetype.table[column][entityIndex2];
+        }
+        function getAllComponents(entity) {
+          const archetype = getEntityArchetype(entity);
+          const entityIndex2 = archetype.indices[entity];
+          const result = [];
+          for (let i = 0; i < archetype.table.length; i++) {
+            result.push(archetype.table[i][entityIndex2]);
+          }
+          return result;
+        }
+        function clear() {
+          (0, core_1.mutableEmpty)(archetypes);
+          (0, core_1.mutableEmpty)(entityIndex);
+        }
+        function createSnapshot() {
+          return {
+            archetypes: archetypes.map((archetype) => ({
+              type: archetype.type.slice(),
+              table: archetype.table.map((column) => column.map((component21) => ({ ...component21 }))),
+              indices: (0, core_1.packSparseArray)(archetype.indices)
+            }))
+          };
+        }
         return {
-          currentTickData: null,
-          currentTick: 0,
-          currentSystem: 0
+          archetypeCreated,
+          archetypes,
+          attachComponents,
+          attachOrUpdateComponents,
+          clear,
+          clearComponents,
+          detachBySchemaId,
+          entityRelocated,
+          entityRelocating,
+          getComponentBySchemaId,
+          getComponentBySchema,
+          getAllComponents,
+          createSnapshot,
+          hasComponentOfSchema
         };
       }
+      exports.createStorage = createStorage;
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/world.js
+  var require_world = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/world.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.createWorld = exports.DeferredOpType = void 0;
+      var core_1 = require_cjs();
+      var component_1 = require_component();
+      var internal_1 = require_internal();
+      var storage_1 = require_storage();
+      var $systemId = Symbol("javelin_system_id");
+      var DeferredOpType;
+      (function(DeferredOpType2) {
+        DeferredOpType2[DeferredOpType2["Create"] = 0] = "Create";
+        DeferredOpType2[DeferredOpType2["Attach"] = 1] = "Attach";
+        DeferredOpType2[DeferredOpType2["Detach"] = 2] = "Detach";
+        DeferredOpType2[DeferredOpType2["Destroy"] = 3] = "Destroy";
+      })(DeferredOpType = exports.DeferredOpType || (exports.DeferredOpType = {}));
       function createWorld3(options = {}) {
         var _a, _b;
-        const { componentPoolSize = 1e3, topics = [] } = options;
+        const { topics = [] } = options;
         const systems = [];
-        const worldOps = [];
-        const worldOpsPrevious = [];
-        const worldOpPool = pool_1.createStackPool(() => [], (op) => {
-          util_1.mutableEmpty(op);
-          return op;
-        }, 1e3);
-        const componentTypes = [];
-        const componentTypePools = new Map();
-        const attached = signal_1.createSignal();
-        const detached = signal_1.createSignal();
-        const spawned = signal_1.createSignal();
-        const destroyed = signal_1.createSignal();
-        const destroying = new Set();
-        const storage = storage_1.createStorage({ snapshot: (_a = options.snapshot) === null || _a === void 0 ? void 0 : _a.storage });
-        let state = getInitialWorldState();
-        let prevEntity = 0;
-        let nextSystem = 0;
+        const deferredOps = [];
+        const destroyed = new Set();
+        const storage = (0, storage_1.createStorage)({ snapshot: (_a = options.snapshot) === null || _a === void 0 ? void 0 : _a.storage });
+        let entityIds = 0;
+        let systemIds = 0;
         (_b = options.systems) === null || _b === void 0 ? void 0 : _b.forEach(addSystem);
-        detached.subscribe((entity, components) => components.forEach(maybeReleaseComponent));
-        function createWorldOp(...args) {
-          const worldOp = worldOpPool.retain();
+        function createDeferredOp(...args) {
+          const deferred = [];
           for (let i = 0; i < args.length; i++) {
-            worldOp[i] = args[i];
+            deferred[i] = args[i];
           }
-          return worldOp;
+          return deferred;
         }
-        function applySpawnOp(op) {
-          const [, entity] = op;
-          spawned.dispatch(entity);
-          storage.create(entity, []);
-        }
-        function applyAttachOp(op) {
-          const [, entity, components] = op;
-          attached.dispatch(entity, components);
-          storage.insert(entity, components);
-        }
-        function applyDetachOp(op) {
-          const [, entity, components] = op;
-          detached.dispatch(entity, components);
-          storage.remove(entity, components);
-        }
-        function applyDestroyOp(op) {
-          const [, entity] = op;
-          destroyed.dispatch(entity);
-          storage.destroy(entity);
-        }
-        function applyWorldOp(worldOp, record = true) {
-          if (record === true) {
-            worldOpsPrevious.push(worldOp);
+        function maybeReleaseComponent(component21) {
+          const pool = internal_1.UNSAFE_internals.schemaPools.get((0, component_1.getSchemaId)(component21));
+          if (pool && Reflect.get(component21, component_1.$pool)) {
+            pool.release(component21);
           }
-          switch (worldOp[0]) {
-            case world_op_1.WorldOpType.Spawn:
-              return applySpawnOp(worldOp);
-            case world_op_1.WorldOpType.Attach:
-              return applyAttachOp(worldOp);
-            case world_op_1.WorldOpType.Detach:
-              return applyDetachOp(worldOp);
-            case world_op_1.WorldOpType.Destroy:
-              return applyDestroyOp(worldOp);
-          }
-        }
-        function maybeReleaseComponent(component20) {
-          const pool = componentTypePools.get(component20._tid);
-          if (pool) {
-            pool.release(component20);
-          }
-        }
-        function tick(data) {
-          globals_1.globals.__CURRENT_WORLD__ = id;
-          state.currentTickData = data;
-          storage.clearMutations();
-          while (worldOpsPrevious.length > 0) {
-            worldOpPool.release(worldOpsPrevious.pop());
-          }
-          for (let i = 0; i < worldOps.length; i++) {
-            applyWorldOp(worldOps[i]);
-          }
-          util_1.mutableEmpty(worldOps);
-          for (let i = 0; i < topics.length; i++) {
-            topics[i].flush();
-          }
-          for (let i = 0; i < systems.length; i++) {
-            const system = systems[i];
-            world.state.currentSystem = system.__JAVELIN_SYSTEM_ID__;
-            system(world);
-          }
-          destroying.clear();
-          state.currentTick++;
         }
         function addSystem(system) {
           systems.push(system);
-          system.__JAVELIN_SYSTEM_ID__ = nextSystem;
+          system[$systemId] = systemIds++;
         }
         function removeSystem(system) {
           const index = systems.indexOf(system);
@@ -1689,154 +2099,178 @@
             topics.splice(index, 1);
           }
         }
-        function component19(componentType, ...args) {
-          const componentTypeHasBeenRegistered = componentTypes.includes(componentType);
-          if (!componentTypeHasBeenRegistered) {
-            registerComponentType(componentType);
+        function create(...components) {
+          const entity = entityIds++;
+          if (components.length > 0) {
+            deferredOps.push(createDeferredOp(DeferredOpType.Attach, entity, components));
           }
-          const pool = componentTypePools.get(componentType.type);
-          const component20 = pool.retain();
-          if (componentType.initialize) {
-            componentType.initialize(component20, ...args);
-          }
-          return component20;
-        }
-        function spawn(...components) {
-          const entity = prevEntity++;
-          worldOps.push(createWorldOp(world_op_1.WorldOpType.Spawn, entity), createWorldOp(world_op_1.WorldOpType.Attach, entity, components));
           return entity;
         }
         function attach(entity, ...components) {
-          worldOps.push(createWorldOp(world_op_1.WorldOpType.Attach, entity, components));
+          deferredOps.push(createDeferredOp(DeferredOpType.Attach, entity, components));
+        }
+        function attachImmediate(entity, components) {
+          storage.attachComponents(entity, components);
         }
         function detach(entity, ...components) {
           if (components.length === 0) {
             return;
           }
-          if ("type" in components[0]) {
-            components = components.map((ct) => get(entity, ct));
+          const schemaIds = components.map((c) => {
+            var _a2;
+            return typeof c === "number" ? c : (_a2 = internal_1.UNSAFE_internals.schemaIndex.get(c)) !== null && _a2 !== void 0 ? _a2 : (0, component_1.getSchemaId)(c);
+          });
+          deferredOps.push(createDeferredOp(DeferredOpType.Detach, entity, schemaIds));
+        }
+        function detachImmediate(entity, schemaIds) {
+          const components = [];
+          for (let i = 0; i < schemaIds.length; i++) {
+            const schemaId = schemaIds[i];
+            const component21 = storage.getComponentBySchemaId(entity, schemaId);
+            (0, core_1.assert)(component21 !== null, `Failed to detach component: entity does not have component of type ${schemaId}`);
+            components.push(component21);
           }
-          worldOps.push(createWorldOp(world_op_1.WorldOpType.Detach, entity, components));
+          storage.detachBySchemaId(entity, schemaIds);
+          components.forEach(maybeReleaseComponent);
         }
         function destroy(entity) {
-          if (destroying.has(entity)) {
+          if (destroyed.has(entity)) {
             return;
           }
-          const components = storage.getEntityComponents(entity);
-          worldOps.push(createWorldOp(world_op_1.WorldOpType.Detach, entity, components), createWorldOp(world_op_1.WorldOpType.Destroy, entity));
-          destroying.add(entity);
+          deferredOps.push(createDeferredOp(DeferredOpType.Destroy, entity));
+          destroyed.add(entity);
         }
-        function applyOps(ops) {
-          for (let i = 0; i < ops.length; i++) {
-            applyWorldOp(ops[i], false);
+        function destroyImmediate(entity) {
+          storage.clearComponents(entity);
+        }
+        function has(entity, schema) {
+          (0, component_1.registerSchema)(schema);
+          return storage.hasComponentOfSchema(entity, schema);
+        }
+        function get(entity, schema) {
+          (0, component_1.registerSchema)(schema);
+          const component21 = storage.getComponentBySchema(entity, schema);
+          if (component21 === null) {
+            throw new Error("Failed to get component: entity does not have component");
           }
+          return component21;
         }
-        function has(entity, componentType) {
-          return storage.hasComponent(entity, componentType);
-        }
-        function get(entity, componentType) {
-          const component20 = storage.findComponent(entity, componentType);
-          if (component20 === null) {
-            throw new Error("Component not found");
+        function tryGet(entity, schema) {
+          try {
+            (0, component_1.registerSchema)(schema);
+            return storage.getComponentBySchema(entity, schema);
+          } catch (error) {
+            return null;
           }
-          return component20;
-        }
-        function tryGet(entity, componentType) {
-          return storage.findComponent(entity, componentType);
-        }
-        function registerComponentType(componentType, poolSize = componentPoolSize) {
-          const registeredComponentTypeWithTypeId = componentTypes.find(({ type }) => componentType.type === type);
-          if (registeredComponentTypeWithTypeId) {
-            throw new Error(`Failed to register component type: a componentType with same id is already registered`);
-          }
-          if (options.snapshot) {
-            const snapshotComponentTypeWithTypeId = options.snapshot.componentTypes.find((s) => s.type === componentType.type);
-            if (snapshotComponentTypeWithTypeId && !schema_1.schemaEqualsSerializedSchema(componentType.schema, snapshotComponentTypeWithTypeId.schema)) {
-              throw new Error(`Failed to register component type: component type schema does not match world snapshot`);
-            }
-          }
-          componentTypes.push(componentType);
-          componentTypePools.set(componentType.type, helpers_1.createComponentPool(componentType, poolSize));
-        }
-        function reserve() {
-          return ++prevEntity;
         }
         function reset() {
-          util_1.mutableEmpty(worldOps);
-          util_1.mutableEmpty(worldOpsPrevious);
-          util_1.mutableEmpty(componentTypes);
-          util_1.mutableEmpty(systems);
-          componentTypePools.clear();
-          destroying.clear();
-          state = getInitialWorldState();
-          prevEntity = 0;
-          while (worldOps.length > 0) {
-            worldOpPool.release(worldOps.pop());
-          }
-          while (worldOpsPrevious.length > 0) {
-            worldOpPool.release(worldOpsPrevious.pop());
-          }
+          destroyed.clear();
+          (0, core_1.mutableEmpty)(deferredOps);
+          (0, core_1.mutableEmpty)(systems);
+          topics.forEach((topic) => topic.clear());
+          (0, core_1.mutableEmpty)(topics);
+          entityIds = 0;
+          world.latestTick = -1;
+          world.latestTickData = null;
+          world.latestSystemId = -1;
           for (let i = 0; i < storage.archetypes.length; i++) {
             const archetype = storage.archetypes[i];
-            for (let j = 0; j < archetype.signature.length; j++) {
+            for (let j = 0; j < archetype.type.length; j++) {
               const column = archetype.table[j];
-              const componentPool = componentTypePools.get(archetype.signature[j]);
+              const componentPool = internal_1.UNSAFE_internals.schemaPools.get(archetype.type[j]);
               for (let k = 0; k < column.length; k++) {
-                const component20 = column[k];
-                componentPool === null || componentPool === void 0 ? void 0 : componentPool.release(component20);
+                const component21 = column[k];
+                componentPool === null || componentPool === void 0 ? void 0 : componentPool.release(component21);
               }
             }
           }
           storage.clear();
         }
-        function snapshot() {
+        function createSnapshot() {
           return {
-            componentTypes: componentTypes.map(helpers_1.serializeComponentType),
-            storage: storage.snapshot()
+            storage: storage.createSnapshot()
           };
         }
-        const { getObservedComponent, isComponentChanged, patch } = storage;
+        function applyAttachOp(op) {
+          const [, entity, components] = op;
+          attachImmediate(entity, components);
+        }
+        function applyDetachOp(op) {
+          const [, entity, schemaIds] = op;
+          detachImmediate(entity, schemaIds);
+        }
+        function applyDestroyOp(op) {
+          const [, entity] = op;
+          destroyImmediate(entity);
+        }
+        function applyDeferredOp(deferred) {
+          switch (deferred[0]) {
+            case DeferredOpType.Attach:
+              applyAttachOp(deferred);
+              break;
+            case DeferredOpType.Detach:
+              applyDetachOp(deferred);
+              break;
+            case DeferredOpType.Destroy:
+              applyDestroyOp(deferred);
+              break;
+          }
+        }
+        function step(data) {
+          let prevWorld = internal_1.UNSAFE_internals.currentWorldId;
+          internal_1.UNSAFE_internals.currentWorldId = id;
+          world.latestTickData = data;
+          for (let i = 0; i < deferredOps.length; i++) {
+            applyDeferredOp(deferredOps[i]);
+          }
+          (0, core_1.mutableEmpty)(deferredOps);
+          for (let i = 0; i < topics.length; i++) {
+            topics[i].flush();
+          }
+          for (let i = 0; i < systems.length; i++) {
+            const system = systems[i];
+            world.latestSystemId = system[$systemId];
+            system(world);
+          }
+          destroyed.clear();
+          world.latestTick++;
+          internal_1.UNSAFE_internals.currentWorldId = prevWorld;
+        }
+        const id = internal_1.UNSAFE_internals.worldIds++;
         const world = {
+          id,
+          storage,
+          latestTick: -1,
+          latestTickData: null,
+          latestSystemId: -1,
+          attach,
+          attachImmediate,
           addSystem,
           addTopic,
-          applyOps,
-          attach,
-          component: component19,
-          componentTypes,
+          create,
           destroy,
-          detach,
+          destroyImmediate,
           get,
-          getObserved: getObservedComponent,
+          createSnapshot,
           has,
-          id: -1,
-          isComponentChanged,
-          ops: worldOpsPrevious,
-          patch,
+          detach,
+          detachImmediate,
           removeSystem,
           removeTopic,
-          reserve,
           reset,
-          snapshot,
-          spawn,
-          state,
-          storage,
-          tick,
-          tryGet,
-          attached,
-          detached,
-          spawned,
-          destroyed
+          step,
+          tryGet
         };
-        let id = world.id = globals_1.globals.__WORLDS__.push(world) - 1;
+        internal_1.UNSAFE_internals.worlds.push(world);
         return world;
       }
       exports.createWorld = createWorld3;
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/index.js
-  var require_cjs = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/@javelin-ecs-npm-0.22.0-a94fac9e8f-5c63f98721.zip/node_modules/@javelin/ecs/dist/cjs/index.js"(exports) {
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js
+  var require_cjs2 = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -1855,19 +2289,48 @@
             __createBinding(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_archetype(), exports);
+      exports.UNSAFE_setModel = exports.UNSAFE_modelChanged = exports.UNSAFE_internals = exports.string = exports.setOf = exports.objectOf = exports.number = exports.mapOf = exports.boolean = exports.arrayOf = void 0;
+      var core_1 = require_cjs();
+      Object.defineProperty(exports, "arrayOf", { enumerable: true, get: function() {
+        return core_1.arrayOf;
+      } });
+      Object.defineProperty(exports, "boolean", { enumerable: true, get: function() {
+        return core_1.boolean;
+      } });
+      Object.defineProperty(exports, "mapOf", { enumerable: true, get: function() {
+        return core_1.mapOf;
+      } });
+      Object.defineProperty(exports, "number", { enumerable: true, get: function() {
+        return core_1.number;
+      } });
+      Object.defineProperty(exports, "objectOf", { enumerable: true, get: function() {
+        return core_1.objectOf;
+      } });
+      Object.defineProperty(exports, "setOf", { enumerable: true, get: function() {
+        return core_1.setOf;
+      } });
+      Object.defineProperty(exports, "string", { enumerable: true, get: function() {
+        return core_1.string;
+      } });
       __exportStar(require_component(), exports);
       __exportStar(require_effect(), exports);
       __exportStar(require_effects(), exports);
-      __exportStar(require_helpers(), exports);
+      __exportStar(require_effect_utils(), exports);
+      __exportStar(require_entity(), exports);
+      var internal_1 = require_internal();
+      Object.defineProperty(exports, "UNSAFE_internals", { enumerable: true, get: function() {
+        return internal_1.UNSAFE_internals;
+      } });
+      Object.defineProperty(exports, "UNSAFE_modelChanged", { enumerable: true, get: function() {
+        return internal_1.UNSAFE_modelChanged;
+      } });
+      Object.defineProperty(exports, "UNSAFE_setModel", { enumerable: true, get: function() {
+        return internal_1.UNSAFE_setModel;
+      } });
+      __exportStar(require_observe(), exports);
       __exportStar(require_query(), exports);
-      __exportStar(require_schema(), exports);
-      __exportStar(require_storage(), exports);
-      __exportStar(require_symbols(), exports);
       __exportStar(require_topic(), exports);
-      __exportStar(require_util(), exports);
       __exportStar(require_world(), exports);
-      __exportStar(require_world_op(), exports);
     }
   });
 
@@ -58488,13 +58951,13 @@
       var IsPlainObject = require_IsPlainObject();
       var JSONFile = new Class({
         Extends: File,
-        initialize: function JSONFile2(loader, key, url, xhrSettings, dataKey) {
+        initialize: function JSONFile2(loader, key, url, xhrSettings2, dataKey) {
           var extension = "json";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             dataKey = GetFastValue(config2, "dataKey", dataKey);
           }
@@ -58505,7 +58968,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: dataKey
           };
           File.call(this, loader, fileConfig);
@@ -58538,13 +59001,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("json", function(key, url, dataKey, xhrSettings) {
+      FileTypesManager.register("json", function(key, url, dataKey, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new JSONFile(this, key[i]));
           }
         } else {
-          this.addFile(new JSONFile(this, key, url, xhrSettings, dataKey));
+          this.addFile(new JSONFile(this, key, url, xhrSettings2, dataKey));
         }
         return this;
       });
@@ -58561,8 +59024,8 @@
       var LoaderEvents = require_events14();
       var AnimationJSONFile = new Class({
         Extends: JSONFile,
-        initialize: function AnimationJSONFile2(loader, key, url, xhrSettings, dataKey) {
-          JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
+        initialize: function AnimationJSONFile2(loader, key, url, xhrSettings2, dataKey) {
+          JSONFile.call(this, loader, key, url, xhrSettings2, dataKey);
           this.type = "animationJSON";
         },
         onProcess: function() {
@@ -58573,13 +59036,13 @@
           this.loader.systems.anims.fromJSON(this.data);
         }
       });
-      FileTypesManager.register("animation", function(key, url, dataKey, xhrSettings) {
+      FileTypesManager.register("animation", function(key, url, dataKey, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new AnimationJSONFile(this, key[i]));
           }
         } else {
-          this.addFile(new AnimationJSONFile(this, key, url, xhrSettings, dataKey));
+          this.addFile(new AnimationJSONFile(this, key, url, xhrSettings2, dataKey));
         }
         return this;
       });
@@ -58598,7 +59061,7 @@
       var IsPlainObject = require_IsPlainObject();
       var ImageFile = new Class({
         Extends: File,
-        initialize: function ImageFile2(loader, key, url, xhrSettings, frameConfig) {
+        initialize: function ImageFile2(loader, key, url, xhrSettings2, frameConfig) {
           var extension = "png";
           var normalMapURL;
           if (IsPlainObject(key)) {
@@ -58606,7 +59069,7 @@
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
             normalMapURL = GetFastValue(config2, "normalMap");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             frameConfig = GetFastValue(config2, "frameConfig");
           }
@@ -58621,12 +59084,12 @@
             responseType: "blob",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: frameConfig
           };
           File.call(this, loader, fileConfig);
           if (normalMapURL) {
-            var normalMap = new ImageFile2(loader, this.key, normalMapURL, xhrSettings, frameConfig);
+            var normalMap = new ImageFile2(loader, this.key, normalMapURL, xhrSettings2, frameConfig);
             normalMap.type = "normalMap";
             this.setLink(normalMap);
             loader.addFile(normalMap);
@@ -58664,13 +59127,13 @@
           }
         }
       });
-      FileTypesManager.register("image", function(key, url, xhrSettings) {
+      FileTypesManager.register("image", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new ImageFile(this, key[i]));
           }
         } else {
-          this.addFile(new ImageFile(this, key, url, xhrSettings));
+          this.addFile(new ImageFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -58883,13 +59346,13 @@
       var ParseXML = require_ParseXML();
       var XMLFile = new Class({
         Extends: File,
-        initialize: function XMLFile2(loader, key, url, xhrSettings) {
+        initialize: function XMLFile2(loader, key, url, xhrSettings2) {
           var extension = "xml";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -58899,7 +59362,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -58914,13 +59377,13 @@
           }
         }
       });
-      FileTypesManager.register("xml", function(key, url, xhrSettings) {
+      FileTypesManager.register("xml", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new XMLFile(this, key[i]));
           }
         } else {
-          this.addFile(new XMLFile(this, key, url, xhrSettings));
+          this.addFile(new XMLFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -59105,11 +59568,11 @@
       var IsPlainObject = require_IsPlainObject();
       var AudioFile = new Class({
         Extends: File,
-        initialize: function AudioFile2(loader, key, urlConfig, xhrSettings, audioContext) {
+        initialize: function AudioFile2(loader, key, urlConfig, xhrSettings2, audioContext) {
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             audioContext = GetFastValue(config2, "context", audioContext);
           }
           var fileConfig = {
@@ -59119,7 +59582,7 @@
             responseType: "arraybuffer",
             key,
             url: urlConfig.url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: { context: audioContext }
           };
           File.call(this, loader, fileConfig);
@@ -59137,7 +59600,7 @@
           this.config.context = null;
         }
       });
-      AudioFile.create = function(loader, key, urls, config2, xhrSettings) {
+      AudioFile.create = function(loader, key, urls, config2, xhrSettings2) {
         var game2 = loader.systems.game;
         var audioConfig = game2.config.audio;
         var deviceAudio = game2.device.audio;
@@ -59150,7 +59613,7 @@
           return null;
         }
         if (deviceAudio.webAudio && !audioConfig.disableWebAudio) {
-          return new AudioFile(loader, key, urlConfig, xhrSettings, game2.sound.context);
+          return new AudioFile(loader, key, urlConfig, xhrSettings2, game2.sound.context);
         } else {
           return new HTML5AudioFile(loader, key, urlConfig, config2);
         }
@@ -59178,7 +59641,7 @@
         }
         return null;
       };
-      FileTypesManager.register("audio", function(key, urls, config2, xhrSettings) {
+      FileTypesManager.register("audio", function(key, urls, config2, xhrSettings2) {
         var game2 = this.systems.game;
         var audioConfig = game2.config.audio;
         var deviceAudio = game2.device.audio;
@@ -59194,7 +59657,7 @@
             }
           }
         } else {
-          audioFile = AudioFile.create(this, key, urls, config2, xhrSettings);
+          audioFile = AudioFile.create(this, key, urls, config2, xhrSettings2);
           if (audioFile) {
             this.addFile(audioFile);
           }
@@ -59306,13 +59769,13 @@
       var IsPlainObject = require_IsPlainObject();
       var BinaryFile = new Class({
         Extends: File,
-        initialize: function BinaryFile2(loader, key, url, xhrSettings, dataType) {
+        initialize: function BinaryFile2(loader, key, url, xhrSettings2, dataType) {
           var extension = "bin";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             dataType = GetFastValue(config2, "dataType", dataType);
           }
@@ -59323,7 +59786,7 @@
             responseType: "arraybuffer",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: { dataType }
           };
           File.call(this, loader, fileConfig);
@@ -59335,13 +59798,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("binary", function(key, url, dataType, xhrSettings) {
+      FileTypesManager.register("binary", function(key, url, dataType, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new BinaryFile(this, key[i]));
           }
         } else {
-          this.addFile(new BinaryFile(this, key, url, xhrSettings, dataType));
+          this.addFile(new BinaryFile(this, key, url, xhrSettings2, dataType));
         }
         return this;
       });
@@ -59432,13 +59895,13 @@
       var IsPlainObject = require_IsPlainObject();
       var CSSFile = new Class({
         Extends: File,
-        initialize: function CSSFile2(loader, key, url, xhrSettings) {
+        initialize: function CSSFile2(loader, key, url, xhrSettings2) {
           var extension = "css";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -59448,7 +59911,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -59461,13 +59924,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("css", function(key, url, xhrSettings) {
+      FileTypesManager.register("css", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new CSSFile(this, key[i]));
           }
         } else {
-          this.addFile(new CSSFile(this, key, url, xhrSettings));
+          this.addFile(new CSSFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -59487,14 +59950,14 @@
       var Shader = require_BaseShader();
       var GLSLFile = new Class({
         Extends: File,
-        initialize: function GLSLFile2(loader, key, url, shaderType, xhrSettings) {
+        initialize: function GLSLFile2(loader, key, url, shaderType, xhrSettings2) {
           var extension = "glsl";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
             shaderType = GetFastValue(config2, "shaderType", "fragment");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           } else if (shaderType === void 0) {
             shaderType = "fragment";
@@ -59509,7 +59972,7 @@
             config: {
               shaderType
             },
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -59623,13 +60086,13 @@
           }
         }
       });
-      FileTypesManager.register("glsl", function(key, url, shaderType, xhrSettings) {
+      FileTypesManager.register("glsl", function(key, url, shaderType, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new GLSLFile(this, key[i]));
           }
         } else {
-          this.addFile(new GLSLFile(this, key, url, shaderType, xhrSettings));
+          this.addFile(new GLSLFile(this, key, url, shaderType, xhrSettings2));
         }
         return this;
       });
@@ -59648,13 +60111,13 @@
       var IsPlainObject = require_IsPlainObject();
       var HTMLFile = new Class({
         Extends: File,
-        initialize: function HTMLFile2(loader, key, url, xhrSettings) {
+        initialize: function HTMLFile2(loader, key, url, xhrSettings2) {
           var extension = "html";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -59664,7 +60127,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -59674,13 +60137,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("html", function(key, url, xhrSettings) {
+      FileTypesManager.register("html", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new HTMLFile(this, key[i]));
           }
         } else {
-          this.addFile(new HTMLFile(this, key, url, xhrSettings));
+          this.addFile(new HTMLFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -59699,7 +60162,7 @@
       var IsPlainObject = require_IsPlainObject();
       var HTMLTextureFile = new Class({
         Extends: File,
-        initialize: function HTMLTextureFile2(loader, key, url, width, height, xhrSettings) {
+        initialize: function HTMLTextureFile2(loader, key, url, width, height, xhrSettings2) {
           if (width === void 0) {
             width = 512;
           }
@@ -59711,7 +60174,7 @@
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             width = GetFastValue(config2, "width", width);
             height = GetFastValue(config2, "height", height);
@@ -59723,7 +60186,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: {
               width,
               height
@@ -59769,13 +60232,13 @@
           this.pendingDestroy(texture);
         }
       });
-      FileTypesManager.register("htmlTexture", function(key, url, width, height, xhrSettings) {
+      FileTypesManager.register("htmlTexture", function(key, url, width, height, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new HTMLTextureFile(this, key[i]));
           }
         } else {
-          this.addFile(new HTMLTextureFile(this, key, url, width, height, xhrSettings));
+          this.addFile(new HTMLTextureFile(this, key, url, width, height, xhrSettings2));
         }
         return this;
       });
@@ -59918,13 +60381,13 @@
       var IsPlainObject = require_IsPlainObject();
       var ScriptFile = new Class({
         Extends: File,
-        initialize: function ScriptFile2(loader, key, url, xhrSettings) {
+        initialize: function ScriptFile2(loader, key, url, xhrSettings2) {
           var extension = "js";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -59934,7 +60397,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -59949,13 +60412,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("script", function(key, url, xhrSettings) {
+      FileTypesManager.register("script", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new ScriptFile(this, key[i]));
           }
         } else {
-          this.addFile(new ScriptFile(this, key, url, xhrSettings));
+          this.addFile(new ScriptFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -59974,14 +60437,14 @@
       var ScriptFile = require_ScriptFile();
       var MultiScriptFile = new Class({
         Extends: MultiFile,
-        initialize: function MultiScriptFile2(loader, key, url, xhrSettings) {
+        initialize: function MultiScriptFile2(loader, key, url, xhrSettings2) {
           var extension = "js";
           var files = [];
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           if (!Array.isArray(url)) {
@@ -59992,7 +60455,7 @@
               key: key + "_" + i.toString(),
               url: url[i],
               extension,
-              xhrSettings
+              xhrSettings: xhrSettings2
             });
             scriptFile.onProcess = function() {
               this.onProcessComplete();
@@ -60016,7 +60479,7 @@
           }
         }
       });
-      FileTypesManager.register("scripts", function(key, url, xhrSettings) {
+      FileTypesManager.register("scripts", function(key, url, xhrSettings2) {
         var multifile;
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
@@ -60024,7 +60487,7 @@
             this.addFile(multifile.files);
           }
         } else {
-          multifile = new MultiScriptFile(this, key, url, xhrSettings);
+          multifile = new MultiScriptFile(this, key, url, xhrSettings2);
           this.addFile(multifile.files);
         }
         return this;
@@ -60044,7 +60507,7 @@
       var IsPlainObject = require_IsPlainObject();
       var TextFile = new Class({
         Extends: File,
-        initialize: function TextFile2(loader, key, url, xhrSettings) {
+        initialize: function TextFile2(loader, key, url, xhrSettings2) {
           var type = "text";
           var extension = "txt";
           var cache = loader.cacheManager.text;
@@ -60052,7 +60515,7 @@
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             type = GetFastValue(config2, "type", type);
             cache = GetFastValue(config2, "cache", cache);
@@ -60064,7 +60527,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -60074,13 +60537,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("text", function(key, url, xhrSettings) {
+      FileTypesManager.register("text", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new TextFile(this, key[i]));
           }
         } else {
-          this.addFile(new TextFile(this, key, url, xhrSettings));
+          this.addFile(new TextFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -60101,7 +60564,7 @@
       var TextFile = require_TextFile();
       var OBJFile = new Class({
         Extends: MultiFile,
-        initialize: function OBJFile2(loader, key, objURL, matURL, flipUV, xhrSettings) {
+        initialize: function OBJFile2(loader, key, objURL, matURL, flipUV, xhrSettings2) {
           var obj;
           var mat;
           var cache = loader.cacheManager.obj;
@@ -60137,7 +60600,7 @@
               type: "obj",
               cache,
               extension: "obj",
-              xhrSettings,
+              xhrSettings: xhrSettings2,
               config: {
                 flipUV
               }
@@ -60149,7 +60612,7 @@
                 type: "mat",
                 cache,
                 extension: "mat",
-                xhrSettings
+                xhrSettings: xhrSettings2
               });
             }
           }
@@ -60168,7 +60631,7 @@
           }
         }
       });
-      FileTypesManager.register("obj", function(key, objURL, matURL, flipUVs, xhrSettings) {
+      FileTypesManager.register("obj", function(key, objURL, matURL, flipUVs, xhrSettings2) {
         var multifile;
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
@@ -60176,7 +60639,7 @@
             this.addFile(multifile.files);
           }
         } else {
-          multifile = new OBJFile(this, key, objURL, matURL, flipUVs, xhrSettings);
+          multifile = new OBJFile(this, key, objURL, matURL, flipUVs, xhrSettings2);
           this.addFile(multifile.files);
         }
         return this;
@@ -60194,8 +60657,8 @@
       var JSONFile = require_JSONFile();
       var PackFile = new Class({
         Extends: JSONFile,
-        initialize: function PackFile2(loader, key, url, xhrSettings, dataKey) {
-          JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
+        initialize: function PackFile2(loader, key, url, xhrSettings2, dataKey) {
+          JSONFile.call(this, loader, key, url, xhrSettings2, dataKey);
           this.type = "packfile";
         },
         onProcess: function() {
@@ -60207,13 +60670,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("pack", function(key, url, packKey, xhrSettings) {
+      FileTypesManager.register("pack", function(key, url, packKey, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new PackFile(this, key[i]));
           }
         } else {
-          this.addFile(new PackFile(this, key, url, xhrSettings, packKey));
+          this.addFile(new PackFile(this, key, url, xhrSettings2, packKey));
         }
         return this;
       });
@@ -60232,13 +60695,13 @@
       var IsPlainObject = require_IsPlainObject();
       var PluginFile = new Class({
         Extends: File,
-        initialize: function PluginFile2(loader, key, url, start, mapping, xhrSettings) {
+        initialize: function PluginFile2(loader, key, url, start, mapping, xhrSettings2) {
           var extension = "js";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             start = GetFastValue(config2, "start");
             mapping = GetFastValue(config2, "mapping");
@@ -60250,7 +60713,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: {
               start,
               mapping
@@ -60286,13 +60749,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("plugin", function(key, url, start, mapping, xhrSettings) {
+      FileTypesManager.register("plugin", function(key, url, start, mapping, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new PluginFile(this, key[i]));
           }
         } else {
-          this.addFile(new PluginFile(this, key, url, start, mapping, xhrSettings));
+          this.addFile(new PluginFile(this, key, url, start, mapping, xhrSettings2));
         }
         return this;
       });
@@ -60311,13 +60774,13 @@
       var IsPlainObject = require_IsPlainObject();
       var SceneFile = new Class({
         Extends: File,
-        initialize: function SceneFile2(loader, key, url, xhrSettings) {
+        initialize: function SceneFile2(loader, key, url, xhrSettings2) {
           var extension = "js";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -60326,7 +60789,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
         },
@@ -60342,13 +60805,13 @@
           this.complete = true;
         }
       });
-      FileTypesManager.register("sceneFile", function(key, url, xhrSettings) {
+      FileTypesManager.register("sceneFile", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new SceneFile(this, key[i]));
           }
         } else {
-          this.addFile(new SceneFile(this, key, url, xhrSettings));
+          this.addFile(new SceneFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -60367,13 +60830,13 @@
       var IsPlainObject = require_IsPlainObject();
       var ScenePluginFile = new Class({
         Extends: File,
-        initialize: function ScenePluginFile2(loader, key, url, systemKey, sceneKey, xhrSettings) {
+        initialize: function ScenePluginFile2(loader, key, url, systemKey, sceneKey, xhrSettings2) {
           var extension = "js";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
             systemKey = GetFastValue(config2, "systemKey");
             sceneKey = GetFastValue(config2, "sceneKey");
@@ -60385,7 +60848,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: {
               systemKey,
               sceneKey
@@ -60418,13 +60881,13 @@
           this.onProcessComplete();
         }
       });
-      FileTypesManager.register("scenePlugin", function(key, url, systemKey, sceneKey, xhrSettings) {
+      FileTypesManager.register("scenePlugin", function(key, url, systemKey, sceneKey, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new ScenePluginFile(this, key[i]));
           }
         } else {
-          this.addFile(new ScenePluginFile(this, key, url, systemKey, sceneKey, xhrSettings));
+          this.addFile(new ScenePluginFile(this, key, url, systemKey, sceneKey, xhrSettings2));
         }
         return this;
       });
@@ -60440,8 +60903,8 @@
       var ImageFile = require_ImageFile();
       var SpriteSheetFile = new Class({
         Extends: ImageFile,
-        initialize: function SpriteSheetFile2(loader, key, url, frameConfig, xhrSettings) {
-          ImageFile.call(this, loader, key, url, xhrSettings, frameConfig);
+        initialize: function SpriteSheetFile2(loader, key, url, frameConfig, xhrSettings2) {
+          ImageFile.call(this, loader, key, url, xhrSettings2, frameConfig);
           this.type = "spritesheet";
         },
         addToCache: function() {
@@ -60449,13 +60912,13 @@
           this.pendingDestroy(texture);
         }
       });
-      FileTypesManager.register("spritesheet", function(key, url, frameConfig, xhrSettings) {
+      FileTypesManager.register("spritesheet", function(key, url, frameConfig, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new SpriteSheetFile(this, key[i]));
           }
         } else {
-          this.addFile(new SpriteSheetFile(this, key, url, frameConfig, xhrSettings));
+          this.addFile(new SpriteSheetFile(this, key, url, frameConfig, xhrSettings2));
         }
         return this;
       });
@@ -60474,14 +60937,14 @@
       var IsPlainObject = require_IsPlainObject();
       var SVGFile = new Class({
         Extends: File,
-        initialize: function SVGFile2(loader, key, url, svgConfig, xhrSettings) {
+        initialize: function SVGFile2(loader, key, url, svgConfig, xhrSettings2) {
           var extension = "svg";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
             svgConfig = GetFastValue(config2, "svgConfig", {});
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -60491,7 +60954,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: {
               width: GetFastValue(svgConfig, "width"),
               height: GetFastValue(svgConfig, "height"),
@@ -60567,13 +61030,13 @@
           this.pendingDestroy(texture);
         }
       });
-      FileTypesManager.register("svg", function(key, url, svgConfig, xhrSettings) {
+      FileTypesManager.register("svg", function(key, url, svgConfig, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new SVGFile(this, key[i]));
           }
         } else {
-          this.addFile(new SVGFile(this, key, url, svgConfig, xhrSettings));
+          this.addFile(new SVGFile(this, key, url, svgConfig, xhrSettings2));
         }
         return this;
       });
@@ -60605,13 +61068,13 @@
       var TILEMAP_FORMATS = require_Formats();
       var TilemapCSVFile = new Class({
         Extends: File,
-        initialize: function TilemapCSVFile2(loader, key, url, xhrSettings) {
+        initialize: function TilemapCSVFile2(loader, key, url, xhrSettings2) {
           var extension = "csv";
           if (IsPlainObject(key)) {
             var config2 = key;
             key = GetFastValue(config2, "key");
             url = GetFastValue(config2, "url");
-            xhrSettings = GetFastValue(config2, "xhrSettings");
+            xhrSettings2 = GetFastValue(config2, "xhrSettings");
             extension = GetFastValue(config2, "extension", extension);
           }
           var fileConfig = {
@@ -60621,7 +61084,7 @@
             responseType: "text",
             key,
             url,
-            xhrSettings
+            xhrSettings: xhrSettings2
           };
           File.call(this, loader, fileConfig);
           this.tilemapFormat = TILEMAP_FORMATS.CSV;
@@ -60637,13 +61100,13 @@
           this.pendingDestroy(tiledata);
         }
       });
-      FileTypesManager.register("tilemapCSV", function(key, url, xhrSettings) {
+      FileTypesManager.register("tilemapCSV", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new TilemapCSVFile(this, key[i]));
           }
         } else {
-          this.addFile(new TilemapCSVFile(this, key, url, xhrSettings));
+          this.addFile(new TilemapCSVFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -60660,8 +61123,8 @@
       var TILEMAP_FORMATS = require_Formats();
       var TilemapImpactFile = new Class({
         Extends: JSONFile,
-        initialize: function TilemapImpactFile2(loader, key, url, xhrSettings) {
-          JSONFile.call(this, loader, key, url, xhrSettings);
+        initialize: function TilemapImpactFile2(loader, key, url, xhrSettings2) {
+          JSONFile.call(this, loader, key, url, xhrSettings2);
           this.type = "tilemapJSON";
           this.cache = loader.cacheManager.tilemap;
         },
@@ -60671,13 +61134,13 @@
           this.pendingDestroy(tiledata);
         }
       });
-      FileTypesManager.register("tilemapImpact", function(key, url, xhrSettings) {
+      FileTypesManager.register("tilemapImpact", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new TilemapImpactFile(this, key[i]));
           }
         } else {
-          this.addFile(new TilemapImpactFile(this, key, url, xhrSettings));
+          this.addFile(new TilemapImpactFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -60694,8 +61157,8 @@
       var TILEMAP_FORMATS = require_Formats();
       var TilemapJSONFile = new Class({
         Extends: JSONFile,
-        initialize: function TilemapJSONFile2(loader, key, url, xhrSettings) {
-          JSONFile.call(this, loader, key, url, xhrSettings);
+        initialize: function TilemapJSONFile2(loader, key, url, xhrSettings2) {
+          JSONFile.call(this, loader, key, url, xhrSettings2);
           this.type = "tilemapJSON";
           this.cache = loader.cacheManager.tilemap;
         },
@@ -60705,13 +61168,13 @@
           this.pendingDestroy(tiledata);
         }
       });
-      FileTypesManager.register("tilemapTiledJSON", function(key, url, xhrSettings) {
+      FileTypesManager.register("tilemapTiledJSON", function(key, url, xhrSettings2) {
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
             this.addFile(new TilemapJSONFile(this, key[i]));
           }
         } else {
-          this.addFile(new TilemapJSONFile(this, key, url, xhrSettings));
+          this.addFile(new TilemapJSONFile(this, key, url, xhrSettings2));
         }
         return this;
       });
@@ -60800,7 +61263,7 @@
       var IsPlainObject = require_IsPlainObject();
       var VideoFile = new Class({
         Extends: File,
-        initialize: function VideoFile2(loader, key, urlConfig, loadEvent, asBlob, noAudio, xhrSettings) {
+        initialize: function VideoFile2(loader, key, urlConfig, loadEvent, asBlob, noAudio, xhrSettings2) {
           if (loadEvent === void 0) {
             loadEvent = "loadeddata";
           }
@@ -60820,7 +61283,7 @@
             responseType: "blob",
             key,
             url: urlConfig.url,
-            xhrSettings,
+            xhrSettings: xhrSettings2,
             config: {
               loadEvent,
               asBlob,
@@ -60894,19 +61357,19 @@
           }
         }
       });
-      VideoFile.create = function(loader, key, urls, loadEvent, asBlob, noAudio, xhrSettings) {
+      VideoFile.create = function(loader, key, urls, loadEvent, asBlob, noAudio, xhrSettings2) {
         var game2 = loader.systems.game;
         if (IsPlainObject(key)) {
           urls = GetFastValue(key, "url", []);
           loadEvent = GetFastValue(key, "loadEvent", "loadeddata");
           asBlob = GetFastValue(key, "asBlob", false);
           noAudio = GetFastValue(key, "noAudio", false);
-          xhrSettings = GetFastValue(key, "xhrSettings");
+          xhrSettings2 = GetFastValue(key, "xhrSettings");
           key = GetFastValue(key, "key");
         }
         var urlConfig = VideoFile.getVideoURL(game2, urls);
         if (urlConfig) {
-          return new VideoFile(loader, key, urlConfig, loadEvent, asBlob, noAudio, xhrSettings);
+          return new VideoFile(loader, key, urlConfig, loadEvent, asBlob, noAudio, xhrSettings2);
         }
       };
       VideoFile.getVideoURL = function(game2, urls) {
@@ -60937,7 +61400,7 @@
         }
         return null;
       };
-      FileTypesManager.register("video", function(key, urls, loadEvent, asBlob, noAudio, xhrSettings) {
+      FileTypesManager.register("video", function(key, urls, loadEvent, asBlob, noAudio, xhrSettings2) {
         var videoFile;
         if (Array.isArray(key)) {
           for (var i = 0; i < key.length; i++) {
@@ -60947,7 +61410,7 @@
             }
           }
         } else {
-          videoFile = VideoFile.create(this, key, urls, loadEvent, asBlob, noAudio, xhrSettings);
+          videoFile = VideoFile.create(this, key, urls, loadEvent, asBlob, noAudio, xhrSettings2);
           if (videoFile) {
             this.addFile(videoFile);
           }
@@ -64461,9 +64924,9 @@
       var TransformMatrix = require_TransformMatrix();
       var Vector2 = require_Vector2();
       var Wrap = require_Wrap();
-      var World3 = new Class({
+      var World2 = new Class({
         Extends: EventEmitter,
-        initialize: function World4(scene, config2) {
+        initialize: function World3(scene, config2) {
           EventEmitter.call(this);
           this.scene = scene;
           this.bodies = new Set2();
@@ -65341,7 +65804,7 @@
           this.scene = null;
         }
       });
-      module.exports = World3;
+      module.exports = World2;
     }
   });
 
@@ -65360,7 +65823,7 @@
       var PluginCache = require_PluginCache();
       var SceneEvents = require_events5();
       var Vector2 = require_Vector2();
-      var World3 = require_World();
+      var World2 = require_World();
       var ArcadePhysics = new Class({
         initialize: function ArcadePhysics2(scene) {
           this.scene = scene;
@@ -65372,13 +65835,13 @@
           scene.sys.events.on(SceneEvents.START, this.start, this);
         },
         boot: function() {
-          this.world = new World3(this.scene, this.config);
+          this.world = new World2(this.scene, this.config);
           this.add = new Factory(this.world);
           this.systems.events.once(SceneEvents.DESTROY, this.destroy, this);
         },
         start: function() {
           if (!this.world) {
-            this.world = new World3(this.scene, this.config);
+            this.world = new World2(this.scene, this.config);
             this.add = new Factory(this.world);
           }
           var eventEmitter = this.systems.events;
@@ -68960,9 +69423,9 @@
             return callback(xx + xOffset + column * columnGap, y, column, row, lastBody, i);
           });
         };
-        Composites.newtonsCradle = function(xx, yy, number13, size, length) {
+        Composites.newtonsCradle = function(xx, yy, number14, size, length) {
           var newtonsCradle = Composite.create({ label: "Newtons Cradle" });
-          for (var i = 0; i < number13; i++) {
+          for (var i = 0; i < number14; i++) {
             var separation = 1.9, circle = Bodies.circle(xx + i * (size * separation), yy + length, size, { inertia: Infinity, restitution: 1, friction: 0, frictionAir: 1e-4, slop: 1 }), constraint = Constraint.create({ pointA: { x: xx + i * (size * separation), y: yy }, bodyB: circle });
             Composite.addBody(newtonsCradle, circle);
             Composite.addConstraint(newtonsCradle, constraint);
@@ -70052,8 +70515,8 @@
         mesh: function(composite, columns, rows, crossBrace, options) {
           return Composites.mesh(composite, columns, rows, crossBrace, options);
         },
-        newtonsCradle: function(x, y, number13, size, length) {
-          var composite = Composites.newtonsCradle(x, y, number13, size, length);
+        newtonsCradle: function(x, y, number14, size, length) {
+          var composite = Composites.newtonsCradle(x, y, number14, size, length);
           this.world.add(composite);
           return composite;
         },
@@ -70350,13 +70813,13 @@
   // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/phaser-npm-3.55.2-6caf8d817e-51c7663389.zip/node_modules/phaser/src/physics/matter-js/lib/body/World.js
   var require_World2 = __commonJS({
     "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/phaser-npm-3.55.2-6caf8d817e-51c7663389.zip/node_modules/phaser/src/physics/matter-js/lib/body/World.js"(exports, module) {
-      var World3 = {};
-      module.exports = World3;
+      var World2 = {};
+      module.exports = World2;
       var Composite = require_Composite();
       var Constraint = require_Constraint();
       var Common = require_Common();
       (function() {
-        World3.create = function(options) {
+        World2.create = function(options) {
           var composite = Composite.create();
           var defaults = {
             label: "World",
@@ -70913,7 +71376,7 @@
     "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/phaser-npm-3.55.2-6caf8d817e-51c7663389.zip/node_modules/phaser/src/physics/matter-js/lib/core/Engine.js"(exports, module) {
       var Engine = {};
       module.exports = Engine;
-      var World3 = require_World2();
+      var World2 = require_World2();
       var Sleeping = require_Sleeping();
       var Resolver = require_Resolver();
       var Pairs = require_Pairs();
@@ -70948,7 +71411,7 @@
             }
           };
           var engine = Common.extend(defaults, options);
-          engine.world = options.world || World3.create(engine.world);
+          engine.world = options.world || World2.create(engine.world);
           engine.pairs = Pairs.create();
           engine.broadphase = engine.broadphase.controller.create(engine.broadphase);
           engine.metrics = engine.metrics || { extended: false };
@@ -71363,9 +71826,9 @@
       var MatterTileBody = require_MatterTileBody();
       var MatterWorld = require_World2();
       var Vector = require_Vector();
-      var World3 = new Class({
+      var World2 = new Class({
         Extends: EventEmitter,
-        initialize: function World4(scene, config2) {
+        initialize: function World3(scene, config2) {
           EventEmitter.call(this);
           this.scene = scene;
           this.engine = Engine.create(config2);
@@ -72253,7 +72716,7 @@
           this.shutdown();
         }
       });
-      module.exports = World3;
+      module.exports = World2;
     }
   });
 
@@ -72292,7 +72755,7 @@
       var Svg = require_Svg();
       var Vector = require_Vector();
       var Vertices = require_Vertices();
-      var World3 = require_World3();
+      var World2 = require_World3();
       var MatterPhysics = new Class({
         initialize: function MatterPhysics2(scene) {
           this.scene = scene;
@@ -72338,14 +72801,14 @@
           scene.sys.events.on(SceneEvents.START, this.start, this);
         },
         boot: function() {
-          this.world = new World3(this.scene, this.config);
+          this.world = new World2(this.scene, this.config);
           this.add = new Factory(this.world);
           this.bodyBounds = new BodyBounds();
           this.systems.events.once(SceneEvents.DESTROY, this.destroy, this);
         },
         start: function() {
           if (!this.world) {
-            this.world = new World3(this.scene, this.config);
+            this.world = new World2(this.scene, this.config);
             this.add = new Factory(this.world);
           }
           var eventEmitter = this.systems.events;
@@ -73691,10 +74154,10 @@
       var SnapFloor = require_SnapFloor();
       var bounds = new Rectangle();
       var CullBounds = function(layer, camera) {
-        var tilemap2 = layer.tilemapLayer.tilemap;
+        var tilemap = layer.tilemapLayer.tilemap;
         var tilemapLayer = layer.tilemapLayer;
-        var tileW = Math.floor(tilemap2.tileWidth * tilemapLayer.scaleX);
-        var tileH = Math.floor(tilemap2.tileHeight * tilemapLayer.scaleY);
+        var tileW = Math.floor(tilemap.tileWidth * tilemapLayer.scaleX);
+        var tileH = Math.floor(tilemap.tileHeight * tilemapLayer.scaleY);
         var boundsLeft = SnapFloor(camera.worldView.x - tilemapLayer.x, tileW, 0, true) - tilemapLayer.cullPaddingX;
         var boundsRight = SnapCeil(camera.worldView.right - tilemapLayer.x, tileW, 0, true) + tilemapLayer.cullPaddingX;
         var boundsTop = SnapFloor(camera.worldView.y - tilemapLayer.y, tileH, 0, true) - tilemapLayer.cullPaddingY;
@@ -73921,10 +74384,10 @@
       var SnapCeil = require_SnapCeil();
       var SnapFloor = require_SnapFloor();
       var HexagonalCullBounds = function(layer, camera) {
-        var tilemap2 = layer.tilemapLayer.tilemap;
+        var tilemap = layer.tilemapLayer.tilemap;
         var tilemapLayer = layer.tilemapLayer;
-        var tileW = Math.floor(tilemap2.tileWidth * tilemapLayer.scaleX);
-        var tileH = Math.floor(tilemap2.tileHeight * tilemapLayer.scaleY);
+        var tileW = Math.floor(tilemap.tileWidth * tilemapLayer.scaleX);
+        var tileH = Math.floor(tilemap.tileHeight * tilemapLayer.scaleY);
         var len = layer.hexSideLength;
         var rowH = (tileH - len) / 2 + len;
         var boundsLeft = SnapFloor(camera.worldView.x - tilemapLayer.x, tileW, 0, true) - tilemapLayer.cullPaddingX;
@@ -74054,10 +74517,10 @@
       var SnapCeil = require_SnapCeil();
       var SnapFloor = require_SnapFloor();
       var StaggeredCullBounds = function(layer, camera) {
-        var tilemap2 = layer.tilemapLayer.tilemap;
+        var tilemap = layer.tilemapLayer.tilemap;
         var tilemapLayer = layer.tilemapLayer;
-        var tileW = Math.floor(tilemap2.tileWidth * tilemapLayer.scaleX);
-        var tileH = Math.floor(tilemap2.tileHeight * tilemapLayer.scaleY);
+        var tileW = Math.floor(tilemap.tileWidth * tilemapLayer.scaleX);
+        var tileH = Math.floor(tilemap.tileHeight * tilemapLayer.scaleY);
         var boundsLeft = SnapFloor(camera.worldView.x - tilemapLayer.x, tileW, 0, true) - tilemapLayer.cullPaddingX;
         var boundsRight = SnapCeil(camera.worldView.right - tilemapLayer.x, tileW, 0, true) + tilemapLayer.cullPaddingX;
         var boundsTop = SnapFloor(camera.worldView.y - tilemapLayer.y, tileH / 2, 0, true) - tilemapLayer.cullPaddingY;
@@ -77009,12 +77472,12 @@
           Components.ScrollFactor,
           TilemapLayerRender
         ],
-        initialize: function TilemapLayer2(scene, tilemap2, layerIndex, tileset, x, y) {
+        initialize: function TilemapLayer2(scene, tilemap, layerIndex, tileset, x, y) {
           GameObject.call(this, scene, "TilemapLayer");
           this.isTilemap = true;
-          this.tilemap = tilemap2;
+          this.tilemap = tilemap;
           this.layerIndex = layerIndex;
-          this.layer = tilemap2.layers[layerIndex];
+          this.layer = tilemap.layers[layerIndex];
           this.layer.tilemapLayer = this;
           this.tileset = [];
           this.tilesDrawn = 0;
@@ -77030,7 +77493,7 @@
           this.setAlpha(this.layer.alpha);
           this.setPosition(x, y);
           this.setOrigin();
-          this.setSize(tilemap2.tileWidth * this.layer.width, tilemap2.tileHeight * this.layer.height);
+          this.setSize(tilemap.tileWidth * this.layer.width, tilemap.tileHeight * this.layer.height);
           this.initPipeline();
         },
         setTilesets: function(tilesets) {
@@ -80566,7 +81029,7 @@
   });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/phaser-npm-3.55.2-6caf8d817e-51c7663389.zip/node_modules/phaser/src/utils/index.js
-  var require_utils = __commonJS({
+  var require_utils2 = __commonJS({
     "pnp:/home/jumplink/Projekte/PixelRPG/.yarn/cache/phaser-npm-3.55.2-6caf8d817e-51c7663389.zip/node_modules/phaser/src/utils/index.js"(exports, module) {
       module.exports = {
         Array: require_array2(),
@@ -81332,7 +81795,7 @@
         Tilemaps: require_tilemaps(),
         Time: require_time(),
         Tweens: require_tweens(),
-        Utils: require_utils()
+        Utils: require_utils2()
       };
       if (typeof FEATURE_SOUND) {
         Phaser2.Sound = require_sound();
@@ -81352,2358 +81815,14 @@
     }
   });
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/debug.js
-  var require_debug2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/debug.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.ErrorType = exports.assert = void 0;
-      function assert(expression, message = "", type) {
-        if (!expression) {
-          throw new Error(type !== void 0 ? `${errorMessagePrefixes[type]}: ${message}` : message);
-        }
-      }
-      exports.assert = assert;
-      var ErrorType;
-      (function(ErrorType2) {
-        ErrorType2[ErrorType2["Internal"] = 0] = "Internal";
-        ErrorType2[ErrorType2["Query"] = 1] = "Query";
-      })(ErrorType = exports.ErrorType || (exports.ErrorType = {}));
-      var errorMessagePrefixes = {
-        [ErrorType.Internal]: "Internal Error",
-        [ErrorType.Query]: "Query Error"
-      };
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model.js
-  var require_model = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.FieldKind = exports.$flat = exports.$kind = void 0;
-      exports.$kind = Symbol("javelin_field_kind");
-      exports.$flat = Symbol("javelin_model_flat");
-      var FieldKind;
-      (function(FieldKind2) {
-        FieldKind2[FieldKind2["Number"] = 0] = "Number";
-        FieldKind2[FieldKind2["String"] = 1] = "String";
-        FieldKind2[FieldKind2["Boolean"] = 2] = "Boolean";
-        FieldKind2[FieldKind2["Array"] = 3] = "Array";
-        FieldKind2[FieldKind2["Object"] = 4] = "Object";
-        FieldKind2[FieldKind2["Set"] = 5] = "Set";
-        FieldKind2[FieldKind2["Map"] = 6] = "Map";
-        FieldKind2[FieldKind2["Dynamic"] = 7] = "Dynamic";
-      })(FieldKind = exports.FieldKind || (exports.FieldKind = {}));
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/fp.js
-  var require_fp2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/fp.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.noop = void 0;
-      function noop(...args) {
-      }
-      exports.noop = noop;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/array.js
-  var require_array3 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/array.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.unpackSparseArray = exports.packSparseArray = exports.createArray = exports.mutableEmpty = exports.mutableRemove = exports.mutableRemoveByIndexUnordered = exports.mutableRemoveUnordered = void 0;
-      var fp_1 = require_fp2();
-      function mutableRemoveUnordered(arr, element) {
-        const length = arr.length;
-        const index = arr.indexOf(element);
-        if (index === -1) {
-          return false;
-        }
-        const last = arr.pop();
-        if (index < length - 1) {
-          arr[index] = last;
-        }
-        return true;
-      }
-      exports.mutableRemoveUnordered = mutableRemoveUnordered;
-      function mutableRemoveByIndexUnordered(arr, index) {
-        const length = arr.length;
-        if (index === -1) {
-          return false;
-        }
-        const last = arr.pop();
-        if (index < length - 1) {
-          arr[index] = last;
-        }
-        return true;
-      }
-      exports.mutableRemoveByIndexUnordered = mutableRemoveByIndexUnordered;
-      function mutableRemove(arr, element) {
-        const index = arr.indexOf(element);
-        if (index === -1) {
-          return false;
-        }
-        arr.splice(index, 1);
-        return true;
-      }
-      exports.mutableRemove = mutableRemove;
-      function mutableEmpty(arr) {
-        while (arr.length > 0)
-          arr.pop();
-        return arr;
-      }
-      exports.mutableEmpty = mutableEmpty;
-      function createArray(len = 0, f = fp_1.noop) {
-        return Array(len).fill(void 0).map((_, i) => f(i));
-      }
-      exports.createArray = createArray;
-      function packSparseArray(array) {
-        return array.reduce((a, x, i) => {
-          a[i] = x;
-          return a;
-        }, {});
-      }
-      exports.packSparseArray = packSparseArray;
-      function unpackSparseArray(packedSparseArray) {
-        const sparseArray = [];
-        for (const index in packedSparseArray) {
-          const i = parseInt(index, 10);
-          if (!isNaN(i)) {
-            sparseArray[i] = packedSparseArray[index];
-          }
-        }
-        return sparseArray;
-      }
-      exports.unpackSparseArray = unpackSparseArray;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/index.js
-  var require_utils2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/utils/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_array3(), exports);
-      __exportStar(require_fp2(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model_helpers.js
-  var require_model_helpers = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/model_helpers.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.resetSchemaInstance = exports.createSchemaInstance = exports.createModel = exports.isSimple = exports.isSchema = exports.isPrimitiveField = exports.isField = exports.dynamic = exports.mapOf = exports.setOf = exports.objectOf = exports.arrayOf = exports.boolean = exports.string = exports.number = void 0;
-      var utils_1 = require_utils2();
-      var model_1 = require_model();
-      exports.number = {
-        [model_1.$kind]: model_1.FieldKind.Number,
-        get: () => 0
-      };
-      exports.string = {
-        [model_1.$kind]: model_1.FieldKind.String,
-        get: () => ""
-      };
-      exports.boolean = {
-        [model_1.$kind]: model_1.FieldKind.Boolean,
-        get: () => false
-      };
-      function arrayOf(element) {
-        return {
-          [model_1.$kind]: model_1.FieldKind.Array,
-          get: (array = []) => (0, utils_1.mutableEmpty)(array),
-          element
-        };
-      }
-      exports.arrayOf = arrayOf;
-      function objectOf(element, key = exports.string) {
-        return {
-          [model_1.$kind]: model_1.FieldKind.Object,
-          get: (object = {}) => {
-            for (const prop in object) {
-              delete object[prop];
-            }
-            return object;
-          },
-          key,
-          element
-        };
-      }
-      exports.objectOf = objectOf;
-      function setOf(element) {
-        return {
-          [model_1.$kind]: model_1.FieldKind.Set,
-          get: (set = new Set()) => {
-            set.clear();
-            return set;
-          },
-          element
-        };
-      }
-      exports.setOf = setOf;
-      function mapOf(key, element) {
-        return {
-          [model_1.$kind]: model_1.FieldKind.Map,
-          get: (map = new Map()) => {
-            map.clear();
-            return map;
-          },
-          key,
-          element
-        };
-      }
-      exports.mapOf = mapOf;
-      function dynamic(get = () => null) {
-        return {
-          [model_1.$kind]: model_1.FieldKind.Dynamic,
-          get
-        };
-      }
-      exports.dynamic = dynamic;
-      function isField(object) {
-        return model_1.$kind in object;
-      }
-      exports.isField = isField;
-      function isPrimitiveField(object) {
-        if (!isField(object)) {
-          return false;
-        }
-        const kind = object[model_1.$kind];
-        return kind === model_1.FieldKind.Number || kind === model_1.FieldKind.String || kind === model_1.FieldKind.Boolean || kind === model_1.FieldKind.Dynamic;
-      }
-      exports.isPrimitiveField = isPrimitiveField;
-      function isSchema(node) {
-        return !(model_1.$kind in node);
-      }
-      exports.isSchema = isSchema;
-      function isSimple(node) {
-        if (isSchema(node)) {
-          return node.fields.every(isPrimitiveField);
-        } else if ("element" in node) {
-          return isPrimitiveField(node.element);
-        }
-        return true;
-      }
-      exports.isSimple = isSimple;
-      function collate(visiting, cursor, traverse = []) {
-        let base = {
-          id: cursor.id,
-          lo: cursor.id,
-          hi: cursor.id,
-          deep: traverse.length > 0,
-          traverse
-        };
-        cursor.id++;
-        let node;
-        if (isField(visiting)) {
-          node = { ...base, ...visiting };
-          if ("element" in node) {
-            node.element = collate(node.element, cursor, "key" in node ? [...traverse, node.key] : traverse);
-          }
-        } else {
-          const keys = Object.keys(visiting);
-          const keysByFieldId = [];
-          const fields = [];
-          const fieldsByKey = {};
-          const fieldIdsByKey = {};
-          for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
-            const child = collate(visiting[key], cursor, traverse);
-            keysByFieldId[child.id] = key;
-            fieldsByKey[key] = child;
-            fieldIdsByKey[key] = child.id;
-            fields.push(child);
-          }
-          node = {
-            ...base,
-            keys,
-            keysByFieldId,
-            fields,
-            fieldsByKey,
-            fieldIdsByKey
-          };
-        }
-        node.hi = cursor.id;
-        return node;
-      }
-      function flattenModelNode(node, flat) {
-        flat[node.id] = node;
-        if (isField(node)) {
-          if ("element" in node) {
-            flattenModelNode(node.element, flat);
-          }
-        } else {
-          for (let i = 0; i < node.fields.length; i++) {
-            flattenModelNode(node.fields[i], flat);
-          }
-        }
-      }
-      function flattenModel(model) {
-        const flat = {};
-        for (const prop in model) {
-          flattenModelNode(model[prop], flat[prop] = {});
-        }
-        return flat;
-      }
-      function createModel(config2) {
-        const model = {};
-        config2.forEach((schema, t) => model[t] = collate(schema, { id: 0 }));
-        return Object.defineProperty(model, model_1.$flat, {
-          enumerable: false,
-          writable: false,
-          value: flattenModel(model)
-        });
-      }
-      exports.createModel = createModel;
-      function createSchemaInstance(schema, object = {}) {
-        for (const prop in schema) {
-          const type = schema[prop];
-          let value;
-          if (isField(type)) {
-            value = type.get();
-          } else {
-            value = createSchemaInstance({}, type);
-          }
-          object[prop] = value;
-        }
-        return object;
-      }
-      exports.createSchemaInstance = createSchemaInstance;
-      function resetSchemaInstance(object, schema) {
-        for (const prop in schema) {
-          const type = schema[prop];
-          if (isField(type)) {
-            object[prop] = type.get(object[prop]);
-          } else {
-            resetSchemaInstance(object[prop], type);
-          }
-        }
-        return object;
-      }
-      exports.resetSchemaInstance = resetSchemaInstance;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/index.js
-  var require_model2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/model/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_model(), exports);
-      __exportStar(require_model_helpers(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/stack_pool.js
-  var require_stack_pool2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/stack_pool.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createStackPool = void 0;
-      function createStackPool(type, reset, size) {
-        const heap = [];
-        const allocate = () => {
-          for (let i = 0; i < size; i++) {
-            heap.push(type(pool));
-          }
-        };
-        const retain = () => {
-          if (!heap.length) {
-            allocate();
-          }
-          return heap.pop();
-        };
-        const release = (obj) => {
-          heap.push(reset(obj));
-        };
-        const pool = {
-          allocate,
-          retain,
-          release
-        };
-        return pool;
-      }
-      exports.createStackPool = createStackPool;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/index.js
-  var require_pool2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/pool/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_stack_pool2(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/index.js
-  var require_cjs2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/core/dist/cjs/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_debug2(), exports);
-      __exportStar(require_model2(), exports);
-      __exportStar(require_pool2(), exports);
-      __exportStar(require_utils2(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/signal.js
-  var require_signal2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/signal.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createSignal = void 0;
-      var core_1 = require_cjs2();
-      var createSignal = () => {
-        const subscribers = [];
-        const subscribe = (subscriber) => {
-          subscribers.push(subscriber);
-          return () => (0, core_1.mutableRemoveUnordered)(subscribers, subscriber);
-        };
-        const dispatch = (arg1, arg2, arg3, arg4) => {
-          for (let i = 0; i < subscribers.length; i++) {
-            subscribers[i](arg1, arg2, arg3, arg4);
-          }
-        };
-        return {
-          subscribe,
-          dispatch
-        };
-      };
-      exports.createSignal = createSignal;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/internals.js
-  var require_internals = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/internals.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.UNSAFE_setModel = exports.UNSAFE_modelChanged = exports.UNSAFE_internals = void 0;
-      var core_1 = require_cjs2();
-      var signal_1 = require_signal2();
-      exports.UNSAFE_internals = {
-        instanceTypeLookup: new WeakMap(),
-        model: { [core_1.$flat]: {} },
-        schemaIndex: new WeakMap(),
-        schemaPools: new Map(),
-        worlds: [],
-        currentWorldId: -1,
-        worldIds: 0
-      };
-      exports.UNSAFE_modelChanged = (0, signal_1.createSignal)();
-      function UNSAFE_setModel(model) {
-        ;
-        exports.UNSAFE_internals.model = model;
-        exports.UNSAFE_modelChanged.dispatch(model);
-      }
-      exports.UNSAFE_setModel = UNSAFE_setModel;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/index.js
-  var require_internal = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/internal/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_internals(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/component.js
-  var require_component2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/component.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.getSchemaId = exports.toComponent = exports.toComponentFromType = exports.component = exports.registerSchema = exports.createComponentPool = exports.isComponentOf = exports.$pool = exports.$type = void 0;
-      var core_1 = require_cjs2();
-      var internal_1 = require_internal();
-      exports.$type = Symbol("javelin_component_type");
-      exports.$pool = Symbol("javelin_component_pool");
-      var { schemaIndex, schemaPools, instanceTypeLookup } = internal_1.UNSAFE_internals;
-      var schemaIds = 0;
-      function createComponentBase(schema, pool = true) {
-        return Object.defineProperties({}, {
-          [exports.$type]: {
-            value: schemaIndex.get(schema),
-            writable: false,
-            enumerable: false
-          },
-          [exports.$pool]: {
-            value: pool,
-            writable: false,
-            enumerable: false
-          }
-        });
-      }
-      function isComponentOf(component20, schema) {
-        return getSchemaId(component20) === schemaIndex.get(schema);
-      }
-      exports.isComponentOf = isComponentOf;
-      function createComponentPool(schema, poolSize) {
-        const componentPool = (0, core_1.createStackPool)(() => (0, core_1.createSchemaInstance)(schema, createComponentBase(schema)), (component20) => (0, core_1.resetSchemaInstance)(component20, schema), poolSize);
-        return componentPool;
-      }
-      exports.createComponentPool = createComponentPool;
-      var modelConfig = new Map();
-      function registerSchema(schema, schemaId, poolSize = 1e3) {
-        let type = schemaIndex.get(schema);
-        if (type !== void 0) {
-          return type;
-        }
-        type = schemaId;
-        if (type === void 0) {
-          while (modelConfig.has(schemaIds)) {
-            schemaIds++;
-          }
-          type = schemaIds;
-        } else if (modelConfig.has(type)) {
-          throw new Error("Failed to register component type: a component with same id is already registered");
-        }
-        if (poolSize > 0) {
-          schemaPools.set(type, createComponentPool(schema, poolSize));
-        }
-        modelConfig.set(type, schema);
-        schemaIndex.set(schema, type);
-        (0, internal_1.UNSAFE_setModel)((0, core_1.createModel)(modelConfig));
-        return type;
-      }
-      exports.registerSchema = registerSchema;
-      function createComponentInner(schema) {
-        const type = registerSchema(schema);
-        const pool = internal_1.UNSAFE_internals.schemaPools.get(type);
-        return pool ? pool.retain() : (0, core_1.createSchemaInstance)(schema, createComponentBase(schema, false));
-      }
-      function component19(schema, props) {
-        const instance = createComponentInner(schema);
-        if (props !== void 0) {
-          Object.assign(instance, props);
-        }
-        return instance;
-      }
-      exports.component = component19;
-      function toComponentFromType(object, type) {
-        try {
-          ;
-          object[exports.$type] = type;
-          object[exports.$pool] = false;
-        } catch {
-        }
-        if (object[exports.$type] !== type) {
-          instanceTypeLookup.set(object, type);
-        }
-        return object;
-      }
-      exports.toComponentFromType = toComponentFromType;
-      function toComponent(object, schema) {
-        const type = registerSchema(schema, void 0, 0);
-        return toComponentFromType(object, type);
-      }
-      exports.toComponent = toComponent;
-      function getSchemaId(component20) {
-        var _a;
-        const type = (_a = component20[exports.$type]) !== null && _a !== void 0 ? _a : instanceTypeLookup.get(component20);
-        if (type === void 0) {
-          throw new Error("Failed to get component type id: object is not a component");
-        }
-        return type;
-      }
-      exports.getSchemaId = getSchemaId;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect.js
-  var require_effect2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createEffect = void 0;
-      var internal_1 = require_internal();
-      function isPromise(object) {
-        return typeof object === "object" && object !== null && "then" in object;
-      }
-      function createEffect17(factory, options = { shared: false }) {
-        const { shared: global2 } = options;
-        const systemEffectDataByWorldId = [];
-        let previousStep;
-        let previousWorld;
-        let previousSystem;
-        let currentWorld;
-        let latestSystemId;
-        let cellCount = -1;
-        return function effect(...args) {
-          currentWorld = internal_1.UNSAFE_internals.currentWorldId;
-          const world = internal_1.UNSAFE_internals.worlds[currentWorld];
-          const step = world.latestTick;
-          latestSystemId = global2 ? 0 : world.latestSystemId;
-          let currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld];
-          if (systemEffectDataByWorldId[currentWorld] === void 0) {
-            currentWorldSystemEffectData = systemEffectDataByWorldId[currentWorld] = [];
-          }
-          let currentSystemEffect = currentWorldSystemEffectData[latestSystemId];
-          if (currentSystemEffect === void 0) {
-            currentSystemEffect = currentWorldSystemEffectData[latestSystemId] = {
-              cells: [],
-              cellCount: -1
-            };
-          }
-          if (global2 === true || previousWorld !== currentWorld && previousWorld !== void 0) {
-            cellCount = 0;
-          } else if (previousSystem !== void 0 && (previousStep !== step || previousSystem !== latestSystemId)) {
-            const previousSystemEffectData = currentWorldSystemEffectData[previousSystem];
-            if (previousSystemEffectData.cellCount !== -1 && previousSystemEffectData.cellCount !== cellCount) {
-              throw new Error(`Failed to execute effect: encountered too ${previousSystemEffectData.cellCount > cellCount ? "few" : "many"} effects this step`);
-            }
-            previousSystemEffectData.cellCount = cellCount;
-            cellCount = 0;
-          } else {
-            cellCount++;
-          }
-          let cell = currentSystemEffect.cells[cellCount];
-          if (!cell) {
-            cell = currentSystemEffect.cells[cellCount] = {
-              executor: factory(world),
-              lockShare: false,
-              lockAsync: false,
-              lockShareTick: null,
-              state: null
-            };
-          }
-          if (global2) {
-            if (cell.lockShareTick !== world.latestTick) {
-              cell.lockShare = false;
-              cell.lockShareTick = world.latestTick;
-            } else {
-              cell.lockShare = true;
-            }
-          }
-          if (cell.lockShare || cell.lockAsync) {
-            return cell.state;
-          }
-          const result = cell.executor(...args);
-          if (isPromise(result)) {
-            cell.lockAsync = true;
-            result.then((result2) => cell.state = result2).catch((error) => console.error(`Uncaught error in effect: ${error.message}`, error)).then(() => cell.lockAsync = false);
-          } else {
-            cell.state = result;
-          }
-          previousStep = step;
-          previousWorld = currentWorld;
-          previousSystem = latestSystemId;
-          return cell.state;
-        };
-      }
-      exports.createEffect = createEffect17;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_ref.js
-  var require_use_ref = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_ref.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useRef = void 0;
-      var effect_1 = require_effect2();
-      exports.useRef = (0, effect_1.createEffect)(() => {
-        let initial = true;
-        const api = { value: null };
-        return function useRef(initialValue) {
-          if (initial) {
-            api.value = initialValue;
-            initial = false;
-          }
-          return api;
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_init.js
-  var require_use_init = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_init.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useInit = void 0;
-      var use_ref_1 = require_use_ref();
-      function useInit() {
-        const init = (0, use_ref_1.useRef)(true);
-        const value = init.value;
-        init.value = false;
-        return value;
-      }
-      exports.useInit = useInit;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/performance.js
-  var require_performance = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/performance.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.performance = void 0;
-      var perf_hooks_1 = __require("perf_hooks");
-      Object.defineProperty(exports, "performance", { enumerable: true, get: function() {
-        return perf_hooks_1.performance;
-      } });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/index.js
-  var require_cjs3 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_performance(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js
-  var require_use_performance = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.usePerformance = void 0;
-      var effect_1 = require_effect2();
-      var isomorphic_utils_1 = require_cjs3();
-      exports.usePerformance = (0, effect_1.createEffect)(() => {
-        return function usePerformance() {
-          return isomorphic_utils_1.performance;
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_interval.js
-  var require_use_interval = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_interval.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useInterval = void 0;
-      var use_performance_1 = require_use_performance();
-      var use_ref_1 = require_use_ref();
-      function useInterval(interval) {
-        const performance2 = (0, use_performance_1.usePerformance)();
-        const config2 = (0, use_ref_1.useRef)(interval);
-        const prev = (0, use_ref_1.useRef)(0);
-        const time = performance2.now();
-        if (!prev.value) {
-          prev.value = time;
-        }
-        if (interval !== config2.value) {
-          prev.value = time;
-          config2.value = interval;
-        }
-        let hit = false;
-        if (time - prev.value >= interval) {
-          hit = true;
-          prev.value = time;
-        }
-        return hit;
-      }
-      exports.useInterval = useInterval;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_monitor.js
-  var require_use_monitor = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_monitor.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useMonitor = void 0;
-      var core_1 = require_cjs2();
-      var effect_1 = require_effect2();
-      var snapshots = (0, core_1.createStackPool)(() => [-1, [], []], (c) => {
-        c[0] = -1;
-        (0, core_1.mutableEmpty)(c[1]);
-        (0, core_1.mutableEmpty)(c[2]);
-        return c;
-      }, 1e3);
-      exports.useMonitor = (0, effect_1.createEffect)((world) => {
-        const { storage: { entityRelocating, entityRelocated, archetypes: [rootArchetype] } } = world;
-        const matched = new Set();
-        let stagedEnter = [];
-        let stagedExit = [];
-        let readyEnter = [];
-        let readyExit = [];
-        let _query = null;
-        const register = (query) => {
-          _query = query;
-          (0, core_1.mutableEmpty)(stagedEnter);
-          (0, core_1.mutableEmpty)(stagedExit);
-          (0, core_1.mutableEmpty)(readyEnter);
-          (0, core_1.mutableEmpty)(readyExit);
-          for (const [entities] of query) {
-            for (let i = 0; i < entities.length; i++) {
-              const entity = entities[i];
-              const snapshot = snapshots.retain();
-              snapshot[0] = entity;
-              query.get(entity, snapshot[1]);
-              query.get(entity, snapshot[2]);
-              stagedEnter.push(snapshot);
-            }
-          }
-        };
-        entityRelocating.subscribe(function detectMonitorExit(entity, prev, next, diff) {
-          if (_query === null)
-            return;
-          const matchCurr = matched.has(entity);
-          const matchPrev = _query.matchesType(prev.type);
-          const matchNext = _query.matchesType(next.type);
-          const isExit = matchPrev && (!matchNext || next === rootArchetype);
-          if (!isExit)
-            return;
-          if (matchCurr) {
-            const index = stagedEnter.findIndex(([e]) => e === entity);
-            (0, core_1.assert)(index !== -1);
-            (0, core_1.mutableRemoveByIndexUnordered)(stagedEnter, index);
-            return;
-          }
-          const snapshot = snapshots.retain();
-          snapshot[0] = entity;
-          _query.get(entity, snapshot[1]);
-          _query.match(diff, snapshot[2]);
-          stagedExit.push(snapshot);
-        });
-        entityRelocated.subscribe(function detectMonitorEnter(entity, prev, next, diff) {
-          if (_query === null)
-            return;
-          const matchPrev = _query.matchesType(prev.type);
-          const matchNext = _query.matchesType(next.type);
-          if (!matchPrev && matchNext) {
-            const snapshot = snapshots.retain();
-            snapshot[0] = entity;
-            _query.get(entity, snapshot[1]);
-            _query.match(diff, snapshot[2]);
-            stagedEnter.push(snapshot);
-            matched.add(entity);
-          }
-        });
-        return function useMonitor(query, onEnter, onExit) {
-          if (_query !== query && !(_query === null || _query === void 0 ? void 0 : _query.equals(query))) {
-            register(query);
-          }
-          let result;
-          (0, core_1.mutableEmpty)(readyEnter);
-          (0, core_1.mutableEmpty)(readyExit);
-          while ((result = stagedEnter.pop()) !== void 0) {
-            readyEnter.push(result);
-          }
-          while ((result = stagedExit.pop()) !== void 0) {
-            readyExit.push(result);
-          }
-          matched.clear();
-          if (onEnter !== void 0) {
-            for (let i = 0; i < readyEnter.length; i++) {
-              const snapshot = readyEnter[i];
-              onEnter(snapshot[0], snapshot[1], snapshot[2]);
-              snapshots.release(snapshot);
-            }
-          }
-          if (onExit !== void 0) {
-            for (let i = 0; i < readyExit.length; i++) {
-              const snapshot = readyExit[i];
-              onExit(snapshot[0], snapshot[1], snapshot[2]);
-              snapshots.release(snapshot);
-            }
-          }
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_timer.js
-  var require_use_timer = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_timer.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useTimer = void 0;
-      var effect_1 = require_effect2();
-      exports.useTimer = (0, effect_1.createEffect)(() => {
-        let state = 0;
-        let timer;
-        return function useTimer(duration, invalidate = false) {
-          if (invalidate) {
-            state = 0;
-            clearTimeout(timer);
-          }
-          if (state === 0) {
-            state = 1;
-            timer = setTimeout(() => {
-              state = 2;
-            }, duration);
-          }
-          return state === 2;
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_world.js
-  var require_use_world = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_world.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useWorld = void 0;
-      var internal_1 = require_internal();
-      function useWorld() {
-        return internal_1.UNSAFE_internals.worlds[internal_1.UNSAFE_internals.currentWorldId];
-      }
-      exports.useWorld = useWorld;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/index.js
-  var require_core3 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_use_init(), exports);
-      __exportStar(require_use_interval(), exports);
-      __exportStar(require_use_monitor(), exports);
-      __exportStar(require_use_performance(), exports);
-      __exportStar(require_use_ref(), exports);
-      __exportStar(require_use_timer(), exports);
-      __exportStar(require_use_world(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_request.js
-  var require_use_request = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_request.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useRequest = void 0;
-      var effect_1 = require_effect2();
-      exports.useRequest = (0, effect_1.createEffect)(() => {
-        let state = { response: null, error: null, done: false };
-        let fetching = false;
-        let previousUrl;
-        let abortController = new (typeof window === "object" ? window : window).AbortController();
-        return function useRequest(url, options, invalidate = previousUrl !== void 0 && url !== previousUrl) {
-          if (url === null || invalidate) {
-            abortController.abort();
-            abortController = new AbortController();
-          }
-          if (url === null) {
-            return state;
-          }
-          if (invalidate) {
-            state = { response: state.response, error: null, done: false };
-          }
-          if (state.done) {
-            return state;
-          }
-          if (!fetching) {
-            fetching = true;
-            previousUrl = url;
-            fetch(url, { ...options, signal: abortController.signal }).then((response) => {
-              state = { response, error: null, done: true };
-            }).catch((error) => {
-              state = { response: state.response, error, done: true };
-            }).then(() => {
-              fetching = false;
-            });
-          }
-          return state;
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_json.js
-  var require_use_json = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/use_json.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.useJson = void 0;
-      var effect_1 = require_effect2();
-      var core_1 = require_core3();
-      var use_request_1 = require_use_request();
-      exports.useJson = (0, effect_1.createEffect)(() => {
-        let response;
-        return function useJson(...args) {
-          const previousResponse = (0, core_1.useRef)(null);
-          const result = (0, use_request_1.useRequest)(...args);
-          if (result.response && result.response !== previousResponse.value) {
-            result.response.json().then((json) => {
-              response = json;
-            });
-            previousResponse.value = result.response;
-          }
-          return {
-            ...result,
-            response: response || null
-          };
-        };
-      });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/index.js
-  var require_web2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/web/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_use_request(), exports);
-      __exportStar(require_use_json(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/index.js
-  var require_effects3 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      __exportStar(require_core3(), exports);
-      __exportStar(require_web2(), exports);
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect_utils.js
-  var require_effect_utils = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effect_utils.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createImmutableRef = exports.createRef = void 0;
-      var effect_1 = require_effect2();
-      var use_ref_1 = require_use_ref();
-      var createRef = (initializer, options = {}) => (0, effect_1.createEffect)((world) => {
-        const initialValue = initializer(world);
-        return () => (0, use_ref_1.useRef)(initialValue);
-      }, options);
-      exports.createRef = createRef;
-      function createImmutableRef(initializer, options = {}) {
-        return (0, effect_1.createEffect)((world) => {
-          const initialValue = initializer(world);
-          return () => (0, use_ref_1.useRef)(initialValue).value;
-        }, options);
-      }
-      exports.createImmutableRef = createImmutableRef;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/entity.js
-  var require_entity = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/entity.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/observe.js
-  var require_observe = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/observe.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.resetPatch = exports.createPatch = exports.getFieldValue = exports.clearObservedChanges = exports.observe = exports.$delete = exports.$changes = exports.$touched = exports.$self = void 0;
-      var core_1 = require_cjs2();
-      var component_1 = require_component2();
-      var internal_1 = require_internal();
-      exports.$self = Symbol("javelin_proxy_self");
-      exports.$touched = Symbol("javelin_proxy_touched");
-      exports.$changes = Symbol("javelin_proxy_changes");
-      exports.$delete = Symbol("javelin_proxy_deleted");
-      var proxies = new WeakMap();
-      var simpleStructHandler = {
-        get(target, key) {
-          if (key === exports.$self)
-            return target;
-          target[exports.$touched] = true;
-          return target[key];
-        },
-        set(target, key, value) {
-          const changes = target[exports.$changes];
-          target[key] = value;
-          target[exports.$touched] = true;
-          changes.changes[key] = value;
-          changes.dirty = true;
-          return true;
-        }
-      };
-      var structHandler = {
-        get(target, key) {
-          if (key === exports.$self)
-            return target;
-          const value = target[key];
-          target[exports.$touched] = true;
-          if (typeof value === "object" && value !== null) {
-            return proxify(value, target, key);
-          }
-          return value;
-        },
-        set: simpleStructHandler.set
-      };
-      var simpleArrayHandler = simpleStructHandler;
-      var arrayHandler = {
-        get: structHandler.get,
-        set: simpleArrayHandler.set
-      };
-      var simpleObjectHandler = {
-        ...simpleStructHandler,
-        deleteProperty(target, key) {
-          const changes = target[exports.$changes];
-          delete target[key];
-          target[exports.$touched] = true;
-          changes.changes[key] = exports.$delete;
-          changes.dirty = true;
-          return true;
-        }
-      };
-      var objectHandler = {
-        ...structHandler,
-        deleteProperty: simpleObjectHandler.deleteProperty
-      };
-      var setHandler = {
-        get(target, key) {
-          if (key === exports.$self)
-            return target;
-          const value = target[key];
-          target[exports.$touched] = true;
-          return typeof value === "function" ? new Proxy(value, setMethodHandler) : value;
-        }
-      };
-      var setMethodHandler = {
-        apply(method, target, args) {
-          const { [exports.$self]: self, [exports.$changes]: changes } = target;
-          target[exports.$touched] = true;
-          switch (method) {
-            case Set.prototype.add:
-              changes.changes.add.push(args[0]);
-              changes.dirty = true;
-              break;
-            case Set.prototype.delete:
-              changes.changes.delete.push(args[0]);
-              changes.dirty = true;
-              break;
-            case Set.prototype.clear:
-              self.forEach((value) => changes.changes.delete.push(value));
-              changes.dirty = true;
-              break;
-          }
-          return method.apply(self, args);
-        }
-      };
-      var mapHandler = {
-        get(target, key, receiver) {
-          if (key === exports.$self)
-            return target;
-          const value = Reflect.get(target, key, receiver);
-          target[exports.$touched] = true;
-          return typeof value === "function" ? new Proxy(value, mapMethodHandler) : value;
-        }
-      };
-      var mapMethodHandler = {
-        apply(method, target, args) {
-          const { [exports.$self]: self } = target;
-          const { [exports.$changes]: changes } = self;
-          self[exports.$touched] = true;
-          switch (method) {
-            case Map.prototype.get: {
-              const value = method.apply(self, args);
-              if (typeof value === "object" && value !== null) {
-                return proxify(value, self, args[0]);
-              }
-            }
-            case Map.prototype.set:
-              changes.changes.set(args[0], args[1]);
-              changes.dirty = true;
-              break;
-            case Map.prototype.delete:
-              changes.changes.set(args[0], exports.$delete);
-              changes.dirty = true;
-              break;
-            case Map.prototype.clear:
-              self.forEach((_, key) => changes.changes.set(key, exports.$delete));
-              changes.dirty = true;
-              return self.clear();
-          }
-          return method.apply(self, args);
-        }
-      };
-      function getHandler(node) {
-        const simple = (0, core_1.isSimple)(node);
-        if ((0, core_1.isField)(node)) {
-          switch (node[core_1.$kind]) {
-            case core_1.FieldKind.Array:
-              return simple ? simpleArrayHandler : arrayHandler;
-            case core_1.FieldKind.Object:
-              return simple ? simpleObjectHandler : objectHandler;
-            case core_1.FieldKind.Set:
-              return setHandler;
-            case core_1.FieldKind.Map:
-              return mapHandler;
-            default:
-              throw new Error("Failed to observe object: cannot observe a primitive type");
-          }
-        }
-        return simple ? simpleStructHandler : structHandler;
-      }
-      function getChanges(node) {
-        const base = { dirty: false, node };
-        if ((0, core_1.isField)(node)) {
-          switch (node[core_1.$kind]) {
-            case core_1.FieldKind.Array:
-              return { ...base, changes: {} };
-            case core_1.FieldKind.Object:
-              return { ...base, changes: {} };
-            case core_1.FieldKind.Set:
-              return { ...base, changes: { add: [], delete: [] } };
-            case core_1.FieldKind.Map:
-              return { ...base, changes: new Map() };
-          }
-        }
-        return { ...base, changes: {} };
-      }
-      var descriptorBase = {
-        configurable: false,
-        enumerable: true,
-        writable: false
-      };
-      function register(object, node) {
-        const changes = getChanges(node);
-        const observed = Object.defineProperties(object, {
-          [exports.$self]: { ...descriptorBase, value: object },
-          [exports.$changes]: { ...descriptorBase, value: changes }
-        });
-        const handler = getHandler(node);
-        const proxy = new Proxy(observed, handler);
-        proxies.set(object, proxy);
-        return proxy;
-      }
-      function proxify(object, parent, key) {
-        var _a;
-        const parentNode = parent[exports.$changes].node;
-        let node;
-        if ((0, core_1.isSchema)(parentNode)) {
-          node = parentNode.fieldsByKey[key];
-        } else {
-          (0, core_1.assert)("element" in parentNode);
-          node = parentNode.element;
-        }
-        return (_a = proxies.get(object)) !== null && _a !== void 0 ? _a : register(object, node);
-      }
-      function observe(component19) {
-        var _a;
-        ;
-        component19[exports.$touched] = true;
-        return (_a = proxies.get(component19)) !== null && _a !== void 0 ? _a : register(component19, internal_1.UNSAFE_internals.model[(0, component_1.getSchemaId)(component19)]);
-      }
-      exports.observe = observe;
-      function clearObservedChangesInner(object, node) {
-        if (object[exports.$touched] !== true) {
-          return;
-        }
-        const changes = object[exports.$changes];
-        if ((0, core_1.isSchema)(node)) {
-          for (const prop in changes.changes) {
-            delete changes.changes[prop];
-          }
-          for (let i = 0; i < node.fields.length; i++) {
-            clearObservedChangesInner(object[node.keys[i]], node.fields[i]);
-          }
-        } else if ("element" in node) {
-          const element = node.element;
-          switch (node[core_1.$kind]) {
-            case core_1.FieldKind.Array: {
-              for (const prop in changes.changes) {
-                delete changes.changes[prop];
-              }
-              for (let i = 0; i < object.length; i++) {
-                clearObservedChangesInner(object[i], element);
-              }
-              break;
-            }
-            case core_1.FieldKind.Object: {
-              for (const prop in changes.changes) {
-                delete changes.changes[prop];
-              }
-              for (const prop in object) {
-                clearObservedChangesInner(object[prop], element);
-              }
-              break;
-            }
-            case core_1.FieldKind.Set: {
-              (0, core_1.mutableEmpty)(changes.changes.add);
-              (0, core_1.mutableEmpty)(changes.changes.delete);
-              break;
-            }
-            case core_1.FieldKind.Map: {
-              ;
-              changes.changes.clear();
-              object.forEach((value) => clearObservedChangesInner(value, element));
-              break;
-            }
-          }
-        }
-        changes.dirty = false;
-        object[exports.$touched] = false;
-      }
-      function clearObservedChanges(component19) {
-        const self = exports.$self in component19 ? component19[exports.$self] : component19;
-        const node = internal_1.UNSAFE_internals.model[(0, component_1.getSchemaId)(self)];
-        return clearObservedChangesInner(self, node);
-      }
-      exports.clearObservedChanges = clearObservedChanges;
-      function getFieldValue(node, object, fieldId, traverse) {
-        let t = 0;
-        let key = null;
-        let ref = object;
-        outer:
-          while (node.id !== fieldId) {
-            if ((0, core_1.isField)(node)) {
-              (0, core_1.assert)("element" in node);
-              key = traverse[t++];
-              switch (node[core_1.$kind]) {
-                case core_1.FieldKind.Array:
-                case core_1.FieldKind.Object:
-                  ref = ref[key];
-                  break;
-                case core_1.FieldKind.Map:
-                  ref = ref.get(key);
-                  break;
-                default:
-                  throw new Error("Failed to apply change: invalid target field");
-              }
-              node = node.element;
-            } else {
-              for (let i = 0; i < node.fields.length; i++) {
-                const child = node.fields[i];
-                if (child.lo <= fieldId && child.hi >= fieldId) {
-                  key = node.keys[i];
-                  node = child;
-                  if (node.id !== fieldId) {
-                    ref = ref[key];
-                  }
-                  continue outer;
-                }
-              }
-            }
-          }
-        return ref;
-      }
-      exports.getFieldValue = getFieldValue;
-      function createPatchInner(object, patch = { changes: new Map(), children: new Map() }) {
-        const self = object[exports.$self];
-        const { [exports.$changes]: { node, changes } } = self;
-        const simple = (0, core_1.isSimple)(node);
-        if ((0, core_1.isSchema)(node)) {
-          if (simple) {
-            for (let i = 0; i < node.fields.length; i++) {
-              const key = node.keys[i];
-              if (key in changes)
-                patch.changes.set(key, self[key]);
-            }
-          } else {
-            for (let i = 0; i < node.fields.length; i++) {
-              const key = node.keys[i];
-              const value = self[key];
-              if (key in changes)
-                patch.changes.set(key, value);
-              if (value[exports.$touched]) {
-                patch.children.set(key, createPatchInner(value, patch.children.get(key)));
-              }
-            }
-          }
-        } else if ("element" in node) {
-          switch (node[core_1.$kind]) {
-            case core_1.FieldKind.Array:
-              if (simple) {
-                for (let i = 0; i < self.length; i++) {
-                  if (i in changes)
-                    patch.changes.set(i, self[i]);
-                }
-              } else {
-                for (let i = 0; i < self.length; i++) {
-                  const value = self[i];
-                  if (i in changes)
-                    patch.changes.set(i, value);
-                  if (value[exports.$touched])
-                    patch.children.set(i, createPatchInner(value, patch.children.get(i)));
-                }
-              }
-              break;
-            case core_1.FieldKind.Map:
-              if (simple) {
-                ;
-                changes.forEach((value, key) => patch.changes.set(key, value));
-              } else {
-                ;
-                self.forEach((value, key) => {
-                  if (changes.has(key)) {
-                    patch.changes.set(key, value);
-                    if (value[exports.$touched])
-                      patch.children.set(key, createPatchInner(value, patch.children.get(key)));
-                  }
-                });
-              }
-              break;
-          }
-        }
-        return patch;
-      }
-      function createPatch(component19, patch = {
-        schemaId: (0, component_1.getSchemaId)(component19),
-        children: new Map(),
-        changes: new Map()
-      }) {
-        if (exports.$changes in component19) {
-          createPatchInner(component19, patch);
-        }
-        return patch;
-      }
-      exports.createPatch = createPatch;
-      function resetPatch(patch) {
-        patch.changes.clear();
-        patch.children.clear();
-      }
-      exports.resetPatch = resetPatch;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/type.js
-  var require_type2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/type.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.typeIsSuperset = exports.normalizeType = void 0;
-      function normalizeType(type) {
-        return type.slice().sort((a, b) => a - b);
-      }
-      exports.normalizeType = normalizeType;
-      function typeIsSuperset(right, left) {
-        let i = 0;
-        let j = 0;
-        if (right.length < left.length) {
-          return false;
-        }
-        while (i < right.length && j < left.length) {
-          if (right[i] < left[j]) {
-            i++;
-          } else if (right[i] === left[j]) {
-            i++;
-            j++;
-          } else {
-            return false;
-          }
-        }
-        return j === left.length;
-      }
-      exports.typeIsSuperset = typeIsSuperset;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/query.js
-  var require_query2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/query.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createQuery = void 0;
-      var core_1 = require_cjs2();
-      var component_1 = require_component2();
-      var internal_1 = require_internal();
-      var type_1 = require_type2();
-      var ERROR_MSG_UNBOUND_QUERY = "a query must be executed within a system or bound to a world using Query.bind()";
-      function matchesTypeInner(typeA, typeB, filters) {
-        return (0, type_1.typeIsSuperset)(typeB, typeA) && typeB.every((c) => !filters.not.has(c));
-      }
-      function createQueryInternal(options) {
-        var _a, _b;
-        const length = options.select.length;
-        const filters = (_a = options.filters) !== null && _a !== void 0 ? _a : { not: new Set() };
-        const type = (0, type_1.normalizeType)(options.select.map((schema) => (0, component_1.registerSchema)(schema)));
-        const layout = ((_b = options.include) !== null && _b !== void 0 ? _b : options.select).map((schema) => (0, component_1.registerSchema)(schema));
-        const recordsIndex = [];
-        const pool = (0, core_1.createStackPool)(() => [], (components) => {
-          (0, core_1.mutableEmpty)(components);
-          return components;
-        }, 1e3);
-        let boundWorldId = options.boundWorldId;
-        function maybeRegisterArchetype(archetype, records) {
-          if (matchesTypeInner(type, archetype.type, filters)) {
-            const columns = layout.map((schemaId) => archetype.table[archetype.type.indexOf(schemaId)]);
-            records.push([
-              archetype.entities,
-              columns,
-              archetype.indices
-            ]);
-          }
-        }
-        function registerWorld(worldId) {
-          const world = internal_1.UNSAFE_internals.worlds[worldId];
-          const records = [];
-          recordsIndex[worldId] = records;
-          world.storage.archetypes.forEach((archetype) => maybeRegisterArchetype(archetype, records));
-          world.storage.archetypeCreated.subscribe((archetype) => maybeRegisterArchetype(archetype, records));
-          return records;
-        }
-        function forEach(iteratee) {
-          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
-          (0, core_1.assert)(worldId !== null && worldId !== -1, ERROR_MSG_UNBOUND_QUERY, core_1.ErrorType.Query);
-          const records = recordsIndex[worldId] || registerWorld(worldId);
-          const components = pool.retain();
-          for (let i = 0; i < records.length; i++) {
-            const [entities, columns] = records[i];
-            for (let j = 0; j < entities.length; j++) {
-              for (let k = 0; k < length; k++) {
-                components[k] = columns[k][j];
-              }
-              iteratee(entities[j], components);
-            }
-          }
-          pool.release(components);
-        }
-        function iterator() {
-          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
-          (0, core_1.assert)(worldId !== null && worldId !== -1, ERROR_MSG_UNBOUND_QUERY, core_1.ErrorType.Query);
-          return (recordsIndex[worldId] || registerWorld(worldId))[Symbol.iterator]();
-        }
-        function not(...exclude) {
-          return createQueryInternal({
-            ...options,
-            filters: {
-              not: new Set(exclude.map((schema) => internal_1.UNSAFE_internals.schemaIndex.get(schema)).filter((x) => typeof x === "number"))
-            }
-          });
-        }
-        function select(...include) {
-          return createQueryInternal({ ...options, include });
-        }
-        function get(entity, out = []) {
-          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
-          const records = recordsIndex[worldId];
-          for (let i = 0; i < records.length; i++) {
-            const [, columns, indices] = records[i];
-            const index = indices[entity];
-            if (index !== void 0) {
-              for (let i2 = 0; i2 < columns.length; i2++) {
-                out[i2] = columns[i2][index];
-              }
-              return out;
-            }
-          }
-          throw new Error("Failed to get components of query: entity does not match query");
-        }
-        function bind(world) {
-          return createQueryInternal({
-            ...options,
-            boundWorldId: world.id
-          });
-        }
-        function test(entity) {
-          const worldId = boundWorldId !== null && boundWorldId !== void 0 ? boundWorldId : internal_1.UNSAFE_internals.currentWorldId;
-          const records = recordsIndex[worldId];
-          for (let i = 0; i < records.length; i++) {
-            const record = records[i];
-            if (record[2][entity] !== void 0) {
-              return true;
-            }
-          }
-          return false;
-        }
-        let _type = type;
-        function matchesType(type2) {
-          return matchesTypeInner(_type, type2, filters);
-        }
-        function equals(query2) {
-          if (query2.type.length !== type.length) {
-            return false;
-          }
-          for (let i = 0; i < query2.type.length; i++) {
-            if (query2.type[i] !== type[i]) {
-              return false;
-            }
-          }
-          if (query2.filters.not.size !== filters.not.size) {
-            return false;
-          }
-          let result = true;
-          query2.filters.not.forEach((schemaId) => result = result && filters.not.has(schemaId));
-          return result;
-        }
-        function match(components, out = []) {
-          for (let i = 0; i < layout.length; i++) {
-            out[i] = null;
-          }
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            const index = layout.indexOf((0, component_1.getSchemaId)(component19));
-            if (index !== -1) {
-              out[index] = component19;
-            }
-          }
-          return out;
-        }
-        const query = forEach;
-        query[Symbol.iterator] = iterator;
-        query.type = type;
-        query.filters = filters;
-        query.not = not;
-        query.select = select;
-        query.get = get;
-        query.bind = bind;
-        query.test = test;
-        query.matchesType = matchesType;
-        query.equals = equals;
-        query.match = match;
-        return query;
-      }
-      function createQuery17(...select) {
-        return createQueryInternal({ select });
-      }
-      exports.createQuery = createQuery17;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/topic.js
-  var require_topic2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/topic.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createTopic = void 0;
-      var core_1 = require_cjs2();
-      var createTopic2 = () => {
-        const staged = [];
-        const ready = [];
-        const push = (event) => staged.push(event);
-        const pushImmediate = (event) => ready.push(event);
-        const flush = () => {
-          (0, core_1.mutableEmpty)(ready);
-          const len = staged.length;
-          for (let i = len - 1; i >= 0; i--) {
-            ready[i] = staged.pop();
-          }
-        };
-        const clear = () => {
-          (0, core_1.mutableEmpty)(staged);
-          (0, core_1.mutableEmpty)(ready);
-        };
-        return {
-          *[Symbol.iterator]() {
-            for (let i = 0; i < ready.length; i++) {
-              yield ready[i];
-            }
-          },
-          push,
-          pushImmediate,
-          flush,
-          clear
-        };
-      };
-      exports.createTopic = createTopic2;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/archetype.js
-  var require_archetype2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/archetype.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createArchetype = void 0;
-      var core_1 = require_cjs2();
-      var component_1 = require_component2();
-      var type_1 = require_type2();
-      function hydrateTableFromSnapshot(table, type) {
-        return table.map((column, i) => {
-          const schemaId = type[i];
-          return column.slice().map((component19) => (0, component_1.toComponentFromType)(component19, schemaId));
-        });
-      }
-      function createArchetypeStateFromSnapshot(snapshot) {
-        const entities = Object.keys(snapshot.indices).map(Number);
-        const indices = (0, core_1.unpackSparseArray)(snapshot.indices);
-        const type = (0, type_1.normalizeType)(snapshot.type);
-        const table = hydrateTableFromSnapshot(snapshot.table, type);
-        return { entities, indices, type, table };
-      }
-      function createStore(options) {
-        if ("snapshot" in options) {
-          return createArchetypeStateFromSnapshot(options.snapshot);
-        }
-        const type = (0, type_1.normalizeType)(options.type);
-        const table = type.map(() => []);
-        return { entities: [], indices: [], type, table };
-      }
-      function invertSignature(signature) {
-        return signature.reduce((a, x, i) => {
-          a[x] = i;
-          return a;
-        }, []);
-      }
-      function createArchetype(options) {
-        const { table, indices, entities, type } = createStore(options);
-        const typeInverse = invertSignature(type);
-        function insert(entity, components) {
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            const schemaIndex = typeInverse[(0, component_1.getSchemaId)(component19)];
-            table[schemaIndex].push(component19);
-          }
-          indices[entity] = entities.push(entity) - 1;
-        }
-        function remove(entity) {
-          const length = entities.length;
-          const index = indices[entity];
-          const head = entities.pop();
-          delete indices[entity];
-          if (index === length - 1) {
-            for (const column of table)
-              column.pop();
-          } else {
-            for (const column of table) {
-              column[index] = column.pop();
-            }
-            entities[index] = head;
-            indices[head] = index;
-          }
-        }
-        return {
-          entities,
-          indices,
-          insert,
-          remove,
-          type,
-          typeInverse,
-          table
-        };
-      }
-      exports.createArchetype = createArchetype;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/storage.js
-  var require_storage2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/storage.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createStorage = void 0;
-      var core_1 = require_cjs2();
-      var archetype_1 = require_archetype2();
-      var component_1 = require_component2();
-      var internal_1 = require_internal();
-      var signal_1 = require_signal2();
-      var ERROR_ENTITY_NOT_CREATED = "Failed to locate entity: entity has not been created";
-      var ERROR_ALREADY_DESTROYED = "Failed to locate entity: entity has been destroyed";
-      var ERROR_NO_SCHEMA = "Failed to locate component: schema not registered";
-      function createStorage(options = {}) {
-        const archetypes = options.snapshot ? options.snapshot.archetypes.map((snapshot) => (0, archetype_1.createArchetype)({ snapshot })) : [(0, archetype_1.createArchetype)({ type: [] })];
-        const entityIndex = [];
-        const entityRelocating = (0, signal_1.createSignal)();
-        const entityRelocated = (0, signal_1.createSignal)();
-        const archetypeCreated = (0, signal_1.createSignal)();
-        function findArchetype(components) {
-          const length = components.length;
-          outer:
-            for (let i = 0; i < archetypes.length; i++) {
-              const archetype = archetypes[i];
-              const { type, typeInverse } = archetype;
-              if (type.length !== length) {
-                continue;
-              }
-              for (let j = 0; j < length; j++) {
-                if (typeInverse[(0, component_1.getSchemaId)(components[j])] === void 0) {
-                  continue outer;
-                }
-              }
-              return archetype;
-            }
-          return null;
-        }
-        function findOrCreateArchetype(components) {
-          let archetype = findArchetype(components);
-          if (archetype === null) {
-            archetype = (0, archetype_1.createArchetype)({
-              type: components.map(component_1.getSchemaId)
-            });
-            archetypes.push(archetype);
-            archetypeCreated.dispatch(archetype);
-          }
-          return archetype;
-        }
-        function getEntityArchetype(entity) {
-          const archetype = entityIndex[entity];
-          (0, core_1.assert)(archetype !== void 0, ERROR_ENTITY_NOT_CREATED);
-          (0, core_1.assert)(archetype !== null, ERROR_ALREADY_DESTROYED);
-          return archetype;
-        }
-        function relocate(prev, entity, components, changed) {
-          const next = findOrCreateArchetype(components);
-          entityRelocating.dispatch(entity, prev, next, changed);
-          prev.remove(entity);
-          next.insert(entity, components);
-          entityIndex[entity] = next;
-          entityRelocated.dispatch(entity, prev, next, changed);
-        }
-        function attachComponents(entity, components) {
-          const source = entityIndex[entity];
-          if (source === void 0 || source === null) {
-            const archetype = findOrCreateArchetype(components);
-            entityRelocating.dispatch(entity, archetypes[0], archetype, components);
-            archetype.insert(entity, components);
-            entityIndex[entity] = archetype;
-            entityRelocated.dispatch(entity, archetypes[0], archetype, components);
-          } else {
-            const index = source.indices[entity];
-            const final = components.slice();
-            for (let i = 0; i < source.type.length; i++) {
-              const schemaId = source.type[i];
-              if (components.find((c) => (0, component_1.getSchemaId)(c) === schemaId)) {
-                continue;
-              }
-              final.push(source.table[i][index]);
-            }
-            relocate(source, entity, final, components);
-          }
-        }
-        function detachBySchemaId(entity, type) {
-          const source = getEntityArchetype(entity);
-          const removed = [];
-          const final = [];
-          const index = source.indices[entity];
-          for (let i = 0; i < source.type.length; i++) {
-            const schemaId = source.type[i];
-            const component19 = source.table[i][index];
-            (type.includes(schemaId) ? removed : final).push(component19);
-          }
-          relocate(source, entity, final, removed);
-        }
-        function clearComponents(entity) {
-          const archetype = getEntityArchetype(entity);
-          detachBySchemaId(entity, archetype.type);
-          entityIndex[entity] = null;
-        }
-        const tmpComponentsToInsert = [];
-        function attachOrUpdateComponents(entity, components) {
-          const archetype = getEntityArchetype(entity);
-          const index = archetype.indices[entity];
-          (0, core_1.mutableEmpty)(tmpComponentsToInsert);
-          for (let i = 0; i < components.length; i++) {
-            const component19 = components[i];
-            const column = archetype.typeInverse[(0, component_1.getSchemaId)(component19)];
-            if (column === void 0) {
-              tmpComponentsToInsert.push(component19);
-            } else {
-              Object.assign(archetype.table[column][index], component19);
-            }
-          }
-          if (tmpComponentsToInsert.length > 0) {
-            attachComponents(entity, tmpComponentsToInsert);
-          }
-        }
-        function hasComponentOfSchema(entity, schema) {
-          const archetype = getEntityArchetype(entity);
-          const type = internal_1.UNSAFE_internals.schemaIndex.get(schema);
-          (0, core_1.assert)(type !== void 0, ERROR_NO_SCHEMA);
-          return archetype.type.includes(type);
-        }
-        function getComponentBySchema(entity, schema) {
-          const type = internal_1.UNSAFE_internals.schemaIndex.get(schema);
-          (0, core_1.assert)(type !== void 0, ERROR_NO_SCHEMA);
-          return getComponentBySchemaId(entity, type);
-        }
-        function getComponentBySchemaId(entity, schemaId) {
-          const archetype = getEntityArchetype(entity);
-          const column = archetype.typeInverse[schemaId];
-          if (column === void 0) {
-            return null;
-          }
-          const entityIndex2 = archetype.indices[entity];
-          return archetype.table[column][entityIndex2];
-        }
-        function getAllComponents(entity) {
-          const archetype = getEntityArchetype(entity);
-          const entityIndex2 = archetype.indices[entity];
-          const result = [];
-          for (let i = 0; i < archetype.table.length; i++) {
-            result.push(archetype.table[i][entityIndex2]);
-          }
-          return result;
-        }
-        function clear() {
-          (0, core_1.mutableEmpty)(archetypes);
-          (0, core_1.mutableEmpty)(entityIndex);
-        }
-        function createSnapshot() {
-          return {
-            archetypes: archetypes.map((archetype) => ({
-              type: archetype.type.slice(),
-              table: archetype.table.map((column) => column.map((component19) => ({ ...component19 }))),
-              indices: (0, core_1.packSparseArray)(archetype.indices)
-            }))
-          };
-        }
-        return {
-          archetypeCreated,
-          archetypes,
-          attachComponents,
-          attachOrUpdateComponents,
-          clear,
-          clearComponents,
-          detachBySchemaId,
-          entityRelocated,
-          entityRelocating,
-          getComponentBySchemaId,
-          getComponentBySchema,
-          getAllComponents,
-          createSnapshot,
-          hasComponentOfSchema
-        };
-      }
-      exports.createStorage = createStorage;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/world.js
-  var require_world2 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/world.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.createWorld = exports.DeferredOpType = void 0;
-      var core_1 = require_cjs2();
-      var component_1 = require_component2();
-      var internal_1 = require_internal();
-      var storage_1 = require_storage2();
-      var $systemId = Symbol("javelin_system_id");
-      var DeferredOpType;
-      (function(DeferredOpType2) {
-        DeferredOpType2[DeferredOpType2["Create"] = 0] = "Create";
-        DeferredOpType2[DeferredOpType2["Attach"] = 1] = "Attach";
-        DeferredOpType2[DeferredOpType2["Detach"] = 2] = "Detach";
-        DeferredOpType2[DeferredOpType2["Destroy"] = 3] = "Destroy";
-      })(DeferredOpType = exports.DeferredOpType || (exports.DeferredOpType = {}));
-      function createWorld3(options = {}) {
-        var _a, _b;
-        const { topics = [] } = options;
-        const systems = [];
-        const deferredOps = [];
-        const destroyed = new Set();
-        const storage = (0, storage_1.createStorage)({ snapshot: (_a = options.snapshot) === null || _a === void 0 ? void 0 : _a.storage });
-        let entityIds = 0;
-        let systemIds = 0;
-        (_b = options.systems) === null || _b === void 0 ? void 0 : _b.forEach(addSystem);
-        function createDeferredOp(...args) {
-          const deferred = [];
-          for (let i = 0; i < args.length; i++) {
-            deferred[i] = args[i];
-          }
-          return deferred;
-        }
-        function maybeReleaseComponent(component19) {
-          const pool = internal_1.UNSAFE_internals.schemaPools.get((0, component_1.getSchemaId)(component19));
-          if (pool && Reflect.get(component19, component_1.$pool)) {
-            pool.release(component19);
-          }
-        }
-        function addSystem(system) {
-          systems.push(system);
-          system[$systemId] = systemIds++;
-        }
-        function removeSystem(system) {
-          const index = systems.indexOf(system);
-          if (index > -1) {
-            systems.splice(index, 1);
-          }
-        }
-        function addTopic(topic) {
-          topics.push(topic);
-        }
-        function removeTopic(topic) {
-          const index = topics.indexOf(topic);
-          if (index > -1) {
-            topics.splice(index, 1);
-          }
-        }
-        function create(...components) {
-          const entity = entityIds++;
-          if (components.length > 0) {
-            deferredOps.push(createDeferredOp(DeferredOpType.Attach, entity, components));
-          }
-          return entity;
-        }
-        function attach(entity, ...components) {
-          deferredOps.push(createDeferredOp(DeferredOpType.Attach, entity, components));
-        }
-        function attachImmediate(entity, components) {
-          storage.attachComponents(entity, components);
-        }
-        function detach(entity, ...components) {
-          if (components.length === 0) {
-            return;
-          }
-          const schemaIds = components.map((c) => {
-            var _a2;
-            return typeof c === "number" ? c : (_a2 = internal_1.UNSAFE_internals.schemaIndex.get(c)) !== null && _a2 !== void 0 ? _a2 : (0, component_1.getSchemaId)(c);
-          });
-          deferredOps.push(createDeferredOp(DeferredOpType.Detach, entity, schemaIds));
-        }
-        function detachImmediate(entity, schemaIds) {
-          const components = [];
-          for (let i = 0; i < schemaIds.length; i++) {
-            const schemaId = schemaIds[i];
-            const component19 = storage.getComponentBySchemaId(entity, schemaId);
-            (0, core_1.assert)(component19 !== null, `Failed to detach component: entity does not have component of type ${schemaId}`);
-            components.push(component19);
-          }
-          storage.detachBySchemaId(entity, schemaIds);
-          components.forEach(maybeReleaseComponent);
-        }
-        function destroy(entity) {
-          if (destroyed.has(entity)) {
-            return;
-          }
-          deferredOps.push(createDeferredOp(DeferredOpType.Destroy, entity));
-          destroyed.add(entity);
-        }
-        function destroyImmediate(entity) {
-          storage.clearComponents(entity);
-        }
-        function has(entity, schema) {
-          (0, component_1.registerSchema)(schema);
-          return storage.hasComponentOfSchema(entity, schema);
-        }
-        function get(entity, schema) {
-          (0, component_1.registerSchema)(schema);
-          const component19 = storage.getComponentBySchema(entity, schema);
-          if (component19 === null) {
-            throw new Error("Failed to get component: entity does not have component");
-          }
-          return component19;
-        }
-        function tryGet(entity, schema) {
-          try {
-            (0, component_1.registerSchema)(schema);
-            return storage.getComponentBySchema(entity, schema);
-          } catch (error) {
-            return null;
-          }
-        }
-        function reset() {
-          destroyed.clear();
-          (0, core_1.mutableEmpty)(deferredOps);
-          (0, core_1.mutableEmpty)(systems);
-          topics.forEach((topic) => topic.clear());
-          (0, core_1.mutableEmpty)(topics);
-          entityIds = 0;
-          world.latestTick = -1;
-          world.latestTickData = null;
-          world.latestSystemId = -1;
-          for (let i = 0; i < storage.archetypes.length; i++) {
-            const archetype = storage.archetypes[i];
-            for (let j = 0; j < archetype.type.length; j++) {
-              const column = archetype.table[j];
-              const componentPool = internal_1.UNSAFE_internals.schemaPools.get(archetype.type[j]);
-              for (let k = 0; k < column.length; k++) {
-                const component19 = column[k];
-                componentPool === null || componentPool === void 0 ? void 0 : componentPool.release(component19);
-              }
-            }
-          }
-          storage.clear();
-        }
-        function createSnapshot() {
-          return {
-            storage: storage.createSnapshot()
-          };
-        }
-        function applyAttachOp(op) {
-          const [, entity, components] = op;
-          attachImmediate(entity, components);
-        }
-        function applyDetachOp(op) {
-          const [, entity, schemaIds] = op;
-          detachImmediate(entity, schemaIds);
-        }
-        function applyDestroyOp(op) {
-          const [, entity] = op;
-          destroyImmediate(entity);
-        }
-        function applyDeferredOp(deferred) {
-          switch (deferred[0]) {
-            case DeferredOpType.Attach:
-              applyAttachOp(deferred);
-              break;
-            case DeferredOpType.Detach:
-              applyDetachOp(deferred);
-              break;
-            case DeferredOpType.Destroy:
-              applyDestroyOp(deferred);
-              break;
-          }
-        }
-        function step(data) {
-          let prevWorld = internal_1.UNSAFE_internals.currentWorldId;
-          internal_1.UNSAFE_internals.currentWorldId = id;
-          world.latestTickData = data;
-          for (let i = 0; i < deferredOps.length; i++) {
-            applyDeferredOp(deferredOps[i]);
-          }
-          (0, core_1.mutableEmpty)(deferredOps);
-          for (let i = 0; i < topics.length; i++) {
-            topics[i].flush();
-          }
-          for (let i = 0; i < systems.length; i++) {
-            const system = systems[i];
-            world.latestSystemId = system[$systemId];
-            system(world);
-          }
-          destroyed.clear();
-          world.latestTick++;
-          internal_1.UNSAFE_internals.currentWorldId = prevWorld;
-        }
-        const id = internal_1.UNSAFE_internals.worldIds++;
-        const world = {
-          id,
-          storage,
-          latestTick: -1,
-          latestTickData: null,
-          latestSystemId: -1,
-          attach,
-          attachImmediate,
-          addSystem,
-          addTopic,
-          create,
-          destroy,
-          destroyImmediate,
-          get,
-          createSnapshot,
-          has,
-          detach,
-          detachImmediate,
-          removeSystem,
-          removeTopic,
-          reset,
-          step,
-          tryGet
-        };
-        internal_1.UNSAFE_internals.worlds.push(world);
-        return world;
-      }
-      exports.createWorld = createWorld3;
-    }
-  });
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js
-  var require_cjs4 = __commonJS({
-    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js"(exports) {
-      "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      });
-      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
-            __createBinding(exports2, m, p);
-      };
-      Object.defineProperty(exports, "__esModule", { value: true });
-      exports.UNSAFE_setModel = exports.UNSAFE_modelChanged = exports.UNSAFE_internals = exports.string = exports.setOf = exports.objectOf = exports.number = exports.mapOf = exports.boolean = exports.arrayOf = void 0;
-      var core_1 = require_cjs2();
-      Object.defineProperty(exports, "arrayOf", { enumerable: true, get: function() {
-        return core_1.arrayOf;
-      } });
-      Object.defineProperty(exports, "boolean", { enumerable: true, get: function() {
-        return core_1.boolean;
-      } });
-      Object.defineProperty(exports, "mapOf", { enumerable: true, get: function() {
-        return core_1.mapOf;
-      } });
-      Object.defineProperty(exports, "number", { enumerable: true, get: function() {
-        return core_1.number;
-      } });
-      Object.defineProperty(exports, "objectOf", { enumerable: true, get: function() {
-        return core_1.objectOf;
-      } });
-      Object.defineProperty(exports, "setOf", { enumerable: true, get: function() {
-        return core_1.setOf;
-      } });
-      Object.defineProperty(exports, "string", { enumerable: true, get: function() {
-        return core_1.string;
-      } });
-      __exportStar(require_component2(), exports);
-      __exportStar(require_effect2(), exports);
-      __exportStar(require_effects3(), exports);
-      __exportStar(require_effect_utils(), exports);
-      __exportStar(require_entity(), exports);
-      var internal_1 = require_internal();
-      Object.defineProperty(exports, "UNSAFE_internals", { enumerable: true, get: function() {
-        return internal_1.UNSAFE_internals;
-      } });
-      Object.defineProperty(exports, "UNSAFE_modelChanged", { enumerable: true, get: function() {
-        return internal_1.UNSAFE_modelChanged;
-      } });
-      Object.defineProperty(exports, "UNSAFE_setModel", { enumerable: true, get: function() {
-        return internal_1.UNSAFE_setModel;
-      } });
-      __exportStar(require_observe(), exports);
-      __exportStar(require_query2(), exports);
-      __exportStar(require_topic2(), exports);
-      __exportStar(require_world2(), exports);
-    }
-  });
-
   // pnp:/home/jumplink/Projekte/PixelRPG/examples/tuxemon/src/worlds/game.world.ts
-  var import_ecs39 = __toModule(require_cjs());
+  var import_ecs37 = __toModule(require_cjs2());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/index.ts
   var import_phaser = __toModule(require_phaser());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/align-position.component.ts
-  var import_ecs = __toModule(require_cjs4());
+  var import_ecs = __toModule(require_cjs2());
   var AlignPosition = {
     type: import_ecs.number,
     toEntry: import_ecs.number
@@ -83711,7 +81830,7 @@
   var AlignPositionComponent = (0, import_ecs.component)(AlignPosition);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/animation.component.ts
-  var import_ecs2 = __toModule(require_cjs4());
+  var import_ecs2 = __toModule(require_cjs2());
   var Animation = {
     key: import_ecs2.string,
     frames: {
@@ -83727,255 +81846,240 @@
   var AnimationComponent = (0, import_ecs2.component)(Animation);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-atlas.component.ts
-  var import_ecs3 = __toModule(require_cjs4());
+  var import_ecs3 = __toModule(require_cjs2());
   var AssetAtlas = {
     key: import_ecs3.string,
     url: import_ecs3.string,
     xhrSettingsJsonUrl: import_ecs3.string,
     loaded: import_ecs3.boolean
   };
-  var AssetAtlasComponent = (0, import_ecs3.component)(AssetAtlas, { loaded: false });
+  var createAssetAtlasComponent = (props) => {
+    props = { loaded: false, ...props };
+    return (0, import_ecs3.component)(AssetAtlas, props);
+  };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-image.component.ts
-  var import_ecs7 = __toModule(require_cjs4());
+  var import_ecs5 = __toModule(require_cjs2());
 
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/schemata/create-nullable-object-type.ts
-  var import_ecs4 = __toModule(require_cjs4());
-  var createNullableObjectType = () => {
-    return (0, import_ecs4.createDataType)({
-      name: "nullableObject",
-      create(value = null) {
-        return value;
-      },
-      reset(c, key, value = null) {
-        c[key] = value;
-      }
-    });
-  };
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/schemata/create-object-type.ts
-  var import_ecs5 = __toModule(require_cjs4());
-  var createObjectType = () => {
-    return (0, import_ecs5.createDataType)({
-      name: "object",
-      create(value = {}) {
-        return value;
-      },
-      reset(c, key, value = {}) {
-        c[key] = value;
-      }
-    });
-  };
-
-  // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/schemata/tilemap.ts
-  var import_ecs6 = __toModule(require_cjs4());
-  var tilemap = {
-    key: import_ecs6.string,
-    url: import_ecs6.string,
-    xhrSettings: createObjectType(),
-    phaserMap: createNullableObjectType()
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/schemata/xhr-settings.ts
+  var import_ecs4 = __toModule(require_cjs2());
+  var xhrSettings = {
+    responseType: import_ecs4.string,
+    async: import_ecs4.boolean,
+    user: import_ecs4.string,
+    password: import_ecs4.string,
+    timeout: import_ecs4.number,
+    headers: (0, import_ecs4.objectOf)(import_ecs4.string),
+    header: import_ecs4.string,
+    headerValue: import_ecs4.string,
+    requestedWith: import_ecs4.string,
+    overrideMimeType: import_ecs4.string,
+    withCredentials: import_ecs4.boolean
   };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-image.component.ts
   var AssetImage = {
-    key: import_ecs7.string,
-    url: import_ecs7.string,
-    name: import_ecs7.string,
-    xhrSettings: createObjectType(),
-    loaded: import_ecs7.boolean
+    key: import_ecs5.string,
+    url: import_ecs5.string,
+    name: import_ecs5.string,
+    xhrSettings: (0, import_ecs5.objectOf)(xhrSettings),
+    loaded: import_ecs5.boolean
   };
-  var AssetImageComponent = (0, import_ecs7.component)(AssetImage, { loaded: false });
+  var AssetImageComponent = (0, import_ecs5.component)(AssetImage, { loaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-map.component.ts
-  var import_ecs8 = __toModule(require_cjs4());
+  var import_ecs6 = __toModule(require_cjs2());
   var AssetMap = {
-    key: import_ecs8.string,
-    url: import_ecs8.string,
-    loaded: import_ecs8.boolean
+    key: import_ecs6.string,
+    url: import_ecs6.string,
+    loaded: import_ecs6.boolean
   };
-  var AssetMapComponent = (0, import_ecs8.component)(AssetMap, { loaded: false });
+  var AssetMapComponent = (0, import_ecs6.component)(AssetMap, { loaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-tileset.component.ts
-  var import_ecs9 = __toModule(require_cjs4());
+  var import_ecs7 = __toModule(require_cjs2());
   var AssetTileset = {
-    key: import_ecs9.string,
-    url: import_ecs9.string,
-    loaded: import_ecs9.boolean
+    key: import_ecs7.string,
+    url: import_ecs7.string,
+    loaded: import_ecs7.boolean
   };
-  var AssetTilesetComponent = (0, import_ecs9.component)(AssetTileset, { loaded: false });
+  var AssetTilesetComponent = (0, import_ecs7.component)(AssetTileset, { loaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/camera.component.ts
-  var import_ecs10 = __toModule(require_cjs4());
+  var import_ecs8 = __toModule(require_cjs2());
   var Camera = {
-    name: import_ecs10.string,
-    isMain: import_ecs10.boolean,
+    name: import_ecs8.string,
+    isMain: import_ecs8.boolean,
     viewport: {
-      x: import_ecs10.number,
-      y: import_ecs10.number,
-      width: import_ecs10.number,
-      height: import_ecs10.number
+      x: import_ecs8.number,
+      y: import_ecs8.number,
+      width: import_ecs8.number,
+      height: import_ecs8.number
     },
-    zoom: import_ecs10.number,
+    zoom: import_ecs8.number,
     bounds: {
-      x: import_ecs10.number,
-      y: import_ecs10.number,
-      width: import_ecs10.number,
-      height: import_ecs10.number,
-      centerOn: import_ecs10.boolean
+      x: import_ecs8.number,
+      y: import_ecs8.number,
+      width: import_ecs8.number,
+      height: import_ecs8.number,
+      centerOn: import_ecs8.boolean
     }
   };
-  var CameraComponent = (0, import_ecs10.component)(Camera, { zoom: 2 });
+  var createCameraComponent = (props) => {
+    props = { zoom: 2, ...props };
+    return (0, import_ecs8.component)(Camera, props);
+  };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/position.component.ts
-  var import_ecs11 = __toModule(require_cjs4());
+  var import_ecs9 = __toModule(require_cjs2());
   var Position = {
-    x: import_ecs11.number,
-    y: import_ecs11.number
+    x: import_ecs9.number,
+    y: import_ecs9.number
   };
-  var PositionComponent = (0, import_ecs11.component)(Position);
+  var PositionComponent = (0, import_ecs9.component)(Position);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/collision.component.ts
-  var import_ecs12 = __toModule(require_cjs4());
+  var import_ecs10 = __toModule(require_cjs2());
   var Collision = {
-    collision: import_ecs12.boolean
+    collision: import_ecs10.boolean
   };
-  var CollisionComponent = (0, import_ecs12.component)(Collision, { collision: true });
+  var CollisionComponent = (0, import_ecs10.component)(Collision, { collision: true });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/debug.component.ts
-  var import_ecs13 = __toModule(require_cjs4());
+  var import_ecs11 = __toModule(require_cjs2());
   var Debug = {
-    debug: import_ecs13.boolean
+    debug: import_ecs11.boolean
   };
-  var DebugComponent = (0, import_ecs13.component)(Debug, { debug: true });
+  var DebugComponent = (0, import_ecs11.component)(Debug, { debug: true });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/depth.component.ts
-  var import_ecs14 = __toModule(require_cjs4());
+  var import_ecs12 = __toModule(require_cjs2());
   var Depth = {
-    depth: import_ecs14.number
+    depth: import_ecs12.number
   };
-  var DepthComponent = (0, import_ecs14.component)(Depth);
+  var DepthComponent = (0, import_ecs12.component)(Depth);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/map-layer.component.ts
-  var import_ecs15 = __toModule(require_cjs4());
+  var import_ecs13 = __toModule(require_cjs2());
   var MapLayer = {
-    name: import_ecs15.string,
-    x: import_ecs15.number,
-    y: import_ecs15.number,
-    assetMapEntity: import_ecs15.number,
-    tilesetEntity: import_ecs15.number,
-    collides: import_ecs15.boolean,
-    collisionProperty: import_ecs15.string
+    name: import_ecs13.string,
+    x: import_ecs13.number,
+    y: import_ecs13.number,
+    assetMapEntity: import_ecs13.number,
+    tilesetEntity: import_ecs13.number,
+    collides: import_ecs13.boolean,
+    collisionProperty: import_ecs13.string
   };
-  var MapLayerComponent = (0, import_ecs15.component)(MapLayer);
+  var MapLayerComponent = (0, import_ecs13.component)(MapLayer);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/scrollfactor.component.ts
-  var import_ecs16 = __toModule(require_cjs4());
+  var import_ecs14 = __toModule(require_cjs2());
   var Scrollfactor = {
-    x: import_ecs16.number,
-    y: import_ecs16.number
+    x: import_ecs14.number,
+    y: import_ecs14.number
   };
-  var ScrollfactorComponent = (0, import_ecs16.component)(Scrollfactor);
+  var ScrollfactorComponent = (0, import_ecs14.component)(Scrollfactor);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/sprite.component.ts
-  var import_ecs17 = __toModule(require_cjs4());
+  var import_ecs15 = __toModule(require_cjs2());
   var Sprite = {
-    key: import_ecs17.string,
-    frame: import_ecs17.string,
+    key: import_ecs15.string,
+    frame: import_ecs15.string,
     scale: {
-      x: import_ecs17.number,
-      y: import_ecs17.number
+      x: import_ecs15.number,
+      y: import_ecs15.number
     },
     size: {
-      width: import_ecs17.number,
-      height: import_ecs17.number
+      width: import_ecs15.number,
+      height: import_ecs15.number
     },
     offset: {
-      x: import_ecs17.number,
-      y: import_ecs17.number
+      x: import_ecs15.number,
+      y: import_ecs15.number
     }
   };
-  var SpriteComponent = (0, import_ecs17.component)(Sprite);
+  var SpriteComponent = (0, import_ecs15.component)(Sprite);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/player.component.ts
-  var import_ecs18 = __toModule(require_cjs4());
+  var import_ecs16 = __toModule(require_cjs2());
   var Player = {
-    name: import_ecs18.string,
-    playerNumber: import_ecs18.number
+    name: import_ecs16.string,
+    playerNumber: import_ecs16.number
   };
-  var PlayerComponent = (0, import_ecs18.component)(Player);
+  var PlayerComponent = (0, import_ecs16.component)(Player);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/text.component.ts
-  var import_ecs19 = __toModule(require_cjs4());
+  var import_ecs17 = __toModule(require_cjs2());
   var Text = {
-    text: import_ecs19.string,
-    playerEntity: import_ecs19.number,
+    text: import_ecs17.string,
+    playerEntity: import_ecs17.number,
     style: {
-      fontFamily: import_ecs19.string,
-      fontSize: import_ecs19.string,
-      fontStyle: import_ecs19.string,
-      font: import_ecs19.string,
-      backgroundColor: import_ecs19.string,
-      color: import_ecs19.string,
-      stroke: import_ecs19.string,
-      strokeThickness: import_ecs19.number,
+      fontFamily: import_ecs17.string,
+      fontSize: import_ecs17.string,
+      fontStyle: import_ecs17.string,
+      font: import_ecs17.string,
+      backgroundColor: import_ecs17.string,
+      color: import_ecs17.string,
+      stroke: import_ecs17.string,
+      strokeThickness: import_ecs17.number,
       shadow: {
-        offsetX: import_ecs19.number,
-        offsetY: import_ecs19.number,
-        color: import_ecs19.string,
-        blur: import_ecs19.number,
-        stroke: import_ecs19.boolean,
-        fill: import_ecs19.boolean
+        offsetX: import_ecs17.number,
+        offsetY: import_ecs17.number,
+        color: import_ecs17.string,
+        blur: import_ecs17.number,
+        stroke: import_ecs17.boolean,
+        fill: import_ecs17.boolean
       },
       padding: {
-        x: import_ecs19.number,
-        y: import_ecs19.number,
-        left: import_ecs19.number,
-        right: import_ecs19.number,
-        top: import_ecs19.number,
-        bottom: import_ecs19.number
+        x: import_ecs17.number,
+        y: import_ecs17.number,
+        left: import_ecs17.number,
+        right: import_ecs17.number,
+        top: import_ecs17.number,
+        bottom: import_ecs17.number
       },
-      align: import_ecs19.string,
-      maxLines: import_ecs19.number,
-      fixedWidth: import_ecs19.number,
-      fixedHeight: import_ecs19.number,
-      resolution: import_ecs19.number,
-      rtl: import_ecs19.boolean,
-      testString: import_ecs19.string,
-      baselineX: import_ecs19.number,
-      baselineY: import_ecs19.number,
+      align: import_ecs17.string,
+      maxLines: import_ecs17.number,
+      fixedWidth: import_ecs17.number,
+      fixedHeight: import_ecs17.number,
+      resolution: import_ecs17.number,
+      rtl: import_ecs17.boolean,
+      testString: import_ecs17.string,
+      baselineX: import_ecs17.number,
+      baselineY: import_ecs17.number,
       wordWrap: {
-        width: import_ecs19.number,
-        useAdvancedWrap: import_ecs19.boolean
+        width: import_ecs17.number,
+        useAdvancedWrap: import_ecs17.boolean
       },
       metrics: {
-        ascent: import_ecs19.number,
-        descent: import_ecs19.number,
-        fontSize: import_ecs19.number
+        ascent: import_ecs17.number,
+        descent: import_ecs17.number,
+        fontSize: import_ecs17.number
       }
     }
   };
-  var TextComponent = (0, import_ecs19.component)(Text);
+  var TextComponent = (0, import_ecs17.component)(Text);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/tileset.component.ts
-  var import_ecs20 = __toModule(require_cjs4());
+  var import_ecs18 = __toModule(require_cjs2());
   var Tileset = {
-    key: import_ecs20.string,
-    name: import_ecs20.string,
-    assetMapEntity: import_ecs20.number
+    key: import_ecs18.string,
+    name: import_ecs18.string,
+    assetMapEntity: import_ecs18.number
   };
-  var TilesetComponent = (0, import_ecs20.component)(Tileset);
+  var TilesetComponent = (0, import_ecs18.component)(Tileset);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/velocity.component.ts
-  var import_ecs21 = __toModule(require_cjs4());
+  var import_ecs19 = __toModule(require_cjs2());
   var Velocity = {
-    speed: import_ecs21.number,
-    x: import_ecs21.number,
-    y: import_ecs21.number
+    speed: import_ecs19.number,
+    x: import_ecs19.number,
+    y: import_ecs19.number
   };
-  var VelocityComponent = (0, import_ecs21.component)(Velocity);
+  var VelocityComponent = (0, import_ecs19.component)(Velocity);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-animation.effect.ts
-  var import_ecs22 = __toModule(require_cjs4());
+  var import_ecs20 = __toModule(require_cjs2());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/types/align-type.ts
   var AlignType;
@@ -84280,11 +82384,11 @@
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-animation.effect.ts
   var effectOptions = { shared: true };
-  var phaserAnimationEffect = (0, import_ecs22.createEffect)((world) => {
+  var phaserAnimationEffect = (0, import_ecs20.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [animations]] of (0, import_ecs22.createQuery)(Animation)) {
+      for (const [entities, [animations]] of (0, import_ecs20.createQuery)(Animation)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createAnimation(world.latestTickData.scene.anims, entities[i], animations[i]);
         }
@@ -84299,9 +82403,9 @@
   }, effectOptions);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-asset-map.effect.ts
-  var import_ecs23 = __toModule(require_cjs4());
+  var import_ecs21 = __toModule(require_cjs2());
   var effectOptions2 = { shared: true };
-  var phaserAssetMapEffect = (0, import_ecs23.createEffect)((world) => {
+  var phaserAssetMapEffect = (0, import_ecs21.createEffect)((world) => {
     const state = {
       tilesets: new Map(),
       maps: new Map(),
@@ -84309,7 +82413,7 @@
     };
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [assetMaps]] of (0, import_ecs23.createQuery)(AssetMap)) {
+      for (const [entities, [assetMaps]] of (0, import_ecs21.createQuery)(AssetMap)) {
         for (let i = 0; i < entities.length; i++) {
           const scene = world.latestTickData.scene;
           phaserService.createMap(scene, entities[i], assetMaps[i]);
@@ -84325,16 +82429,16 @@
   }, effectOptions2);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-asset-preload.effect.ts
-  var import_ecs24 = __toModule(require_cjs4());
+  var import_ecs22 = __toModule(require_cjs2());
   var effectOptions3 = { shared: true };
-  var phaserAssetPreloadEffect = (0, import_ecs24.createEffect)((world) => {
+  var phaserAssetPreloadEffect = (0, import_ecs22.createEffect)((world) => {
     const state = {};
     const onPreload = () => {
       const scene = world.latestTickData.scene;
-      const assetAtlasQuery = (0, import_ecs24.createQuery)(AssetAtlas);
-      const assetImageQuery = (0, import_ecs24.createQuery)(AssetImage);
-      const assetTilesetQuery = (0, import_ecs24.createQuery)(AssetTileset);
-      const asssetMapQuery = (0, import_ecs24.createQuery)(AssetMap);
+      const assetAtlasQuery = (0, import_ecs22.createQuery)(AssetAtlas);
+      const assetImageQuery = (0, import_ecs22.createQuery)(AssetImage);
+      const assetTilesetQuery = (0, import_ecs22.createQuery)(AssetTileset);
+      const asssetMapQuery = (0, import_ecs22.createQuery)(AssetMap);
       for (const [, [tilesets]] of assetTilesetQuery) {
         for (const tileset of tilesets) {
           scene.load.image(tileset.key, tileset.url);
@@ -84369,7 +82473,7 @@
   }, effectOptions3);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-camera.effect.ts
-  var import_ecs25 = __toModule(require_cjs4());
+  var import_ecs23 = __toModule(require_cjs2());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/helper/extend.ts
   var extend = (options = {}, extended = {}, ...objects) => {
@@ -84418,7 +82522,7 @@
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-camera.effect.ts
   var effectOptions4 = { shared: true };
-  var phaserCameraEffect = (0, import_ecs25.createEffect)((world) => {
+  var phaserCameraEffect = (0, import_ecs23.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const phaserScene = world.latestTickData.scene;
@@ -84434,7 +82538,8 @@
         width: map.widthInPixels,
         height: map.heightInPixels,
         x: 0,
-        y: 0
+        y: 0,
+        centerOn: false
       };
       if (phaserGameConfig.scale?.mode === Phaser.Scale.RESIZE) {
         const vp = getViewportDimensions();
@@ -84484,7 +82589,7 @@
       };
     };
     const attachCamerasToPlayers = () => {
-      for (const [playerEntities, [players]] of (0, import_ecs25.createQuery)(Player)) {
+      for (const [playerEntities, [players]] of (0, import_ecs23.createQuery)(Player)) {
         const playerCount = playerEntities.length;
         if (playerCount > 4) {
           throw new Error(`Currently only a maximum of 4 players are supported, but you have ${playerCount}!`);
@@ -84494,7 +82599,7 @@
           const playerEntity = playerEntities[i];
           const phaserGameObject = phaserService.getGameObject(playerEntity);
           const data = calcPlayerCamera(playerComponent, playerCount);
-          const cameraComponent = world.get(CameraComponent, {
+          const cameraComponent = createCameraComponent({
             isMain: playerComponent.playerNumber === 1,
             name: playerComponent.name,
             ...data
@@ -84506,7 +82611,7 @@
       }
     };
     const resizePlayerCameras = () => {
-      for (const [cameraEntities, [cameras, players]] of (0, import_ecs25.createQuery)(Camera, Player)) {
+      for (const [cameraEntities, [cameras, players]] of (0, import_ecs23.createQuery)(Camera, Player)) {
         const playerCount = cameraEntities.length;
         for (let i = 0; i < cameraEntities.length; i++) {
           const cameraEntity = cameraEntities[i];
@@ -84539,20 +82644,20 @@
   }, effectOptions4);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-collision.effect.ts
-  var import_ecs26 = __toModule(require_cjs4());
+  var import_ecs24 = __toModule(require_cjs2());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/constants.ts
   var TILE_COLLSION_LAYER = "collides";
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-collision.effect.ts
   var effectOptions5 = { shared: true };
-  var phaserCollisionEffect = (0, import_ecs26.createEffect)((world) => {
+  var phaserCollisionEffect = (0, import_ecs24.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
       const phaserCollisionLayers = [];
       const scene = world.latestTickData.scene;
-      for (const [entities] of (0, import_ecs26.createQuery)(MapLayerComponent, CollisionComponent)) {
+      for (const [entities] of (0, import_ecs24.createQuery)(MapLayer, Collision)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserCollisionLayer = phaserService.getLayer(entities[i]);
           phaserCollisionLayer.setCollisionByProperty({
@@ -84561,7 +82666,7 @@
           phaserCollisionLayers.push(phaserCollisionLayer);
         }
       }
-      for (const [entities] of (0, import_ecs26.createQuery)(VelocityComponent, CollisionComponent)) {
+      for (const [entities] of (0, import_ecs24.createQuery)(Velocity, Collision)) {
         for (let i = 0; i < entities.length; i++) {
           const phaserGameObject = phaserService.getGameObject(entities[i]);
           for (const phaserCollisionLayer of phaserCollisionLayers) {
@@ -84579,9 +82684,9 @@
   }, effectOptions5);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-debug.effect.ts
-  var import_ecs27 = __toModule(require_cjs4());
+  var import_ecs25 = __toModule(require_cjs2());
   var effectOptions6 = { shared: true };
-  var phaserDebugEffect = (0, import_ecs27.createEffect)((world) => {
+  var phaserDebugEffect = (0, import_ecs25.createEffect)((world) => {
     const state = {
       debug: false
     };
@@ -84591,7 +82696,7 @@
     const debugKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F1);
     const createDebugMapLayerGraphics = () => {
       const phaserDebugCollisionGraphics = scene.add.graphics().setAlpha(0.75).setDepth(20);
-      for (const [entities, [mapLayers]] of (0, import_ecs27.createQuery)(MapLayerComponent)) {
+      for (const [entities, [mapLayers]] of (0, import_ecs25.createQuery)(MapLayer)) {
         for (let i = 0; i < entities.length; i++) {
           const mapLayerComponent = mapLayers[i];
           if (mapLayerComponent.collides) {
@@ -84615,7 +82720,7 @@
       createDebugMapLayerGraphics();
     };
     const onCreate = () => {
-      const debugs = (0, import_ecs27.createQuery)(DebugComponent);
+      const debugs = (0, import_ecs25.createQuery)(Debug);
       if (debugs.length) {
         debugKey.once("down", onDebugkeyDown);
       }
@@ -84629,13 +82734,13 @@
   }, effectOptions6);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-depth.effect.ts
-  var import_ecs28 = __toModule(require_cjs4());
+  var import_ecs26 = __toModule(require_cjs2());
   var effectOptions7 = { shared: true };
-  var phaserDepthEffect = (0, import_ecs28.createEffect)((world) => {
+  var phaserDepthEffect = (0, import_ecs26.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [depths]] of (0, import_ecs28.createQuery)(Depth)) {
+      for (const [entities, [depths]] of (0, import_ecs26.createQuery)(Depth)) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setDepth !== "function") {
@@ -84655,9 +82760,9 @@
   }, effectOptions7);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-input.effect.ts
-  var import_ecs29 = __toModule(require_cjs4());
+  var import_ecs27 = __toModule(require_cjs2());
   var effectOptions8 = { shared: true };
-  var phaserInputEffect = (0, import_ecs29.createEffect)((world) => {
+  var phaserInputEffect = (0, import_ecs27.createEffect)((world) => {
     const state = null;
     const phaserService = PhaserService.getInstance();
     const getPlayerInput = (playerComponent) => {
@@ -84695,7 +82800,7 @@ This player number will be ignored.`);
       return null;
     };
     const eachUpdate = () => {
-      for (const [entities, [velocitys, players]] of (0, import_ecs29.createQuery)(Velocity, Player, Sprite)) {
+      for (const [entities, [velocitys, players]] of (0, import_ecs27.createQuery)(Velocity, Player, Sprite)) {
         for (let i = 0; i < entities.length; i++) {
           const sprite = phaserService.getSprite(entities[i]);
           const speed = velocitys[i].speed;
@@ -84748,13 +82853,13 @@ This player number will be ignored.`);
   }, effectOptions8);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-layer.effect.ts
-  var import_ecs30 = __toModule(require_cjs4());
+  var import_ecs28 = __toModule(require_cjs2());
   var effectOptions9 = { shared: true };
-  var phaserMapLayerEffect = (0, import_ecs30.createEffect)((world) => {
+  var phaserMapLayerEffect = (0, import_ecs28.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [mapLayers]] of (0, import_ecs30.createQuery)(MapLayer)) {
+      for (const [entities, [mapLayers]] of (0, import_ecs28.createQuery)(MapLayer)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createLayer(entities[i], mapLayers[i]);
         }
@@ -84769,19 +82874,19 @@ This player number will be ignored.`);
   }, effectOptions9);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-object.effect.ts
-  var import_ecs32 = __toModule(require_cjs4());
+  var import_ecs30 = __toModule(require_cjs2());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/topics/map-object.topic.ts
-  var import_ecs31 = __toModule(require_cjs4());
-  var mapObjectTopic = (0, import_ecs31.createTopic)();
+  var import_ecs29 = __toModule(require_cjs2());
+  var mapObjectTopic = (0, import_ecs29.createTopic)();
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-object.effect.ts
   var effectOptions10 = { shared: true };
-  var phaserMapObjectEffect = (0, import_ecs32.createEffect)((world) => {
+  var phaserMapObjectEffect = (0, import_ecs30.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, []] of (0, import_ecs32.createQuery)(AssetMapComponent)) {
+      for (const [entities, []] of (0, import_ecs30.createQuery)(AssetMap)) {
         for (let i = 0; i < entities.length; i++) {
           const map = phaserService.getMap(entities[i]);
           const currSpawnPoint = map.findObject("Objects", (obj) => obj.name === "Spawn Point");
@@ -84798,13 +82903,13 @@ This player number will be ignored.`);
   }, effectOptions10);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-position.effect.ts
-  var import_ecs33 = __toModule(require_cjs4());
+  var import_ecs31 = __toModule(require_cjs2());
   var effectOptions11 = { shared: true };
-  var phaserPositionEffect = (0, import_ecs33.createEffect)((world) => {
+  var phaserPositionEffect = (0, import_ecs31.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const initDirectPositions = () => {
-      for (const [entities, [positions]] of (0, import_ecs33.createQuery)(Position)) {
+      for (const [entities, [positions]] of (0, import_ecs31.createQuery)(Position)) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setPosition !== "function") {
@@ -84816,7 +82921,7 @@ This player number will be ignored.`);
       }
     };
     const updatePositions = () => {
-      for (const [entities, [positions]] of (0, import_ecs33.createQuery)(Position)) {
+      for (const [entities, [positions]] of (0, import_ecs31.createQuery)(Position)) {
         for (let i = 0; i < entities.length; i++) {
           const entry = entities[i];
           if (world.has(entry, Velocity)) {
@@ -84849,13 +82954,13 @@ This player number will be ignored.`);
   }, effectOptions11);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-scrollfactor.effect.ts
-  var import_ecs34 = __toModule(require_cjs4());
+  var import_ecs32 = __toModule(require_cjs2());
   var effectOptions12 = { shared: true };
-  var phaserScrollfactorEffect = (0, import_ecs34.createEffect)((world) => {
+  var phaserScrollfactorEffect = (0, import_ecs32.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onUpdate = () => {
-      for (const [entities, [depths]] of (0, import_ecs34.createQuery)(Scrollfactor)) {
+      for (const [entities, [depths]] of (0, import_ecs32.createQuery)(Scrollfactor)) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setScrollFactor !== "function") {
@@ -84875,16 +82980,16 @@ This player number will be ignored.`);
   }, effectOptions12);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-sprite.effect.ts
-  var import_ecs35 = __toModule(require_cjs4());
+  var import_ecs33 = __toModule(require_cjs2());
   var effectOptions13 = { shared: true };
-  var phaserSpriteEffect = (0, import_ecs35.createEffect)((world) => {
+  var phaserSpriteEffect = (0, import_ecs33.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const setSpawnPoint = (spawnPoint) => {
       if (typeof spawnPoint.x !== "number" || typeof spawnPoint.y !== "number") {
         throw new Error("A spawn point must have coordinates!");
       }
-      for (const [entities, [, positions]] of (0, import_ecs35.createQuery)(SpriteComponent, PositionComponent)) {
+      for (const [entities, [, positions]] of (0, import_ecs33.createQuery)(Sprite, Position)) {
         for (let i = 0; i < entities.length; i++) {
           const position = positions[i];
           position.x = spawnPoint.x;
@@ -84895,7 +83000,7 @@ This player number will be ignored.`);
       }
     };
     const onCreate = () => {
-      for (const [entities, [sprites]] of (0, import_ecs35.createQuery)(SpriteComponent)) {
+      for (const [entities, [sprites]] of (0, import_ecs33.createQuery)(Sprite)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createSprite(world.latestTickData.scene.physics, entities[i], sprites[i]);
         }
@@ -84918,13 +83023,13 @@ This player number will be ignored.`);
   }, effectOptions13);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-text.effect.ts
-  var import_ecs36 = __toModule(require_cjs4());
+  var import_ecs34 = __toModule(require_cjs2());
   var effectOptions14 = { shared: true };
-  var phaserTextEffect = (0, import_ecs36.createEffect)((world) => {
+  var phaserTextEffect = (0, import_ecs34.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [texts]] of (0, import_ecs36.createQuery)(Text)) {
+      for (const [entities, [texts]] of (0, import_ecs34.createQuery)(Text)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createText(world, world.latestTickData.scene, entities[i], texts[i]);
         }
@@ -84939,13 +83044,13 @@ This player number will be ignored.`);
   }, effectOptions14);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-tileset.effect.ts
-  var import_ecs37 = __toModule(require_cjs4());
+  var import_ecs35 = __toModule(require_cjs2());
   var effectOptions15 = { shared: true };
-  var phaserTilesetEffect = (0, import_ecs37.createEffect)((world) => {
+  var phaserTilesetEffect = (0, import_ecs35.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [tilesets]] of (0, import_ecs37.createQuery)(Tileset)) {
+      for (const [entities, [tilesets]] of (0, import_ecs35.createQuery)(Tileset)) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createTileset(entities[i], tilesets[i]);
         }
@@ -84960,13 +83065,13 @@ This player number will be ignored.`);
   }, effectOptions15);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-velocity.effect.ts
-  var import_ecs38 = __toModule(require_cjs4());
+  var import_ecs36 = __toModule(require_cjs2());
   var effectOptions16 = { shared: true };
-  var phaserVelocityEffect = (0, import_ecs38.createEffect)((world) => {
+  var phaserVelocityEffect = (0, import_ecs36.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
     const onCreate = () => {
-      for (const [entities, [velocitys, positions]] of (0, import_ecs38.createQuery)(Velocity, Position)) {
+      for (const [entities, [velocitys, positions]] of (0, import_ecs36.createQuery)(Velocity, Position)) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setVelocity !== "function") {
@@ -85059,36 +83164,42 @@ This player number will be ignored.`);
     constructor(config2) {
       super(config2);
       this.key = "game";
-      this.world = (0, import_ecs39.createWorld)({
+      this.world = (0, import_ecs37.createWorld)({
         topics: [mapObjectTopic],
         systems: [phaserSystem]
       });
-      const assetMapComponent = this.world.component(AssetMapComponent, {
+      const assetMapComponent = (0, import_ecs37.component)(AssetMap, {
         key: "map",
         url: "./assets/tilemaps/tuxemon-town.json"
       });
-      const assetMapEntity = this.world.spawn(assetMapComponent);
-      const assetTilesetComponent = this.world.component(AssetTilesetComponent, {
+      const assetMapEntity = this.world.create(assetMapComponent);
+      this.world.attach(assetMapEntity);
+      const assetTilesetComponent = (0, import_ecs37.component)(AssetTileset, {
         key: "tiles",
         url: "./assets/tilesets/tuxemon-sample.png"
       });
-      this.world.spawn(assetTilesetComponent);
-      const tilesetComponent = this.world.component(TilesetComponent, {
+      const tileSetEntity = this.world.create(assetTilesetComponent);
+      this.world.attach(tileSetEntity);
+      const tilesetComponent = (0, import_ecs37.component)(Tileset, {
         key: "tiles",
         name: "tuxemon-sample",
         assetMapEntity
       });
-      const tilesetEntity = this.world.spawn(tilesetComponent);
-      const mapLayer1Component = this.world.component(MapLayerComponent, {
+      const tilesetEntity = this.world.create(tilesetComponent);
+      this.world.attach(tileSetEntity);
+      const mapLayer1Component = (0, import_ecs37.component)(MapLayer, {
         name: "Below Player",
         x: 0,
         y: 0,
         assetMapEntity,
         tilesetEntity
       });
-      const mapLayer1DepthComponent = this.world.component(DepthComponent, -10);
-      this.world.spawn(mapLayer1Component, mapLayer1DepthComponent);
-      const mapLayerWorldComponent = this.world.component(MapLayerComponent, {
+      const mapLayer1DepthComponent = (0, import_ecs37.component)(Depth, {
+        depth: -10
+      });
+      const mapLayer1Entity = this.world.create(mapLayer1Component, mapLayer1DepthComponent);
+      this.world.attach(mapLayer1Entity);
+      const mapLayerWorldComponent = (0, import_ecs37.component)(MapLayer, {
         name: "World",
         x: 0,
         y: 0,
@@ -85097,19 +83208,23 @@ This player number will be ignored.`);
         collides: true,
         collisionProperty: "collides"
       });
-      const mapLayerWorldDepthComponent = this.world.component(DepthComponent, 0);
-      const mapLayerWorldCollisionComponent = this.world.component(CollisionComponent);
-      this.world.spawn(mapLayerWorldComponent, mapLayerWorldDepthComponent, mapLayerWorldCollisionComponent);
-      const mapLayer3Component = this.world.component(MapLayerComponent, {
+      const mapLayerWorldDepthComponent = (0, import_ecs37.component)(Depth, {
+        depth: 0
+      });
+      const mapLayerWorldCollisionComponent = (0, import_ecs37.component)(Collision);
+      const mapLayerWorldEntity = this.world.create(mapLayerWorldComponent, mapLayerWorldDepthComponent, mapLayerWorldCollisionComponent);
+      this.world.attach(mapLayerWorldEntity);
+      const mapLayer3Component = (0, import_ecs37.component)(MapLayer, {
         name: "Above Player",
         x: 0,
         y: 0,
         assetMapEntity,
         tilesetEntity
       });
-      const mapLayer3DepthComponent = this.world.component(DepthComponent, 10);
-      this.world.spawn(mapLayer3Component, mapLayer3DepthComponent);
-      const animationLeftWalk = this.world.component(AnimationComponent, {
+      const mapLayer3DepthComponent = (0, import_ecs37.component)(Depth, { depth: 10 });
+      const mapLayer3Entity = this.world.create(mapLayer3Component, mapLayer3DepthComponent);
+      this.world.attach(mapLayer3Entity);
+      const animationLeftWalk = (0, import_ecs37.component)(Animation, {
         key: "misa-left-walk",
         frames: {
           atlasKey: "tuxemon-misa",
@@ -85121,8 +83236,9 @@ This player number will be ignored.`);
         frameRate: 10,
         repeat: -1
       });
-      this.world.spawn(animationLeftWalk);
-      const animationRightWalk = this.world.component(AnimationComponent, {
+      const animationLeftWalkEntity = this.world.create(animationLeftWalk);
+      this.world.attach(animationLeftWalkEntity);
+      const animationRightWalk = (0, import_ecs37.component)(Animation, {
         key: "misa-right-walk",
         frames: {
           atlasKey: "tuxemon-misa",
@@ -85134,8 +83250,9 @@ This player number will be ignored.`);
         frameRate: 10,
         repeat: -1
       });
-      this.world.spawn(animationRightWalk);
-      const animationFrontWalk = this.world.component(AnimationComponent, {
+      const animationRightWalkEntity = this.world.create(animationRightWalk);
+      this.world.attach(animationRightWalkEntity);
+      const animationFrontWalk = (0, import_ecs37.component)(Animation, {
         key: "misa-front-walk",
         frames: {
           atlasKey: "tuxemon-misa",
@@ -85147,8 +83264,9 @@ This player number will be ignored.`);
         frameRate: 10,
         repeat: -1
       });
-      this.world.spawn(animationFrontWalk);
-      const animationBackWalk = this.world.component(AnimationComponent, {
+      const animationFrontWalkEntity = this.world.create(animationFrontWalk);
+      this.world.attach(animationFrontWalkEntity);
+      const animationBackWalk = (0, import_ecs37.component)(Animation, {
         key: "misa-back-walk",
         frames: {
           atlasKey: "tuxemon-misa",
@@ -85160,7 +83278,8 @@ This player number will be ignored.`);
         frameRate: 10,
         repeat: -1
       });
-      this.world.spawn(animationBackWalk);
+      const animationBackWalkEntity = this.world.create(animationBackWalk);
+      this.world.attach(animationBackWalkEntity);
       const { playerEntity: p1Entity } = this.spawnPlayer({
         name: "Player 1",
         playerNumber: 1
@@ -85170,25 +83289,31 @@ This player number will be ignored.`);
       this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
       this.spawnPlayerText(p1Entity, 'Arrow keys to move\nPress "F1" to show hitboxes');
       this.spawnPlayerText(p2Entity, p2Component.name);
-      this.world.spawn(this.world.component(DebugComponent));
+      const debugEntity = this.world.create((0, import_ecs37.component)(Debug));
+      this.world.attach(debugEntity);
     }
     spawnPlayer(playerData) {
-      const playerAssetAtlasComponent = this.world.component(AssetAtlasComponent, "tuxemon-misa", "./assets/atlas/tuxemon-misa/tuxemon-misa.png", "./assets/atlas/tuxemon-misa/tuxemon-misa.json");
-      const playerSpriteComponent = this.world.component(SpriteComponent, {
+      const playerAssetAtlasComponent = createAssetAtlasComponent({
+        key: "tuxemon-misa",
+        url: "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
+        xhrSettingsJsonUrl: "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
+      });
+      const playerSpriteComponent = (0, import_ecs37.component)(Sprite, {
         key: "tuxemon-misa",
         frame: "misa-front",
         size: { height: 15, width: 12 },
         offset: { x: 0, y: 20 }
       });
-      const playerPositionComponent = this.world.component(PositionComponent);
-      const playerVelocityComponent = this.world.component(VelocityComponent, {
+      const playerPositionComponent = (0, import_ecs37.component)(Position);
+      const playerVelocityComponent = (0, import_ecs37.component)(Velocity, {
         speed: 70,
         x: 0,
         y: 0
       });
-      const playerCollisionVelocityComponent = this.world.component(CollisionComponent);
-      const playerComponent = this.world.component(PlayerComponent, playerData);
-      const playerEntity = this.world.spawn(playerAssetAtlasComponent, playerSpriteComponent, playerPositionComponent, playerVelocityComponent, playerCollisionVelocityComponent, playerComponent);
+      const playerCollisionVelocityComponent = (0, import_ecs37.component)(Collision);
+      const playerComponent = (0, import_ecs37.component)(Player, playerData);
+      const playerEntity = this.world.create(playerAssetAtlasComponent, playerSpriteComponent, playerPositionComponent, playerVelocityComponent, playerCollisionVelocityComponent, playerComponent);
+      this.world.attach(playerEntity);
       return {
         playerEntity,
         playerAssetAtlasComponent,
@@ -85200,7 +83325,7 @@ This player number will be ignored.`);
       };
     }
     spawnPlayerText(playerEntity, text) {
-      const textComponent = this.world.component(TextComponent, {
+      const textComponent = (0, import_ecs37.component)(Text, {
         text,
         playerEntity,
         style: {
@@ -85210,33 +83335,36 @@ This player number will be ignored.`);
           backgroundColor: "#ffffff"
         }
       });
-      const textPositionComponent = this.world.component(PositionComponent, {
+      const textPositionComponent = (0, import_ecs37.component)(Position, {
         x: 16,
         y: 16
       });
-      const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
+      const scrollfactorComponent = (0, import_ecs37.component)(Scrollfactor, {
         x: 0,
         y: 0
       });
-      const textDepthComponent = this.world.component(DepthComponent, 30);
-      this.world.spawn(textComponent, textPositionComponent, scrollfactorComponent, textDepthComponent);
+      const textDepthComponent = (0, import_ecs37.component)(Depth, {
+        depth: 30
+      });
+      const textEntry = this.world.create(textComponent, textPositionComponent, scrollfactorComponent, textDepthComponent);
+      this.world.attach(textEntry);
     }
   };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/examples/tuxemon/src/worlds/menu.world.ts
-  var import_ecs40 = __toModule(require_cjs());
+  var import_ecs38 = __toModule(require_cjs2());
   var MenuWorld = class extends PhaserSceneWorld {
     constructor(config2) {
       super(config2);
       this.key = "start-menu";
-      this.world = (0, import_ecs40.createWorld)({
+      this.world = (0, import_ecs38.createWorld)({
         topics: [],
         systems: [phaserSystem]
       });
       this.spawnMenuText("Hello World");
     }
     spawnMenuText(text) {
-      const textComponent = this.world.component(TextComponent, {
+      const textComponent = (0, import_ecs38.component)(Text, {
         text,
         style: {
           font: "18px monospace",
@@ -85244,12 +83372,13 @@ This player number will be ignored.`);
           padding: { x: 20, y: 10 }
         }
       });
-      const textPositionComponent = this.world.component(PositionComponent, {
+      const textPositionComponent = (0, import_ecs38.component)(Position, {
         x: 16,
         y: 16
       });
-      const textDepthComponent = this.world.component(DepthComponent, 30);
-      this.world.spawn(textComponent, textPositionComponent, textDepthComponent);
+      const textDepthComponent = (0, import_ecs38.component)(Depth, { depth: 30 });
+      const depthEntity = this.world.create(textComponent, textPositionComponent, textDepthComponent);
+      this.world.attach(depthEntity);
     }
     create() {
       super.create();

@@ -5,7 +5,7 @@ import {
 } from "@javelin/ecs";
 import {
   Camera,
-  CameraComponent,
+  createCameraComponent,
   PlayerComponent,
   Player,
 } from "../components";
@@ -13,7 +13,7 @@ import {
   WorldSceneData,
   PhaserSceneMethod,
   EmptyObject,
-  CameraData,
+  CameraProbs,
 } from "../types";
 import { PhaserService } from "../services";
 import { extend, getViewportDimensions } from "../helper";
@@ -42,7 +42,7 @@ export const phaserCameraEffect = createEffect<
   const calcPlayerCamera = (
     playerComponent: typeof PlayerComponent,
     playerCount: number
-  ): CameraData => {
+  ): CameraProbs => {
     const map = phaserService.getActiveMap();
 
     let width: number;
@@ -51,11 +51,12 @@ export const phaserCameraEffect = createEffect<
     let borderX = 0;
     let borderY = 0;
 
-    const bounds: CameraData["bounds"] = {
+    const bounds: CameraProbs["bounds"] = {
       width: map.widthInPixels,
       height: map.heightInPixels,
       x: 0,
       y: 0,
+      centerOn: false,
     };
     if (phaserGameConfig.scale?.mode === Phaser.Scale.RESIZE) {
       const vp = getViewportDimensions();
@@ -75,7 +76,7 @@ export const phaserCameraEffect = createEffect<
       height = height / 2;
       borderY = 2;
     }
-    const viewport: CameraData["viewport"] = {
+    const viewport: CameraProbs["viewport"] = {
       x: 0,
       y: 0,
       width: width - borderX,
@@ -132,11 +133,16 @@ export const phaserCameraEffect = createEffect<
         const phaserGameObject = phaserService.getGameObject(playerEntity);
         const data = calcPlayerCamera(playerComponent, playerCount);
 
-        const cameraComponent = world.get<typeof Camera>(Camera, {
+        const cameraComponent = createCameraComponent({
           isMain: playerComponent.playerNumber === 1,
           name: playerComponent.name,
           ...data,
         });
+        // const cameraComponent = world.get<typeof Camera>(Camera, {
+        //   isMain: playerComponent.playerNumber === 1,
+        //   name: playerComponent.name,
+        //   ...data,
+        // });
 
         world.attach(playerEntity, cameraComponent);
 

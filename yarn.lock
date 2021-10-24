@@ -1448,13 +1448,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@javelin/ecs@npm:^0.22.0":
-  version: 0.22.0
-  resolution: "@javelin/ecs@npm:0.22.0"
-  checksum: 5c63f98721fc03888e65ba402b9ac15658fe0174e147be24cb37d7b619755cf5e9f9e4f204d7c4c3ef94c011a10c00346c8dd359dc94904407b9652f013e97e1
-  languageName: node
-  linkType: hard
-
 "@javelin/ecs@workspace:*, @javelin/ecs@workspace:packages/javelin/packages/ecs":
   version: 0.0.0-use.local
   resolution: "@javelin/ecs@workspace:packages/javelin/packages/ecs"
@@ -3447,7 +3440,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pixelrpg/tuxemon@workspace:examples/tuxemon"
   dependencies:
-    "@javelin/ecs": ^0.22.0
+    "@javelin/ecs": "workspace:*"
     "@pixelrpg/engine": "workspace:*"
     "@pixelrpg/esbuild": "workspace:*"
     "@pixelrpg/eslint-config": "workspace:*"

@@ -1,22 +1,21 @@
-import { createWorld } from "@javelin/ecs";
+import { createWorld, ComponentOf, component } from "@javelin/ecs";
 import {
   WorldSceneData,
   Player,
-  AssetAtlasComponent,
-  AssetMapComponent,
-  AssetTilesetComponent,
-  TilesetComponent,
-  PlayerComponent,
-  PositionComponent,
-  SpriteComponent,
-  MapLayerComponent,
-  AnimationComponent,
-  VelocityComponent,
-  DepthComponent,
-  TextComponent,
-  ScrollfactorComponent,
-  CollisionComponent,
-  DebugComponent,
+  createAssetAtlasComponent,
+  AssetMap,
+  AssetTileset,
+  Tileset,
+  Position,
+  Sprite,
+  MapLayer,
+  Animation,
+  Velocity,
+  Depth,
+  Text,
+  Scrollfactor,
+  Collision,
+  Debug,
   phaserSystem,
   mapObjectTopic,
   PhaserSceneWorld,
@@ -30,14 +29,19 @@ export class GameWorld extends PhaserSceneWorld {
     systems: [phaserSystem],
   });
 
-  spawnPlayer(playerData: Player) {
-    const playerAssetAtlasComponent = this.world.component(
-      AssetAtlasComponent,
-      "tuxemon-misa",
-      "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
-      "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
-    );
-    const playerSpriteComponent = this.world.component(SpriteComponent, {
+  spawnPlayer(playerData: ComponentOf<typeof Player>) {
+    const playerAssetAtlasComponent = createAssetAtlasComponent({
+      key: "tuxemon-misa",
+      url: "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
+      xhrSettingsJsonUrl: "./assets/atlas/tuxemon-misa/tuxemon-misa.json",
+    });
+    // const playerAssetAtlasComponent = component(
+    //   AssetAtlasComponent
+    //   "tuxemon-misa",
+    //   "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
+    //   "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
+    // );
+    const playerSpriteComponent = component(Sprite, {
       key: "tuxemon-misa",
       frame: "misa-front",
       // scale: { x: 2, y: 2 },
@@ -45,20 +49,19 @@ export class GameWorld extends PhaserSceneWorld {
       offset: { x: 0, y: 20 },
     });
 
-    const playerPositionComponent = this.world.component(PositionComponent);
+    const playerPositionComponent = component(Position);
 
-    const playerVelocityComponent = this.world.component(VelocityComponent, {
+    const playerVelocityComponent = component(Velocity, {
       speed: 70,
       x: 0,
       y: 0,
     });
 
-    const playerCollisionVelocityComponent =
-      this.world.component(CollisionComponent);
+    const playerCollisionVelocityComponent = component(Collision);
 
-    const playerComponent = this.world.component(PlayerComponent, playerData);
+    const playerComponent = component(Player, playerData);
 
-    const playerEntity = this.world.spawn(
+    const playerEntity = this.world.create(
       playerAssetAtlasComponent,
       playerSpriteComponent,
       playerPositionComponent,
@@ -66,6 +69,7 @@ export class GameWorld extends PhaserSceneWorld {
       playerCollisionVelocityComponent,
       playerComponent
     );
+    this.world.attach(playerEntity);
 
     return {
       playerEntity,
@@ -80,31 +84,34 @@ export class GameWorld extends PhaserSceneWorld {
 
   spawnPlayerText(playerEntity: number, text: string) {
     // Help text that has a "fixed" position on the screen
-    const textComponent = this.world.component(TextComponent, {
+    const textComponent = component(Text, {
       text: text,
       playerEntity: playerEntity,
       style: {
         font: "18px monospace",
         color: "#000000",
-        padding: { x: 20, y: 10 },
+        padding: { x: 20, y: 10 } as any, // TODO
         backgroundColor: "#ffffff",
-      },
+      } as any, // TODO,
     });
-    const textPositionComponent = this.world.component(PositionComponent, {
+    const textPositionComponent = component(Position, {
       x: 16,
       y: 16,
     });
-    const scrollfactorComponent = this.world.component(ScrollfactorComponent, {
+    const scrollfactorComponent = component(Scrollfactor, {
       x: 0,
       y: 0,
     });
-    const textDepthComponent = this.world.component(DepthComponent, 30);
-    this.world.spawn(
+    const textDepthComponent = component(Depth, {
+      depth: 30,
+    });
+    const textEntry = this.world.create(
       textComponent,
       textPositionComponent,
       scrollfactorComponent,
       textDepthComponent
     );
+    this.world.attach(textEntry);
   }
 
   constructor(config: Phaser.Types.Core.GameConfig) {
@@ -112,36 +119,45 @@ export class GameWorld extends PhaserSceneWorld {
 
     // MAP
 
-    const assetMapComponent = this.world.component(AssetMapComponent, {
+    const assetMapComponent = component(AssetMap, {
       key: "map",
       url: "./assets/tilemaps/tuxemon-town.json",
     });
-    const assetMapEntity = this.world.spawn(assetMapComponent);
+    const assetMapEntity = this.world.create(assetMapComponent);
+    this.world.attach(assetMapEntity);
 
-    const assetTilesetComponent = this.world.component(AssetTilesetComponent, {
+    const assetTilesetComponent = component(AssetTileset, {
       key: "tiles",
       url: "./assets/tilesets/tuxemon-sample.png",
     });
-    this.world.spawn(assetTilesetComponent);
+    const tileSetEntity = this.world.create(assetTilesetComponent);
+    this.world.attach(tileSetEntity);
 
-    const tilesetComponent = this.world.component(TilesetComponent, {
+    const tilesetComponent = component(Tileset, {
       key: "tiles",
       name: "tuxemon-sample",
       assetMapEntity: assetMapEntity,
     });
-    const tilesetEntity = this.world.spawn(tilesetComponent);
+    const tilesetEntity = this.world.create(tilesetComponent);
+    this.world.attach(tileSetEntity);
 
-    const mapLayer1Component = this.world.component(MapLayerComponent, {
+    const mapLayer1Component = component(MapLayer, {
       name: "Below Player",
       x: 0,
       y: 0,
       assetMapEntity,
       tilesetEntity,
     });
-    const mapLayer1DepthComponent = this.world.component(DepthComponent, -10);
-    this.world.spawn(mapLayer1Component, mapLayer1DepthComponent);
+    const mapLayer1DepthComponent = component(Depth, {
+      depth: -10,
+    });
+    const mapLayer1Entity = this.world.create(
+      mapLayer1Component,
+      mapLayer1DepthComponent
+    );
+    this.world.attach(mapLayer1Entity);
 
-    const mapLayerWorldComponent = this.world.component(MapLayerComponent, {
+    const mapLayerWorldComponent = component(MapLayer, {
       name: "World",
       x: 0,
       y: 0,
@@ -150,30 +166,36 @@ export class GameWorld extends PhaserSceneWorld {
       collides: true,
       collisionProperty: "collides",
     });
-    const mapLayerWorldDepthComponent = this.world.component(DepthComponent, 0);
-    const mapLayerWorldCollisionComponent =
-      this.world.component(CollisionComponent);
-    this.world.spawn(
+    const mapLayerWorldDepthComponent = component(Depth, {
+      depth: 0,
+    });
+    const mapLayerWorldCollisionComponent = component(Collision);
+    const mapLayerWorldEntity = this.world.create(
       mapLayerWorldComponent,
       mapLayerWorldDepthComponent,
       mapLayerWorldCollisionComponent
     );
+    this.world.attach(mapLayerWorldEntity);
 
-    const mapLayer3Component = this.world.component(MapLayerComponent, {
+    const mapLayer3Component = component(MapLayer, {
       name: "Above Player",
       x: 0,
       y: 0,
       assetMapEntity,
       tilesetEntity,
     });
-    const mapLayer3DepthComponent = this.world.component(DepthComponent, 10);
-    this.world.spawn(mapLayer3Component, mapLayer3DepthComponent);
+    const mapLayer3DepthComponent = component(Depth, { depth: 10 });
+    const mapLayer3Entity = this.world.create(
+      mapLayer3Component,
+      mapLayer3DepthComponent
+    );
+    this.world.attach(mapLayer3Entity);
 
     // ANIMATIONS
 
     // Create the player's walking animations from the texture atlas. These are stored in the global
     // animation manager so any sprite can access them.
-    const animationLeftWalk = this.world.component(AnimationComponent, {
+    const animationLeftWalk = component(Animation, {
       key: "misa-left-walk",
       frames: {
         atlasKey: "tuxemon-misa",
@@ -185,9 +207,10 @@ export class GameWorld extends PhaserSceneWorld {
       frameRate: 10,
       repeat: -1,
     });
-    this.world.spawn(animationLeftWalk);
+    const animationLeftWalkEntity = this.world.create(animationLeftWalk);
+    this.world.attach(animationLeftWalkEntity);
 
-    const animationRightWalk = this.world.component(AnimationComponent, {
+    const animationRightWalk = component(Animation, {
       key: "misa-right-walk",
       frames: {
         atlasKey: "tuxemon-misa",
@@ -199,9 +222,10 @@ export class GameWorld extends PhaserSceneWorld {
       frameRate: 10,
       repeat: -1,
     });
-    this.world.spawn(animationRightWalk);
+    const animationRightWalkEntity = this.world.create(animationRightWalk);
+    this.world.attach(animationRightWalkEntity);
 
-    const animationFrontWalk = this.world.component(AnimationComponent, {
+    const animationFrontWalk = component(Animation, {
       key: "misa-front-walk",
       frames: {
         atlasKey: "tuxemon-misa",
@@ -213,9 +237,10 @@ export class GameWorld extends PhaserSceneWorld {
       frameRate: 10,
       repeat: -1,
     });
-    this.world.spawn(animationFrontWalk);
+    const animationFrontWalkEntity = this.world.create(animationFrontWalk);
+    this.world.attach(animationFrontWalkEntity);
 
-    const animationBackWalk = this.world.component(AnimationComponent, {
+    const animationBackWalk = component(Animation, {
       key: "misa-back-walk",
       frames: {
         atlasKey: "tuxemon-misa",
@@ -227,7 +252,8 @@ export class GameWorld extends PhaserSceneWorld {
       frameRate: 10,
       repeat: -1,
     });
-    this.world.spawn(animationBackWalk);
+    const animationBackWalkEntity = this.world.create(animationBackWalk);
+    this.world.attach(animationBackWalkEntity);
 
     // PLAYER
 
@@ -250,6 +276,7 @@ export class GameWorld extends PhaserSceneWorld {
     this.spawnPlayerText(p2Entity, p2Component.name);
 
     // Enable Debugging for this world
-    this.world.spawn(this.world.component(DebugComponent));
+    const debugEntity = this.world.create(component(Debug));
+    this.world.attach(debugEntity);
   }
 }

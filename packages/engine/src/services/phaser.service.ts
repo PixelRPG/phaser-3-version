@@ -1,4 +1,4 @@
-import { World } from "@javelin/ecs";
+import { ComponentOf, World } from "@javelin/ecs";
 import {
   Entity,
   Coordinates2D,
@@ -14,7 +14,8 @@ import {
   MapLayerComponent,
   SpriteComponent,
   AnimationComponent,
-  CameraComponent,
+  // CameraComponent,
+  Camera,
   TextComponent,
 } from "../components";
 
@@ -275,7 +276,7 @@ export class PhaserService {
   public createCamera(
     cameraManager: Phaser.Cameras.Scene2D.CameraManager,
     cameraEntity: Entity,
-    cameraComponent: typeof CameraComponent
+    cameraComponent: ComponentOf<typeof Camera>
   ) {
     let phaserCamera: Phaser.Cameras.Scene2D.Camera;
 
@@ -306,7 +307,7 @@ export class PhaserService {
 
   public updateCamera(
     cameraEntity: Entity,
-    cameraComponent: typeof CameraComponent,
+    cameraComponent: ComponentOf<typeof Camera>,
     phaserCamera?: Phaser.Cameras.Scene2D.Camera
   ) {
     if (!phaserCamera) {
