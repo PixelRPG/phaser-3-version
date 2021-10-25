@@ -90,7 +90,7 @@ export class GameWorld extends PhaserSceneWorld {
       style: {
         font: "18px monospace",
         color: "#000000",
-        padding: { x: 20, y: 10 } as any, // TODO
+        padding: { x: 20, y: 10 },
         backgroundColor: "#ffffff",
       } as any, // TODO,
     });

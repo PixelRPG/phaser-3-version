@@ -1,8 +1,8 @@
 import { string, objectOf } from "@javelin/ecs";
-import { xhrSettings } from "./xhr-settings";
-import { phaserMap } from "./phaser-map";
+import { xhrSettings } from "./schemata/xhr-settings";
+import { phaserMap } from "./schemata/phaser-map";
 
-export const tilemap = {
+export const Tilemap = {
   key: string,
   url: string,
   xhrSettings: objectOf(xhrSettings),

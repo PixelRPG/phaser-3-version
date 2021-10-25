@@ -6,6 +6,7 @@ import {
   Text,
   Position,
   Depth,
+  Scrollfactor,
 } from "@pixelrpg/engine";
 
 export class MenuWorld extends PhaserSceneWorld {
@@ -28,18 +29,18 @@ export class MenuWorld extends PhaserSceneWorld {
       } as any, // TODO
     });
     const textPositionComponent = component(Position, {
-      x: 16,
-      y: 16,
+      px: 16,
+      py: 16,
     });
-    // const scrollfactorComponent = component(ScrollfactorComponent, {
-    //   x: 0,
-    //   y: 0,
+    // const scrollfactorComponent = component(Scrollfactor, {
+    //   sx: 0,
+    //   sy: 0,
     // });
     const textDepthComponent = component(Depth, { depth: 30 });
     const depthEntity = this.world.create(
       textComponent,
       textPositionComponent,
-      //scrollfactorComponent,
+      // scrollfactorComponent,
       textDepthComponent
     );
     this.world.attach(depthEntity);

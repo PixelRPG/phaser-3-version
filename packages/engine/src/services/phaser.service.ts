@@ -394,6 +394,7 @@ export class PhaserService {
     }
 
     this._texts.set(textEntity, phaserText);
+    console.debug("createText", textEntity, phaserText);
     return phaserText;
   }
 
