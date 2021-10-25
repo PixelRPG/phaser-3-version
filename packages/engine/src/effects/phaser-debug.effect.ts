@@ -17,6 +17,7 @@ export const phaserDebugEffect = createEffect<
   const scene = world.latestTickData.scene;
   const keyboard = world.latestTickData.scene.input.keyboard;
   const debugKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F1);
+  const mapLayersQuery = createQuery(MapLayer);
 
   /**
    * Create worldLayer collision graphic above the player, but below the text
@@ -27,7 +28,7 @@ export const phaserDebugEffect = createEffect<
       .setAlpha(0.75)
       .setDepth(20);
 
-    for (const [entities, [mapLayers]] of createQuery(MapLayer)) {
+    for (const [entities, [mapLayers]] of mapLayersQuery) {
       for (let i = 0; i < entities.length; i++) {
         const mapLayerComponent = mapLayers[i];
         if (mapLayerComponent.collides) {
@@ -54,7 +55,7 @@ export const phaserDebugEffect = createEffect<
   };
 
   const onCreate = () => {
-    const debugs = createQuery(Debug);
+    const debugs = createQuery(Debug).bind(world);
     if (debugs.length) {
       debugKey.once("down", onDebugkeyDown);
     }

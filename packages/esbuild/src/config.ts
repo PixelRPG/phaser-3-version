@@ -15,6 +15,7 @@ export const getConfig = (env: Environment): Config => {
     minify: env.production,
     outdir: "dist/assets/scripts",
     // outfile: "dist/assets/scripts/main.js",
+    platform: "browser",
     sourcemap: env.development,
     watch: env.watch || false,
     define: {

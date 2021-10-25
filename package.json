@@ -33,6 +33,7 @@
     "packages/web-udp/examples/*",
     "packages/eslint-config",
     "packages/tsconfig",
+    "packages/tile-extruder",
     "packages/tile-extruder/workspaces/*",
     "examples/*"
   ],

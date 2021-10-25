@@ -29,7 +29,9 @@
     "Riba",
     "tsconfig"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"Nothing to build\""
+  },
   "bugs": {
     "url": "https://github.com/ribajs/riba/issues"
   },

@@ -15,9 +15,10 @@ export const phaserMapObjectEffect = createEffect<
 >((world) => {
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const mapAssetsQuery = createQuery(AssetMap);
 
   const onCreate = () => {
-    for (const [entities, []] of createQuery(AssetMap)) {
+    for (const [entities, []] of mapAssetsQuery) {
       for (let i = 0; i < entities.length; i++) {
         const map = phaserService.getMap(entities[i]);
 

@@ -320,7 +320,7 @@ export class PhaserService {
       phaserCamera.setSize(viewport.width, viewport.height);
     }
 
-    if (typeof viewport.x === "number") {
+    if (typeof viewport.x === "number" && typeof viewport.y === "number") {
       phaserCamera.setPosition(viewport.x, viewport.y);
     }
 

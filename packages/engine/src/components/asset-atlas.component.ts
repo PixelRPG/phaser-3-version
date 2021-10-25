@@ -5,7 +5,7 @@ export const AssetAtlas = {
   key: string,
   url: string,
   xhrSettingsJsonUrl: string,
-  loaded: boolean,
+  atlasLoaded: boolean,
 };
 
 /**
@@ -21,6 +21,6 @@ export const AssetAtlas = {
 export const createAssetAtlasComponent = (
   props: Partial<FieldExtract<typeof AssetAtlas>>
 ) => {
-  props = { loaded: false, ...props };
+  props = { atlasLoaded: false, ...props };
   return component(AssetAtlas, props);
 };

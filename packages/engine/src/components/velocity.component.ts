@@ -2,8 +2,8 @@ import { component, number } from "@javelin/ecs";
 
 export const Velocity = {
   speed: number,
-  x: number,
-  y: number
+  vx: number,
+  vy: number
 }
 
 /**

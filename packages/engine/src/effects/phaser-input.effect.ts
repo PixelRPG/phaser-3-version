@@ -22,6 +22,11 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldScene
   (world) => {
     const state = null;
     const phaserService = PhaserService.getInstance();
+    const movingPlayersQuery = createQuery(
+      Velocity,
+      Player,
+      Sprite
+    );
 
     const getPlayerInput = (
       playerComponent: typeof PlayerComponent
@@ -63,11 +68,7 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldScene
     };
 
     const eachUpdate = () => {
-      for (const [entities, [velocitys, players]] of createQuery(
-        Velocity,
-        Player,
-        Sprite
-      )) {
+      for (const [entities, [velocitys, players]] of movingPlayersQuery) {
         for (let i = 0; i < entities.length; i++) {
           const sprite = phaserService.getSprite(entities[i]);
           const speed = velocitys[i].speed;
@@ -81,21 +82,21 @@ export const phaserInputEffect = createEffect<null, WorldSceneData[], WorldScene
           const prevVelocity = sprite.body.velocity.clone();
 
           // Stop any previous movement from the last frame
-          velocitys[i].x = 0;
-          velocitys[i].y = 0;
+          velocitys[i].vx = 0;
+          velocitys[i].vy = 0;
 
           // Horizontal movement
           if (playerInput.left.isDown) {
-            velocitys[i].x = -speed;
+            velocitys[i].vx = -speed;
           } else if (playerInput.right.isDown) {
-            velocitys[i].x = speed;
+            velocitys[i].vx = speed;
           }
 
           // Vertical movement
           if (playerInput.up.isDown) {
-            velocitys[i].y = -speed;
+            velocitys[i].vy = -speed;
           } else if (playerInput.down.isDown) {
-            velocitys[i].y = speed;
+            velocitys[i].vy = speed;
           }
 
           // Update the animation last and give left/right animations precedence over up/down animations

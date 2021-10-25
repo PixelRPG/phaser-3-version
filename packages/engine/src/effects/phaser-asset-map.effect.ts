@@ -25,9 +25,10 @@ export const phaserAssetMapEffect = createEffect<
   };
 
   const phaserService = PhaserService.getInstance();
+  const assetMapsQuery = createQuery(AssetMap);
 
   const onCreate = () => {
-    for (const [entities, [assetMaps]] of createQuery(AssetMap)) {
+    for (const [entities, [assetMaps]] of assetMapsQuery) {
       for (let i = 0; i < entities.length; i++) {
         const scene = world.latestTickData.scene;
         phaserService.createMap(scene, entities[i], assetMaps[i]);

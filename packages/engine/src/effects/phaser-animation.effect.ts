@@ -14,9 +14,10 @@ export const phaserAnimationEffect = createEffect<
 >((world) => {
   const state: PhaserAnimationEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const animationsQuery = createQuery(Animation);
 
   const onCreate = () => {
-    for (const [entities, [animations]] of createQuery(Animation)) {
+    for (const [entities, [animations]] of animationsQuery) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createAnimation(
           world.latestTickData.scene.anims,

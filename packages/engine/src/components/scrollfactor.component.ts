@@ -1,8 +1,8 @@
 import { component, number } from "@javelin/ecs";
 
 export const Scrollfactor = {
-  x: number,
-  y: number,
+  sx: number,
+  sy: number,
 };
 
 /**

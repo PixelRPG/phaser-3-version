@@ -32,7 +32,9 @@
     "eslint-plugin",
     "prettier"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"Nothing to build\""
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/experimental-utils": "^5.1.0",

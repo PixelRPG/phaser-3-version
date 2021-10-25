@@ -796,6 +796,41 @@
     }
   });
 
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/performance.js
+  var require_performance = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/performance.js"(exports) {
+      "use strict";
+      Object.defineProperty(exports, "__esModule", { value: true });
+      exports.performance = void 0;
+      exports.performance = (window === null || window === void 0 ? void 0 : window.performance) ? window.performance : __require("perf_hooks");
+    }
+  });
+
+  // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/index.js
+  var require_cjs2 = __commonJS({
+    "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/isomorphic-utils/dist/cjs/index.js"(exports) {
+      "use strict";
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() {
+          return m[k];
+        } });
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      });
+      var __exportStar = exports && exports.__exportStar || function(m, exports2) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p))
+            __createBinding(exports2, m, p);
+      };
+      Object.defineProperty(exports, "__esModule", { value: true });
+      __exportStar(require_performance(), exports);
+    }
+  });
+
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js
   var require_use_performance = __commonJS({
     "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/effects/core/use_performance.js"(exports) {
@@ -803,7 +838,7 @@
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.usePerformance = void 0;
       var effect_1 = require_effect();
-      var isomorphic_utils_1 = __require("@javelin/isomorphic-utils");
+      var isomorphic_utils_1 = require_cjs2();
       exports.usePerformance = (0, effect_1.createEffect)(() => {
         return function usePerformance() {
           return isomorphic_utils_1.performance;
@@ -2269,7 +2304,7 @@
   });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js
-  var require_cjs2 = __commonJS({
+  var require_cjs3 = __commonJS({
     "pnp:/home/jumplink/Projekte/PixelRPG/packages/javelin/packages/ecs/dist/cjs/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
@@ -81816,13 +81851,13 @@
   });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/examples/tuxemon/src/worlds/game.world.ts
-  var import_ecs37 = __toModule(require_cjs2());
+  var import_ecs37 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/index.ts
   var import_phaser = __toModule(require_phaser());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/align-position.component.ts
-  var import_ecs = __toModule(require_cjs2());
+  var import_ecs = __toModule(require_cjs3());
   var AlignPosition = {
     type: import_ecs.number,
     toEntry: import_ecs.number
@@ -81830,7 +81865,7 @@
   var AlignPositionComponent = (0, import_ecs.component)(AlignPosition);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/animation.component.ts
-  var import_ecs2 = __toModule(require_cjs2());
+  var import_ecs2 = __toModule(require_cjs3());
   var Animation = {
     key: import_ecs2.string,
     frames: {
@@ -81846,23 +81881,23 @@
   var AnimationComponent = (0, import_ecs2.component)(Animation);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-atlas.component.ts
-  var import_ecs3 = __toModule(require_cjs2());
+  var import_ecs3 = __toModule(require_cjs3());
   var AssetAtlas = {
     key: import_ecs3.string,
     url: import_ecs3.string,
     xhrSettingsJsonUrl: import_ecs3.string,
-    loaded: import_ecs3.boolean
+    atlasLoaded: import_ecs3.boolean
   };
   var createAssetAtlasComponent = (props) => {
-    props = { loaded: false, ...props };
+    props = { atlasLoaded: false, ...props };
     return (0, import_ecs3.component)(AssetAtlas, props);
   };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-image.component.ts
-  var import_ecs5 = __toModule(require_cjs2());
+  var import_ecs5 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/schemata/xhr-settings.ts
-  var import_ecs4 = __toModule(require_cjs2());
+  var import_ecs4 = __toModule(require_cjs3());
   var xhrSettings = {
     responseType: import_ecs4.string,
     async: import_ecs4.boolean,
@@ -81883,30 +81918,30 @@
     url: import_ecs5.string,
     name: import_ecs5.string,
     xhrSettings: (0, import_ecs5.objectOf)(xhrSettings),
-    loaded: import_ecs5.boolean
+    imageLoaded: import_ecs5.boolean
   };
-  var AssetImageComponent = (0, import_ecs5.component)(AssetImage, { loaded: false });
+  var AssetImageComponent = (0, import_ecs5.component)(AssetImage, { imageLoaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-map.component.ts
-  var import_ecs6 = __toModule(require_cjs2());
+  var import_ecs6 = __toModule(require_cjs3());
   var AssetMap = {
     key: import_ecs6.string,
     url: import_ecs6.string,
-    loaded: import_ecs6.boolean
+    assetMapLoaded: import_ecs6.boolean
   };
-  var AssetMapComponent = (0, import_ecs6.component)(AssetMap, { loaded: false });
+  var AssetMapComponent = (0, import_ecs6.component)(AssetMap, { assetMapLoaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/asset-tileset.component.ts
-  var import_ecs7 = __toModule(require_cjs2());
+  var import_ecs7 = __toModule(require_cjs3());
   var AssetTileset = {
     key: import_ecs7.string,
     url: import_ecs7.string,
-    loaded: import_ecs7.boolean
+    tilesetLoaded: import_ecs7.boolean
   };
-  var AssetTilesetComponent = (0, import_ecs7.component)(AssetTileset, { loaded: false });
+  var AssetTilesetComponent = (0, import_ecs7.component)(AssetTileset, { tilesetLoaded: false });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/camera.component.ts
-  var import_ecs8 = __toModule(require_cjs2());
+  var import_ecs8 = __toModule(require_cjs3());
   var Camera = {
     name: import_ecs8.string,
     isMain: import_ecs8.boolean,
@@ -81927,40 +81962,41 @@
   };
   var createCameraComponent = (props) => {
     props = { zoom: 2, ...props };
+    console.debug("Camera props", props);
     return (0, import_ecs8.component)(Camera, props);
   };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/position.component.ts
-  var import_ecs9 = __toModule(require_cjs2());
+  var import_ecs9 = __toModule(require_cjs3());
   var Position = {
-    x: import_ecs9.number,
-    y: import_ecs9.number
+    px: import_ecs9.number,
+    py: import_ecs9.number
   };
   var PositionComponent = (0, import_ecs9.component)(Position);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/collision.component.ts
-  var import_ecs10 = __toModule(require_cjs2());
+  var import_ecs10 = __toModule(require_cjs3());
   var Collision = {
     collision: import_ecs10.boolean
   };
   var CollisionComponent = (0, import_ecs10.component)(Collision, { collision: true });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/debug.component.ts
-  var import_ecs11 = __toModule(require_cjs2());
+  var import_ecs11 = __toModule(require_cjs3());
   var Debug = {
     debug: import_ecs11.boolean
   };
   var DebugComponent = (0, import_ecs11.component)(Debug, { debug: true });
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/depth.component.ts
-  var import_ecs12 = __toModule(require_cjs2());
+  var import_ecs12 = __toModule(require_cjs3());
   var Depth = {
     depth: import_ecs12.number
   };
   var DepthComponent = (0, import_ecs12.component)(Depth);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/map-layer.component.ts
-  var import_ecs13 = __toModule(require_cjs2());
+  var import_ecs13 = __toModule(require_cjs3());
   var MapLayer = {
     name: import_ecs13.string,
     x: import_ecs13.number,
@@ -81973,15 +82009,15 @@
   var MapLayerComponent = (0, import_ecs13.component)(MapLayer);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/scrollfactor.component.ts
-  var import_ecs14 = __toModule(require_cjs2());
+  var import_ecs14 = __toModule(require_cjs3());
   var Scrollfactor = {
-    x: import_ecs14.number,
-    y: import_ecs14.number
+    sx: import_ecs14.number,
+    sy: import_ecs14.number
   };
   var ScrollfactorComponent = (0, import_ecs14.component)(Scrollfactor);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/sprite.component.ts
-  var import_ecs15 = __toModule(require_cjs2());
+  var import_ecs15 = __toModule(require_cjs3());
   var Sprite = {
     key: import_ecs15.string,
     frame: import_ecs15.string,
@@ -82001,7 +82037,7 @@
   var SpriteComponent = (0, import_ecs15.component)(Sprite);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/player.component.ts
-  var import_ecs16 = __toModule(require_cjs2());
+  var import_ecs16 = __toModule(require_cjs3());
   var Player = {
     name: import_ecs16.string,
     playerNumber: import_ecs16.number
@@ -82009,7 +82045,7 @@
   var PlayerComponent = (0, import_ecs16.component)(Player);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/text.component.ts
-  var import_ecs17 = __toModule(require_cjs2());
+  var import_ecs17 = __toModule(require_cjs3());
   var Text = {
     text: import_ecs17.string,
     playerEntity: import_ecs17.number,
@@ -82061,7 +82097,7 @@
   var TextComponent = (0, import_ecs17.component)(Text);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/tileset.component.ts
-  var import_ecs18 = __toModule(require_cjs2());
+  var import_ecs18 = __toModule(require_cjs3());
   var Tileset = {
     key: import_ecs18.string,
     name: import_ecs18.string,
@@ -82070,16 +82106,16 @@
   var TilesetComponent = (0, import_ecs18.component)(Tileset);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/components/velocity.component.ts
-  var import_ecs19 = __toModule(require_cjs2());
+  var import_ecs19 = __toModule(require_cjs3());
   var Velocity = {
     speed: import_ecs19.number,
-    x: import_ecs19.number,
-    y: import_ecs19.number
+    vx: import_ecs19.number,
+    vy: import_ecs19.number
   };
   var VelocityComponent = (0, import_ecs19.component)(Velocity);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-animation.effect.ts
-  var import_ecs20 = __toModule(require_cjs2());
+  var import_ecs20 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/types/align-type.ts
   var AlignType;
@@ -82314,6 +82350,7 @@
         phaserCamera = this.getCamera(cameraEntity);
       }
       const viewport = cameraComponent.viewport;
+      console.debug("updateCamera", viewport);
       if (typeof viewport.width === "number") {
         phaserCamera.setSize(viewport.width, viewport.height);
       }
@@ -82387,8 +82424,9 @@
   var phaserAnimationEffect = (0, import_ecs20.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const animationsQuery = (0, import_ecs20.createQuery)(Animation);
     const onCreate = () => {
-      for (const [entities, [animations]] of (0, import_ecs20.createQuery)(Animation)) {
+      for (const [entities, [animations]] of animationsQuery) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createAnimation(world.latestTickData.scene.anims, entities[i], animations[i]);
         }
@@ -82403,7 +82441,7 @@
   }, effectOptions);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-asset-map.effect.ts
-  var import_ecs21 = __toModule(require_cjs2());
+  var import_ecs21 = __toModule(require_cjs3());
   var effectOptions2 = { shared: true };
   var phaserAssetMapEffect = (0, import_ecs21.createEffect)((world) => {
     const state = {
@@ -82412,8 +82450,9 @@
       layers: new Map()
     };
     const phaserService = PhaserService.getInstance();
+    const assetMapsQuery = (0, import_ecs21.createQuery)(AssetMap);
     const onCreate = () => {
-      for (const [entities, [assetMaps]] of (0, import_ecs21.createQuery)(AssetMap)) {
+      for (const [entities, [assetMaps]] of assetMapsQuery) {
         for (let i = 0; i < entities.length; i++) {
           const scene = world.latestTickData.scene;
           phaserService.createMap(scene, entities[i], assetMaps[i]);
@@ -82429,38 +82468,38 @@
   }, effectOptions2);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-asset-preload.effect.ts
-  var import_ecs22 = __toModule(require_cjs2());
+  var import_ecs22 = __toModule(require_cjs3());
   var effectOptions3 = { shared: true };
   var phaserAssetPreloadEffect = (0, import_ecs22.createEffect)((world) => {
     const state = {};
     const onPreload = () => {
       const scene = world.latestTickData.scene;
-      const assetAtlasQuery = (0, import_ecs22.createQuery)(AssetAtlas);
-      const assetImageQuery = (0, import_ecs22.createQuery)(AssetImage);
-      const assetTilesetQuery = (0, import_ecs22.createQuery)(AssetTileset);
-      const asssetMapQuery = (0, import_ecs22.createQuery)(AssetMap);
+      const assetAtlasQuery = (0, import_ecs22.createQuery)(AssetAtlas).bind(world);
+      const assetImageQuery = (0, import_ecs22.createQuery)(AssetImage).bind(world);
+      const assetTilesetQuery = (0, import_ecs22.createQuery)(AssetTileset).bind(world);
+      const asssetMapQuery = (0, import_ecs22.createQuery)(AssetMap).bind(world);
       for (const [, [tilesets]] of assetTilesetQuery) {
         for (const tileset of tilesets) {
           scene.load.image(tileset.key, tileset.url);
-          tileset.loaded = true;
+          tileset.tilesetLoaded = true;
         }
       }
       for (const [, [atlases]] of assetAtlasQuery) {
         for (const atlas of atlases) {
           scene.load.atlas(atlas.key, atlas.url, atlas.xhrSettingsJsonUrl);
-          atlas.loaded = true;
+          atlas.atlasLoaded = true;
         }
       }
       for (const [, [images]] of assetImageQuery) {
         for (const image of images) {
           scene.load.image(image.key, image.url, image.xhrSettings);
-          image.loaded = true;
+          image.imageLoaded = true;
         }
       }
       for (const [, [maps]] of asssetMapQuery) {
         for (const map of maps) {
           scene.load.tilemapTiledJSON(map.key, map.url);
-          map.loaded = true;
+          map.assetMapLoaded = true;
         }
       }
     };
@@ -82473,7 +82512,7 @@
   }, effectOptions3);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-camera.effect.ts
-  var import_ecs23 = __toModule(require_cjs2());
+  var import_ecs23 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/helper/extend.ts
   var extend = (options = {}, extended = {}, ...objects) => {
@@ -82528,6 +82567,7 @@
     const phaserScene = world.latestTickData.scene;
     const phaserGameConfig = phaserScene.phaserGameConfig;
     const phaserCameras = phaserScene.cameras;
+    const playersQuery = (0, import_ecs23.createQuery)(Player);
     const calcPlayerCamera = (playerComponent, playerCount) => {
       const map = phaserService.getActiveMap();
       let width;
@@ -82589,7 +82629,7 @@
       };
     };
     const attachCamerasToPlayers = () => {
-      for (const [playerEntities, [players]] of (0, import_ecs23.createQuery)(Player)) {
+      for (const [playerEntities, [players]] of playersQuery) {
         const playerCount = playerEntities.length;
         if (playerCount > 4) {
           throw new Error(`Currently only a maximum of 4 players are supported, but you have ${playerCount}!`);
@@ -82604,6 +82644,8 @@
             name: playerComponent.name,
             ...data
           });
+          console.debug("cameraComponent", cameraComponent);
+          console.debug("playerComponent", playerComponent);
           world.attach(playerEntity, cameraComponent);
           const phaserCamera = phaserService.createCamera(phaserCameras, playerEntity, cameraComponent);
           phaserCamera.startFollow(phaserGameObject);
@@ -82611,7 +82653,7 @@
       }
     };
     const resizePlayerCameras = () => {
-      for (const [cameraEntities, [cameras, players]] of (0, import_ecs23.createQuery)(Camera, Player)) {
+      for (const [cameraEntities, [cameras, players]] of (0, import_ecs23.createQuery)(Camera, Player).bind(world)) {
         const playerCount = cameraEntities.length;
         for (let i = 0; i < cameraEntities.length; i++) {
           const cameraEntity = cameraEntities[i];
@@ -82644,7 +82686,7 @@
   }, effectOptions4);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-collision.effect.ts
-  var import_ecs24 = __toModule(require_cjs2());
+  var import_ecs24 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/constants.ts
   var TILE_COLLSION_LAYER = "collides";
@@ -82654,10 +82696,12 @@
   var phaserCollisionEffect = (0, import_ecs24.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const mapLayersQuery = (0, import_ecs24.createQuery)(MapLayer, Collision);
+    const velocitiesQuery = (0, import_ecs24.createQuery)(Velocity, Collision);
     const onCreate = () => {
       const phaserCollisionLayers = [];
       const scene = world.latestTickData.scene;
-      for (const [entities] of (0, import_ecs24.createQuery)(MapLayer, Collision)) {
+      for (const [entities] of mapLayersQuery) {
         for (let i = 0; i < entities.length; i++) {
           const phaserCollisionLayer = phaserService.getLayer(entities[i]);
           phaserCollisionLayer.setCollisionByProperty({
@@ -82666,7 +82710,7 @@
           phaserCollisionLayers.push(phaserCollisionLayer);
         }
       }
-      for (const [entities] of (0, import_ecs24.createQuery)(Velocity, Collision)) {
+      for (const [entities] of velocitiesQuery) {
         for (let i = 0; i < entities.length; i++) {
           const phaserGameObject = phaserService.getGameObject(entities[i]);
           for (const phaserCollisionLayer of phaserCollisionLayers) {
@@ -82684,7 +82728,7 @@
   }, effectOptions5);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-debug.effect.ts
-  var import_ecs25 = __toModule(require_cjs2());
+  var import_ecs25 = __toModule(require_cjs3());
   var effectOptions6 = { shared: true };
   var phaserDebugEffect = (0, import_ecs25.createEffect)((world) => {
     const state = {
@@ -82694,9 +82738,10 @@
     const scene = world.latestTickData.scene;
     const keyboard = world.latestTickData.scene.input.keyboard;
     const debugKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F1);
+    const mapLayersQuery = (0, import_ecs25.createQuery)(MapLayer);
     const createDebugMapLayerGraphics = () => {
       const phaserDebugCollisionGraphics = scene.add.graphics().setAlpha(0.75).setDepth(20);
-      for (const [entities, [mapLayers]] of (0, import_ecs25.createQuery)(MapLayer)) {
+      for (const [entities, [mapLayers]] of mapLayersQuery) {
         for (let i = 0; i < entities.length; i++) {
           const mapLayerComponent = mapLayers[i];
           if (mapLayerComponent.collides) {
@@ -82720,7 +82765,7 @@
       createDebugMapLayerGraphics();
     };
     const onCreate = () => {
-      const debugs = (0, import_ecs25.createQuery)(Debug);
+      const debugs = (0, import_ecs25.createQuery)(Debug).bind(world);
       if (debugs.length) {
         debugKey.once("down", onDebugkeyDown);
       }
@@ -82734,13 +82779,14 @@
   }, effectOptions6);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-depth.effect.ts
-  var import_ecs26 = __toModule(require_cjs2());
+  var import_ecs26 = __toModule(require_cjs3());
   var effectOptions7 = { shared: true };
   var phaserDepthEffect = (0, import_ecs26.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const depthQuery = (0, import_ecs26.createQuery)(Depth).bind(world);
     const onCreate = () => {
-      for (const [entities, [depths]] of (0, import_ecs26.createQuery)(Depth)) {
+      for (const [entities, [depths]] of depthQuery) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setDepth !== "function") {
@@ -82760,11 +82806,12 @@
   }, effectOptions7);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-input.effect.ts
-  var import_ecs27 = __toModule(require_cjs2());
+  var import_ecs27 = __toModule(require_cjs3());
   var effectOptions8 = { shared: true };
   var phaserInputEffect = (0, import_ecs27.createEffect)((world) => {
     const state = null;
     const phaserService = PhaserService.getInstance();
+    const movingPlayersQuery = (0, import_ecs27.createQuery)(Velocity, Player, Sprite);
     const getPlayerInput = (playerComponent) => {
       const keyboard = world.latestTickData.scene.input.keyboard;
       const cursors = keyboard.createCursorKeys();
@@ -82800,7 +82847,7 @@ This player number will be ignored.`);
       return null;
     };
     const eachUpdate = () => {
-      for (const [entities, [velocitys, players]] of (0, import_ecs27.createQuery)(Velocity, Player, Sprite)) {
+      for (const [entities, [velocitys, players]] of movingPlayersQuery) {
         for (let i = 0; i < entities.length; i++) {
           const sprite = phaserService.getSprite(entities[i]);
           const speed = velocitys[i].speed;
@@ -82810,17 +82857,17 @@ This player number will be ignored.`);
             continue;
           }
           const prevVelocity = sprite.body.velocity.clone();
-          velocitys[i].x = 0;
-          velocitys[i].y = 0;
+          velocitys[i].vx = 0;
+          velocitys[i].vy = 0;
           if (playerInput.left.isDown) {
-            velocitys[i].x = -speed;
+            velocitys[i].vx = -speed;
           } else if (playerInput.right.isDown) {
-            velocitys[i].x = speed;
+            velocitys[i].vx = speed;
           }
           if (playerInput.up.isDown) {
-            velocitys[i].y = -speed;
+            velocitys[i].vy = -speed;
           } else if (playerInput.down.isDown) {
-            velocitys[i].y = speed;
+            velocitys[i].vy = speed;
           }
           if (playerInput.left.isDown) {
             sprite.anims.play("misa-left-walk", true);
@@ -82853,13 +82900,14 @@ This player number will be ignored.`);
   }, effectOptions8);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-layer.effect.ts
-  var import_ecs28 = __toModule(require_cjs2());
+  var import_ecs28 = __toModule(require_cjs3());
   var effectOptions9 = { shared: true };
   var phaserMapLayerEffect = (0, import_ecs28.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const mapLayersQuery = (0, import_ecs28.createQuery)(MapLayer).bind(world);
     const onCreate = () => {
-      for (const [entities, [mapLayers]] of (0, import_ecs28.createQuery)(MapLayer)) {
+      for (const [entities, [mapLayers]] of mapLayersQuery) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createLayer(entities[i], mapLayers[i]);
         }
@@ -82874,10 +82922,10 @@ This player number will be ignored.`);
   }, effectOptions9);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-object.effect.ts
-  var import_ecs30 = __toModule(require_cjs2());
+  var import_ecs30 = __toModule(require_cjs3());
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/topics/map-object.topic.ts
-  var import_ecs29 = __toModule(require_cjs2());
+  var import_ecs29 = __toModule(require_cjs3());
   var mapObjectTopic = (0, import_ecs29.createTopic)();
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-map-object.effect.ts
@@ -82885,8 +82933,9 @@ This player number will be ignored.`);
   var phaserMapObjectEffect = (0, import_ecs30.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const mapAssetsQuery = (0, import_ecs30.createQuery)(AssetMap);
     const onCreate = () => {
-      for (const [entities, []] of (0, import_ecs30.createQuery)(AssetMap)) {
+      for (const [entities, []] of mapAssetsQuery) {
         for (let i = 0; i < entities.length; i++) {
           const map = phaserService.getMap(entities[i]);
           const currSpawnPoint = map.findObject("Objects", (obj) => obj.name === "Spawn Point");
@@ -82903,27 +82952,31 @@ This player number will be ignored.`);
   }, effectOptions10);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-position.effect.ts
-  var import_ecs31 = __toModule(require_cjs2());
+  var import_ecs31 = __toModule(require_cjs3());
   var effectOptions11 = { shared: true };
   var phaserPositionEffect = (0, import_ecs31.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const positionsQuery = (0, import_ecs31.createQuery)(Position);
     const initDirectPositions = () => {
-      for (const [entities, [positions]] of (0, import_ecs31.createQuery)(Position)) {
+      for (const [entities, [positions]] of positionsQuery) {
         for (let i = 0; i < entities.length; i++) {
+          const position = positions[i];
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setPosition !== "function") {
             console.warn(`The entry ${entities[i]} has no matching phaser object which can have a position`);
           } else {
-            gameObject.setPosition(positions[i].x, positions[i].y);
+            console.debug("init position", position);
+            gameObject.setPosition(position.px, position.py);
           }
         }
       }
     };
     const updatePositions = () => {
-      for (const [entities, [positions]] of (0, import_ecs31.createQuery)(Position)) {
+      for (const [entities, [positions]] of positionsQuery) {
         for (let i = 0; i < entities.length; i++) {
           const entry = entities[i];
+          const position = positions[i];
           if (world.has(entry, Velocity)) {
             continue;
           }
@@ -82931,7 +82984,8 @@ This player number will be ignored.`);
           if (!gameObject || typeof gameObject.setPosition !== "function") {
             console.warn(`The entry ${entry} has no matching phaser object which can have a position`);
           } else {
-            gameObject.setPosition(positions[i].x, positions[i].y);
+            console.debug("update position", position);
+            gameObject.setPosition(position.px, position.py);
           }
         }
       }
@@ -82954,19 +83008,20 @@ This player number will be ignored.`);
   }, effectOptions11);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-scrollfactor.effect.ts
-  var import_ecs32 = __toModule(require_cjs2());
+  var import_ecs32 = __toModule(require_cjs3());
   var effectOptions12 = { shared: true };
   var phaserScrollfactorEffect = (0, import_ecs32.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const scrollfactorsQuery = (0, import_ecs32.createQuery)(Scrollfactor).bind(world);
     const onUpdate = () => {
-      for (const [entities, [depths]] of (0, import_ecs32.createQuery)(Scrollfactor)) {
+      for (const [entities, [scrollfactor]] of scrollfactorsQuery) {
         for (let i = 0; i < entities.length; i++) {
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setScrollFactor !== "function") {
             console.warn(`The entry ${entities[i]} has no matching phaser object which can have a scrollfactor`);
           } else {
-            gameObject.setScrollFactor(depths[i].x, depths[i].y);
+            gameObject.setScrollFactor(scrollfactor[i].sx, scrollfactor[i].sy);
           }
         }
       }
@@ -82980,27 +83035,30 @@ This player number will be ignored.`);
   }, effectOptions12);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-sprite.effect.ts
-  var import_ecs33 = __toModule(require_cjs2());
+  var import_ecs33 = __toModule(require_cjs3());
   var effectOptions13 = { shared: true };
   var phaserSpriteEffect = (0, import_ecs33.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const spawnSpritesQuery = (0, import_ecs33.createQuery)(Sprite, Position);
+    const spritesQuery = (0, import_ecs33.createQuery)(Sprite);
     const setSpawnPoint = (spawnPoint) => {
       if (typeof spawnPoint.x !== "number" || typeof spawnPoint.y !== "number") {
         throw new Error("A spawn point must have coordinates!");
       }
-      for (const [entities, [, positions]] of (0, import_ecs33.createQuery)(Sprite, Position)) {
+      for (const [entities, [, positions]] of spawnSpritesQuery) {
         for (let i = 0; i < entities.length; i++) {
           const position = positions[i];
-          position.x = spawnPoint.x;
-          position.y = spawnPoint.y;
+          position.px = spawnPoint.x;
+          position.py = spawnPoint.y;
+          console.debug("setSpawnPoint", position);
           const sprite = phaserService.getSprite(entities[i]);
-          sprite.setPosition(position.x, position.y);
+          sprite.setPosition(position.px, position.py);
         }
       }
     };
     const onCreate = () => {
-      for (const [entities, [sprites]] of (0, import_ecs33.createQuery)(Sprite)) {
+      for (const [entities, [sprites]] of spritesQuery) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createSprite(world.latestTickData.scene.physics, entities[i], sprites[i]);
         }
@@ -83023,13 +83081,14 @@ This player number will be ignored.`);
   }, effectOptions13);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-text.effect.ts
-  var import_ecs34 = __toModule(require_cjs2());
+  var import_ecs34 = __toModule(require_cjs3());
   var effectOptions14 = { shared: true };
   var phaserTextEffect = (0, import_ecs34.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const textsQuery = (0, import_ecs34.createQuery)(Text);
     const onCreate = () => {
-      for (const [entities, [texts]] of (0, import_ecs34.createQuery)(Text)) {
+      for (const [entities, [texts]] of textsQuery) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createText(world, world.latestTickData.scene, entities[i], texts[i]);
         }
@@ -83044,13 +83103,14 @@ This player number will be ignored.`);
   }, effectOptions14);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-tileset.effect.ts
-  var import_ecs35 = __toModule(require_cjs2());
+  var import_ecs35 = __toModule(require_cjs3());
   var effectOptions15 = { shared: true };
   var phaserTilesetEffect = (0, import_ecs35.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const tilesetsQuery = (0, import_ecs35.createQuery)(Tileset);
     const onCreate = () => {
-      for (const [entities, [tilesets]] of (0, import_ecs35.createQuery)(Tileset)) {
+      for (const [entities, [tilesets]] of tilesetsQuery) {
         for (let i = 0; i < entities.length; i++) {
           phaserService.createTileset(entities[i], tilesets[i]);
         }
@@ -83065,23 +83125,27 @@ This player number will be ignored.`);
   }, effectOptions15);
 
   // pnp:/home/jumplink/Projekte/PixelRPG/packages/engine/src/effects/phaser-velocity.effect.ts
-  var import_ecs36 = __toModule(require_cjs2());
+  var import_ecs36 = __toModule(require_cjs3());
   var effectOptions16 = { shared: true };
   var phaserVelocityEffect = (0, import_ecs36.createEffect)((world) => {
     const state = {};
     const phaserService = PhaserService.getInstance();
+    const VelocitiesQuery = (0, import_ecs36.createQuery)(Velocity, Position);
     const onCreate = () => {
-      for (const [entities, [velocitys, positions]] of (0, import_ecs36.createQuery)(Velocity, Position)) {
+      for (const [entities, [velocitys, positions]] of VelocitiesQuery) {
         for (let i = 0; i < entities.length; i++) {
+          const velocity = velocitys[i];
           const gameObject = phaserService.tryGetGameObject(entities[i]);
           if (!gameObject || typeof gameObject.setVelocity !== "function") {
             console.warn(`The entry ${entities[i]} has no matching phaser object which can have a velocitys`);
           } else {
-            gameObject.setVelocity(velocitys[i].x, velocitys[i].y);
-            gameObject.body.velocity.normalize().scale(velocitys[i].speed);
-            if (gameObject?.body?.position) {
-              positions[i].x = gameObject.body.position.x;
-              positions[i].y = gameObject.body.position.y;
+            gameObject.setVelocity(velocity.vx, velocity.vy);
+            gameObject.body.velocity.normalize().scale(velocity.speed);
+            if (!isNaN(gameObject?.body?.position.x)) {
+              positions[i].px = gameObject.body.position.x;
+            }
+            if (!isNaN(gameObject?.body?.position.y)) {
+              positions[i].py = gameObject.body.position.y;
             }
           }
         }
@@ -83284,11 +83348,6 @@ This player number will be ignored.`);
         name: "Player 1",
         playerNumber: 1
       });
-      const { playerEntity: p2Entity, playerComponent: p2Component } = this.spawnPlayer({ name: "Player 2", playerNumber: 2 });
-      this.spawnPlayer({ name: "Player 3", playerNumber: 3 });
-      this.spawnPlayer({ name: "Player 4", playerNumber: 4 });
-      this.spawnPlayerText(p1Entity, 'Arrow keys to move\nPress "F1" to show hitboxes');
-      this.spawnPlayerText(p2Entity, p2Component.name);
       const debugEntity = this.world.create((0, import_ecs37.component)(Debug));
       this.world.attach(debugEntity);
     }
@@ -83307,8 +83366,8 @@ This player number will be ignored.`);
       const playerPositionComponent = (0, import_ecs37.component)(Position);
       const playerVelocityComponent = (0, import_ecs37.component)(Velocity, {
         speed: 70,
-        x: 0,
-        y: 0
+        vx: 0,
+        vy: 0
       });
       const playerCollisionVelocityComponent = (0, import_ecs37.component)(Collision);
       const playerComponent = (0, import_ecs37.component)(Player, playerData);
@@ -83336,12 +83395,12 @@ This player number will be ignored.`);
         }
       });
       const textPositionComponent = (0, import_ecs37.component)(Position, {
-        x: 16,
-        y: 16
+        px: 16,
+        py: 16
       });
       const scrollfactorComponent = (0, import_ecs37.component)(Scrollfactor, {
-        x: 0,
-        y: 0
+        sx: 0,
+        sy: 0
       });
       const textDepthComponent = (0, import_ecs37.component)(Depth, {
         depth: 30
@@ -83352,7 +83411,7 @@ This player number will be ignored.`);
   };
 
   // pnp:/home/jumplink/Projekte/PixelRPG/examples/tuxemon/src/worlds/menu.world.ts
-  var import_ecs38 = __toModule(require_cjs2());
+  var import_ecs38 = __toModule(require_cjs3());
   var MenuWorld = class extends PhaserSceneWorld {
     constructor(config2) {
       super(config2);

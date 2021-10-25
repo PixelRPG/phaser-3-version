@@ -44,7 +44,7 @@ export class GameWorld extends PhaserSceneWorld {
     const playerSpriteComponent = component(Sprite, {
       key: "tuxemon-misa",
       frame: "misa-front",
-      // scale: { x: 2, y: 2 },
+      scale: { x: 1, y: 1 },
       size: { height: 15, width: 12 },
       offset: { x: 0, y: 20 },
     });
@@ -53,8 +53,8 @@ export class GameWorld extends PhaserSceneWorld {
 
     const playerVelocityComponent = component(Velocity, {
       speed: 70,
-      x: 0,
-      y: 0,
+      vx: 0,
+      vy: 0,
     });
 
     const playerCollisionVelocityComponent = component(Collision);
@@ -95,12 +95,12 @@ export class GameWorld extends PhaserSceneWorld {
       } as any, // TODO,
     });
     const textPositionComponent = component(Position, {
-      x: 16,
-      y: 16,
+      px: 16,
+      py: 16,
     });
     const scrollfactorComponent = component(Scrollfactor, {
-      x: 0,
-      y: 0,
+      sx: 0,
+      sy: 0,
     });
     const textDepthComponent = component(Depth, {
       depth: 30,

@@ -6,7 +6,7 @@ export const AssetImage = {
   url: string,
   name: string,
   xhrSettings: objectOf(xhrSettings),
-  loaded: boolean,
+  imageLoaded: boolean,
 };
 
-export const AssetImageComponent = component(AssetImage, { loaded: false });
+export const AssetImageComponent = component(AssetImage, { imageLoaded: false });

@@ -14,31 +14,29 @@ export const phaserPositionEffect = createEffect<
 >((world) => {
   const state: PhaserPositionEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const positionsQuery = createQuery(Position);
 
   const initDirectPositions = () => {
-    for (const [entities, [positions]] of createQuery(Position)) {
+    for (const [entities, [positions]] of positionsQuery) {
       for (let i = 0; i < entities.length; i++) {
+        const position = positions[i];
         const gameObject: any = phaserService.tryGetGameObject(entities[i]);
         if (!gameObject || typeof gameObject.setPosition !== "function") {
           console.warn(
             `The entry ${entities[i]} has no matching phaser object which can have a position`
           );
         } else {
-          gameObject.setPosition(positions[i].x, positions[i].y);
+          gameObject.setPosition(position.px, position.py);
         }
       }
     }
   };
 
   const updatePositions = () => {
-    // const velocityEntities: number[] = [];
-    // createQuery(VelocityComponent).forEach((entity) => {
-    //   velocityEntities.push(entity);
-    // });
-
-    for (const [entities, [positions]] of createQuery(Position)) {
+    for (const [entities, [positions]] of positionsQuery) {
       for (let i = 0; i < entities.length; i++) {
         const entry = entities[i];
+        const position = positions[i];
         // Ignore position if velocity is set because in this case phaser set's the position by itself
         if (world.has(entry, Velocity)) {
           continue;
@@ -50,7 +48,7 @@ export const phaserPositionEffect = createEffect<
             `The entry ${entry} has no matching phaser object which can have a position`
           );
         } else {
-          gameObject.setPosition(positions[i].x, positions[i].y);
+          gameObject.setPosition(position.px, position.py);
         }
       }
     }

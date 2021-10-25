@@ -32,6 +32,7 @@ export const phaserCameraEffect = createEffect<
   const phaserScene = world.latestTickData.scene;
   const phaserGameConfig = phaserScene.phaserGameConfig;
   const phaserCameras = phaserScene.cameras;
+  const playersQuery = createQuery(Player);
 
   /**
    * Calcualtes the splitscreen viewport position and size
@@ -119,7 +120,7 @@ export const phaserCameraEffect = createEffect<
    */
   const attachCamerasToPlayers = () => {
     // Create a camera for each player
-    for (const [playerEntities, [players]] of createQuery(Player)) {
+    for (const [playerEntities, [players]] of playersQuery) {
       const playerCount = playerEntities.length;
       if (playerCount > 4) {
         throw new Error(
@@ -138,11 +139,6 @@ export const phaserCameraEffect = createEffect<
           name: playerComponent.name,
           ...data,
         });
-        // const cameraComponent = world.get<typeof Camera>(Camera, {
-        //   isMain: playerComponent.playerNumber === 1,
-        //   name: playerComponent.name,
-        //   ...data,
-        // });
 
         world.attach(playerEntity, cameraComponent);
 
@@ -162,7 +158,7 @@ export const phaserCameraEffect = createEffect<
     for (const [cameraEntities, [cameras, players]] of createQuery(
       Camera,
       Player
-    )) {
+    ).bind(world)) {
       const playerCount = cameraEntities.length;
       for (let i = 0; i < cameraEntities.length; i++) {
         const cameraEntity = cameraEntities[i];

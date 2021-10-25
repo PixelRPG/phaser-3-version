@@ -14,9 +14,10 @@ export const phaserTilesetEffect = createEffect<
 >((world) => {
   const state: PhaserTilesetEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const tilesetsQuery = createQuery(Tileset);
 
   const onCreate = () => {
-    for (const [entities, [tilesets]] of createQuery(Tileset)) {
+    for (const [entities, [tilesets]] of tilesetsQuery) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createTileset(entities[i], tilesets[i]);
       }

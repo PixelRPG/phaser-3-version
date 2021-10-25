@@ -17,13 +17,15 @@ export const phaserCollisionEffect = createEffect<
 >((world) => {
   const state = {};
   const phaserService = PhaserService.getInstance();
+  const mapLayersQuery = createQuery(MapLayer, Collision);
+  const velocitiesQuery = createQuery(Velocity, Collision);
 
   const onCreate = () => {
     const phaserCollisionLayers: Phaser.Tilemaps.TilemapLayer[] = [];
     const scene = world.latestTickData.scene;
 
     // Set collision for map layers
-    for (const [entities] of createQuery(MapLayer, Collision)) {
+    for (const [entities] of mapLayersQuery) {
       for (let i = 0; i < entities.length; i++) {
         const phaserCollisionLayer = phaserService.getLayer(entities[i]);
         phaserCollisionLayer.setCollisionByProperty({
@@ -34,7 +36,7 @@ export const phaserCollisionEffect = createEffect<
     }
 
     // Set collision for sprites
-    for (const [entities] of createQuery(Velocity, Collision)) {
+    for (const [entities] of velocitiesQuery) {
       for (let i = 0; i < entities.length; i++) {
         const phaserGameObject = phaserService.getGameObject(entities[i]);
         for (const phaserCollisionLayer of phaserCollisionLayers) {

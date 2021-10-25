@@ -13,6 +13,8 @@ export const phaserSpriteEffect = createEffect<
 >((world: World<WorldSceneData>) => {
   const state = {};
   const phaserService = PhaserService.getInstance();
+  const spawnSpritesQuery = createQuery(Sprite, Position);
+  const spritesQuery = createQuery(Sprite);
 
   const setSpawnPoint = (spawnPoint: Phaser.Types.Tilemaps.TiledObject) => {
     // Create a sprite with physics enabled via the physics system. The image used for the sprite has
@@ -21,22 +23,22 @@ export const phaserSpriteEffect = createEffect<
       throw new Error("A spawn point must have coordinates!");
     }
 
-    for (const [entities, [, positions]] of createQuery(Sprite, Position)) {
+    for (const [entities, [, positions]] of spawnSpritesQuery) {
       for (let i = 0; i < entities.length; i++) {
         const position = positions[i];
 
-        position.x = spawnPoint.x;
-        position.y = spawnPoint.y;
+        position.px = spawnPoint.x;
+        position.py = spawnPoint.y;
 
         const sprite = phaserService.getSprite(entities[i]);
         // TODO move to position effect
-        sprite.setPosition(position.x, position.y);
+        sprite.setPosition(position.px, position.py);
       }
     }
   };
 
   const onCreate = () => {
-    for (const [entities, [sprites]] of createQuery(Sprite)) {
+    for (const [entities, [sprites]] of spritesQuery) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createSprite(
           world.latestTickData.scene.physics,

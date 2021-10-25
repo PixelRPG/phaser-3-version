@@ -14,9 +14,10 @@ export const phaserTextEffect = createEffect<
 >((world) => {
   const state: PhaserTextEffectState = {};
   const phaserService = PhaserService.getInstance();
+  const textsQuery = createQuery(Text);
 
   const onCreate = () => {
-    for (const [entities, [texts]] of createQuery(Text)) {
+    for (const [entities, [texts]] of textsQuery) {
       for (let i = 0; i < entities.length; i++) {
         phaserService.createText(
           world,
