@@ -35,12 +35,7 @@ export class GameWorld extends PhaserSceneWorld {
       url: "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
       xhrSettingsJsonUrl: "./assets/atlas/tuxemon-misa/tuxemon-misa.json",
     });
-    // const playerAssetAtlasComponent = component(
-    //   AssetAtlasComponent
-    //   "tuxemon-misa",
-    //   "./assets/atlas/tuxemon-misa/tuxemon-misa.png",
-    //   "./assets/atlas/tuxemon-misa/tuxemon-misa.json"
-    // );
+
     const playerSpriteComponent = component(Sprite, {
       key: "tuxemon-misa",
       frame: "misa-front",
@@ -256,6 +251,7 @@ export class GameWorld extends PhaserSceneWorld {
     this.world.attach(animationBackWalkEntity);
 
     // PLAYER
+    // Here you can just uncomment the other players which automatically reduces the splitscreen
 
     const { playerEntity: p1Entity } = this.spawnPlayer({
       name: "Player 1",
