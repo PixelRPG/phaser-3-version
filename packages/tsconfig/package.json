@@ -1,7 +1,7 @@
 {
   "name": "@pixelrpg/tsconfig",
   "description": "Shared TypeScript config for PixelRPG games",
-  "version": "2.0.0-alpha.0",
+  "version": "0.0.1",
   "author": "Pascal Garber <pascal@artandcode.studio>",
   "contributors": [],
   "url": "https://github.com/ribajs/riba/tree/master/infra/tsconfig",
@@ -30,7 +30,10 @@
     "tsconfig"
   ],
   "scripts": {
-    "build": "echo \"Nothing to build\""
+    "build": "echo \"Nothing to build\"",
+    "clear": "echo \"Nothing to clear\"",
+    "lint": "echo \"Nothing to lint\"",
+    "test": "echo \"Nothing to test\""
   },
   "bugs": {
     "url": "https://github.com/ribajs/riba/issues"

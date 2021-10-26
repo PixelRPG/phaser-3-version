@@ -20,13 +20,13 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
-          yarn install
+          npm install
       - name: Build each package
         run: |
-          yarn run build
-      - name: Lint each package
-        run: |
-          yarn run lint
-      - name: Run tests for each package
-        run: |
-          yarn run test
+          npm run build
+      # - name: Lint each package
+      #   run: |
+      #     npm run lint
+      # - name: Run tests for each package
+      #   run: |
+      #     npm run test

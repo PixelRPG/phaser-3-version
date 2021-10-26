@@ -1,17 +1,18 @@
 {
   "name": "@pixelrpg/engine",
   "main": "src/index.ts",
+  "version": "0.0.1",
   "scripts": {
     "clear": "rimraf dist",
     "build": "tsc",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix && tsc --noEmit"
   },
   "devDependencies": {
-    "@pixelrpg/eslint-config": "workspace:*",
-    "@pixelrpg/tsconfig": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "eslint": "^8.0.1",
+    "@pixelrpg/eslint-config": "^0.0.1",
+    "@pixelrpg/tsconfig": "^0.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "2.4.1",
@@ -19,8 +20,8 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@javelin/core": "workspace:packages/javelin/packages/core",
-    "@javelin/ecs": "workspace:*",
+    "@javelin/core": "^1.0.0-alpha.12",
+    "@javelin/ecs": "^1.0.0-alpha.13",
     "phaser": "^3.55.2"
   }
 }

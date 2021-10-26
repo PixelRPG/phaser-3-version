@@ -4,14 +4,14 @@
   "description": "",
   "main": "src/index.html",
   "scripts": {
-    "build": "yarn run build:assets && yarn run build:esbuild",
-    "build:esbuild": "esbuilder",
-    "build:assets": "yarn run build:atlas",
+    "build": "npm run build:assets && npm run build:esbuild",
+    "build:esbuild": "esbuilder --outfile ./dist/assets/scripts/main.js",
+    "build:assets": "npm run build:atlas",
     "build:atlas": "free-tex-packer-cli --project ./src/assets/atlas/tuxemon-misa.ftpp",
-    "serve:dev": "esbuilder --serve --dev",
-    "serve": "esbuilder --serve",
-    "start:dev": "yarn run serve:dev",
-    "start": "yarn run build:assets && yarn run serve",
+    "serve:dev": "npm run serve -- --dev",
+    "serve": "esbuilder --serve --outfile ./dist/assets/scripts/main.js",
+    "start:dev": "npm run serve:dev",
+    "start": "npm run build:assets && npm run serve",
     "clear": "rimraf dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix && tsc --noEmit",
     "test": "jest"
@@ -22,14 +22,14 @@
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "license": "MIT",
   "devDependencies": {
-    "@pixelrpg/esbuild": "workspace:*",
-    "@pixelrpg/eslint-config": "workspace:*",
-    "@pixelrpg/tsconfig": "workspace:*",
+    "@pixelrpg/esbuild": "0.0.1",
+    "@pixelrpg/eslint-config": "0.0.1",
+    "@pixelrpg/tsconfig": "0.0.1",
     "@types/jest": "^27.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "esbuild": "^0.13.8",
-    "eslint": "^8.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "esbuild": "^0.13.9",
+    "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "free-tex-packer-cli": "^0.3.0",
@@ -38,8 +38,8 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@javelin/ecs": "workspace:*",
-    "@pixelrpg/engine": "workspace:*",
+    "@javelin/ecs": "^1.0.0-alpha.13",
+    "@pixelrpg/engine": "^0.0.1",
     "phaser": "^3.55.2"
   }
 }

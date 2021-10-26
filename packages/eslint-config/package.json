@@ -1,7 +1,7 @@
 {
   "name": "@pixelrpg/eslint-config",
   "description": "Default ESLint configuration for PixelRPG games",
-  "version": "2.0.0-alpha.0",
+  "version": "0.0.1",
   "author": "Pascal Garber <pascal@artandcode.studio>",
   "contributors": [],
   "url": "https://github.com/ribajs/riba/tree/master/infra/eslint",
@@ -36,10 +36,10 @@
     "build": "echo \"Nothing to build\""
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/experimental-utils": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "eslint": "^8.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/experimental-utils": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "2.4.1",

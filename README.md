@@ -4,15 +4,19 @@
 
 ## Build
 
+Required engine:  
+node: >=16  
+npm: >=7  
+
 ```sh
 git clone https://github.com/PixelRPG/PixelRPG.git
 cd PixelRPG
 git submodule update --init --recursive
-yarn install
+npm install
 # Build each package in this workspace
-yarn run build
+npm run build
 # Start the example game
-yarn run start
+npm run start
 ```
 
 ## Tools
