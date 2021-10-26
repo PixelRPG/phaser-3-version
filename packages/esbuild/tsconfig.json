@@ -1,9 +1,0 @@
-{
-    "extends": "@tsconfig/node16/tsconfig.json",
-    "files": ["./src/index.ts"],
-    "include": ["./typings"],
-    "compilerOptions": {
-        "outDir": "./dist",
-        "esModuleInterop": true,
-    }
-}
