@@ -13,7 +13,7 @@
     "build:web-udp": "npm run build -w web-udp",
     "build:engine": "npm run build -w @pixelrpg/engine",
     "start": "npm run start -w @pixelrpg/tuxemon",
-    "clrear": "npm run clrear -w tile-extruder-root -w @pixelrpg/esbuild -w web-udp -w javelin"
+    "clear": "npm run clear -w tile-extruder-root -w @pixelrpg/esbuild -w web-udp -w javelin"
   },
   "engines": {
     "node": ">=16",
