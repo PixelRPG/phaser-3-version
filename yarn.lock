@@ -3408,7 +3408,7 @@ __metadata:
     fast-glob: ^3.2.7
     jimp: ^0.16.1
     rimraf: ^3.0.2
-    tile-extruder: "workspace:*"
+    tile-extruder: ^2.1.0
     tiled-types: ^1.3.0
     typescript: ^4.4.4
     yargs: ^17.2.1
@@ -18241,7 +18241,7 @@ resolve@^2.0.0-next.3:
   languageName: unknown
   linkType: soft
 
-"tile-extruder@workspace:*, tile-extruder@workspace:packages/tile-extruder/workspaces/cli":
+"tile-extruder@^2.1.0, tile-extruder@workspace:packages/tile-extruder/workspaces/cli":
   version: 0.0.0-use.local
   resolution: "tile-extruder@workspace:packages/tile-extruder/workspaces/cli"
   dependencies:
