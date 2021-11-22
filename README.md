@@ -1,4 +1,4 @@
-# PixelPRG
+# PixelPRG Engine (Phaser 3 version)
 
 [Phaser](https://phaser.io/) + [Typescript](https://www.typescriptlang.org/) + [Esbuild](https://esbuild.github.io/) + [Javelin (ECS)](https://github.com/3mcd/javelin)
 
