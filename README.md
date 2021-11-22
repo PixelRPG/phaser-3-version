@@ -4,6 +4,8 @@
 
 https://user-images.githubusercontent.com/1073989/138862209-b352ed23-c560-43a5-a24b-699d3bf2a38b.mp4
 
+This is an experimental 2D engine designed for SNES style RPG games. Currently I'm trying to find out which engine is best suited for this and meets my requirements. For this there is an alternative attempt [build in Excalibur + Built-in ECS](https://github.com/PixelRPG/excalibur-version)
+
 ## Example
 
 The ECS automatically detects the number of players and initializes the splitscreen accordingly. If you want to try the example with less players you can simply edit the [world.ts](./examples/tuxemon/src/worlds/game.world.ts) and comment out the other players.
@@ -42,6 +44,3 @@ npm run start
 
 * [Free Texture Packer](https://github.com/odrick/free-tex-packer)
 * [Tile Extruder](https://github.com/sporadic-labs/tile-extruder)
-
-# More attempts
-* [With Excalibur + Built-in ECS](https://github.com/PixelRPG/excalibur-version)
